@@ -40,12 +40,8 @@
     "baseUrl": ".",
     "paths": {
       "~root/*": ["*"],
-      "~renderer/*": ["source/renderer/*"],
-      "~main/*": ["source/main/*"],
-      "~preload/*": ["source/preload/*"],
-      "~shared/*": ["source/shared/*"],
+      "~server/*": ["source/server/*"],
       "~scripts/*": ["source/scripts/*"],
-      "~public/*": ["source/public/*"]
     },
     "plugins": [{
       "transform": "typescript-transform-paths"
