@@ -48,5 +48,5 @@
     }]
   },
   "include": ["."],
-  "exclude": ["node_modules", "coverage", "android", "ios", "destination"]
+  "exclude": ["node_modules", "coverage", "destination"]
 }
