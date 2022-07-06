@@ -1,0 +1,15 @@
+node_modules
+/destination
+tsconfig.tsbuildinfo
+.env
+coverage
+source/native-addon/native/target
+yarn-error.log
+.husky
+.lsp
+.clj-kondo
+index.node
+artifacts.json
+bundle-analyzes
+storybook
+lefthook.yml
