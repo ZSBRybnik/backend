@@ -1,0 +1,56 @@
+{
+  "ts-node": {
+    "transpileOnly": true,
+    "require": [
+      "typescript-transform-paths/register",
+      "tsconfig-paths/register"
+    ]
+  },
+  "compilerOptions": {
+    "incremental": true,
+    "target": "esnext",
+    "lib": ["esnext"],
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "sourceMap": true,
+    "alwaysStrict": true,
+    "module": "NodeNext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "downlevelIteration": true,
+    "pretty": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": true,
+    "skipLibCheck": true,
+    "checkJs": true,
+    "strictFunctionTypes": true,
+    "importHelpers": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "~root/*": ["*"],
+      "~renderer/*": ["source/renderer/*"],
+      "~main/*": ["source/main/*"],
+      "~preload/*": ["source/preload/*"],
+      "~shared/*": ["source/shared/*"],
+      "~scripts/*": ["source/scripts/*"],
+      "~public/*": ["source/public/*"]
+    },
+    "plugins": [{
+      "transform": "typescript-transform-paths"
+    }]
+  },
+  "include": ["."],
+  "exclude": ["node_modules", "coverage", "android", "ios", "destination"]
+}
