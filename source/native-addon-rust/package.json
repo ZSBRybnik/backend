@@ -1,0 +1,17 @@
+{
+  "name": "native-addon-rust",
+  "version": "0.1.0",
+  "description": "",
+  "main": "./destination/index.node",
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "build": "npx cargo-cp-artifact -nc ./destination/index.node -- cargo build --message-format=json-render-diagnostics --release",
+    "install": "yarn run build",
+    "test": "cargo test"
+  },
+  "dependencies": {
+    "cargo-cp-artifact": "^0.1",
+    "yarn": "^1.22.19"
+  }
+}
