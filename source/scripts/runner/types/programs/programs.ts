@@ -1,0 +1,25 @@
+enum Programs {
+  Choco = "choco",
+  Pulumi = "pulumi",
+  Brew = "brew",
+  Node = "node",
+  NodeVersionManager = "n",
+  RustCompiler = "rustc",
+  CppCompiler = "mingw",
+  AuditCI = "audit-ci",
+  Gcc = "gcc",
+  Yarn = "yarn",
+  Webpack = "webpack",
+  Serve = "serve",
+  Husky = "husky",
+  CrossEnvironment = "cross-env",
+  RimRaf = "rimraf",
+  MoveFile = "move-file",
+  Docker = "docker",
+  Cap = "cap",
+  NPMCheckUpdates = "ncu",
+  TypeScriptCompiler = "tsc",
+  ElectronBuildEnvironment = "electron-build-env",
+}
+
+export default Programs;
