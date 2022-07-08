@@ -7,7 +7,9 @@
   "license": "MIT",
   "devDependencies": {
     "@types/express": "^4.17.13",
-    "graphql-config": "^4.3.1"
+    "graphql-config": "^4.3.1",
+    "tcp-port-used": "^1.0.2",
+    "tsd": "^0.22.0"
   },
   "dependencies": {
     "@prisma/client": "^4.0.0",
