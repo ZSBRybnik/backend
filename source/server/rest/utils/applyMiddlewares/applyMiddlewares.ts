@@ -1,5 +1,5 @@
-import getGraphQLMiddleware from "../../middlewares/getGraphQLMiddleware/getGraphQLMiddleware";
 import getCorsMiddleware from "../../middlewares/getCorsMiddleware/getCorsMiddleware";
+import getGraphQLMiddleware from "../../middlewares/getGraphQLMiddleware/getGraphQLMiddleware";
 import getJsonBodyParserMiddleware from "../../middlewares/getJsonBodyParserMiddleware/getJsonBodyParserMiddleware";
 import type {
   ApplyMiddlewares,

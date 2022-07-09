@@ -13,3 +13,4 @@ artifacts.json
 bundle-analyzes
 storybook
 lefthook.yml
+source/server/prisma/migrations

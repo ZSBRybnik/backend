@@ -1,10 +1,16 @@
 import { PrismaClient } from "@prisma/client";
 import { compare } from "bcrypt";
 import { Request, Response } from "express";
+import { sign } from "jsonwebtoken";
 
 const databaseClient = new PrismaClient();
 
-const loginHandler = async (request: Request, response: Response) => {
+type LoginHandler = (request: Request, response: Response) => Promise<void>;
+
+const loginHandler: LoginHandler = async (
+  request: Request,
+  response: Response,
+): Promise<void> => {
   const { login, password } = request.body;
   const user = await databaseClient.user.findUnique({
     where: { login },
@@ -13,7 +19,8 @@ const loginHandler = async (request: Request, response: Response) => {
   if (user) {
     const isPasswordValid = await compare(password, user.password);
     if (isPasswordValid) {
-      response.sendStatus(200);
+      const token = sign({ user: { login } }, "zsbrybnik");
+      response.json({ token });
     } else {
       response.sendStatus(401);
     }
