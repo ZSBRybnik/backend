@@ -15,11 +15,11 @@
     "audit-dependencies": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/auditDependencies/auditDependencies.ts",
     "lint": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/lint/lint.ts",
     "test": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/runTests/runTests.ts",
-    "build": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/build/build.ts --target web",
-    "dev": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/development/development.ts --target web",
+    "build": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/build/build.ts --target server",
+    "dev": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/development/development.ts --target server",
     "postinstall": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/postInstall/postInstall.ts",
     "remove-build": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/removeBuild/removeBuild.ts",
-    "run": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/run/run.ts --target desktop"
+    "run": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/run/run.ts --target server"
   },
   "dependencies": {
     "@prisma/client": "^4.0.0",

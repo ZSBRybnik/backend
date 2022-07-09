@@ -22,7 +22,7 @@ const getPlugins = ({
   extendedMode,
 }: GetPluginsArguments) => {
   return [
-    getUnusedWebpackPlugin({ extendedMode }),
+    getUnusedWebpackPlugin(),
     getDuplicatePackageCheckerPlugin(),
     getDefinePlugin({
       publicURL: "public",
@@ -33,11 +33,10 @@ const getPlugins = ({
     getESLintPlugin(),
     getJsonMinimizerPlugin(),
     getBundleAnalyzerPlugin({
-      targetToModern,
       extendedMode,
     }),
     getLicensePlugin({ targetToModern, extendedMode }),
-    getCopyWebpackPlugin({ extendedMode }),
+    getCopyWebpackPlugin(),
   ].filter(Boolean);
 };
 

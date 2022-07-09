@@ -1,9 +1,5 @@
 enum ExtendedMode {
-  Main = "main",
-  Preload = "preload",
-  Renderer = "renderer",
-  Web = "web",
-  Mobile = "mobile",
+  Server = "server",
 }
 
 export default ExtendedMode;

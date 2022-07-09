@@ -1,27 +1,7 @@
 import { join } from "path";
 import UnusedWebpackPlugin from "unused-webpack-plugin";
-import ExtendedMode from "~scripts/build/types/extendedMode/extendedMode";
 
-type GetUnusedWebpackPluginArguments = {
-  extendedMode: ExtendedMode;
-};
-
-type NotGericUnsuablePluginPaths = {
-  [key in ExtendedMode]: string[];
-};
-
-const notGericUnsuablePluginPaths: NotGericUnsuablePluginPaths = {
-  [ExtendedMode.Web]: ["main", "preload"],
-  [ExtendedMode.Renderer]: ["main", "preload"],
-  [ExtendedMode.Mobile]: ["main", "preload"],
-  [ExtendedMode.Main]: [],
-  [ExtendedMode.Preload]: [],
-};
-
-const getUnusedWebpackPlugin = ({
-  extendedMode,
-}: GetUnusedWebpackPluginArguments) => {
-  const extraNotGenericPaths = notGericUnsuablePluginPaths[extendedMode];
+const getUnusedWebpackPlugin = () => {
   return new UnusedWebpackPlugin({
     directories: [join(process.cwd(), "source")],
     exclude: [
@@ -39,7 +19,6 @@ const getUnusedWebpackPlugin = ({
       "native-addon-go",
       "wasm-rust",
       "wasm-go",
-      ...extraNotGenericPaths,
     ].filter(Boolean),
     root: process.cwd(),
   });

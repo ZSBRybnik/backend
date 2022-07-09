@@ -27,23 +27,23 @@ const getConfig: GetConfig = ({
 }: GetConfigArguments): Configuration => {
   return {
     mode: mode === Mode.Development ? mode : Mode.Production,
-    entry: getEntryPoint({ extendedMode }),
+    entry: getEntryPoint(),
     devtool: "source-map",
     target: getTarget(),
     optimization: getOptimization({ mode }),
     module: {
-      rules: getLoaders({ targetToModern, mode }),
+      rules: getLoaders(),
     },
     node: getNode(),
-    externals: getExternals({ extendedMode }),
+    externals: getExternals(),
     plugins: getPlugins({
       targetToModern,
       mode,
       extendedMode,
     }) as WebpackPluginInstance[],
     resolve: getResolve({ sourceFolder: "source" }),
-    output: getOutput({ targetToModern, extendedMode }),
-    experiments: getExperiments({ targetToModern }),
+    output: getOutput(),
+    experiments: getExperiments(),
   };
 };
 

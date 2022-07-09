@@ -1,7 +1,10 @@
 import { Configuration } from "webpack";
 import getConfig from "~scripts/build/root/getConfig/getConfig";
+
 import ExtendedMode from "~scripts/build/types/extendedMode/extendedMode";
+
 import Mode from "~scripts/build/types/mode/mode";
+
 import { TargetType } from "~shared/constants/TargetType";
 
 export type ConfigsMapper = {
@@ -19,16 +22,17 @@ const getConfings: GetConfings = ({
   targetType,
   mode,
 }: GetConfingsArguments): Configuration[] => {
+  console.log(targetType);
   const configs: ConfigsMapper = {
     [TargetType.Server]: [
       getConfig({
         mode,
         targetToModern: true,
-        extendedMode: ExtendedMode.Web,
+        extendedMode: ExtendedMode.Server,
       }),
     ],
   };
-  return configs[targetType];
+  return configs[TargetType.Server];
 };
 
 export default getConfings;

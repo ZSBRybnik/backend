@@ -2,22 +2,13 @@ import CopyWebpackPlugin, { Pattern } from "copy-webpack-plugin";
 import { join } from "path";
 import destination from "~scripts/build/constants/destination/destination";
 import source from "~scripts/build/constants/source/source";
-import ExtendedMode from "~scripts/build/types/extendedMode/extendedMode";
 
-type GetCopyWebpackPluginArguments = {
-  extendedMode: ExtendedMode;
-};
+type GetCopyWebpackPlugin = () => CopyWebpackPlugin;
 
-type GetCopyWebpackPlugin = (
-  argument: GetCopyWebpackPluginArguments,
-) => CopyWebpackPlugin;
-
-const getCopyWebpackPlugin: GetCopyWebpackPlugin = ({
-  extendedMode,
-}: GetCopyWebpackPluginArguments): CopyWebpackPlugin => {
+const getCopyWebpackPlugin: GetCopyWebpackPlugin = (): CopyWebpackPlugin => {
   return new CopyWebpackPlugin({
     patterns: [
-      extendedMode === ExtendedMode.Main && {
+      {
         from: join(process.cwd(), source, "native-addon-go", destination),
         to: join(process.cwd(), destination, source, "main"),
         noErrorOnMissing: true,
