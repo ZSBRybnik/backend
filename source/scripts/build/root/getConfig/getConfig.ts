@@ -1,9 +1,8 @@
-import Configuration from "~scripts/build/types/configuration/configuration";
+import { Configuration } from "webpack";
 import ExtendedMode from "~scripts/build/types/extendedMode/extendedMode";
 import Mode from "~scripts/build/types/mode/mode";
 import getEntryPoint from "~scripts/build/utils/getEntryPoint/getEntryPoint";
 import getTarget from "~scripts/build/utils/getTarget/getTarget";
-import getDevelopmentServer from "~scripts/build/wrappers/getDevelopmentServer/getDevelopmentServer";
 import getExperiments from "~scripts/build/wrappers/getExperiments/getExperiments";
 import getExternals from "~scripts/build/wrappers/getExternals/getExternals";
 import getLoaders from "~scripts/build/wrappers/getLoaders/getLoaders";
@@ -30,7 +29,7 @@ const getConfig: GetConfig = ({
     mode: mode === Mode.Development ? mode : Mode.Production,
     entry: getEntryPoint({ extendedMode }),
     devtool: "source-map",
-    target: getTarget({ extendedMode }),
+    target: getTarget(),
     optimization: getOptimization({ mode }),
     module: {
       rules: getLoaders({ targetToModern, mode }),
@@ -45,7 +44,6 @@ const getConfig: GetConfig = ({
     resolve: getResolve({ sourceFolder: "source" }),
     output: getOutput({ targetToModern, extendedMode }),
     experiments: getExperiments({ targetToModern }),
-    devServer: getDevelopmentServer({ targetToModern, extendedMode }),
   };
 };
 

@@ -19,18 +19,7 @@ const getEntryPoint = ({ extendedMode }: GetEntryPointArguments): string => {
   const ex = upperFirst(extendedMode);
   const additionalPath =
     AdditionalPath[ex as keyof typeof AdditionalPath] || "";
-  return path.join(
-    process.cwd(),
-    source,
-    additionalPath,
-    `index.ts${
-      extendedMode === ExtendedMode.Mobile ||
-      extendedMode === ExtendedMode.Web ||
-      extendedMode === ExtendedMode.Renderer
-        ? "x"
-        : ""
-    }`,
-  );
+  return path.join(process.cwd(), source, additionalPath, "index.ts");
 };
 
 export default getEntryPoint;

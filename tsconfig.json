@@ -42,6 +42,7 @@
       "~root/*": ["*"],
       "~server/*": ["source/server/*"],
       "~scripts/*": ["source/scripts/*"],
+      "~shared/*": ["source/shared/*"],
     },
     "plugins": [{
       "transform": "typescript-transform-paths"
