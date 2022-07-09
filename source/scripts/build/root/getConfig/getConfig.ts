@@ -1,4 +1,4 @@
-import { Configuration } from "webpack";
+import { Configuration, WebpackPluginInstance } from "webpack";
 import ExtendedMode from "~scripts/build/types/extendedMode/extendedMode";
 import Mode from "~scripts/build/types/mode/mode";
 import getEntryPoint from "~scripts/build/utils/getEntryPoint/getEntryPoint";
@@ -40,7 +40,7 @@ const getConfig: GetConfig = ({
       targetToModern,
       mode,
       extendedMode,
-    }),
+    }) as WebpackPluginInstance[],
     resolve: getResolve({ sourceFolder: "source" }),
     output: getOutput({ targetToModern, extendedMode }),
     experiments: getExperiments({ targetToModern }),
