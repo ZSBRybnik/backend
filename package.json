@@ -5,6 +5,32 @@
   "repository": "https://github.com/ZSBRybnik/backend",
   "author": "KrzysztofZawisla <zawislakrzysztof.zk@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "build-docs": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/buildDocumentation/buildDocumentation.ts",
+    "setup-husky": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/setupHusky/setupHusky.ts",
+    "update-dependencies": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/updateDependencies/updateDependencies.ts",
+    "check-dependencies": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/checkDependencies/checkDependencies.ts",
+    "depcheck": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/depcheck/depcheck.ts",
+    "licence-checker": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/licenceChecker/licenceChecker.ts",
+    "audit-dependencies": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/auditDependencies/auditDependencies.ts",
+    "lint": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/lint/lint.ts",
+    "test": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/runTests/runTests.ts",
+    "build-web": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/build/build.ts --target web",
+    "build-mobile": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/build/build.ts --target mobile",
+    "build-desktop": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/build/build.ts --target desktop",
+    "build-osFree": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/build/build.ts --target osFree",
+    "dev-web": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/development/development.ts --target web",
+    "dev-android": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/development/development.ts --target mobile --device android",
+    "dev-ios": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/development/development.ts --target mobile --device ios",
+    "dev-desktop": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/development/development.ts --target desktop",
+    "postinstall": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/postInstall/postInstall.ts",
+    "remove-build": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/removeBuild/removeBuild.ts",
+    "run-desktop": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/run/run.ts --target desktop",
+    "run-android": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/run/run.ts --target mobile --device android",
+    "run-ios": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/run/run.ts --target mobile --device ios",
+    "run-web": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/run/run.ts --target web",
+    "build-web-docker": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/build/build.ts --target web --docker"
+  },
   "dependencies": {
     "@prisma/client": "^4.0.0",
     "bcrypt": "^5.0.1",
@@ -112,6 +138,6 @@
     "webpack-node-externals": "^3.0.0",
     "yarn": "^1.22.19",
     "zlib": "^1.0.5",
-    "zx": "^7.0.7"
+    "zx": "4.2.0"
   }
 }
