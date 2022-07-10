@@ -1,12 +1,28 @@
-import { Response } from "express";
-import Request from "~server/rest/types/request/request";
+import createHandler from "~server/rest/utils/createHandler/createHandler";
+import type {
+  CreateHandlerOutput,
+  RawHandlerArguments,
+} from "~server/rest/utils/createHandler/createHandler.types";
 
-const addPostHandler = async (request: Request, response: Response) => {
-  const { title, author, content } = request.body;
-  await request.postgreSQLClient.post.create({
-    data: { title, author, content },
-  });
-  response.sendStatus(200);
+type AddPostHandler = {
+  title: string;
+  author: string;
+  content: string;
 };
+
+const { handler: addPostHandler }: CreateHandlerOutput = createHandler({
+  rawHandler: async ({
+    request,
+    response,
+  }: RawHandlerArguments<{
+    body: AddPostHandler;
+  }>): Promise<void> => {
+    const { title, author, content }: AddPostHandler = request.body;
+    await request.postgreSQLClient.post.create({
+      data: { title, author, content },
+    });
+    response.sendStatus(200);
+  },
+});
 
 export default addPostHandler;

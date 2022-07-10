@@ -6,7 +6,8 @@ import type {
   CreateHandlerOutput,
   RawHandlerArguments,
 } from "~server/rest/utils/createHandler/createHandler.types";
-type LoginBody = {
+
+type LoginHandlerBody = {
   login: string;
   password: string;
 };
@@ -16,9 +17,9 @@ const { handler: loginHandler }: CreateHandlerOutput = createHandler({
     request,
     response,
   }: RawHandlerArguments<{
-    body: LoginBody;
+    body: LoginHandlerBody;
   }>): Promise<void> => {
-    const { login, password }: LoginBody = request.body;
+    const { login, password }: LoginHandlerBody = request.body;
     const user: Pick<User, "password"> | null =
       await request.postgreSQLClient.user.findUnique({
         where: { login },
