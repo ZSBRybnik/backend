@@ -1,11 +1,9 @@
-import { PrismaClient } from "@prisma/client";
-import { Request, Response } from "express";
-
-const databaseClient = new PrismaClient();
+import { Response } from "express";
+import Request from "~server/rest/types/request/request";
 
 const addPostHandler = async (request: Request, response: Response) => {
   const { title, author, content } = request.body;
-  await databaseClient.post.create({
+  await request.postgreSQLClient.post.create({
     data: { title, author, content },
   });
   response.sendStatus(200);
