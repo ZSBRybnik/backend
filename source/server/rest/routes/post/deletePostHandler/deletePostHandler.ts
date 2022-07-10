@@ -1,24 +1,39 @@
-import { PrismaClient } from "@prisma/client";
-import { Request, Response } from "express";
+import { Post, Prisma } from "@prisma/client";
+
 import Redis from "ioredis";
+
 import JSONCache from "redis-json";
 
-const databaseClient = new PrismaClient();
+import Request from "~server/rest/types/request/request";
+
+import createHandler from "~server/rest/utils/createHandler/createHandler";
+
+import {
+  CreateHandlerOutput,
+  RawHandlerArguments,
+} from "~server/rest/utils/createHandler/createHandler.types";
+
 const redis = new Redis();
 const jsonRedis = new JSONCache(redis);
 
-const deletePostHandler = async (request: Request, response: Response) => {
-  try {
-    const { id } = request.params;
-    const redisDelete = jsonRedis.del(`post-${id}`);
-    const databaseDelete = databaseClient.post.delete({
-      where: { id: parseInt(id) },
-    });
-    await Promise.all([redisDelete, databaseDelete]);
-    response.sendStatus(200);
-  } catch {
-    response.sendStatus(404);
-  }
-};
+const { handler: deletePostHandler }: CreateHandlerOutput = createHandler({
+  rawHandler: async ({
+    request,
+    response,
+  }: RawHandlerArguments): Promise<void> => {
+    try {
+      const { id }: Request["params"] = request.params;
+      const redisDelete: Promise<Post> = jsonRedis.del(`post-${id}`);
+      const databaseDelete: Prisma.Prisma__PostClient<Post> =
+        request.postgreSQLClient.post.delete({
+          where: { id: parseInt(id) },
+        });
+      await Promise.all([redisDelete, databaseDelete]);
+      response.sendStatus(200);
+    } catch {
+      response.sendStatus(404);
+    }
+  },
+});
 
 export default deletePostHandler;
