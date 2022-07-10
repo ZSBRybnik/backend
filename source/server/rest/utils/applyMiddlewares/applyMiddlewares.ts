@@ -1,7 +1,7 @@
 import getCorsMiddleware from "../../middlewares/getCorsMiddleware/getCorsMiddleware";
-import getDatabaseClientMiddleware from "../../middlewares/getDatabaseClientMiddleware/getDatabaseClientMiddleware";
 import getGraphQLMiddleware from "../../middlewares/getGraphQLMiddleware/getGraphQLMiddleware";
 import getJsonBodyParserMiddleware from "../../middlewares/getJsonBodyParserMiddleware/getJsonBodyParserMiddleware";
+import getDatabaseClientMiddleware from "../../middlewares/getPostgreSQLClientMiddleware/getPostgreSQLClientMiddleware";
 import type {
   ApplyMiddlewares,
   ApplyMiddlewaresArguments,
