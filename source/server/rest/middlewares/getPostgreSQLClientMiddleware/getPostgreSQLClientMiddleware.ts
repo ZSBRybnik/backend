@@ -7,7 +7,7 @@ import Request from "~server/rest/types/request/request";
 const getPostgreSQLClientMiddleware = () => {
   return (
     request: RequestBase,
-    response: Response,
+    _response: Response,
     next: NextFunction,
     // eslint-disable-next-line max-params
   ): void => {
