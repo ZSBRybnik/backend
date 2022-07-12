@@ -1,13 +1,9 @@
 import { Post, Prisma } from "@prisma/client";
 
 import Redis from "ioredis";
-
 import JSONCache from "redis-json";
-
 import Request from "~server/rest/types/request/request";
-
 import createHandler from "~server/rest/utils/createHandler/createHandler";
-
 import {
   CreateHandlerOutput,
   RawHandlerArguments,
@@ -21,11 +17,14 @@ const { handler: deletePostHandler }: CreateHandlerOutput = createHandler({
     request,
     response,
   }: RawHandlerArguments): Promise<void> => {
+    const {
+      params: { id },
+      postgreSQLClient,
+    }: Request = request;
     try {
-      const { id }: Request["params"] = request.params;
       const redisDelete: Promise<Post> = jsonRedis.del(`post-${id}`);
       const databaseDelete: Prisma.Prisma__PostClient<Post> =
-        request.postgreSQLClient.post.delete({
+        postgreSQLClient.post.delete({
           where: { id: parseInt(id) },
         });
       await Promise.all([redisDelete, databaseDelete]);

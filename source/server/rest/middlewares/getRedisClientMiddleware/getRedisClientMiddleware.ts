@@ -1,22 +1,21 @@
-import postgreSQLClient from "~server/clients/postgreSQLClient/postgreSQLClient";
+import redisClient from "~root/source/server/clients/redisClient/redisClient";
 import createMiddleware from "../../utils/createMiddleware/createMiddleware";
-
 import {
   CreateMiddlewareOutput,
   RawMiddlewareArguments,
 } from "../../utils/createMiddleware/createMiddleware.types";
 
-const getPostgreSQLClientMiddleware = () => {
-  const { middleware: postgreSQLClientMiddleware }: CreateMiddlewareOutput =
+const getRedisClientMiddleware = () => {
+  const { middleware: redisClientMiddleware }: CreateMiddlewareOutput =
     createMiddleware({
       rawMiddleware: async ({
         request,
         next,
       }: RawMiddlewareArguments): Promise<void> => {
-        request.postgreSQLClient = postgreSQLClient;
+        request.redisClient = redisClient;
         next();
       },
     });
-  return postgreSQLClientMiddleware;
+  return redisClientMiddleware;
 };
-export default getPostgreSQLClientMiddleware;
+export default getRedisClientMiddleware;
