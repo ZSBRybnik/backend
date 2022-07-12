@@ -1,27 +1,48 @@
-import { PrismaClient } from "@prisma/client";
 import { hash } from "bcrypt";
-import { Request, Response } from "express";
-import { verify } from "jsonwebtoken";
 import { random, times } from "lodash";
 import { authenticator } from "otplib";
+import Roles from "~server/constants/roles/Roles";
+import createHandler from "~server/rest/utils/createHandler/createHandler";
+import {
+  CreateHandlerOutput,
+  RawHandlerArguments,
+} from "~server/rest/utils/createHandler/createHandler.types";
+import verifyToken from "~server/rest/utils/verifyToken/verifyToken";
+import Request from "../../../types/request/request";
 
-const databaseClient = new PrismaClient();
+type AddUserHandlerBody = {
+  login: string;
+  email: string;
+  role: Roles;
+};
 
-const addUserHandler = async (request: Request, response: Response) => {
-  try {
-    const authorization = request.headers["authorization"];
-    verify(
-      (Array.isArray(authorization) ? authorization[0] : authorization) || "",
-      "zsbrybnik",
-    );
-    const { login, email, role } = request.body;
-    const randomPassword: string = times(10, () =>
+const { handler: addUserHandler }: CreateHandlerOutput = createHandler({
+  rawHandler: async ({
+    request,
+    response,
+    next,
+  }: RawHandlerArguments<{
+    body: AddUserHandlerBody;
+  }>): Promise<void> => {
+    const {
+      body: { login, email, role },
+      headers: { authorization },
+      postgreSQLClient,
+    }: Request<{
+      body: AddUserHandlerBody;
+    }> = request;
+    verifyToken({
+      token: authorization || "",
+      response,
+      next,
+    });
+    const randomPassword: string = times(10, (): string =>
       random(35).toString(36),
     ).join("");
     const hashedPassword: string = await hash(randomPassword, 11);
     console.log(randomPassword);
     const googleAuthCode: string = authenticator.generateSecret();
-    await databaseClient.user.create({
+    await postgreSQLClient.user.create({
       data: {
         login,
         email,
@@ -31,9 +52,7 @@ const addUserHandler = async (request: Request, response: Response) => {
       },
     });
     response.sendStatus(200);
-  } catch {
-    response.sendStatus(401);
-  }
-};
+  },
+});
 
 export default addUserHandler;
