@@ -15,7 +15,7 @@ const getBundleAnalyzerPlugin: GetBundleAnalyzerPlugin = ({
   return new BundleAnalyzerPlugin({
     openAnalyzer: false,
     analyzerMode: "static",
-    reportFilename: `../../../bundle-analyzes/${extendedMode}-analyzer-report.html`,
+    reportFilename: `../../bundle-analyzes/${extendedMode}-analyzer-report.html`,
   });
 };
 
