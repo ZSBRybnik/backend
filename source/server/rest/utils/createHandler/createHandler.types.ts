@@ -19,14 +19,14 @@ export type Handler = (
   request: Request,
   response: Response,
   next: NextFunction,
-) => () => Promise<void>;
+) => Promise<void>;
 
 export type CreateHandlerArguments = {
   rawHandler: RawHandler;
 };
 
 export type CreateHandlerOutput = {
-  handler: any;
+  handler: Handler;
 };
 
 export type CreateHandler = (
