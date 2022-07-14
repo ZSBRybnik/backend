@@ -15,6 +15,7 @@ type ApplyRoutesArguments = {
 type ApplyRoutes = (argument: ApplyRoutesArguments) => void;
 
 const applyRoutes: ApplyRoutes = ({ instance }: ApplyRoutesArguments): void => {
+  console.log(addUserHandler)
   instance.post(Routes.User, addUserHandler);
   instance.post(Routes.Login, loginHandler);
   instance.get(Routes.Post, getPostHandler);
