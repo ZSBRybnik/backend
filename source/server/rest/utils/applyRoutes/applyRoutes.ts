@@ -16,14 +16,13 @@ type ApplyRoutesArguments = {
 type ApplyRoutes = (argument: ApplyRoutesArguments) => void;
 
 const applyRoutes: ApplyRoutes = ({ instance }: ApplyRoutesArguments): void => {
-  console.log(addUserHandler)
   instance.post(Routes.User, addUserHandler);
   instance.post(Routes.Login, loginHandler);
   instance.get(Routes.Post, getPostHandler);
   instance.delete(Routes.Post, deletePostHandler);
   instance.post(Routes.Post, addPostHandler);
   instance.put(Routes.Post, updatePostHandler);
-  instance.put(Routes.UserWithId, deleteUserHandler);
+  instance.delete(Routes.UserWithId, deleteUserHandler);
   instance.put(Routes.UserWithId, updateUserHandler);
 };
 

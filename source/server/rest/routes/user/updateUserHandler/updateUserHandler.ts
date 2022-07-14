@@ -1,7 +1,8 @@
 import createHandler from "~server/rest/utils/createHandler/createHandler";
 import Request from "../../../types/request/request";
+import { CreateHandlerOutput } from "../../../utils/createHandler/createHandler.types";
 
-const { handler: updateUserHandler } = createHandler({
+const { handler: updateUserHandler }: CreateHandlerOutput = createHandler({
   rawHandler: async ({ request, response }): Promise<void> => {
     try {
       const {
