@@ -1,7 +1,8 @@
 import Request from "../../../types/request/request";
 import createHandler from "../../../utils/createHandler/createHandler";
+import { CreateHandlerOutput } from "../../../utils/createHandler/createHandler.types";
 
-const { handler: deleteUserHandler } = createHandler({
+const { handler: deleteUserHandler }: CreateHandlerOutput = createHandler({
   rawHandler: async ({ request, response }): Promise<void> => {
     try {
       const {

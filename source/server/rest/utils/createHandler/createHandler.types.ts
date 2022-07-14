@@ -1,4 +1,4 @@
-import { Application, NextFunction, Response } from "express";
+import { NextFunction, Response } from "express";
 import Request from "~server/rest/types/request/request";
 
 export type JSONTypes = string | number | boolean | null;
@@ -26,7 +26,7 @@ export type CreateHandlerArguments = {
 };
 
 export type CreateHandlerOutput = {
-  handler: Application;
+  handler: any;
 };
 
 export type CreateHandler = (
