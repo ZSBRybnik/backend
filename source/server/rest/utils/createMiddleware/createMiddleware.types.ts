@@ -1,4 +1,4 @@
-import { NextFunction, Response } from "express";
+import { Application, NextFunction, Response } from "express";
 import Request from "~server/rest/types/request/request";
 
 export type JSONTypes = string | number | boolean | null;
@@ -26,7 +26,7 @@ export type CreateMiddlewareArguments = {
 };
 
 export type CreateMiddlewareOutput = {
-  middleware: Middleware;
+  middleware: Application;
 };
 
 export type CreateMiddleware = (
