@@ -1,32 +1,18 @@
-import {
-  Application,
-  NextFunction,
-  Request as RequestBase,
-  Response,
-} from "express";
+import { NextFunction, Response } from "express";
 
 import Request from "~server/rest/types/request/request";
 
-import {
-  CreateHandler,
-  CreateHandlerArguments,
-  CreateHandlerOutput,
-} from "./createHandler.types";
+import { CreateHandlerArguments } from "./createHandler.types";
 
-const createHandler: CreateHandler = ({
-  rawHandler,
-}: CreateHandlerArguments): CreateHandlerOutput => {
-  const handler: Application = ((
-    request: RequestBase,
+const createHandler = ({ rawHandler }: CreateHandlerArguments) => {
+  const handler = async (
+    request: Request,
     response: Response,
     next: NextFunction,
     // eslint-disable-next-line max-params
-  ): (() => Promise<void>) => {
-    return async (): Promise<void> => {
-      const fixedRequest: Request = request as Request;
-      await rawHandler({ response, request: fixedRequest, next });
-    };
-  }) as Application;
+  ) => {
+    await rawHandler({ response, request, next });
+  };
   return {
     handler,
   };
