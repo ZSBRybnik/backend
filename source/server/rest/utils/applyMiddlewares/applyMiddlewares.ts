@@ -1,4 +1,5 @@
 import getCorsMiddleware from "../../middlewares/getCorsMiddleware/getCorsMiddleware";
+import getEmailSenderMiddleware from "../../middlewares/getEmailSenderMiddleware/getEmailSenderMiddleware";
 import getGraphQLMiddleware from "../../middlewares/getGraphQLMiddleware/getGraphQLMiddleware";
 import getJsonBodyParserMiddleware from "../../middlewares/getJsonBodyParserMiddleware/getJsonBodyParserMiddleware";
 import getDatabaseClientMiddleware from "../../middlewares/getPostgreSQLClientMiddleware/getPostgreSQLClientMiddleware";
@@ -14,6 +15,7 @@ const applyMiddlewares: ApplyMiddlewares = ({
   instance.use(getCorsMiddleware());
   instance.use(getJsonBodyParserMiddleware());
   instance.use(getDatabaseClientMiddleware());
+  instance.use(getEmailSenderMiddleware());
 };
 
 export default applyMiddlewares;

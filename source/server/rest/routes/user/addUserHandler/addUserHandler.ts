@@ -1,6 +1,8 @@
 import { hash } from "bcrypt";
+import { writeFileSync } from "fs";
 import { random, times } from "lodash";
 import { authenticator } from "otplib";
+import { toDataURL, toString } from "qrcode";
 import Roles from "~server/constants/roles/Roles";
 import createHandler from "~server/rest/utils/createHandler/createHandler";
 import {
@@ -28,7 +30,7 @@ const { handler: addUserHandler }: CreateHandlerOutput = createHandler({
     const {
       body: { login, email, role },
       headers: { authorization },
-      postgreSQLClient,
+      postgreSQLClient, //emailSenderClient,
     }: Request<{
       body: AddUserHandlerBody;
     }> = request;
@@ -62,6 +64,17 @@ const { handler: addUserHandler }: CreateHandlerOutput = createHandler({
         authenticator_code: googleAuthCode,
       },
     });
+    const qrCodeString: string = `otpauth://totp/zsbrybnik?secret=${googleAuthCode}`;
+    const base64QrCode: string = await toDataURL(qrCodeString);
+    const qrCode = await toString(qrCodeString, { type: "terminal" });
+    console.log(qrCode);
+    writeFileSync("out.png", base64QrCode);
+    /*await emailSenderClient.sendMail({
+      from: "zsbtestzsb@gmail.com",
+      to: email,
+      subject: "rejestracjaZSS",
+      text: randomPassword,
+    });*/
     response.sendStatus(200);
   },
 });
