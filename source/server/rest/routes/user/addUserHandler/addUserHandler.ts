@@ -9,6 +9,7 @@ import {
 } from "~server/rest/utils/createHandler/createHandler.types";
 import verifyToken from "~server/rest/utils/verifyToken/verifyToken";
 import Request from "../../../types/request/request";
+import addUserHandlerValidator from "../../../validators/addUserHandlerValidator/addUserHandlerValidator";
 
 type AddUserHandlerBody = {
   login: string;
@@ -31,6 +32,16 @@ const { handler: addUserHandler }: CreateHandlerOutput = createHandler({
     }: Request<{
       body: AddUserHandlerBody;
     }> = request;
+    const validator = addUserHandlerValidator();
+    try {
+      await validator.validate(
+        { login, role, email },
+        { strict: true, abortEarly: true },
+      );
+    } catch {
+      response.sendStatus(400);
+      return next();
+    }
     verifyToken({
       token: authorization || "",
       response,

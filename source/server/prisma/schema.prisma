@@ -10,7 +10,7 @@ generator client {
 model User {
   id                 Int     @id @default(autoincrement())
   login              String  @unique @db.VarChar(255)
-  role               String  @db.VarChar(10)
+  role               String  @db.VarChar(25)
   password           String  @db.VarChar(255)
   email              String  @unique @db.VarChar(255)
   authenticator_code String? @db.VarChar(16)
