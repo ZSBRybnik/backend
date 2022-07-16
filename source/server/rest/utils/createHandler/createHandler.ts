@@ -1,7 +1,5 @@
 import { Application, NextFunction, Response } from "express";
-
 import Request from "~server/rest/types/request/request";
-
 import {
   CreateHandler,
   CreateHandlerArguments,
