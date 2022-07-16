@@ -1,29 +1,35 @@
-import { Post, PrismaClient } from "@prisma/client";
-import { Request, Response } from "express";
-import Redis from "ioredis";
-import JSONCache from "redis-json";
+import { Post } from "@prisma/client";
 
-const databaseClient = new PrismaClient();
-const redis = new Redis();
-const jsonRedis = new JSONCache(redis);
+import createHandler from "../../../utils/createHandler/createHandler";
 
-const getPostHandler = async (request: Request, response: Response) => {
-  const { id } = request.params;
-  const post: Omit<Post, "id"> = await jsonRedis.get(`post-${id}`);
-  if (post) {
-    response.json(post);
-  } else {
-    const databasePost = await databaseClient.post.findUnique({
-      where: { id: parseInt(id) },
-      select: { title: true, author: true, content: true },
-    });
-    if (databasePost) {
-      response.json(databasePost);
-      jsonRedis.set(`post-${id}`, databasePost);
+import { RawHandlerArguments } from "../../../utils/createHandler/createHandler.types";
+
+const getPostHandler = createHandler({
+  rawHandler: async ({
+    request: {
+      params: { id },
+      postgreSQLClient,
+      jsonRedisClient,
+    },
+    response,
+  }: RawHandlerArguments): Promise<void> => {
+    const post: Omit<Post, "id"> = await jsonRedisClient.get(`post-${id}`);
+    if (post) {
+      response.json(post);
     } else {
-      response.sendStatus(404);
+      const databasePost: Omit<Post, "id"> | null =
+        await postgreSQLClient.post.findUnique({
+          where: { id: parseInt(id) },
+          select: { title: true, author: true, content: true },
+        });
+      if (databasePost) {
+        response.json(databasePost);
+        jsonRedisClient.set(`post-${id}`, databasePost);
+      } else {
+        response.sendStatus(404);
+      }
     }
-  }
-};
+  },
+});
 
 export default getPostHandler;

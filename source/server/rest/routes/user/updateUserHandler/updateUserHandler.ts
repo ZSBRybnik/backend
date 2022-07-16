@@ -42,8 +42,7 @@ const { handler: updateUserHandler }: CreateHandlerOutput = createHandler({
         data: { login, role, email },
       });
       response.sendStatus(200);
-    } catch (error) {
-      console.error(error);
+    } catch {
       response.sendStatus(404);
     }
   },

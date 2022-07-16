@@ -1,5 +1,5 @@
 import type { Server } from "http";
-import type { ListenOnPortArguments, ListenOnPort } from "./listenOnPort.types";
+import type { ListenOnPort, ListenOnPortArguments } from "./listenOnPort.types";
 
 const listenOnPort: ListenOnPort = ({
   instance,

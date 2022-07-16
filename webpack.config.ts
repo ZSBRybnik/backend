@@ -22,7 +22,6 @@ const setupConfig: SetupConfig = (
   { mode }: WebpackArguments,
 ): // eslint-disable-next-line max-params
 Configuration[] => {
-  console.log(getConfigs({ targetType: target, mode }));
   return getConfigs({ targetType: target, mode });
 };
 

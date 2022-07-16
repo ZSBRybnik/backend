@@ -19,10 +19,8 @@ type GetConfingsArguments = {
 type GetConfings = (argument: GetConfingsArguments) => Configuration[];
 
 const getConfings: GetConfings = ({
-  targetType,
   mode,
 }: GetConfingsArguments): Configuration[] => {
-  console.log(targetType);
   const configs: ConfigsMapper = {
     [TargetType.Server]: [
       getConfig({

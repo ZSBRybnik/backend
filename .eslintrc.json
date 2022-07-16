@@ -42,10 +42,12 @@
     "no-console": "warn",
     "no-nested-ternary": "off"
   },
-  "overrides": [{
-    "files": ["*.js"],
-    "rules": {
-      "@typescript-eslint/no-var-requires": "off"
+  "overrides": [
+    {
+      "files": ["*.js"],
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off"
+      }
     }
-  }]
+  ]
 }

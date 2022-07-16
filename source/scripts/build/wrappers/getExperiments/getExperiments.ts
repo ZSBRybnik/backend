@@ -13,8 +13,6 @@ type GetExperiments = () => Configuration["experiments"];
  * }
  * ```
  * @type {GetExperiments}
- * @param {GetExperimentsArguments} argument Arguments wrapper.
- * @param {boolean} argument.targetToModern Determines if `experiments` should be adjusted to modern browsers.
  * @returns {Configuration["experiments"]} Webpack experiments property.
  */
 const getExperiments: GetExperiments = (): Configuration["experiments"] => {

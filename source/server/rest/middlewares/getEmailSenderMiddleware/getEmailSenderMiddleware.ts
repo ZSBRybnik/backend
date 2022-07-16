@@ -6,10 +6,11 @@ const getEmailSenderMiddleware = () => {
   const { middleware: emailSenderMiddleware }: CreateMiddlewareOutput =
     createMiddleware({
       rawMiddleware: async ({ request, next }) => {
-        request.emailSenderClient = createEmailSender({
+        request.emailSenderClient =
+          createEmailSender(/*{
           username: "zsbtestzsb@gmail.com",
           password: "zsbtest123",
-        });
+        }*/);
         next();
       },
     });
