@@ -10,7 +10,7 @@ const getCopyWebpackPlugin: GetCopyWebpackPlugin = (): CopyWebpackPlugin => {
     patterns: [
       {
         from: join(process.cwd(), source, "native-addon-go", destination),
-        to: join(process.cwd(), destination, source, "main"),
+        to: join(process.cwd(), destination, source),
         noErrorOnMissing: true,
       },
       {
