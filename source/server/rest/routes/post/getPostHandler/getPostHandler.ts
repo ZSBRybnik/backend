@@ -1,10 +1,11 @@
 import { Post } from "@prisma/client";
-
 import createHandler from "../../../utils/createHandler/createHandler";
+import {
+  CreateHandlerOutput,
+  RawHandlerArguments,
+} from "../../../utils/createHandler/createHandler.types";
 
-import { RawHandlerArguments } from "../../../utils/createHandler/createHandler.types";
-
-const getPostHandler = createHandler({
+const { handler: getPostHandler }: CreateHandlerOutput = createHandler({
   rawHandler: async ({
     request: {
       params: { id },

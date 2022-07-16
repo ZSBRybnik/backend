@@ -2,7 +2,9 @@ import getCorsMiddleware from "../../middlewares/getCorsMiddleware/getCorsMiddle
 import getEmailSenderMiddleware from "../../middlewares/getEmailSenderMiddleware/getEmailSenderMiddleware";
 import getGraphQLMiddleware from "../../middlewares/getGraphQLMiddleware/getGraphQLMiddleware";
 import getJsonBodyParserMiddleware from "../../middlewares/getJsonBodyParserMiddleware/getJsonBodyParserMiddleware";
+import getJsonRedisClientMiddleware from "../../middlewares/getJsonRedisClientMiddleware/getJsonRedisClientMiddleware";
 import getDatabaseClientMiddleware from "../../middlewares/getPostgreSQLClientMiddleware/getPostgreSQLClientMiddleware";
+import getRedisClientMiddleware from "../../middlewares/getRedisClientMiddleware/getRedisClientMiddleware";
 import type {
   ApplyMiddlewares,
   ApplyMiddlewaresArguments,
@@ -16,6 +18,8 @@ const applyMiddlewares: ApplyMiddlewares = ({
   instance.use(getJsonBodyParserMiddleware());
   instance.use(getDatabaseClientMiddleware());
   instance.use(getEmailSenderMiddleware());
+  instance.use(getRedisClientMiddleware());
+  instance.use(getJsonRedisClientMiddleware());
 };
 
 export default applyMiddlewares;

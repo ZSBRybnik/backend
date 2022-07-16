@@ -1,24 +1,33 @@
-import { Post, PrismaClient } from "@prisma/client";
-import { Request, Response } from "express";
-import Redis from "ioredis";
-import JSONCache from "redis-json";
+import { Post } from "@prisma/client";
+import createHandler from "../../../utils/createHandler/createHandler";
 
-const databaseClient = new PrismaClient();
-const redis = new Redis();
-const jsonRedis = new JSONCache(redis);
+import {
+  CreateHandlerOutput,
+  RawHandlerArguments,
+} from "../../../utils/createHandler/createHandler.types";
 
-const updatePostHandler = async (request: Request, response: Response) => {
-  const { title, author, content }: Omit<Post, "id"> = request.body;
-  const { id } = request.params;
-  await databaseClient.post.update({
-    where: { id: parseInt(id) },
-    data: { title, author, content },
-  });
-  const redisPost = await jsonRedis.get(`post-${id}`);
-  if (redisPost) {
-    await jsonRedis.set(`post-${id}`, { title, author, content });
-  }
-  response.sendStatus(200);
-};
+const { handler: updatePostHandler }: CreateHandlerOutput = createHandler({
+  rawHandler: async ({
+    request: {
+      body: { title, author, content },
+      params: { id },
+      postgreSQLClient,
+      jsonRedisClient,
+    },
+    response,
+  }: RawHandlerArguments<{
+    body: Omit<Post, "id">;
+  }>): Promise<void> => {
+    await postgreSQLClient.post.update({
+      where: { id: parseInt(id) },
+      data: { title, author, content },
+    });
+    const redisPost: Omit<Post, "id"> = await jsonRedisClient.get(`post-${id}`);
+    if (redisPost) {
+      await jsonRedisClient.set(`post-${id}`, { title, author, content });
+    }
+    response.sendStatus(200);
+  },
+});
 
 export default updatePostHandler;
