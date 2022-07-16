@@ -18,4 +18,5 @@ const getRedisClientMiddleware = () => {
     });
   return redisClientMiddleware;
 };
+
 export default getRedisClientMiddleware;
