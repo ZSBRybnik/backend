@@ -1,4 +1,4 @@
-import redisClient from "~root/source/server/clients/redisClient/redisClient";
+import redisClient from "~server/clients/redisClient/redisClient";
 import createMiddleware from "../../utils/createMiddleware/createMiddleware";
 import {
   CreateMiddlewareOutput,
