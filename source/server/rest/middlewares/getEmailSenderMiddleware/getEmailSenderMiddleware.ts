@@ -1,15 +1,12 @@
-import createEmailSender from "../../utils/createEmailSender/createEmailSender";
-import createMiddleware from "../../utils/createMiddleware/createMiddleware";
+import emailSenderClient from "~server/clients/emailSenderClient/emailSenderClient";
+import createMiddleware from "~server/rest/utils/createMiddleware/createMiddleware";
+import { CreateMiddlewareOutput } from "~server/rest/utils/createMiddleware/createMiddleware.types";
 
-import { CreateMiddlewareOutput } from "../../utils/createMiddleware/createMiddleware.types";
 const getEmailSenderMiddleware = () => {
   const { middleware: emailSenderMiddleware }: CreateMiddlewareOutput =
     createMiddleware({
       rawMiddleware: async ({ request, next }) => {
-        request.emailSenderClient = createEmailSender({
-          username: "aracely.davis26@ethereal.email",
-          password: "gaRGE8KbMPTHbdBcXF",
-        });
+        request.emailSenderClient = emailSenderClient;
         next();
       },
     });
