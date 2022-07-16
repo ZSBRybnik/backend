@@ -9,7 +9,6 @@ import {
   RawHandlerArguments,
 } from "~server/rest/utils/createHandler/createHandler.types";
 import verifyToken from "~server/rest/utils/verifyToken/verifyToken";
-import Request from "../../../types/request/request";
 import addUserHandlerValidator from "../../../validators/addUserHandlerValidator/addUserHandlerValidator";
 
 type AddUserHandlerBody = {
@@ -20,20 +19,17 @@ type AddUserHandlerBody = {
 
 const { handler: addUserHandler }: CreateHandlerOutput = createHandler({
   rawHandler: async ({
-    request,
+    request: {
+      body: { login, email, role },
+      headers: { authorization },
+      postgreSQLClient,
+      emailSenderClient,
+    },
     response,
     next,
   }: RawHandlerArguments<{
     body: AddUserHandlerBody;
   }>): Promise<void> => {
-    const {
-      body: { login, email, role },
-      headers: { authorization },
-      postgreSQLClient,
-      emailSenderClient,
-    }: Request<{
-      body: AddUserHandlerBody;
-    }> = request;
     const validator = addUserHandlerValidator();
     try {
       await validator.validate(

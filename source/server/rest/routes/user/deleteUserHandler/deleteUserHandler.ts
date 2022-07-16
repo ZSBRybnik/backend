@@ -1,4 +1,3 @@
-import Request from "../../../types/request/request";
 import createHandler from "../../../utils/createHandler/createHandler";
 import {
   CreateHandlerOutput,
@@ -8,15 +7,14 @@ import deleteUserHandlerValidator from "../../../validators/deleteUserHandlerVal
 
 const { handler: deleteUserHandler }: CreateHandlerOutput = createHandler({
   rawHandler: async ({
-    request,
+    request: {
+      params: { id },
+      postgreSQLClient,
+    },
     response,
     next,
   }: RawHandlerArguments): Promise<void> => {
     try {
-      const {
-        params: { id },
-        postgreSQLClient,
-      }: Request = request;
       const parsedId: number = parseInt(id);
       const validator = deleteUserHandlerValidator();
       try {

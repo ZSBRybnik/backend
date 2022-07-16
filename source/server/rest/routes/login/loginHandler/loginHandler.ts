@@ -1,7 +1,6 @@
 import { User } from "@prisma/client";
 import { compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
-import Request from "~server/rest/types/request/request";
 import createHandler from "~server/rest/utils/createHandler/createHandler";
 import type {
   CreateHandlerOutput,
@@ -15,17 +14,14 @@ type LoginHandlerBody = {
 
 const { handler: loginHandler }: CreateHandlerOutput = createHandler({
   rawHandler: async ({
-    request,
+    request: {
+      body: { login, password },
+      postgreSQLClient,
+    },
     response,
   }: RawHandlerArguments<{
     body: LoginHandlerBody;
   }>): Promise<void> => {
-    const {
-      body: { login, password },
-      postgreSQLClient,
-    }: Request<{
-      body: LoginHandlerBody;
-    }> = request;
     const user: Pick<User, "password"> | null =
       await postgreSQLClient.user.findUnique({
         where: { login },

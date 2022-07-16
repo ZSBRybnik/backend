@@ -1,6 +1,5 @@
 import Roles from "~root/source/server/constants/roles/Roles";
 import createHandler from "~server/rest/utils/createHandler/createHandler";
-import Request from "../../../types/request/request";
 import {
   CreateHandlerOutput,
   RawHandlerArguments,
@@ -15,17 +14,16 @@ type UpdateUserHandlerBody = {
 
 const { handler: updateUserHandler }: CreateHandlerOutput = createHandler({
   rawHandler: async ({
-    request,
+    request: {
+      params: { id },
+      body: { login, role, email },
+      postgreSQLClient,
+    },
     response,
     next,
   }: RawHandlerArguments<{
     body: UpdateUserHandlerBody;
   }>): Promise<void> => {
-    const {
-      params: { id },
-      body: { login, role, email },
-      postgreSQLClient,
-    }: Request<{ body: UpdateUserHandlerBody }> = request;
     const validator = updateUserHandlerValidator();
     try {
       await validator.validate(

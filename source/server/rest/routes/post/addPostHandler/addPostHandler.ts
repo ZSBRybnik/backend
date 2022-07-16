@@ -3,7 +3,6 @@ import type {
   CreateHandlerOutput,
   RawHandlerArguments,
 } from "~server/rest/utils/createHandler/createHandler.types";
-import Request from "../../../types/request/request";
 
 type AddPostHandler = {
   title: string;
@@ -13,17 +12,14 @@ type AddPostHandler = {
 
 const { handler: addPostHandler }: CreateHandlerOutput = createHandler({
   rawHandler: async ({
-    request,
+    request: {
+      body: { title, author, content },
+      postgreSQLClient,
+    },
     response,
   }: RawHandlerArguments<{
     body: AddPostHandler;
   }>): Promise<void> => {
-    const {
-      body: { title, author, content },
-      postgreSQLClient,
-    }: Request<{
-      body: AddPostHandler;
-    }> = request;
     await postgreSQLClient.post.create({
       data: { title, author, content },
     });
