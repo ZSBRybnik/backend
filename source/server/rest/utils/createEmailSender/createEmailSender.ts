@@ -5,15 +5,18 @@ export type CreateEmailSenderArguments = {
   password: string;
 };
 
-const createEmailSender = () => {
+const createEmailSender = ({
+  username,
+  password,
+}: CreateEmailSenderArguments) => {
   return createTransport({
     host: "smtp.ethereal.email",
     port: 587,
     //service: "gmail",
     //auth: { user: username, type: "OAuth2" },
     auth: {
-      user: "aracely.davis26@ethereal.email",
-      pass: "gaRGE8KbMPTHbdBcXF",
+      user: username,
+      pass: password,
     },
     secure: false,
   });
