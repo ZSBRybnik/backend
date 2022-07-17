@@ -5,6 +5,7 @@ import {
   CreateHandlerOutput,
   RawHandlerArguments,
 } from "../../../utils/createHandler/createHandler.types";
+import updatePostHandlerValidator from "../../../validators/updatePostHandlerValidator/updatePostHandlerValidator";
 
 const { handler: updatePostHandler }: CreateHandlerOutput = createHandler({
   rawHandler: async ({
@@ -15,9 +16,20 @@ const { handler: updatePostHandler }: CreateHandlerOutput = createHandler({
       jsonRedisClient,
     },
     response,
+    next,
   }: RawHandlerArguments<{
     body: Omit<Post, "id">;
   }>): Promise<void> => {
+    const validator = updatePostHandlerValidator();
+    try {
+      await validator.validate(
+        { title, author, content },
+        { strict: true, abortEarly: true },
+      );
+    } catch {
+      response.sendStatus(400);
+      return next();
+    }
     await postgreSQLClient.post.update({
       where: { id: parseInt(id) },
       data: { title, author, content },

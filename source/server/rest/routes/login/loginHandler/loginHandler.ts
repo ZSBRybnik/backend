@@ -6,6 +6,7 @@ import type {
   CreateHandlerOutput,
   RawHandlerArguments,
 } from "~server/rest/utils/createHandler/createHandler.types";
+import loginHandlerValidator from "../../../validators/loginHandlerValidator/loginHandlerValidator";
 
 type LoginHandlerBody = {
   login: string;
@@ -19,9 +20,20 @@ const { handler: loginHandler }: CreateHandlerOutput = createHandler({
       postgreSQLClient,
     },
     response,
+    next,
   }: RawHandlerArguments<{
     body: LoginHandlerBody;
   }>): Promise<void> => {
+    const validator = loginHandlerValidator();
+    try {
+      await validator.validate(
+        { login, password },
+        { strict: true, abortEarly: true },
+      );
+    } catch {
+      response.sendStatus(400);
+      return next();
+    }
     const user: Pick<User, "password"> | null =
       await postgreSQLClient.user.findUnique({
         where: { login },

@@ -4,6 +4,7 @@ import {
   CreateHandlerOutput,
   RawHandlerArguments,
 } from "~server/rest/utils/createHandler/createHandler.types";
+import deletePostHandlerValidator from "../../../validators/deletePostHandlerValidator/deletePostHandlerValidator";
 
 const { handler: deletePostHandler }: CreateHandlerOutput = createHandler({
   rawHandler: async ({
@@ -13,7 +14,15 @@ const { handler: deletePostHandler }: CreateHandlerOutput = createHandler({
       jsonRedisClient,
     },
     response,
+    next,
   }: RawHandlerArguments): Promise<void> => {
+    const validator = deletePostHandlerValidator();
+    try {
+      await validator.validate({ id }, { strict: true, abortEarly: true });
+    } catch {
+      response.sendStatus(400);
+      return next();
+    }
     try {
       const redisDelete: Promise<Post> = jsonRedisClient.del(`post-${id}`);
       const databaseDelete: Prisma.Prisma__PostClient<Post> =
