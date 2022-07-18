@@ -5,6 +5,7 @@ import Redis from "ioredis";
 import { Transporter } from "nodemailer";
 import SMTPTransport from "nodemailer/lib/smtp-transport";
 import JSONCache from "redis-json";
+import { Twilio } from "twilio";
 import { RawHandlerGeneric } from "~server/rest/utils/createHandler/createHandler.types";
 
 type Request<T = void> = Omit<RequestBase, "body"> & {
@@ -16,6 +17,7 @@ type Request<T = void> = Omit<RequestBase, "body"> & {
   redisClient: Redis;
   emailSenderClient: Transporter<SMTPTransport.SentMessageInfo>;
   jsonRedisClient: JSONCache;
+  twilioClient: Twilio;
   body: T extends RawHandlerGeneric ? T["body"] : RawHandlerGeneric["body"];
 };
 
