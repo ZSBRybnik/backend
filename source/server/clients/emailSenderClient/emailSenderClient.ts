@@ -4,8 +4,8 @@ import createEmailSender from "../../rest/utils/createEmailSender/createEmailSen
 
 const emailSenderClient: Transporter<SMTPTransport.SentMessageInfo> =
   createEmailSender({
-    username: "aracely.davis26@ethereal.email",
-    password: "gaRGE8KbMPTHbdBcXF",
+    username: process.env.EMAIL || "",
+    password: process.env.EMAIL_PASSWORD || "",
   });
 
 export default emailSenderClient;
