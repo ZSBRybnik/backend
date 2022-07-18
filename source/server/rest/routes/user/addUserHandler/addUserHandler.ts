@@ -2,6 +2,7 @@ import { hash } from "bcrypt";
 import { random, times } from "lodash";
 import { authenticator } from "otplib";
 import { toDataURL } from "qrcode";
+import EnabledTwoFactorAuthentication from "~root/source/server/constants/enabledTwoFactorAuthentication/enabledTwoFactorAuthentication";
 import Roles from "~server/constants/roles/Roles";
 import createHandler from "~server/rest/utils/createHandler/createHandler";
 import {
@@ -15,12 +16,14 @@ type AddUserHandlerBody = {
   login: string;
   email: string;
   role: Roles;
+  phoneNumber: string;
+  enabledTwoFactorAuthentication: EnabledTwoFactorAuthentication;
 };
 
 const { handler: addUserHandler }: CreateHandlerOutput = createHandler({
   rawHandler: async ({
     request: {
-      body: { login, email, role },
+      body: { login, email, role, phoneNumber, enabledTwoFactorAuthentication },
       headers: { authorization },
       postgreSQLClient,
       emailSenderClient,
@@ -33,7 +36,7 @@ const { handler: addUserHandler }: CreateHandlerOutput = createHandler({
     const validator = addUserHandlerValidator();
     try {
       await validator.validate(
-        { login, role, email },
+        { login, role, email, phoneNumber, enabledTwoFactorAuthentication },
         { strict: true, abortEarly: true },
       );
     } catch {
@@ -55,8 +58,10 @@ const { handler: addUserHandler }: CreateHandlerOutput = createHandler({
         login,
         email,
         role,
+        phoneNumber,
+        enabledTwoFactorAuthentication,
         password: hashedPassword,
-        authenticator_code: googleAuthCode,
+        authenticatorCode: googleAuthCode,
       },
     });
     const qrCodeString: string = `otpauth://totp/zsbrybnik?secret=${googleAuthCode}`;

@@ -15,7 +15,7 @@ model User {
   email                          String  @unique @db.VarChar(255)
   authenticatorCode              String? @map("authenticator_code") @db.VarChar(16)
   phoneNumber                    String? @map("phone_number") @db.VarChar(22)
-  enabledTwoFactorAuthentication String? @default("application") @map("enabled_two_factor_authentication")
+  enabledTwoFactorAuthentication String  @default("application") @map("enabled_two_factor_authentication")
 
   @@map("users")
 }
