@@ -22,6 +22,7 @@
     "run": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/run/run.ts --target server"
   },
   "dependencies": {
+    "@aws-sdk/client-braket": "^3.131.0",
     "@prisma/client": "^4.0.0",
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",

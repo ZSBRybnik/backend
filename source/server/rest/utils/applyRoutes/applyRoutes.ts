@@ -8,6 +8,7 @@ import updatePostHandler from "~server/rest/routes/post/updatePostHandler/update
 import addUserHandler from "~server/rest/routes/user/addUserHandler/addUserHandler";
 import deleteUserHandler from "~server/rest/routes/user/deleteUserHandler/deleteUserHandler";
 import updateUserHandler from "~server/rest/routes/user/updateUserHandler/updateUserHandler";
+import verifyTokenHandler from "~server/rest/routes/verifyTokenHandler/verifyTokenHandler";
 
 type ApplyRoutesArguments = {
   instance: Express;
@@ -24,6 +25,7 @@ const applyRoutes: ApplyRoutes = ({ instance }: ApplyRoutesArguments): void => {
   instance.put(Routes.Post, updatePostHandler);
   instance.delete(Routes.UserWithId, deleteUserHandler);
   instance.put(Routes.UserWithId, updateUserHandler);
+  instance.post(Routes.VerifyToken, verifyTokenHandler);
 };
 
 export default applyRoutes;

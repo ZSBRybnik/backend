@@ -21,11 +21,13 @@ const { handler: loginHandler }: CreateHandlerOutput = createHandler({
     request: {
       body: { login, password, authenticatorCode },
       postgreSQLClient,
+      twilioClient,
     },
     response,
     next,
   }: RawHandlerArguments<{
     body: LoginHandlerBody;
+    // eslint-disable-next-line sonarjs/cognitive-complexity
   }>): Promise<void> => {
     const validator = loginHandlerValidator();
     try {
@@ -56,7 +58,7 @@ const { handler: loginHandler }: CreateHandlerOutput = createHandler({
       const {
         password: databasePassword,
         enabledTwoFactorAuthentication,
-        //phoneNumber,
+        phoneNumber,
         authenticatorCode: databaseAuthenticatorCode,
       } = user;
       const isPasswordValid: boolean = await compare(
@@ -85,6 +87,23 @@ const { handler: loginHandler }: CreateHandlerOutput = createHandler({
             return next();
           }
         }
+        if (
+          enabledTwoFactorAuthentication ===
+          EnabledTwoFactorAuthentication.Phone
+        ) {
+          if (!phoneNumber) {
+            response.sendStatus(500);
+            return next();
+          }
+          const { valid } = await twilioClient.verify.v2
+            .services("")
+            .verifications.create({ to: phoneNumber, channel: "sms" });
+          if (!valid) {
+            response.sendStatus(401);
+            return next();
+          }
+        }
+
         const token: string = sign({ user: { login } }, "zsbrybnik");
         response.json({ token });
       } else {
