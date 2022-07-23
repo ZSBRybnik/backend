@@ -9,12 +9,13 @@ type AddPostHandler = {
   title: string;
   author: string;
   content: string;
+  brief?: string;
 };
 
 const { handler: addPostHandler }: CreateHandlerOutput = createHandler({
   rawHandler: async ({
     request: {
-      body: { title, author, content },
+      body: { title, author, content, brief },
       postgreSQLClient,
     },
     response,
@@ -33,7 +34,7 @@ const { handler: addPostHandler }: CreateHandlerOutput = createHandler({
       return next();
     }
     await postgreSQLClient.post.create({
-      data: { title, author, content },
+      data: { title, author, content, brief: brief || content.slice(0, 150) },
     });
     response.sendStatus(200);
   },

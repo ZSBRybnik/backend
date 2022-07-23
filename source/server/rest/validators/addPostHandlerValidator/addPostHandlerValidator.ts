@@ -5,6 +5,7 @@ const addPostHandlerValidator = () => {
     title: string().required(),
     author: string().required(),
     content: string(),
+    brief: string(),
   });
 };
 export default addPostHandlerValidator;

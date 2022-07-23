@@ -27,7 +27,7 @@ const { handler: getPostHandler }: CreateHandlerOutput = createHandler({
     if (post) {
       response.json(post);
     } else {
-      const databasePost: Omit<Post, "id"> | null =
+      const databasePost: Omit<Post, "id" | "brief"> | null =
         await postgreSQLClient.post.findUnique({
           where: { id: parseInt(id) },
           select: { title: true, author: true, content: true },

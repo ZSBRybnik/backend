@@ -23,8 +23,18 @@ model User {
 model Post {
   id      Int    @id @default(autoincrement())
   title   String @db.VarChar(255)
-  content String @db.VarChar(255)
+  content String @db.Text
   author  String @db.VarChar(255)
+  brief   String @db.VarChar(255)
 
   @@map("posts")
+}
+
+model Page {
+  id      Int    @id @default(autoincrement())
+  name    String @unique @db.VarChar(255)
+  title   String @db.VarChar(255)
+  content String @db.Text
+
+  @@map("pages")
 }
