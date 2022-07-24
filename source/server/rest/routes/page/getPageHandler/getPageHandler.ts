@@ -2,7 +2,7 @@
 import { Page } from "@prisma/client";
 import { dump } from "js-yaml";
 import { toPairs } from "lodash";
-import xml from "xml";
+import xml, { XmlObject } from "xml";
 import createHandler from "../../../utils/createHandler/createHandler";
 import { RawHandlerArguments } from "../../../utils/createHandler/createHandler.types";
 import getPageHandlerValidator from "../../../validators/pageValidators/getPageHandlerValidator/getPageHandlerValidator";
@@ -44,12 +44,13 @@ const { handler: getPageHandler } = createHandler({
         if (contentType === "application/xml") {
           response.header("Content-Type", "application/xml");
           response.send(
-            xml(
-              // tslint:disable-next-line:typedef
-              toPairs(databasePage).map(([key, value]: any) => {
-                return { [key]: value };
-              }),
-            ),
+            xml({
+              root: toPairs(databasePage).map(
+                ([key, value]: [string, unknown]): XmlObject => {
+                  return { [key]: value } as XmlObject;
+                },
+              ),
+            }),
           );
         } else if (contentType === "application/yaml") {
           response.header("Content-Type", "application/yaml");
