@@ -3,7 +3,7 @@ import type {
   CreateHandlerOutput,
   RawHandlerArguments,
 } from "~server/rest/utils/createHandler/createHandler.types";
-import addPostHandlerValidator from "../../../validators/addPostHandlerValidator/addPostHandlerValidator";
+import addPostHandlerValidator from "../../../validators/postValidators/addPostHandlerValidator/addPostHandlerValidator";
 
 type AddPostHandler = {
   title: string;

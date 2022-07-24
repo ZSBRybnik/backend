@@ -3,7 +3,7 @@ import {
   CreateHandlerOutput,
   RawHandlerArguments,
 } from "../../../utils/createHandler/createHandler.types";
-import deleteUserHandlerValidator from "../../../validators/deleteUserHandlerValidator/deleteUserHandlerValidator";
+import deleteUserHandlerValidator from "../../../validators/userValidators/deleteUserHandlerValidator/deleteUserHandlerValidator";
 
 const { handler: deleteUserHandler }: CreateHandlerOutput = createHandler({
   rawHandler: async ({

@@ -4,7 +4,7 @@ import {
   CreateHandlerOutput,
   RawHandlerArguments,
 } from "~server/rest/utils/createHandler/createHandler.types";
-import deletePostHandlerValidator from "../../../validators/deletePostHandlerValidator/deletePostHandlerValidator";
+import deletePostHandlerValidator from "../../../validators/postValidators/deletePostHandlerValidator/deletePostHandlerValidator";
 
 const { handler: deletePostHandler }: CreateHandlerOutput = createHandler({
   rawHandler: async ({

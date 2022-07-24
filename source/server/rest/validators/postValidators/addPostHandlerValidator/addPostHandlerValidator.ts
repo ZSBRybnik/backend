@@ -4,7 +4,7 @@ const addPostHandlerValidator = () => {
   return object().shape({
     title: string().required(),
     author: string().required(),
-    content: string(),
+    content: string().required(),
     brief: string(),
   });
 };

@@ -5,6 +5,7 @@ import { toPairs } from "lodash";
 import xml from "xml";
 import createHandler from "../../../utils/createHandler/createHandler";
 import { RawHandlerArguments } from "../../../utils/createHandler/createHandler.types";
+import getPageHandlerValidator from "../../../validators/pageValidators/getPageHandlerValidator/getPageHandlerValidator";
 
 const { handler: getPageHandler } = createHandler({
   rawHandler: async ({
@@ -15,8 +16,15 @@ const { handler: getPageHandler } = createHandler({
       headers: { "content-type": contentType },
     },
     response,
-  }: //next,
-  RawHandlerArguments): Promise<void> => {
+    next,
+  }: RawHandlerArguments): Promise<void> => {
+    const validator = getPageHandlerValidator();
+    try {
+      await validator.validate({ name }, { strict: true, abortEarly: true });
+    } catch {
+      response.sendStatus(400);
+      return next();
+    }
     const page = await jsonRedisClient.get(`page-${name}`);
     if (page) {
       if (contentType === "application/xml") {

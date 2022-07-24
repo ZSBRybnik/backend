@@ -10,7 +10,7 @@ import {
   RawHandlerArguments,
 } from "~server/rest/utils/createHandler/createHandler.types";
 import verifyToken from "~server/rest/utils/verifyToken/verifyToken";
-import addUserHandlerValidator from "../../../validators/addUserHandlerValidator/addUserHandlerValidator";
+import addUserHandlerValidator from "../../../validators/userValidators/addUserHandlerValidator/addUserHandlerValidator";
 
 type AddUserHandlerBody = {
   login: string;

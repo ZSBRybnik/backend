@@ -1,6 +1,7 @@
 import { Page } from "@prisma/client";
 import createHandler from "../../../utils/createHandler/createHandler";
 import { RawHandlerArguments } from "../../../utils/createHandler/createHandler.types";
+import updatePageHandlerValidator from "../../../validators/pageValidators/updatePageHandlerValidator/updatePageHandlerValidator";
 
 const { handler: updatePageHandler } = createHandler({
   rawHandler: async ({
@@ -11,7 +12,18 @@ const { handler: updatePageHandler } = createHandler({
       jsonRedisClient,
     },
     response,
+    next,
   }: RawHandlerArguments<{ body: Omit<Page, "id"> }>): Promise<void> => {
+    const validator = updatePageHandlerValidator();
+    try {
+      await validator.validate(
+        { title, content },
+        { strict: true, abortEarly: true },
+      );
+    } catch {
+      response.sendStatus(400);
+      return next();
+    }
     await postgreSQLClient.page.update({
       where: { name },
       data: { title, content },

@@ -3,6 +3,7 @@ import {
   CreateHandlerOutput,
   RawHandlerArguments,
 } from "../../../utils/createHandler/createHandler.types";
+import addPageHandlerValidator from "../../../validators/pageValidators/addPageHandlerValidator/addPageHandlerValidator";
 
 type AddPageHandler = {
   name: string;
@@ -17,7 +18,18 @@ const { handler: addPageHandler }: CreateHandlerOutput = createHandler({
       postgreSQLClient,
     },
     response,
+    next,
   }: RawHandlerArguments<{ body: AddPageHandler }>): Promise<void> => {
+    const validator = addPageHandlerValidator();
+    try {
+      await validator.validate(
+        { name, title, content },
+        { strict: true, abortEarly: true },
+      );
+    } catch {
+      response.sendStatus(400);
+      return next();
+    }
     await postgreSQLClient.page.create({
       data: { name, title, content },
     });

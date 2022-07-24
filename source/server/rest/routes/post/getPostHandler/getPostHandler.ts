@@ -4,7 +4,7 @@ import {
   CreateHandlerOutput,
   RawHandlerArguments,
 } from "../../../utils/createHandler/createHandler.types";
-import getPostHandlerValidator from "../../../validators/getPostHandlerValidator/getPostHandlerValidator";
+import getPostHandlerValidator from "../../../validators/postValidators/getPostHandlerValidator/getPostHandlerValidator";
 
 const { handler: getPostHandler }: CreateHandlerOutput = createHandler({
   rawHandler: async ({

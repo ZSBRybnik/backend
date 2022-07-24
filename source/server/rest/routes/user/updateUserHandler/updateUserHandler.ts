@@ -1,10 +1,10 @@
-import Roles from "~root/source/server/constants/roles/Roles";
+import Roles from "~server/constants/roles/Roles";
 import createHandler from "~server/rest/utils/createHandler/createHandler";
 import {
   CreateHandlerOutput,
   RawHandlerArguments,
 } from "../../../utils/createHandler/createHandler.types";
-import updateUserHandlerValidator from "../../../validators/updateUserHandlerValidator/updateUserHandlerValidator";
+import updateUserHandlerValidator from "../../../validators/userValidators/updateUserHandlerValidator/updateUserHandlerValidator";
 
 type UpdateUserHandlerBody = {
   login: string;
