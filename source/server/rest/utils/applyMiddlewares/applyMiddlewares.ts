@@ -5,6 +5,7 @@ import getJsonBodyParserMiddleware from "../../middlewares/getJsonBodyParserMidd
 import getJsonRedisClientMiddleware from "../../middlewares/getJsonRedisClientMiddleware/getJsonRedisClientMiddleware";
 import getDatabaseClientMiddleware from "../../middlewares/getPostgreSQLClientMiddleware/getPostgreSQLClientMiddleware";
 import getRedisClientMiddleware from "../../middlewares/getRedisClientMiddleware/getRedisClientMiddleware";
+import getSendWithValidFormatMiddleware from "../../middlewares/getSendWithValidFormatMiddleware/getSendWithValidFormatMiddleware";
 import type {
   ApplyMiddlewares,
   ApplyMiddlewaresArguments,
@@ -20,6 +21,7 @@ const applyMiddlewares: ApplyMiddlewares = ({
   instance.use(getEmailSenderMiddleware());
   instance.use(getRedisClientMiddleware());
   instance.use(getJsonRedisClientMiddleware());
+  instance.use(getSendWithValidFormatMiddleware());
 };
 
 export default applyMiddlewares;

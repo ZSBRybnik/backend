@@ -1,5 +1,6 @@
-import { Application, NextFunction, Response } from "express";
+import { Application, NextFunction } from "express";
 import Request from "../../types/request/request";
+import Response from "../../types/response/response";
 import {
   CreateMiddleware,
   CreateMiddlewareArguments,

@@ -1,5 +1,6 @@
-import { Application, NextFunction, Response } from "express";
+import { Application, NextFunction } from "express";
 import Request from "~server/rest/types/request/request";
+import Response from "~server/rest/types/response/response";
 import {
   CreateHandler,
   CreateHandlerArguments,
