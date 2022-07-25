@@ -10,6 +10,7 @@ const { handler: deleteUserHandler }: CreateHandlerOutput = createHandler({
     request: {
       params: { id },
       postgreSQLClient,
+      verifyToken,
     },
     response,
     next,
@@ -26,6 +27,7 @@ const { handler: deleteUserHandler }: CreateHandlerOutput = createHandler({
         response.sendStatus(400);
         return next();
       }
+      verifyToken();
       await postgreSQLClient.user.delete({
         where: { id: parsedId },
       });

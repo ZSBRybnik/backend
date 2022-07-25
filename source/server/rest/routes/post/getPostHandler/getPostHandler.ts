@@ -25,7 +25,7 @@ const { handler: getPostHandler }: CreateHandlerOutput = createHandler({
     }
     const post: Omit<Post, "id"> = await jsonRedisClient.get(`post-${id}`);
     if (post) {
-      response.json(post);
+      response.sendWithValidFormat({ data: post });
     } else {
       const databasePost: Omit<Post, "id" | "brief"> | null =
         await postgreSQLClient.post.findUnique({
@@ -33,8 +33,8 @@ const { handler: getPostHandler }: CreateHandlerOutput = createHandler({
           select: { title: true, author: true, content: true },
         });
       if (databasePost) {
-        response.json(databasePost);
-        jsonRedisClient.set(`post-${id}`, databasePost);
+        await jsonRedisClient.set(`pages-${id}`, databasePost);
+        response.sendWithValidFormat({ data: databasePost });
       } else {
         response.sendStatus(404);
       }

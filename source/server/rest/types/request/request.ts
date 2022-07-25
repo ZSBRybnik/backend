@@ -18,6 +18,7 @@ type Request<T = void> = Omit<RequestBase, "body"> & {
   emailSenderClient: Transporter<SMTPTransport.SentMessageInfo>;
   jsonRedisClient: JSONCache;
   twilioClient: Twilio;
+  verifyToken: () => void;
   body: T extends RawHandlerGeneric ? T["body"] : RawHandlerGeneric["body"];
 };
 

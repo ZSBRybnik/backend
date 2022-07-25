@@ -4,8 +4,7 @@ import { SendWithValidFormatArguments } from "../../utils/sendWithValidFormat/se
 type Response = ResponseBase & {
   sendWithValidFormat: <T extends object>({
     data,
-    contentType,
-  }: Omit<SendWithValidFormatArguments<T>, "response">) => Promise<void>;
+  }: Pick<SendWithValidFormatArguments<T>, "data">) => Promise<void>;
 };
 
 export default Response;

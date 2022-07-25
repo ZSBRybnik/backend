@@ -9,7 +9,6 @@ import {
   CreateHandlerOutput,
   RawHandlerArguments,
 } from "~server/rest/utils/createHandler/createHandler.types";
-import verifyToken from "~server/rest/utils/verifyToken/verifyToken";
 import addUserHandlerValidator from "../../../validators/userValidators/addUserHandlerValidator/addUserHandlerValidator";
 
 type AddUserHandlerBody = {
@@ -25,6 +24,7 @@ const { handler: addUserHandler }: CreateHandlerOutput = createHandler({
     request: {
       body: { login, email, role, phoneNumber, enabledTwoFactorAuthentication },
       headers: { authorization },
+      verifyToken,
       postgreSQLClient,
       emailSenderClient,
     },
@@ -43,11 +43,7 @@ const { handler: addUserHandler }: CreateHandlerOutput = createHandler({
       response.sendStatus(400);
       return next();
     }
-    verifyToken({
-      token: authorization || "",
-      response,
-      next,
-    });
+    verifyToken();
     const randomPassword: string = times(10, (): string =>
       random(35).toString(36),
     ).join("");

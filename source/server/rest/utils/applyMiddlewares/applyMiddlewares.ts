@@ -6,6 +6,7 @@ import getJsonRedisClientMiddleware from "../../middlewares/getJsonRedisClientMi
 import getDatabaseClientMiddleware from "../../middlewares/getPostgreSQLClientMiddleware/getPostgreSQLClientMiddleware";
 import getRedisClientMiddleware from "../../middlewares/getRedisClientMiddleware/getRedisClientMiddleware";
 import getSendWithValidFormatMiddleware from "../../middlewares/getSendWithValidFormatMiddleware/getSendWithValidFormatMiddleware";
+import getVerifyTokenMiddleware from "../../middlewares/getVerifyTokenMiddleware/getVerifyTokenMiddleware";
 import type {
   ApplyMiddlewares,
   ApplyMiddlewaresArguments,
@@ -22,6 +23,7 @@ const applyMiddlewares: ApplyMiddlewares = ({
   instance.use(getRedisClientMiddleware());
   instance.use(getJsonRedisClientMiddleware());
   instance.use(getSendWithValidFormatMiddleware());
+  instance.use(getVerifyTokenMiddleware());
 };
 
 export default applyMiddlewares;

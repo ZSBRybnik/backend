@@ -13,11 +13,13 @@ const getSendWithValidFormatMiddleware = () => {
       rawMiddleware: async ({
         response,
         next,
+        request: {
+          headers: { "content-type": contentType = "" },
+        },
       }: RawMiddlewareArguments): Promise<void> => {
         response.sendWithValidFormat = async <T extends object>({
           data,
-          contentType,
-        }: Omit<SendWithValidFormatArguments<T>, "response">) => {
+        }: Pick<SendWithValidFormatArguments<T>, "data">): Promise<void> => {
           return await sendWithValidFormat({ data, contentType, response });
         };
         next();
