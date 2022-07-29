@@ -1,9 +1,12 @@
 FROM node:latest AS build
 ADD . /home/backend
 WORKDIR /home/backend
-RUN apt update
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs/ | sh -s -- -y
-RUN . "$HOME/.cargo/env"
+RUN apt-get -qq update 
+RUN     apt-get install -y -q \
+    build-essential \
+    curl
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
+ENV PATH="/root/.cargo/bin:${PATH}"
 
 #RUN /bin/bash source .bash_profile
 #RUN echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.profile
