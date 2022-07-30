@@ -5,7 +5,7 @@ import { toDataURL } from "qrcode";
 import { renderEmail } from "react-html-email";
 import EnabledTwoFactorAuthentication from "~server/constants/enabledTwoFactorAuthentication/enabledTwoFactorAuthentication";
 import Roles from "~server/constants/roles/Roles";
-import AddUserEmail from "~server/emails/components/addUserEmail/addUserEmail";
+import AddUserEmail from "~server/emails/templates/addUserEmail/addUserEmail";
 import createHandler from "~server/rest/utils/createHandler/createHandler";
 import {
   CreateHandlerOutput,
@@ -68,7 +68,13 @@ const { handler: addUserHandler }: CreateHandlerOutput = createHandler({
       from: "zsbrybnik@gmail.com",
       to: email,
       subject: "Rejestracja",
-      html: renderEmail(<AddUserEmail />), //`<div>${randomPassword}</div><img src="${base64QrCode}" width="200px" height="200px"/>`,
+      html: renderEmail(
+        <AddUserEmail
+          password={randomPassword}
+          qrCode={base64QrCode}
+          login={login}
+        />,
+      ),
     });
     response.sendStatus(200);
   },

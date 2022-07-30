@@ -1,5 +1,7 @@
+import { HeaderWrapper } from "./header.styles";
+
 const Header = () => {
-  return <>123</>;
+  return <HeaderWrapper>ZSB Rybnik</HeaderWrapper>;
 };
 
 export default Header;
