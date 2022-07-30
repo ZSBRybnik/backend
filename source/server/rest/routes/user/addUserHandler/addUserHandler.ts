@@ -23,7 +23,6 @@ const { handler: addUserHandler }: CreateHandlerOutput = createHandler({
   rawHandler: async ({
     request: {
       body: { login, email, role, phoneNumber, enabledTwoFactorAuthentication },
-      headers: { authorization },
       verifyToken,
       postgreSQLClient,
       emailSenderClient,

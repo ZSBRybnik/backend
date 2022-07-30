@@ -20,6 +20,7 @@ const getVerifyTokenMiddle = () => {
         request.verifyToken = (): void => {
           verifyToken({ next, token: authorization || "", response });
         };
+        next();
       },
     });
   return verifyTokenMiddleware;
