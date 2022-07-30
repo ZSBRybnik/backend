@@ -7,5 +7,5 @@ import { $ } from "zx";
     $.shell = "cmd";
     $.prefix = "";
   }
-  await $`cross-env TS_NODE_PROJECT=tsconfig.node.json jest --coverage && cross-env TS_NODE_PROJECT=tsconfig.node.json jest --config=jest.integration.config.ts --runInBand --forceExit`;
+  await $`cross-env TS_NODE_PROJECT=tsconfig.json jest --coverage`;
 })();
