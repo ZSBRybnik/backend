@@ -2,8 +2,10 @@ import { hash } from "bcrypt";
 import { random, times } from "lodash";
 import { authenticator } from "otplib";
 import { toDataURL } from "qrcode";
-import EnabledTwoFactorAuthentication from "~root/source/server/constants/enabledTwoFactorAuthentication/enabledTwoFactorAuthentication";
+import { renderEmail } from "react-html-email";
+import EnabledTwoFactorAuthentication from "~server/constants/enabledTwoFactorAuthentication/enabledTwoFactorAuthentication";
 import Roles from "~server/constants/roles/Roles";
+import AddUserEmail from "~server/emails/components/addUserEmail/addUserEmail";
 import createHandler from "~server/rest/utils/createHandler/createHandler";
 import {
   CreateHandlerOutput,
@@ -61,11 +63,12 @@ const { handler: addUserHandler }: CreateHandlerOutput = createHandler({
     });
     const qrCodeString: string = `otpauth://totp/zsbrybnik?secret=${googleAuthCode}`;
     const base64QrCode: string = await toDataURL(qrCodeString);
+    console.log(base64QrCode);
     await emailSenderClient.sendMail({
       from: "zsbrybnik@gmail.com",
       to: email,
       subject: "Rejestracja",
-      html: `<div>${randomPassword}</div><img src="${base64QrCode}" width="200px" height="200px"/>`,
+      html: renderEmail(<AddUserEmail />), //`<div>${randomPassword}</div><img src="${base64QrCode}" width="200px" height="200px"/>`,
     });
     response.sendStatus(200);
   },
