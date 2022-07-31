@@ -132,7 +132,7 @@
     "graphql-config": "^4.3.1",
     "husky": "^8.0.1",
     "jest": "^28.1.2",
-    "jest-extended": "^2.0.0",
+    "jest-extended": "^3.0.1",
     "jsdoc": "^3.6.10",
     "json-minimizer-webpack-plugin": "^4.0.0",
     "license-checker": "^25.0.1",
