@@ -140,7 +140,7 @@
     "node-loader": "^2.0.0",
     "nodemon": "^2.0.19",
     "npm-check": "^5.9.2",
-    "npm-check-updates": "^15.2.1",
+    "npm-check-updates": "^16.0.3",
     "prettier": "^2.7.1",
     "prettier-plugin-organize-imports": "^3.0.0",
     "prettier-plugin-prisma": "^4.1.0",
