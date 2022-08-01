@@ -9,6 +9,7 @@ import {
 
 const createHandler: CreateHandler = ({
   rawHandler,
+  defaultSuccessfullStatusCode = 200,
 }: CreateHandlerArguments): CreateHandlerOutput => {
   const handler: Application = (async (
     request: Request,
@@ -17,6 +18,9 @@ const createHandler: CreateHandler = ({
     // eslint-disable-next-line max-params
   ): Promise<void> => {
     await rawHandler({ response, request, next });
+    !response.headersSent &&
+      defaultSuccessfullStatusCode &&
+      response.sendStatus(defaultSuccessfullStatusCode);
   }) as Application;
   return {
     handler,

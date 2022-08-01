@@ -24,6 +24,7 @@ export type Handler = (
 
 export type CreateHandlerArguments = {
   rawHandler: RawHandler;
+  defaultSuccessfullStatusCode?: number | false;
 };
 
 export type CreateHandlerOutput = {

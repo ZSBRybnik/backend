@@ -1,8 +1,6 @@
 import { hash } from "bcrypt";
-import { random, times } from "lodash";
 import { authenticator } from "otplib";
 import { toDataURL } from "qrcode";
-import { renderEmail } from "react-html-email";
 import EnabledTwoFactorAuthentication from "~server/constants/enabledTwoFactorAuthentication/enabledTwoFactorAuthentication";
 import Roles from "~server/constants/roles/Roles";
 import AddUserEmail from "~server/emails/templates/addUserEmail/addUserEmail";
@@ -11,9 +9,12 @@ import {
   CreateHandlerOutput,
   RawHandlerArguments,
 } from "~server/rest/utils/createHandler/createHandler.types";
-import addUserHandlerValidator from "../../../validators/userValidators/addUserHandlerValidator/addUserHandlerValidator";
+import generateRandomPassword from "../../../utils/generateRandomPassword/generateRandomPassword";
+import sendEmail from "../../../utils/sendEmail/sendEmail";
+import addUserHandlerErrorCodes from "./addUserHandlerErrorCodes";
+import validateAddUserHandler from "./validateAddUserHandler";
 
-type AddUserHandlerBody = {
+export type AddUserHandlerBody = {
   login: string;
   email: string;
   role: Roles;
@@ -22,61 +23,45 @@ type AddUserHandlerBody = {
 };
 
 const { handler: addUserHandler }: CreateHandlerOutput = createHandler({
+  defaultSuccessfullStatusCode: 201,
   rawHandler: async ({
-    request: {
-      body: { login, email, role, phoneNumber, enabledTwoFactorAuthentication },
-      verifyToken,
-      postgreSQLClient,
-      emailSenderClient,
-    },
+    request: { body, verifyToken, emailSenderClient },
     response,
     next,
   }: RawHandlerArguments<{
     body: AddUserHandlerBody;
   }>): Promise<void> => {
-    const validator = addUserHandlerValidator();
-    try {
-      await validator.validate(
-        { login, role, email, phoneNumber, enabledTwoFactorAuthentication },
-        { strict: true, abortEarly: true },
-      );
-    } catch {
-      response.sendStatus(400);
-      return next();
-    }
+    const { login, email } = body;
+    await validateAddUserHandler({ response, next, data: body });
     verifyToken();
-    const randomPassword: string = times(10, (): string =>
-      random(35).toString(36),
-    ).join("");
+    const randomPassword = generateRandomPassword();
     const hashedPassword: string = await hash(randomPassword, 11);
     const googleAuthCode: string = authenticator.generateSecret();
-    await postgreSQLClient.user.create({
+    await addUserHandlerErrorCodes({
+      response,
+      next,
       data: {
-        login,
-        email,
-        role,
-        phoneNumber,
-        enabledTwoFactorAuthentication,
-        password: hashedPassword,
+        ...body,
         authenticatorCode: googleAuthCode,
+        password: hashedPassword,
       },
     });
     const qrCodeString: string = `otpauth://totp/zsbrybnik?secret=${googleAuthCode}`;
     const base64QrCode: string = await toDataURL(qrCodeString);
-    console.log(base64QrCode);
-    await emailSenderClient.sendMail({
-      from: "zsbrybnik@gmail.com",
+    await sendEmail({
+      instance: emailSenderClient,
       to: email,
       subject: "Rejestracja",
-      html: renderEmail(
+      html: (
         <AddUserEmail
           password={randomPassword}
           qrCode={base64QrCode}
           login={login}
-        />,
+        />
       ),
+      response,
+      next,
     });
-    response.sendStatus(200);
   },
 });
 
