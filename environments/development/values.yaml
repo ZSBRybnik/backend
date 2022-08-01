@@ -1,39 +1,20 @@
 replicaCount: 1
 image:
-  repository: nginx
+  repository: ghcr.io/zsbrybnik/backend:latest
   pullPolicy: IfNotPresent
 imagePullSecrets: []
 nameOverride: "zsb-backend"
 fullnameOverride: "zsb-backend-chart"
-
 serviceAccount:
-  # Specifies whether a service account should be created
   create: true
-  # Annotations to add to the service account
   annotations: {}
-  # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
   name: "zsb-backend"
-
 podAnnotations: {}
-
-podSecurityContext:
-  {}
-  # fsGroup: 2000
-
-securityContext:
-  {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
-
+podSecurityContext: {}
+securityContext: {}
 service:
   type: ClusterIP
   port: 80
-
 autoscaling:
   enabled: true
   minReplicas: 1
