@@ -29,6 +29,12 @@ const getTypeScriptLoader = () => {
           ],
         },
       },
+      {
+        loader: "ts-loader",
+        options: {
+          compiler: "ttypescript",
+        },
+      },
     ],
   };
 };
