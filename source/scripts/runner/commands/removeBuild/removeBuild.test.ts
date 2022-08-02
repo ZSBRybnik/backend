@@ -1,4 +1,5 @@
 import { access as accessWithCallback, mkdir as mkdirWithCallback } from "fs";
+import { platform } from "os";
 import { join } from "path";
 import { promisify } from "util";
 import { $ } from "zx";
@@ -13,6 +14,11 @@ describe("removeBuild", (): void => {
       await access(join(process.cwd(), destination));
     } catch {
       await mkdir(join(process.cwd(), destination));
+    }
+    const os: NodeJS.Platform = platform();
+    if (os === "win32") {
+      $.shell = "cmd";
+      $.prefix = "";
     }
     $.verbose = false;
     await $`yarn run remove-build`;
