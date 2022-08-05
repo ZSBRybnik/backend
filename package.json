@@ -93,7 +93,7 @@
     "@types/jsonwebtoken": "^8.5.8",
     "@types/lodash": "^4.14.182",
     "@types/node": "^18.0.3",
-    "@types/nodemailer": "^6.4.4",
+    "@types/nodemailer": "^6.4.5",
     "@types/nodemon": "^1.19.1",
     "@types/qrcode": "^1.4.2",
     "@types/react": "^18.0.15",
