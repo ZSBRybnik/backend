@@ -1,6 +1,7 @@
 import { User } from "@prisma/client";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime";
 import { NextFunction } from "express";
+import loggerClient from "~root/source/server/clients/loggerClient/loggerClient";
 import postgreSQLClient from "~server/clients/postgreSQLClient/postgreSQLClient";
 import Response from "../../../types/response/response";
 
@@ -21,8 +22,9 @@ const addUserHandlerErrorCodes = async ({
     });
   } catch (error) {
     if (error instanceof PrismaClientKnownRequestError) {
-      const { code } = error;
+      const { code, message } = error;
       if (code === "P2002") {
+        loggerClient.info(`AddUserHandler - ${message}`);
         response.sendStatus(409);
       } else if (code === "P2000") {
         response.sendStatus(413);
