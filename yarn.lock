@@ -1979,10 +1979,10 @@
   resolved "https://registry.yarnpkg.com/@graphql-typed-document-node/core/-/core-3.1.1.tgz#076d78ce99822258cf813ecc1e7fa460fa74d052"
   integrity sha512-NQ17ii0rK1b34VZonlmT2QMJFI70m0TRwbknO/ihlbatXyaktDhN/98vBiUU6kNBPljqGqyIrl2T4nY2RpFANg==
 
-"@hookstate/core@^4.0.0-rc17":
-  version "4.0.0-rc17"
-  resolved "https://registry.yarnpkg.com/@hookstate/core/-/core-4.0.0-rc17.tgz#ccf9bd7ce915973afbb8465554ae1d3995283400"
-  integrity sha512-krNzmLuqjpfYUzfljRpaLoXCc/8w0vF/Wlfu5e2teMoOEXUfppeIvXI59gA6MavzrhCT6e0pTc2VIz1bP1K7Jg==
+"@hookstate/core@^4.0.0-rc20":
+  version "4.0.0-rc20"
+  resolved "https://registry.yarnpkg.com/@hookstate/core/-/core-4.0.0-rc20.tgz#c6cc22c899b0cfa2b7606174c417deb0dda16add"
+  integrity sha512-Zu3YWIZb6+DrsGoOJm3Oj4kRhgHuiPfppS+L/h1x4JNvk6IfyF59x4uAaPxly/Ei0j2wUNXHiCrcWqYiKybiNw==
 
 "@humanwhocodes/config-array@^0.9.2":
   version "0.9.5"
