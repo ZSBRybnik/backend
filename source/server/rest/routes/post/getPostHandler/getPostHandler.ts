@@ -4,7 +4,7 @@ import {
   CreateHandlerOutput,
   RawHandlerArguments,
 } from "../../../utils/createHandler/createHandler.types";
-import getPostHandlerValidator from "../../../validators/postValidators/getPostHandlerValidator/getPostHandlerValidator";
+import validateGetPostHandler from "./validateGetPostHandler";
 
 const { handler: getPostHandler }: CreateHandlerOutput = createHandler({
   rawHandler: async ({
@@ -16,13 +16,12 @@ const { handler: getPostHandler }: CreateHandlerOutput = createHandler({
     response,
     next,
   }: RawHandlerArguments): Promise<void> => {
-    const validator = getPostHandlerValidator();
-    try {
-      await validator.validate({ id }, { strict: true, abortEarly: true });
-    } catch {
-      response.sendStatus(400);
-      return next();
-    }
+    const parsedId: number = parseInt(id);
+    await validateGetPostHandler({
+      response,
+      next,
+      validationData: { id: parsedId },
+    });
     const post: Omit<Post, "id"> = await jsonRedisClient.get(`post-${id}`);
     if (post) {
       response.sendWithValidFormat({ data: post });

@@ -1,24 +1,38 @@
 import { graphqlHTTP } from "express-graphql";
-import { GraphQLObjectType, GraphQLSchema, GraphQLString } from "graphql";
+import { buildSchema } from "graphql";
+import postgreSQLClient from "~root/source/server/clients/postgreSQLClient/postgreSQLClient";
 
-const schema = new GraphQLSchema({
-  query: new GraphQLObjectType({
-    name: "RootQueryType",
-    fields: {
-      hello: {
-        type: GraphQLString,
-        resolve() {
-          return "world";
-        },
-      },
-    },
-  }),
-});
+type PagesResolverArguments = {
+  ids?: number[];
+};
+
+const schema: string = `#graphql
+  type Query {
+    pages(ids: [Int]): [Page]
+  }
+
+  type Page {
+    id: ID!
+    name: String!
+  }
+`;
 
 const getGraphQLMiddleware = () => {
   return graphqlHTTP({
-    schema,
+    schema: buildSchema(schema),
     graphiql: true,
+    rootValue: {
+      pages: async ({ ids }: PagesResolverArguments) => {
+        const conditions =
+          ids?.map((id: number): { id: number } => {
+            return { id };
+          }) ?? null;
+        return await postgreSQLClient.page.findMany({
+          select: { id: true, name: true },
+          where: conditions ? { OR: conditions } : undefined,
+        });
+      },
+    },
   });
 };
 

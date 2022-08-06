@@ -1,34 +1,28 @@
 import createHandler from "../../../utils/createHandler/createHandler";
 import { RawHandlerArguments } from "../../../utils/createHandler/createHandler.types";
-import deletePageHandlerValidator from "../../../validators/pageValidators/deletePageHandlerValidator/deletePageHandlerValidator";
+import deletePageHandlerErrorCodes from "./deletePageHandlerErrorCodes";
+import validateDeletePageHandler from "./validateDeletePageHandler";
 
 const { handler: deletePageHandler } = createHandler({
   rawHandler: async ({
-    request: {
-      params: { name },
-      postgreSQLClient,
-      jsonRedisClient,
-    },
+    request,
     response,
     next,
   }: RawHandlerArguments): Promise<void> => {
-    const validator = deletePageHandlerValidator();
-    try {
-      await validator.validate({ name }, { strict: true, abortEarly: true });
-    } catch {
-      response.sendStatus(400);
-      return next();
-    }
-    try {
-      const redisDelete = jsonRedisClient.del(`page-${name}`);
-      const postgreDelete = postgreSQLClient.page.delete({
-        where: { name },
-      });
-      await Promise.all([redisDelete, postgreDelete]);
-      response.sendStatus(200);
-    } catch {
-      response.sendStatus(500);
-    }
+    const {
+      params: { name },
+    } = request;
+    await validateDeletePageHandler({
+      response,
+      next,
+      validationData: { name },
+    });
+    await deletePageHandlerErrorCodes({
+      response,
+      next,
+      where: { name },
+      request,
+    });
   },
 });
 export default deletePageHandler;
