@@ -1,38 +1,53 @@
+/* eslint-disable max-params */
+import { makeExecutableSchema } from "@graphql-tools/schema";
 import { graphqlHTTP } from "express-graphql";
-import { buildSchema } from "graphql";
-import postgreSQLClient from "~root/source/server/clients/postgreSQLClient/postgreSQLClient";
+import postgreSQLClient from "~server/clients/postgreSQLClient/postgreSQLClient";
 
 type PagesResolverArguments = {
   ids?: number[];
 };
 
-const schema: string = `#graphql
-  type Query {
-    pages(ids: [Int]): [Page]
-  }
+type PagesResolverNestedArguments = {
+  id: boolean;
+  name: boolean;
+};
 
-  type Page {
-    id: ID!
-    name: String!
-  }
-`;
+const PagesResolver = async (
+  { id, name }: PagesResolverNestedArguments,
+  { ids }: PagesResolverArguments,
+) => {
+  const conditions =
+    ids?.map((id: number): { id: number } => {
+      return { id };
+    }) ?? null;
+  return await postgreSQLClient.page.findMany({
+    select: { id, name },
+    where: conditions ? { OR: conditions } : undefined,
+  });
+};
+
+const schema = makeExecutableSchema({
+  typeDefs: `#graphql
+    type Query {
+      pages(ids: [Int]): [Page]
+    }
+
+    type Page {
+      id: ID!
+      name: String!
+    }
+  `,
+  resolvers: {
+    Query: {
+      pages: PagesResolver,
+    },
+  },
+});
 
 const getGraphQLMiddleware = () => {
   return graphqlHTTP({
-    schema: buildSchema(schema),
+    schema: schema,
     graphiql: true,
-    rootValue: {
-      pages: async ({ ids }: PagesResolverArguments) => {
-        const conditions =
-          ids?.map((id: number): { id: number } => {
-            return { id };
-          }) ?? null;
-        return await postgreSQLClient.page.findMany({
-          select: { id: true, name: true },
-          where: conditions ? { OR: conditions } : undefined,
-        });
-      },
-    },
   });
 };
 
