@@ -149,7 +149,7 @@
     "prettier": "^2.7.1",
     "prettier-plugin-organize-imports": "^3.0.0",
     "prettier-plugin-prisma": "^4.1.0",
-    "prisma": "^4.0.0",
+    "prisma": "^4.2.0",
     "rimraf": "^3.0.2",
     "snyk": "^1.966.0",
     "source-map-loader": "^4.0.0",
