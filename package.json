@@ -22,7 +22,7 @@
     "run": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/run/run.ts --target server"
   },
   "dependencies": {
-    "@aws-sdk/client-braket": "^3.131.0",
+    "@aws-sdk/client-braket": "^3.145.0",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "@hookstate/core": "^4.0.0-rc17",
