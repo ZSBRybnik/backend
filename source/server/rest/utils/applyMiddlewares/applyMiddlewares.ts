@@ -39,7 +39,7 @@ const applyMiddlewares: ApplyMiddlewares = ({
       generateOpenApiDocument(appRouter, {
         title: "tRPC ZSB Rybnik",
         version: "1.0.0",
-        baseUrl: "http://localhost:3000",
+        baseUrl: "http://localhost:3000/trpc",
       }),
     ),
   );
