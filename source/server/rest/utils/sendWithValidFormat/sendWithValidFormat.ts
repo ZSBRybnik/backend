@@ -8,6 +8,7 @@ import { dump } from "js-yaml";
 import { stringify as json5Stringify } from "json5";
 import { toPairs } from "lodash";
 import { compress } from "snappy";
+import { stringify as superjsonStringify } from "superjson";
 import xml, { XmlObject } from "xml";
 import contentTypes, {
   ContentTypeKeys,
@@ -81,6 +82,11 @@ const formatToTransformMapper: FormatToTransformMapper = {
     data,
   }: FormatToTransformMapperArguments<T>): unknown => {
     return dumpText(data);
+  },
+  superjson: <T extends object>({
+    data,
+  }: FormatToTransformMapperArguments<T>): unknown => {
+    return superjsonStringify(data);
   },
 };
 

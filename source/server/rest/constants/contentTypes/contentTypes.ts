@@ -8,7 +8,8 @@ export type ContentTypeKeys =
   | "msgpack"
   | "avro"
   | "snappy"
-  | "ion";
+  | "ion"
+  | "superjson";
 
 export type ContentTypes = {
   [key in ContentTypeKeys]: string[];
@@ -25,6 +26,7 @@ const contentTypes: ContentTypes = {
   avro: ["application/avro", "text/avro"],
   snappy: ["application/snappy", "text/snappy"],
   ion: ["application/ion", "text/ion"],
+  superjson: ["application/superjson", "text/superjson"],
 };
 
 export default contentTypes;

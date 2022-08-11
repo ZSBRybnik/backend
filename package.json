@@ -65,6 +65,7 @@
     "snappy": "^7.1.1",
     "socket.io": "^4.5.1",
     "source-map-support": "^0.5.21",
+    "superjson": "^1.9.1",
     "swagger-ui-express": "^4.5.0",
     "twilio": "^3.79.0",
     "uuid": "^8.3.2",
