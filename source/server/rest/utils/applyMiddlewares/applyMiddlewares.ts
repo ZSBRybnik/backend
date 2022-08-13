@@ -43,6 +43,18 @@ const applyMiddlewares: ApplyMiddlewares = ({
       }),
     ),
   );
+  instance.use(
+    "/swagger/rest",
+    serve,
+    setup(
+      {},
+      {
+        swaggerOptions: {
+          url: "http://localhost:3000/",
+        },
+      },
+    ),
+  );
 };
 
 export default applyMiddlewares;
