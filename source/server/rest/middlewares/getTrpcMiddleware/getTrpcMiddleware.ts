@@ -2,7 +2,7 @@ import { router } from "@trpc/server";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 //import superjson from "superjson";
 import { OpenApiMeta } from "trpc-openapi";
-import { number, object, string } from "zod";
+import { null as zodNull, number, object, string, union } from "zod";
 import postgreSQLClient from "~root/source/server/clients/postgreSQLClient/postgreSQLClient";
 //const transformer = { serialize: () => {} };
 export const appRouter = router<unknown, OpenApiMeta>()
@@ -46,11 +46,11 @@ export const appRouter = router<unknown, OpenApiMeta>()
         data: { name, title, content },
       });
     },
-  });
-/* .query("page", {
-    meta: { openapi: { enabled: true, method: "GET", path: "/page" } },
+  })
+  .query("page", {
+    //meta: { openapi: { enabled: true, method: "GET", path: "/page" } },
     input: object({
-      id: number(),
+      name: string(),
     }),
     output: union([
       object({
@@ -61,13 +61,13 @@ export const appRouter = router<unknown, OpenApiMeta>()
       }),
       zodNull(),
     ]),
-    resolve: ({ input: { id } }) => {
+    resolve: ({ input: { name } }) => {
       return postgreSQLClient.page.findUnique({
-        where: { id },
+        where: { name },
         select: { name: true, title: true, content: true, id: true },
       });
     },
-  });*/
+  });
 
 const getTrpcMiddleware = () => {
   return createExpressMiddleware({
