@@ -7,7 +7,7 @@ import postgreSQLClient from "~root/source/server/clients/postgreSQLClient/postg
 //const transformer = { serialize: () => {} };
 export const appRouter = router<unknown, OpenApiMeta>()
   //.transformer(superjson)
-  .mutation("post", {
+  .mutation("addPost", {
     meta: { openapi: { enabled: true, method: "POST", path: "/post" } },
     input: object({
       title: string(),
@@ -28,7 +28,7 @@ export const appRouter = router<unknown, OpenApiMeta>()
       });
     },
   })
-  .mutation("page", {
+  .mutation("addPage", {
     meta: { openapi: { enabled: true, method: "POST", path: "/page" } },
     input: object({
       name: string(),
@@ -47,7 +47,7 @@ export const appRouter = router<unknown, OpenApiMeta>()
       });
     },
   })
-  .query("page", {
+  .query("getPage", {
     //meta: { openapi: { enabled: true, method: "GET", path: "/page" } },
     input: object({
       name: string(),
@@ -67,8 +67,122 @@ export const appRouter = router<unknown, OpenApiMeta>()
         select: { name: true, title: true, content: true, id: true },
       });
     },
+  })
+  .query("getPost", {
+    //meta: { openapi: { enabled: true, method: "GET", path: "/page" } },
+    input: object({
+      id: number(),
+    }),
+    output: union([
+      object({
+        id: number(),
+        title: string(),
+        content: string(),
+        author: string(),
+        brief: string(),
+      }),
+      zodNull(),
+    ]),
+    resolve: ({ input: { id } }) => {
+      return postgreSQLClient.post.findUnique({
+        where: { id },
+        select: {
+          author: true,
+          title: true,
+          content: true,
+          id: true,
+          brief: true,
+        },
+      });
+    },
+  })
+  .mutation("updatePost", {
+    //meta: { openapi: { enabled: true, method: "GET", path: "/page" } },
+    input: object({
+      id: number(),
+      title: string(),
+      content: string(),
+      author: string(),
+      brief: string(),
+    }),
+    output: union([
+      object({
+        id: number(),
+        title: string(),
+        content: string(),
+        author: string(),
+        brief: string(),
+      }),
+      zodNull(),
+    ]),
+    resolve: ({ input: { id, title, author, content, brief } }) => {
+      return postgreSQLClient.post.update({
+        where: { id },
+        data: { title, author, content, brief },
+        select: {
+          title: true,
+          author: true,
+          content: true,
+          id: true,
+          brief: true,
+        },
+      });
+    },
+  })
+  .mutation("deleteUser", {
+    //meta: { openapi: { enabled: true, method: "GET", path: "/page" } },
+    input: object({
+      id: number(),
+    }),
+    output: union([
+      object({
+        id: number(),
+        login: string(),
+        role: string(),
+      }),
+      zodNull(),
+    ]),
+    resolve: ({ input: { id } }) => {
+      return postgreSQLClient.user.delete({
+        where: { id },
+        select: {
+          id: true,
+          login: true,
+          role: true,
+        },
+      });
+    },
+  })
+  .mutation("updatePage", {
+    //meta: { openapi: { enabled: true, method: "GET", path: "/page" } },
+    input: object({
+      id: number(),
+      title: string(),
+      content: string(),
+      name: string(),
+    }),
+    output: union([
+      object({
+        id: number(),
+        title: string(),
+        content: string(),
+        name: string(),
+      }),
+      zodNull(),
+    ]),
+    resolve: ({ input: { id, title, name, content } }) => {
+      return postgreSQLClient.page.update({
+        where: { id },
+        data: { title, name, content },
+        select: {
+          id: true,
+          title: true,
+          name: true,
+          content: true,
+        },
+      });
+    },
   });
-
 const getTrpcMiddleware = () => {
   return createExpressMiddleware({
     router: appRouter,
