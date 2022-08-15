@@ -1,12 +1,10 @@
 import { router } from "@trpc/server";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
-//import superjson from "superjson";
 import { OpenApiMeta } from "trpc-openapi";
 import { null as zodNull, number, object, string, union } from "zod";
-import postgreSQLClient from "~root/source/server/clients/postgreSQLClient/postgreSQLClient";
-//const transformer = { serialize: () => {} };
+import postgreSQLClient from "../../../clients/postgreSQLClient/postgreSQLClient";
+
 export const appRouter = router<unknown, OpenApiMeta>()
-  //.transformer(superjson)
   .mutation("addPost", {
     meta: { openapi: { enabled: true, method: "POST", path: "/post" } },
     input: object({
@@ -183,6 +181,9 @@ export const appRouter = router<unknown, OpenApiMeta>()
       });
     },
   });
+
+export type AppRouter = typeof appRouter;
+
 const getTrpcMiddleware = () => {
   return createExpressMiddleware({
     router: appRouter,
