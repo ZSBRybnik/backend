@@ -1,3 +1,5 @@
+/* eslint-disable sonarjs/no-identical-functions */
+/* eslint-disable sonarjs/no-unused-collection */
 import { router } from "@trpc/server";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { OpenApiMeta } from "trpc-openapi";
@@ -45,6 +47,26 @@ export const appRouter = router<unknown, OpenApiMeta>()
       });
     },
   })
+  .query("getPost", {
+    //meta: { openapi: { enabled: true, method: "GET", path: "/page" } },
+    input: object({
+      id: number(),
+    }),
+    output: union([
+      object({
+        id: number(),
+        title: string(),
+        content: string(),
+      }),
+      zodNull(),
+    ]),
+    resolve: ({ input: { id } }) => {
+      return postgreSQLClient.post.findUnique({
+        where: { id },
+        select: { title: true, content: true, id: true },
+      });
+    },
+  })
   .query("getPage", {
     //meta: { openapi: { enabled: true, method: "GET", path: "/page" } },
     input: object({
@@ -66,31 +88,22 @@ export const appRouter = router<unknown, OpenApiMeta>()
       });
     },
   })
-  .query("getPost", {
+  .query("getPosts", {
     //meta: { openapi: { enabled: true, method: "GET", path: "/page" } },
     input: object({
-      id: number(),
+      range: number(),
+      startId: number(),
     }),
-    output: union([
-      object({
-        id: number(),
-        title: string(),
-        content: string(),
-        author: string(),
-        brief: string(),
-      }),
-      zodNull(),
-    ]),
-    resolve: ({ input: { id } }) => {
-      return postgreSQLClient.post.findUnique({
-        where: { id },
-        select: {
-          author: true,
-          title: true,
-          content: true,
-          id: true,
-          brief: true,
+    resolve: ({ input: { range, startId } }) => {
+      const conditions: { id: number }[] = [];
+      for (let iterator = 0; iterator < range; iterator++) {
+        conditions.push({ id: startId + iterator });
+      }
+      return postgreSQLClient.post.findMany({
+        where: {
+          OR: conditions,
         },
+        select: { title: true, brief: true, id: true },
       });
     },
   })
