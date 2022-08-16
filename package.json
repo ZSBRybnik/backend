@@ -28,7 +28,7 @@
     "@babel/preset-typescript": "^7.18.6",
     "@blainehansen/macro-ts": "^0.1.12",
     "@emotion/react": "^11.9.3",
-    "@emotion/styled": "^11.9.3",
+    "@emotion/styled": "^11.10.0",
     "@faker-js/faker": "^7.3.0",
     "@hookstate/core": "^4.0.0-rc17",
     "@iarna/toml": "^2.2.5",
