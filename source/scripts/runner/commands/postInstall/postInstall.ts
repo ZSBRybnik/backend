@@ -11,7 +11,6 @@ import handlePostInstallWindows from "~scripts/runner/utils/handlePostInstall/ha
     $.prefix = "";
   }
   await $`husky install`;
-
   if (os === "win32") {
     await handlePostInstallWindows();
   } else if (os === "darwin") {
