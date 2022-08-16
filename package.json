@@ -110,7 +110,7 @@
     "ion-js": "^4.3.0",
     "ioredis": "^5.1.0",
     "jest": "^28.1.2",
-    "jest-extended": "^2.0.0",
+    "jest-extended": "^3.0.2",
     "js-yaml": "^4.1.0",
     "jsbi": "^4.3.0",
     "jsdoc": "^3.6.10",
