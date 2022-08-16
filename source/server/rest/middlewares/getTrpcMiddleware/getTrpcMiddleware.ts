@@ -28,25 +28,6 @@ export const appRouter = router<unknown, OpenApiMeta>()
       });
     },
   })
-  .mutation("addPage", {
-    meta: { openapi: { enabled: true, method: "POST", path: "/page" } },
-    input: object({
-      name: string(),
-      title: string(),
-      content: string(),
-    }),
-    output: object({
-      id: number(),
-      title: string(),
-      content: string(),
-      name: string(),
-    }),
-    resolve: ({ input: { name, title, content } }) => {
-      return postgreSQLClient.page.create({
-        data: { name, title, content },
-      });
-    },
-  })
   .query("getPost", {
     //meta: { openapi: { enabled: true, method: "GET", path: "/page" } },
     input: object({
