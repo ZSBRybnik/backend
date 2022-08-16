@@ -35,7 +35,7 @@
     "@microsoft/tsdoc": "^0.14.1",
     "@msgpack/msgpack": "^2.7.2",
     "@prettier/plugin-pug": "^2.1.1",
-    "@prisma/client": "^4.0.0",
+    "@prisma/client": "^4.2.1",
     "@trpc/server": "^9.27.0",
     "@types/bcrypt": "^5.0.0",
     "@types/case-sensitive-paths-webpack-plugin": "^2.1.6",
