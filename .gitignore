@@ -15,3 +15,5 @@ storybook
 lefthook.yml
 source/server/prisma/migrations
 logs.log
+gun-database
+*.tmp

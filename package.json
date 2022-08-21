@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "repository": "https://github.com/ZSBRybnik/backend",
   "license": "MIT",
-  "author": "KrzysztofZawisla <zawislakrzysztof.zk@gmail.com>",
+  "author": "KrzysztofZawisla <zawislakrzysztof.zk@gmail.com>, borys-malinowski <borys.malinowski@interia.pl>",
   "scripts": {
     "audit-dependencies": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/auditDependencies/auditDependencies.ts",
     "build": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/build/build.ts --target server",
@@ -103,6 +103,7 @@
     "graphql": "^16.5.0",
     "graphql-config": "^4.3.1",
     "graphql-tools": "^8.3.1",
+    "gun": "^0.2020.1238",
     "husky": "^8.0.1",
     "i18next": "^21.8.15",
     "i18next-chained-backend": "^3.0.2",

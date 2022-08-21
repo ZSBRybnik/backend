@@ -1,3 +1,4 @@
+import Gun from "gun";
 import { serve, setup } from "swagger-ui-express";
 import { generateOpenApiDocument } from "trpc-openapi";
 import getCorsMiddleware from "../../middlewares/getCorsMiddleware/getCorsMiddleware";
@@ -32,6 +33,7 @@ const applyMiddlewares: ApplyMiddlewares = ({
   instance.use(getVerifyTokenMiddleware());
   instance.use("/trpc", getTrpcMiddleware());
   instance.use("/open-api/trpc", getTrpcOpenApiMiddleware());
+  instance.use((Gun as any).serve);
   instance.use(
     "/swagger/trpc",
     serve,
