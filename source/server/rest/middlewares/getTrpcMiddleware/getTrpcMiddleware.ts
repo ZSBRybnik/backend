@@ -21,11 +21,15 @@ export const appRouter = router<unknown, OpenApiMeta>()
       }),
       zodNull(),
     ]),
-    resolve: ({ input: { id } }) => {
-      return postgreSQLClient.post.findUnique({
+    resolve: async ({ input: { id } }) => {
+      const post = await postgreSQLClient.post.findUnique({
         where: { id },
         select: { title: true, content: true, id: true },
       });
+      if (post) {
+        await gun.get("posts").get(`${id}`).put(post);
+      }
+      return post;
     },
   })
   .query("getPage", {
