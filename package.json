@@ -45,7 +45,7 @@
     "@types/duplicate-package-checker-webpack-plugin": "^2.1.2",
     "@types/express": "^4.17.13",
     "@types/ffi-napi": "^4.0.5",
-    "@types/jest": "^28.1.4",
+    "@types/jest": "^28.1.8",
     "@types/js-yaml": "^4.0.5",
     "@types/jsonwebtoken": "^8.5.8",
     "@types/lodash": "^4.14.182",
