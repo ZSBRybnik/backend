@@ -6,7 +6,7 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "build": "npx cargo-cp-artifact -nc ./destination/index.node -- cargo build --message-format=json-render-diagnostics --release",
+    "build": "cargo-cp-artifact -nc ./destination/index.node -- cargo build --message-format=json-render-diagnostics --release",
     "install": "yarn run build",
     "test": "cargo test"
   },
