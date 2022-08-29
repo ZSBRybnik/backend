@@ -1,7 +1,7 @@
 import CopyWebpackPlugin, { Pattern } from "copy-webpack-plugin";
 import { join } from "path";
-import destination from "~scripts/build/constants/destination/destination";
-import source from "~scripts/build/constants/source/source";
+import destination from "~backend/source/scripts/build/constants/destination/destination";
+import source from "~backend/source/scripts/build/constants/source/source";
 
 type GetCopyWebpackPlugin = () => CopyWebpackPlugin;
 

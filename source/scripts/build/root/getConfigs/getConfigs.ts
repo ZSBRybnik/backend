@@ -1,9 +1,9 @@
 import { Configuration } from "webpack";
-import getConfig from "~scripts/build/root/getConfig/getConfig";
+import getConfig from "~backend/source/scripts/build/root/getConfig/getConfig";
 
-import ExtendedMode from "~scripts/build/types/extendedMode/extendedMode";
+import ExtendedMode from "~backend/source/scripts/build/types/extendedMode/extendedMode";
 
-import Mode from "~scripts/build/types/mode/mode";
+import Mode from "~backend/source/scripts/build/types/mode/mode";
 
 import { TargetType } from "~shared/constants/TargetType";
 

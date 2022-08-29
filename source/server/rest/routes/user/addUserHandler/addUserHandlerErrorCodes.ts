@@ -1,8 +1,8 @@
 import { User } from "@prisma/client";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime";
 import { NextFunction } from "express";
-import loggerClient from "~root/source/server/clients/loggerClient/loggerClient";
-import postgreSQLClient from "~server/clients/postgreSQLClient/postgreSQLClient";
+import loggerClient from "~backend/source/server/clients/loggerClient/loggerClient";
+import postgreSQLClient from "~backend/source/server/clients/postgreSQLClient/postgreSQLClient";
 import Response from "../../../types/response/response";
 
 type AddUserHandlerErrorCodes = {

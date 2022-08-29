@@ -1,6 +1,6 @@
 import { mixed, object, string } from "yup";
-import EnabledTwoFactorAuthentication from "~server/constants/enabledTwoFactorAuthentication/enabledTwoFactorAuthentication";
-import Roles from "~server/constants/roles/Roles";
+import EnabledTwoFactorAuthentication from "~backend/source/server/constants/enabledTwoFactorAuthentication/enabledTwoFactorAuthentication";
+import Roles from "~backend/source/server/constants/roles/Roles";
 
 const addUserHandlerValidator = () => {
   return object().shape({

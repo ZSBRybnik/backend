@@ -1,6 +1,6 @@
 import { Page } from "@prisma/client";
 import { NextFunction } from "express";
-import postgreSQLClient from "~root/source/server/clients/postgreSQLClient/postgreSQLClient";
+import postgreSQLClient from "~backend/source/server/clients/postgreSQLClient/postgreSQLClient";
 import Request from "../../../types/request/request";
 import Response from "../../../types/response/response";
 import { AddPageHandlerBody } from "../addPageHandler/addPageHandler";

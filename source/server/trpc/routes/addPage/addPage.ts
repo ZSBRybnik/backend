@@ -1,4 +1,4 @@
-import addPagesResolver from "~root/source/server/graphql/resolvers/addPageResolver/addPageResolver";
+import addPagesResolver from "~backend/source/server/graphql/resolvers/addPageResolver/addPageResolver";
 import Routes from "../../constants/routes/routes";
 import inputAddPage from "../../inputs/inputDeletePage/inputDeletePage";
 import getAddPageMeta from "../../metas/getAddPageMeta/getAddPageMeta";

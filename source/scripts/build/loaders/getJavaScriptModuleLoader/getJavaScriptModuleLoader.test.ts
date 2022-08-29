@@ -1,4 +1,4 @@
-import getJavaScriptModuleLoader from "~scripts/build/loaders/getJavaScriptModuleLoader/getJavaScriptModuleLoader";
+import getJavaScriptModuleLoader from "~backend/source/scripts/build/loaders/getJavaScriptModuleLoader/getJavaScriptModuleLoader";
 
 describe("getJavaScriptModuleLoader", () => {
   it("should match JavaScript Modules", () => {

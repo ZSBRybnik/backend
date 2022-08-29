@@ -1,6 +1,5 @@
-import postgreSQLClient from "~server/clients/postgreSQLClient/postgreSQLClient";
+import postgreSQLClient from "~backend/source/server/clients/postgreSQLClient/postgreSQLClient";
 import createMiddleware from "../../utils/createMiddleware/createMiddleware";
-
 import {
   CreateMiddlewareOutput,
   RawMiddlewareArguments,

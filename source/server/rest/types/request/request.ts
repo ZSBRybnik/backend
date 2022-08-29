@@ -6,7 +6,7 @@ import { Transporter } from "nodemailer";
 import SMTPTransport from "nodemailer/lib/smtp-transport";
 import JSONCache from "redis-json";
 import { Twilio } from "twilio";
-import { RawHandlerGeneric } from "~server/rest/utils/createHandler/createHandler.types";
+import { RawHandlerGeneric } from "~backend/source/server/rest/utils/createHandler/createHandler.types";
 
 type Request<T = void> = Omit<RequestBase, "body"> & {
   postgreSQLClient: PrismaClient<

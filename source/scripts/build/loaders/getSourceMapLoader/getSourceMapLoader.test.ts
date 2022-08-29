@@ -1,4 +1,4 @@
-import getSourceMapLoader from "~scripts/build/loaders/getSourceMapLoader/getSourceMapLoader";
+import getSourceMapLoader from "~backend/source/scripts/build/loaders/getSourceMapLoader/getSourceMapLoader";
 
 describe("getSourceMapLoader", () => {
   it("should exclude node_modules", () => {

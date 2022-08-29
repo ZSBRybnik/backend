@@ -1,4 +1,4 @@
-import twilioClient from "~server/clients/twilioClient/twilioClient";
+import twilioClient from "~backend/source/server/clients/twilioClient/twilioClient";
 import createMiddleware from "../../utils/createMiddleware/createMiddleware";
 import { RawMiddlewareArguments } from "../../utils/createMiddleware/createMiddleware.types";
 

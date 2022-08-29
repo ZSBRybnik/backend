@@ -1,8 +1,8 @@
-import createHandler from "~server/rest/utils/createHandler/createHandler";
+import createHandler from "~backend/source/server/rest/utils/createHandler/createHandler";
 import {
   CreateHandlerOutput,
   RawHandlerArguments,
-} from "~server/rest/utils/createHandler/createHandler.types";
+} from "~backend/source/server/rest/utils/createHandler/createHandler.types";
 import Request from "../../../types/request/request";
 import deletePostHandlerErrorCodes from "./deletePostHandlerErrorCodes";
 import validateDeletePostHandler from "./validateDeletePostHandler";

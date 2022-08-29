@@ -4,14 +4,12 @@ type GetResolveArguments = {
   sourceFolder: string;
 };
 
-const getResolve = ({ sourceFolder }: GetResolveArguments) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const getResolve = (_argument: GetResolveArguments) => {
   return {
     extensions: [".js", ".ts", ".tsx", ".jsx", ".mjs", ".wasm", ".json"],
     alias: {
-      "~root": join(process.cwd()),
-      "~server": join(process.cwd(), sourceFolder, "server"),
-      "~shared": join(process.cwd(), sourceFolder, "shared"),
-      "~public": join(process.cwd(), sourceFolder, "public"),
+      "~backend": join(process.cwd()),
     },
   };
 };

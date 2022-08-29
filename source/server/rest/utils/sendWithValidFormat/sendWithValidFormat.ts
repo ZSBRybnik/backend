@@ -12,7 +12,7 @@ import { stringify as superjsonStringify } from "superjson";
 import xml, { XmlObject } from "xml";
 import contentTypes, {
   ContentTypeKeys,
-} from "~server/rest/constants/contentTypes/contentTypes";
+} from "~backend/source/server/rest/constants/contentTypes/contentTypes";
 
 export type SendWithValidFormatArguments<T extends object> = {
   data: T;

@@ -40,18 +40,16 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "~root/*": ["*"],
-      "~server/*": ["source/server/*"],
-      "~scripts/*": ["source/scripts/*"],
-      "~shared/*": ["source/shared/*"]
+      "~backend/*": ["*"],
     },
-    "plugins": [
-      {
+    "plugins": [{
         "transform": "typescript-transform-paths"
       },
-      { "transform": "ts-macros" }
+      {
+        "transform": "ts-macros"
+      }
     ]
   },
-  "include": ["."],
+  "include": [".", "../backend"],
   "exclude": ["node_modules", "coverage", "destination"]
 }

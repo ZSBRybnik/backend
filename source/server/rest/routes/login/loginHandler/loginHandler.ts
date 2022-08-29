@@ -2,12 +2,12 @@ import { User } from "@prisma/client";
 import { compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
 import { authenticator } from "otplib";
-import EnabledTwoFactorAuthentication from "~server/constants/enabledTwoFactorAuthentication/enabledTwoFactorAuthentication";
-import createHandler from "~server/rest/utils/createHandler/createHandler";
+import EnabledTwoFactorAuthentication from "~backend/source/server/constants/enabledTwoFactorAuthentication/enabledTwoFactorAuthentication";
+import createHandler from "~backend/source/server/rest/utils/createHandler/createHandler";
 import type {
   CreateHandlerOutput,
   RawHandlerArguments,
-} from "~server/rest/utils/createHandler/createHandler.types";
+} from "~backend/source/server/rest/utils/createHandler/createHandler.types";
 import loginHandlerValidator from "../../../validators/loginHandlerValidator/loginHandlerValidator";
 
 type LoginHandlerBody = {

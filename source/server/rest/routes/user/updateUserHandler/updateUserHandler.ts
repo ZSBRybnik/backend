@@ -1,5 +1,5 @@
-import Roles from "~server/constants/roles/Roles";
-import createHandler from "~server/rest/utils/createHandler/createHandler";
+import Roles from "~backend/source/server/constants/roles/Roles";
+import createHandler from "~backend/source/server/rest/utils/createHandler/createHandler";
 import {
   CreateHandlerOutput,
   RawHandlerArguments,

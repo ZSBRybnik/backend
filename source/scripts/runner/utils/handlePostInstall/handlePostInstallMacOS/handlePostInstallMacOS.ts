@@ -1,6 +1,6 @@
 import commandExists from "command-exists";
 import { $ } from "zx";
-import Programs from "~scripts/runner/types/programs/programs";
+import Programs from "~backend/source/scripts/runner/types/programs/programs";
 
 const handlePostInstallMacOS = async () => {
   try {

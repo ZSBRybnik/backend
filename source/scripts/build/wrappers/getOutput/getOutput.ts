@@ -1,5 +1,5 @@
 import { join } from "path";
-import destination from "~scripts/build/constants/destination/destination";
+import destination from "~backend/source/scripts/build/constants/destination/destination";
 
 const getOutputPublicPath = () => {
   return "/source/";
