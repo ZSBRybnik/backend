@@ -86,7 +86,7 @@
     "core-js": "^3.23.3",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
-    "date-fns": "^2.28.0",
+    "date-fns": "^2.29.2",
     "depcheck": "^1.4.3",
     "dotenv": "^16.0.1",
     "duplicate-package-checker-webpack-plugin": "^3.0.0",
