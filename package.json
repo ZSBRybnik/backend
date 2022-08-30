@@ -123,7 +123,7 @@
     "jsonwebtoken": "^8.5.1",
     "license-checker": "^25.0.1",
     "lodash": "^4.17.21",
-    "mongoose": "^6.5.2",
+    "mongoose": "^6.5.3",
     "backend-native-addon-go": "file:./source/native-addon-go",
     "backend-native-addon-rust": "file:./source/native-addon-rust",
     "neon-cli": "^0.10.1",
