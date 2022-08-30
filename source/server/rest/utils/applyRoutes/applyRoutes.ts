@@ -1,22 +1,4 @@
 import type { Express } from "express";
-<<<<<<< HEAD
-import Routes from "~server/rest/constants/routes/routes";
-import loginHandler from "~server/rest/routes/login/loginHandler/loginHandler";
-import addPageHandler from "~server/rest/routes/page/addPageHandler/addPageHandler";
-import deletePageHandler from "~server/rest/routes/page/deletePageHandler/deletePageHandler";
-import getPageHandler from "~server/rest/routes/page/getPageHandler/getPageHandler";
-import updatePageHandler from "~server/rest/routes/page/updatePageHandler/updatePageHandler";
-import addPostHandler from "~server/rest/routes/post/addPostHandler/addPostHandler";
-import deletePostHandler from "~server/rest/routes/post/deletePostHandler/deletePostHandler";
-import getPostHandler from "~server/rest/routes/post/getPostHandler/getPostHandler";
-import updatePostHandler from "~server/rest/routes/post/updatePostHandler/updatePostHandler";
-import getPostsHandler from "~server/rest/routes/posts/getPostsHandler/getPostsHandler";
-import addUserHandler from "~server/rest/routes/user/addUserHandler/addUserHandler";
-import deleteUserHandler from "~server/rest/routes/user/deleteUserHandler/deleteUserHandler";
-import updateUserHandler from "~server/rest/routes/user/updateUserHandler/updateUserHandler";
-import verifyTokenHandler from "~server/rest/routes/verifyTokenHandler/verifyTokenHandler";
-import getWeather from "../../routes/weather/getWeather/getWeather";
-=======
 import Routes from "~backend/source/server/rest/constants/routes/routes";
 import loginHandler from "~backend/source/server/rest/routes/login/loginHandler/loginHandler";
 import addPageHandler from "~backend/source/server/rest/routes/page/addPageHandler/addPageHandler";
@@ -32,7 +14,7 @@ import addUserHandler from "~backend/source/server/rest/routes/user/addUserHandl
 import deleteUserHandler from "~backend/source/server/rest/routes/user/deleteUserHandler/deleteUserHandler";
 import updateUserHandler from "~backend/source/server/rest/routes/user/updateUserHandler/updateUserHandler";
 import verifyTokenHandler from "~backend/source/server/rest/routes/verifyTokenHandler/verifyTokenHandler";
->>>>>>> 2d929e96c3651dfcd8bcd0b79a6d4d387eacf09a
+import getWeather from "../../routes/weather/getWeather/getWeather";
 
 type ApplyRoutesArguments = {
   instance: Express;
