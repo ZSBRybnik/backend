@@ -148,7 +148,7 @@
     "redis-json": "^6.0.3",
     "rimraf": "^3.0.2",
     "rxjs": "^7.5.5",
-    "snappy": "^7.1.1",
+    "snappy": "^7.1.2",
     "snyk": "^1.966.0",
     "socket.io": "^4.5.1",
     "sort-package-json": "^1.57.0",
