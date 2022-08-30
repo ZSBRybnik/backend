@@ -14,6 +14,7 @@ import addUserHandler from "~server/rest/routes/user/addUserHandler/addUserHandl
 import deleteUserHandler from "~server/rest/routes/user/deleteUserHandler/deleteUserHandler";
 import updateUserHandler from "~server/rest/routes/user/updateUserHandler/updateUserHandler";
 import verifyTokenHandler from "~server/rest/routes/verifyTokenHandler/verifyTokenHandler";
+import getWeather from "../../routes/weather/getWeather/getWeather";
 
 type ApplyRoutesArguments = {
   instance: Express;
@@ -36,6 +37,7 @@ const applyRoutes: ApplyRoutes = ({ instance }: ApplyRoutesArguments): void => {
   instance.post(Routes.Page, addPageHandler);
   instance.put(Routes.PageWithName, updatePageHandler);
   instance.delete(Routes.PageWithName, deletePageHandler);
+  instance.get(Routes.Weather, getWeather);
 };
 
 export default applyRoutes;
