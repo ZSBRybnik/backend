@@ -2,9 +2,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import Gun /*, { GunOptions }*/ from "gun";
 //import mongoose, { Schema } from "mongoose";
-import mainPort from "~server/rest/constants/ports/ports";
-import createServer from "~server/rest/utils/createServer/createServer";
-import { CreateServerOuput } from "~server/rest/utils/createServer/createServer.types";
+import mainPort from "~backend/source/server/rest/constants/ports/ports";
+import createServer from "~backend/source/server/rest/utils/createServer/createServer";
+import { CreateServerOuput } from "~backend/source/server/rest/utils/createServer/createServer.types";
 
 //const { Flint, NodeAdapter } = await import("gun-flint" as any);
 

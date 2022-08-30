@@ -1,14 +1,14 @@
 import { hash } from "bcrypt";
 import { authenticator } from "otplib";
 import { toDataURL } from "qrcode";
-import EnabledTwoFactorAuthentication from "~server/constants/enabledTwoFactorAuthentication/enabledTwoFactorAuthentication";
-import Roles from "~server/constants/roles/Roles";
-import AddUserEmail from "~server/emails/templates/addUserEmail/addUserEmail";
-import createHandler from "~server/rest/utils/createHandler/createHandler";
+import EnabledTwoFactorAuthentication from "~backend/source/server/constants/enabledTwoFactorAuthentication/enabledTwoFactorAuthentication";
+import Roles from "~backend/source/server/constants/roles/Roles";
+import AddUserEmail from "~backend/source/server/emails/templates/addUserEmail/addUserEmail";
+import createHandler from "~backend/source/server/rest/utils/createHandler/createHandler";
 import {
   CreateHandlerOutput,
   RawHandlerArguments,
-} from "~server/rest/utils/createHandler/createHandler.types";
+} from "~backend/source/server/rest/utils/createHandler/createHandler.types";
 import generateRandomPassword from "../../../utils/generateRandomPassword/generateRandomPassword";
 import sendEmail from "../../../utils/sendEmail/sendEmail";
 import addUserHandlerErrorCodes from "./addUserHandlerErrorCodes";

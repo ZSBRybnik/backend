@@ -1,4 +1,4 @@
-import postgreSQLClient from "~root/source/server/clients/postgreSQLClient/postgreSQLClient";
+import postgreSQLClient from "~backend/source/server/clients/postgreSQLClient/postgreSQLClient";
 import createResolver from "../../utils/createResolver/createResolver";
 
 const pagesResolver = createResolver<

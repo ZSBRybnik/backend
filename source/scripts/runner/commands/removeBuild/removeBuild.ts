@@ -1,6 +1,6 @@
 import { platform } from "os";
 import { $ } from "zx";
-import destination from "~scripts/build/constants/destination/destination";
+import destination from "~backend/source/scripts/build/constants/destination/destination";
 
 (async () => {
   const os: NodeJS.Platform = platform();

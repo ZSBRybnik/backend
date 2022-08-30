@@ -1,6 +1,6 @@
 import { Application, NextFunction } from "express";
-import Request from "~server/rest/types/request/request";
-import Response from "~server/rest/types/response/response";
+import Request from "~backend/source/server/rest/types/request/request";
+import Response from "~backend/source/server/rest/types/response/response";
 import {
   CreateHandler,
   CreateHandlerArguments,

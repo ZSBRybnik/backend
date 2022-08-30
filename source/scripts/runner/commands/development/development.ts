@@ -2,7 +2,7 @@ import { Command } from "commander";
 import nodemon from "nodemon";
 import { platform } from "os";
 import { $ } from "zx";
-import source from "~scripts/build/constants/source/source";
+import source from "~backend/source/scripts/build/constants/source/source";
 
 (async () => {
   const program = new Command();

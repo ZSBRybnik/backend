@@ -1,6 +1,6 @@
 import { sep } from "path";
-import source from "~scripts/build/constants/source/source";
-import getTypeScriptLoader from "~scripts/build/loaders/getTypeScriptLoader/getTypeScriptLoader";
+import source from "~backend/source/scripts/build/constants/source/source";
+import getTypeScriptLoader from "~backend/source/scripts/build/loaders/getTypeScriptLoader/getTypeScriptLoader";
 
 describe("getTypeScriptLoader", () => {
   it("should exclude node_modules", () => {

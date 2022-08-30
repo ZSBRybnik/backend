@@ -1,7 +1,7 @@
 //import LicensePlugin from "webpack-license-plugin";
-import ExtendedMode from "~scripts/build/types/extendedMode/extendedMode";
+import ExtendedMode from "~backend/source/scripts/build/types/extendedMode/extendedMode";
 
-//import getTargetToModernFolder from "~scripts/build/utils/getTargetToModernFolder/getTargetToModernFolder";
+//import getTargetToModernFolder from "~backend/source/scripts/build/utils/getTargetToModernFolder/getTargetToModernFolder";
 
 type GetLicensePluginArguments = {
   targetToModern: boolean;

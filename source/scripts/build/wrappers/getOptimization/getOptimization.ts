@@ -1,6 +1,6 @@
 import TerserPlugin from "terser-webpack-plugin";
 import { WebpackPluginInstance } from "webpack";
-import Mode from "~scripts/build/types/mode/mode";
+import Mode from "~backend/source/scripts/build/types/mode/mode";
 
 type GetOptimizationArguments = {
   mode: Mode;

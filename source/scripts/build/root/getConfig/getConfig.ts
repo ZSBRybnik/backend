@@ -1,16 +1,16 @@
 import { Configuration, WebpackPluginInstance } from "webpack";
-import ExtendedMode from "~scripts/build/types/extendedMode/extendedMode";
-import Mode from "~scripts/build/types/mode/mode";
-import getEntryPoint from "~scripts/build/utils/getEntryPoint/getEntryPoint";
-import getTarget from "~scripts/build/utils/getTarget/getTarget";
-import getExperiments from "~scripts/build/wrappers/getExperiments/getExperiments";
-import getExternals from "~scripts/build/wrappers/getExternals/getExternals";
-import getLoaders from "~scripts/build/wrappers/getLoaders/getLoaders";
-import getNode from "~scripts/build/wrappers/getNode/getNode";
-import getOptimization from "~scripts/build/wrappers/getOptimization/getOptimization";
-import getOutput from "~scripts/build/wrappers/getOutput/getOutput";
-import getPlugins from "~scripts/build/wrappers/getPlugins/getPlugins";
-import getResolve from "~scripts/build/wrappers/getResolve/getResolve";
+import ExtendedMode from "~backend/source/scripts/build/types/extendedMode/extendedMode";
+import Mode from "~backend/source/scripts/build/types/mode/mode";
+import getEntryPoint from "~backend/source/scripts/build/utils/getEntryPoint/getEntryPoint";
+import getTarget from "~backend/source/scripts/build/utils/getTarget/getTarget";
+import getExperiments from "~backend/source/scripts/build/wrappers/getExperiments/getExperiments";
+import getExternals from "~backend/source/scripts/build/wrappers/getExternals/getExternals";
+import getLoaders from "~backend/source/scripts/build/wrappers/getLoaders/getLoaders";
+import getNode from "~backend/source/scripts/build/wrappers/getNode/getNode";
+import getOptimization from "~backend/source/scripts/build/wrappers/getOptimization/getOptimization";
+import getOutput from "~backend/source/scripts/build/wrappers/getOutput/getOutput";
+import getPlugins from "~backend/source/scripts/build/wrappers/getPlugins/getPlugins";
+import getResolve from "~backend/source/scripts/build/wrappers/getResolve/getResolve";
 
 type GetConfigArguments = {
   extendedMode: ExtendedMode;
@@ -35,7 +35,7 @@ const getConfig: GetConfig = ({
       rules: getLoaders(),
     },
     node: getNode(),
-    externals: getExternals(),
+    externals: getExternals() as any,
     plugins: getPlugins({
       targetToModern,
       mode,

@@ -1,5 +1,5 @@
 import { join } from "path";
-import source from "~scripts/build/constants/source/source";
+import source from "~backend/source/scripts/build/constants/source/source";
 
 const getTypeScriptLoader = () => {
   return {

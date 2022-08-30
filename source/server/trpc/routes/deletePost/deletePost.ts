@@ -1,4 +1,4 @@
-import deletePostResolver from "~root/source/server/graphql/resolvers/deletePostResolver/deletePostResolver";
+import deletePostResolver from "~backend/source/server/graphql/resolvers/deletePostResolver/deletePostResolver";
 import Routes from "../../constants/routes/routes";
 import inputDeletePost from "../../inputs/inputDeletePost/inputDeletePost";
 import getDeletePostMeta from "../../metas/getDeletePostMeta/getDeletePostMeta";

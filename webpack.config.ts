@@ -1,8 +1,8 @@
 import "dotenv/config";
 import { Configuration } from "webpack";
-import getConfigs from "~scripts/build/root/getConfigs/getConfigs";
-import Mode from "~scripts/build/types/mode/mode";
-import { TargetType } from "~shared/constants/TargetType";
+import getConfigs from "~backend/source/scripts/build/root/getConfigs/getConfigs";
+import Mode from "~backend/source/scripts/build/types/mode/mode";
+import { TargetType } from "~backend/source/shared/constants/TargetType";
 
 interface EnvironmentArguments {
   target: TargetType;

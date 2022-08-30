@@ -1,8 +1,8 @@
 import { platform } from "os";
 import { $ } from "zx";
-import handlePostInstallLinux from "~scripts/runner/utils/handlePostInstall/handlePostInstallLinux/handlePostInstallLinux";
-import handlePostInstallMacOS from "~scripts/runner/utils/handlePostInstall/handlePostInstallMacOS/handlePostInstallMacOS";
-import handlePostInstallWindows from "~scripts/runner/utils/handlePostInstall/handlePostInstallWindows/handlePostInstallWindows";
+import handlePostInstallLinux from "~backend/source/scripts/runner/utils/handlePostInstall/handlePostInstallLinux/handlePostInstallLinux";
+import handlePostInstallMacOS from "~backend/source/scripts/runner/utils/handlePostInstall/handlePostInstallMacOS/handlePostInstallMacOS";
+import handlePostInstallWindows from "~backend/source/scripts/runner/utils/handlePostInstall/handlePostInstallWindows/handlePostInstallWindows";
 
 (async () => {
   const os: NodeJS.Platform = platform();

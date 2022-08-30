@@ -1,4 +1,4 @@
-import getNodeLoader from "~scripts/build/loaders/getNodeLoader/getNodeLoader";
+import getNodeLoader from "~backend/source/scripts/build/loaders/getNodeLoader/getNodeLoader";
 
 describe("getNodeLoader", () => {
   it("should match Native Modules", () => {

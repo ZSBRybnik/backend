@@ -1,4 +1,4 @@
-import HTTPMethods from "~server/rest/constants/httpMethods/httpMethods";
+import HTTPMethods from "~backend/source/server/rest/constants/httpMethods/httpMethods";
 import Routes from "../../constants/routes/routes";
 
 const getAddPageMeta = () => {

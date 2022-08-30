@@ -1,7 +1,7 @@
 import { merge } from "lodash";
-import { dependencies as rootDependencies } from "~root/package.json";
-//import { peerDependencies as nativeAddonGolangPeerDependencies } from "~root/source/native-addon-go/package.json";
-//import { devDependencies as nativeAddonRustDevelopmentDependencies } from "~root/source/native-addon-rust/package.json";
+import { dependencies as rootDependencies } from "~backend/package.json";
+//import { peerDependencies as nativeAddonGolangPeerDependencies } from "~backend/source/native-addon-go/package.json";
+//import { devDependencies as nativeAddonRustDevelopmentDependencies } from "~backend/source/native-addon-rust/package.json";
 
 type ProjectsDependenciesVersions = {
   [key in keyof typeof rootDependencies]: string;

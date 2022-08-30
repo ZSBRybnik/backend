@@ -1,5 +1,5 @@
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
-import ExtendedMode from "~scripts/build/types/extendedMode/extendedMode";
+import ExtendedMode from "~backend/source/scripts/build/types/extendedMode/extendedMode";
 
 type GetBundleAnalyzerPluginArguments = {
   extendedMode: ExtendedMode;

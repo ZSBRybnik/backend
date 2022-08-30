@@ -1,4 +1,4 @@
-import projectsDependenciesVersions from "~scripts/build/constants/projectsDependenciesVersions/projectsDependenciesVersions";
+import projectsDependenciesVersions from "~backend/source/scripts/build/constants/projectsDependenciesVersions/projectsDependenciesVersions";
 
 type ProjectDependencies = Set<keyof typeof projectsDependenciesVersions>;
 

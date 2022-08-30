@@ -1,9 +1,9 @@
 import { sync } from "glob";
 import { join } from "path";
 import { DefinePlugin } from "webpack";
-import projectDependencies from "~scripts/build/constants/projectDependencies/projectDependencies";
-import projectsDependenciesVersions from "~scripts/build/constants/projectsDependenciesVersions/projectsDependenciesVersions";
-import Mode from "~scripts/build/types/mode/mode";
+import projectDependencies from "~backend/source/scripts/build/constants/projectDependencies/projectDependencies";
+import projectsDependenciesVersions from "~backend/source/scripts/build/constants/projectsDependenciesVersions/projectsDependenciesVersions";
+import Mode from "~backend/source/scripts/build/types/mode/mode";
 
 type GetLocalizedLanguages = () => string[];
 

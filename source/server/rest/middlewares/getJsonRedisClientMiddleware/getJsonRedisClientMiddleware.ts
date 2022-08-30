@@ -1,6 +1,5 @@
-import jsonRedisClient from "~server/clients/redisJSONClient/redisJSONClient";
+import jsonRedisClient from "~backend/source/server/clients/redisJSONClient/redisJSONClient";
 import createMiddleware from "../../utils/createMiddleware/createMiddleware";
-
 import {
   CreateMiddlewareOutput,
   RawMiddlewareArguments,

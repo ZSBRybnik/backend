@@ -1,9 +1,9 @@
 import { Command } from "commander";
 import { platform } from "os";
 import { $ } from "zx";
-import scriptsKeys from "~scripts/build/constants/scriptsKeys/scriptsKeys";
-import source from "~scripts/build/constants/source/source";
-import Programs from "~scripts/runner/types/programs/programs";
+import scriptsKeys from "~backend/source/scripts/build/constants/scriptsKeys/scriptsKeys";
+import source from "~backend/source/scripts/build/constants/source/source";
+import Programs from "~backend/source/scripts/runner/types/programs/programs";
 
 type BuildFlagsOptions = {
   docker: string;

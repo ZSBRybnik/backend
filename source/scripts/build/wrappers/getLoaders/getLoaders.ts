@@ -1,10 +1,10 @@
 import { RuleSetRule } from "webpack";
-import getCssLoader from "~scripts/build/loaders/getCssLoader/getCssLoader";
-import getJavaScriptModuleLoader from "~scripts/build/loaders/getJavaScriptModuleLoader/getJavaScriptModuleLoader";
-import getNodeLoader from "~scripts/build/loaders/getNodeLoader/getNodeLoader";
-import getPugLoader from "~scripts/build/loaders/getPugLoader/getPugLoader";
-import getSourceMapLoader from "~scripts/build/loaders/getSourceMapLoader/getSourceMapLoader";
-import getTypeScriptLoader from "~scripts/build/loaders/getTypeScriptLoader/getTypeScriptLoader";
+import getCssLoader from "~backend/source/scripts/build/loaders/getCssLoader/getCssLoader";
+import getJavaScriptModuleLoader from "~backend/source/scripts/build/loaders/getJavaScriptModuleLoader/getJavaScriptModuleLoader";
+import getNodeLoader from "~backend/source/scripts/build/loaders/getNodeLoader/getNodeLoader";
+import getPugLoader from "~backend/source/scripts/build/loaders/getPugLoader/getPugLoader";
+import getSourceMapLoader from "~backend/source/scripts/build/loaders/getSourceMapLoader/getSourceMapLoader";
+import getTypeScriptLoader from "~backend/source/scripts/build/loaders/getTypeScriptLoader/getTypeScriptLoader";
 
 type GetLoader = () => RuleSetRule[];
 

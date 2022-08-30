@@ -2,8 +2,8 @@ import express, { Express } from "express";
 import { Server } from "http";
 import { check } from "tcp-port-used";
 import { expectType } from "tsd";
-import mainPort from "~server/rest/constants/ports/ports";
-import listenOnPort from "~server/rest/utils/listenOnPort/listenOnPort";
+import mainPort from "~backend/source/server/rest/constants/ports/ports";
+import listenOnPort from "~backend/source/server/rest/utils/listenOnPort/listenOnPort";
 
 describe("listenOnPort", (): void => {
   it("reserves valid port", async (): Promise<void> => {

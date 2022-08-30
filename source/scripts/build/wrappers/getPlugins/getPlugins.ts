@@ -1,14 +1,14 @@
-import getBundleAnalyzerPlugin from "~scripts/build/plugins/getBundleAnalyzerPlugin/getBundleAnalyzerPlugin";
-import getCleanWebpackPlugin from "~scripts/build/plugins/getCleanWebpackPlugin/getCleanWebpackPlugin";
-import getCopyWebpackPlugin from "~scripts/build/plugins/getCopyWebpackPlugin/getCopyWebpackPlugin";
-import getDefinePlugin from "~scripts/build/plugins/getDefinePlugin/getDefinePlugin";
-import getDuplicatePackageCheckerPlugin from "~scripts/build/plugins/getDuplicatePackageCheckerPlugin/getDuplicatePackageCheckerPlugin";
-import getESLintPlugin from "~scripts/build/plugins/getEslintPlugin/getEslintPlugin";
-import getJsonMinimizerPlugin from "~scripts/build/plugins/getJsonMinimizerPlugin/getJsonMinimizerPlugin";
-import getLicensePlugin from "~scripts/build/plugins/getLicensePlugin/getLicensePlugin";
-import getUnusedWebpackPlugin from "~scripts/build/plugins/getUnusedWebpackPlugin/getUnusedWebpackPlugin";
-import ExtendedMode from "~scripts/build/types/extendedMode/extendedMode";
-import Mode from "~scripts/build/types/mode/mode";
+import getBundleAnalyzerPlugin from "~backend/source/scripts/build/plugins/getBundleAnalyzerPlugin/getBundleAnalyzerPlugin";
+import getCleanWebpackPlugin from "~backend/source/scripts/build/plugins/getCleanWebpackPlugin/getCleanWebpackPlugin";
+import getCopyWebpackPlugin from "~backend/source/scripts/build/plugins/getCopyWebpackPlugin/getCopyWebpackPlugin";
+import getDefinePlugin from "~backend/source/scripts/build/plugins/getDefinePlugin/getDefinePlugin";
+import getDuplicatePackageCheckerPlugin from "~backend/source/scripts/build/plugins/getDuplicatePackageCheckerPlugin/getDuplicatePackageCheckerPlugin";
+import getESLintPlugin from "~backend/source/scripts/build/plugins/getEslintPlugin/getEslintPlugin";
+import getJsonMinimizerPlugin from "~backend/source/scripts/build/plugins/getJsonMinimizerPlugin/getJsonMinimizerPlugin";
+import getLicensePlugin from "~backend/source/scripts/build/plugins/getLicensePlugin/getLicensePlugin";
+import getUnusedWebpackPlugin from "~backend/source/scripts/build/plugins/getUnusedWebpackPlugin/getUnusedWebpackPlugin";
+import ExtendedMode from "~backend/source/scripts/build/types/extendedMode/extendedMode";
+import Mode from "~backend/source/scripts/build/types/mode/mode";
 
 type GetPluginsArguments = {
   targetToModern: boolean;
