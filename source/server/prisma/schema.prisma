@@ -16,6 +16,8 @@ model User {
   authenticatorCode              String? @map("authenticator_code") @db.VarChar(16)
   phoneNumber                    String? @map("phone_number") @db.VarChar(22)
   enabledTwoFactorAuthentication String  @default("application") @map("enabled_two_factor_authentication")
+  lockerNumber                   Int?    @unique @map("locker_number")
+  lockerPin                      Int?    @map("locker_pin")
 
   @@map("users")
 }
