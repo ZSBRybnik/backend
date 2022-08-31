@@ -24,7 +24,7 @@ import source from "~backend/source/scripts/build/constants/source/source";
       $.shell = "cmd";
       $.prefix = "";
     }
-    const developmentServer = $`yarn run remove-build && cross-env tsc && cross-env TS_NODE_PROJECT=tsconfig.node.json webpack serve --config webpack.config.ts --env target=${target} --mode development`;
+    const developmentServer = $`nodemon .`;
     let mobileLiveReload;
     if (target === "mobile") {
       setTimeout(() => {

@@ -1,0 +1,12 @@
+{
+  "watch": ["./source"],
+  "ignore": [
+    "destination",
+    "gun-database",
+    "coverage",
+    "tsconfig.tsbuildinfo",
+    "bundle-analyzes"
+  ],
+  "ext": "ts,tsx,js,jsx",
+  "exec": "yarn run build && yarn run run"
+}
