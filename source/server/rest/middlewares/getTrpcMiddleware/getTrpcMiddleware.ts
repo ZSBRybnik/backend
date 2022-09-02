@@ -61,17 +61,12 @@ export const appRouter = router<unknown, OpenApiMeta>()
     //meta: { openapi: { enabled: true, method: "GET", path: "/page" } },
     input: object({
       range: number(),
-      startId: number(),
+      skip: number(),
     }),
-    resolve: ({ input: { range, startId } }) => {
-      const conditions: { id: number }[] = [];
-      for (let iterator = 0; iterator < range; iterator++) {
-        conditions.push({ id: startId + iterator });
-      }
+    resolve: ({ input: { range, skip } }) => {
       return postgreSQLClient.post.findMany({
-        where: {
-          OR: conditions,
-        },
+        take: range,
+        skip,
         select: { title: true, brief: true, id: true },
       });
     },

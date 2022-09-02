@@ -1,5 +1,6 @@
 enum Routes {
   GetPage = "getPage",
+  GetFeed = "getFeed",
   GetPost = "getPost",
   UpdatePage = "updatePage",
   UpdatePost = "updatePost",
