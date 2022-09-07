@@ -180,7 +180,7 @@
     "webpack-cli": "^4.10.0",
     "webpack-license-plugin": "^4.2.2",
     "webpack-node-externals": "^3.0.0",
-    "winston": "^3.8.1",
+    "winston": "^3.8.2",
     "xml": "^1.0.1",
     "yarn": "^1.22.19",
     "yup": "^0.32.11",
