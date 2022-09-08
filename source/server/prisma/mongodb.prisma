@@ -1,0 +1,19 @@
+datasource db {
+    provider = "mongodb"
+    url      = env("MONGODB_URL")
+}
+
+generator client {
+    provider = "prisma-client-js"
+    output   = "../../../node_modules/@prisma/mongodb"
+}
+
+model Page {
+    mongo_id String @id @default(auto()) @map("_id") @db.ObjectId
+    id       Int    @unique
+    name     String @unique
+    title    String
+    content  String
+
+    @@map("pages")
+}

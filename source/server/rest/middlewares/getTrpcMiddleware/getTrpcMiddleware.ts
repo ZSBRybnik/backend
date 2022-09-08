@@ -4,6 +4,7 @@ import { router } from "@trpc/server";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { OpenApiMeta } from "trpc-openapi";
 import { null as zodNull, number, object, string, union } from "zod";
+import mongoDBClient from "~backend/source/server/clients/mongoDBClient/mongoDBClient";
 import { gun } from "../..";
 import postgreSQLClient from "../../../clients/postgreSQLClient/postgreSQLClient";
 
@@ -47,10 +48,14 @@ export const appRouter = router<unknown, OpenApiMeta>()
       zodNull(),
     ]),
     resolve: async ({ input: { name } }) => {
-      const page = await postgreSQLClient.page.findUnique({
+      const schemaCondition = {
         where: { name },
         select: { name: true, title: true, content: true, id: true },
-      });
+      };
+      let page = await mongoDBClient.page.findUnique(schemaCondition);
+      if (!page) {
+        page = await postgreSQLClient.page.findUnique(schemaCondition);
+      }
       if (page) {
         await gun.get("pages").get(name).put(page);
       }

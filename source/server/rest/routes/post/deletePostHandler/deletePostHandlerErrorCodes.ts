@@ -1,4 +1,4 @@
-import { Post, Prisma } from "@prisma/client";
+import { Post, Prisma } from "@prisma/postgresql";
 import { NextFunction } from "express";
 import Request from "../../../types/request/request";
 import Response from "../../../types/response/response";

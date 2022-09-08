@@ -1,10 +1,10 @@
 import { PrismaClientOptions } from "@prisma/client/runtime";
-import { Prisma, PrismaClient } from "@prisma/postgresql";
+import { Prisma, PrismaClient } from "@prisma/mongodb";
 
-const postgreSQLClient: PrismaClient<
+const mongoDBClient: PrismaClient<
   PrismaClientOptions,
   never,
   Prisma.RejectOnNotFound | Prisma.RejectPerOperation | undefined
 > = new PrismaClient();
 
-export default postgreSQLClient;
+export default mongoDBClient;
