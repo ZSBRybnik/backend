@@ -4011,10 +4011,10 @@ aurora@^2.1.3:
     present "^1.0.0"
     uuid "^3.2.1"
 
-avsc@^5.7.4:
-  version "5.7.4"
-  resolved "https://registry.yarnpkg.com/avsc/-/avsc-5.7.4.tgz#644e5a13f7081d524aba920ae553f93cd218bf28"
-  integrity sha512-z4oo33lmnvvNRqfUe3YjDGGpqu/L2+wXBIhMtwq6oqZ+exOUAkQYM6zd2VWKF7AIlajOF8ZZuPFfryTG9iLC/w==
+avsc@^5.7.5:
+  version "5.7.5"
+  resolved "https://registry.yarnpkg.com/avsc/-/avsc-5.7.5.tgz#da1840506b3ff69e14b5f87ce511e9c384405166"
+  integrity sha512-vkyt1+sj6qaD9oMtqqLE2pZ2IcHI66kFx8lpnVuXp55SnNPjKghfOhVfZpaDwDPpY0oVWP3Qu1uHZWxF3E856A==
 
 axios@^0.26.1:
   version "0.26.1"
