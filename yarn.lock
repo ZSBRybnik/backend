@@ -12416,10 +12416,10 @@ ttypescript@^1.5.13:
   dependencies:
     resolve ">=1.9.0"
 
-twilio@^3.79.0:
-  version "3.80.0"
-  resolved "https://registry.yarnpkg.com/twilio/-/twilio-3.80.0.tgz#94f6ea786f26c702ad366bb3f38af2f212ecf6f4"
-  integrity sha512-ACzeSFqyMViOXDYBQr4CoPoscNWDbHt/gGqU2YpVyVQ/5fsFo/fe+ZAeZBKvrMllP81bhCtPS7H5Lfi9n2cOFw==
+twilio@^3.82.0:
+  version "3.82.0"
+  resolved "https://registry.yarnpkg.com/twilio/-/twilio-3.82.0.tgz#591c3964675ed01bd21f0a511f26c05f8033d564"
+  integrity sha512-7j21FIb0tq3udzlOitrnMaIBIMrnB0gO9sDzxHytNfZlMAZXWVIRSP3SodU9lxLTVjyZeFLfr7Qqs1Xafo36uQ==
   dependencies:
     axios "^0.26.1"
     dayjs "^1.8.29"
