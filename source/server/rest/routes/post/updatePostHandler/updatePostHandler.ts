@@ -1,6 +1,67 @@
 import { Post } from "@prisma/client";
 import createHandler from "../../../utils/createHandler/createHandler";
 
+/**
+ * @openapi
+ * components:
+ *   schemas:
+ *     UpdatePost:
+ *       type: object
+ *       required:
+ *         - id
+ *       properties:
+ *         title:
+ *           type: string
+ *           description: Title to update
+ *         content:
+ *           type: string
+ *           description: Content to update
+ *         author:
+ *           type: string
+ *           description: Author to update
+ *         brief:
+ *           type: string
+ *           description: Brief to update
+ *       example:
+ *         title: Title of the page
+ *         content: sample of content
+ *         author: Author of the page
+ *         brief: Brief of the page
+ */
+
+/**
+ * @openapi
+ * /post/{id}:
+ *   put:
+ *     summary: Update post
+ *     tags:
+ *       - Post endpoints
+ *     parameters:
+ *     - in: path
+ *       name: id
+ *       required: true
+ *     requestBody:
+ *       required: true
+ *       content:
+ *        application/json:
+ *         schema:
+ *             $ref: '#/components/schemas/UpdatePost'
+ *        application/xml:
+ *         schema:
+ *             $ref: '#/components/schemas/UpdatePost'
+ *     responses:
+ *       '200':
+ *         description: Success
+ *       '204':
+ *         description: Success without body.
+ *       '401':
+ *         description: Unauthorized.
+ *       '500':
+ *         description: Failed update page.
+ *       '400':
+ *         description: Bad request
+ */
+
 import {
   CreateHandlerOutput,
   RawHandlerArguments,

@@ -23,10 +23,14 @@ export const appRouter = router<unknown, OpenApiMeta>()
       zodNull(),
     ]),
     resolve: async ({ input: { id } }) => {
-      const post = await postgreSQLClient.post.findUnique({
+      const schemaCondition = {
         where: { id },
         select: { title: true, content: true, id: true },
-      });
+      };
+      let post = await mongoDBClient.post.findUnique(schemaCondition);
+      if (!post) {
+        post = await postgreSQLClient.post.findUnique(schemaCondition);
+      }
       if (post) {
         await gun.get("posts").get(`${id}`).put(post);
       }

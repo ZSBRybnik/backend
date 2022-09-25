@@ -14,6 +14,81 @@ import sendEmail from "../../../utils/sendEmail/sendEmail";
 import addUserHandlerErrorCodes from "./addUserHandlerErrorCodes";
 import validateAddUserHandler from "./validateAddUserHandler";
 
+/**
+ * @openapi
+ * components:
+ *   schemas:
+ *     addUser:
+ *       type: object
+ *       required:
+ *         - login
+ *         - role
+ *         - password
+ *         - email
+ *         - enabledTwoFactorAuthentication
+ *       properties:
+ *         id:
+ *           type: number
+ *           description: The auto-generated id
+ *         login:
+ *           type: string
+ *           description: User login
+ *         role:
+ *           type: User role
+ *           description: Post content
+ *         password:
+ *           type: string
+ *           description: User password
+ *         email:
+ *           type: email
+ *           description: User email
+ *         authenticatorCode:
+ *           type: string
+ *           description: User authenticator code
+ *         phoneNumber:
+ *           type: string
+ *           description: User phone number
+ *         enabledTwoFactorAuthentication:
+ *           type: string
+ *           description: enabled two factor authentication?
+ *         lockerNumber:
+ *           type: number
+ *           description: User locker number
+ *         lockerPin:
+ *           type: number
+ *           description: User locker pin
+ *       example:
+ *         login: RandomLogin
+ *         role: administrator
+ *         email: email@gmail.com
+ *         phoneNumber: 21372137
+ *         enabledTwoFactorAuthentication: application
+ */
+
+/**
+ * @openapi
+ * /user:
+ *   post:
+ *     summary: Do naprawy bearer token
+ *     tags:
+ *       - User endpoints
+ *     requestBody:
+ *       required: true
+ *       content:
+ *        application/json:
+ *         schema:
+ *             $ref: '#/components/schemas/addUser'
+ *     responses:
+ *       '201':
+ *         description: Created
+ *       '400':
+ *         description: Bad request
+ *       '401':
+ *         description: Unauthorized.
+ *       '500':
+ *         description: Failed create user.
+ */
+
 export type AddUserHandlerBody = {
   login: string;
   email: string;

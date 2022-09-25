@@ -3,6 +3,30 @@ import { RawHandlerArguments } from "../../../utils/createHandler/createHandler.
 import getPageHandlerErrorCodes from "./getPageHandlerErrorCodes";
 import validateGetPageHandler from "./validateGetPageHandler";
 
+/**
+ * @openapi
+ * /page/{name}:
+ *   get:
+ *     summary: Get page by name
+ *     tags:
+ *       - Page endpoints
+ *     description: Get page by name
+ *     parameters:
+ *     - in: path
+ *       name: name
+ *       schema:
+ *         type: string
+ *       required: true
+ *       description: Page name
+ *     responses:
+ *       '200':
+ *         description: Success
+ *       '401':
+ *         description: Unauthorized.
+ *       '500':
+ *         description: Failed get user.
+ */
+
 const { handler: getPageHandler } = createHandler({
   rawHandler: async ({
     request: {

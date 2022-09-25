@@ -17,3 +17,14 @@ model Page {
 
     @@map("pages")
 }
+
+model Post {
+    mongo_id String @id @default(auto()) @map("_id") @db.ObjectId
+    id       Int    @unique
+    title    String
+    content  String
+    author   String
+    brief    String
+
+    @@map("posts")
+}

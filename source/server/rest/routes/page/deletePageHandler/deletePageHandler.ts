@@ -3,6 +3,32 @@ import { RawHandlerArguments } from "../../../utils/createHandler/createHandler.
 import deletePageHandlerErrorCodes from "./deletePageHandlerErrorCodes";
 import validateDeletePageHandler from "./validateDeletePageHandler";
 
+/**
+ * @openapi
+ * /page/{name}:
+ *   delete:
+ *     summary: Delete page by name
+ *     tags:
+ *       - Page endpoints
+ *     description: Delete page endpoint.
+ *     parameters:
+ *     - in: path
+ *       name: name
+ *       schema:
+ *         type: string
+ *       required: true
+ *       description: Page name
+ *     responses:
+ *       '200':
+ *         description: Ok.
+ *       '500':
+ *         description: Failed delete page.
+ *       '401':
+ *         description: Unauthorized.
+ *       '400':
+ *         description: Bad request.
+ */
+
 const { handler: deletePageHandler } = createHandler({
   rawHandler: async ({
     request,

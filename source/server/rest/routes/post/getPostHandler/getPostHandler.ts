@@ -6,6 +6,30 @@ import {
 } from "../../../utils/createHandler/createHandler.types";
 import validateGetPostHandler from "./validateGetPostHandler";
 
+/**
+ * @openapi
+ * /post/{id}:
+ *   get:
+ *     summary: Get post by name
+ *     tags:
+ *       - Post endpoints
+ *     description: Get post by name
+ *     parameters:
+ *     - in: path
+ *       name: id
+ *       schema:
+ *         type: number
+ *       required: true
+ *       description: Post name
+ *     responses:
+ *       '200':
+ *         description: Success
+ *       '401':
+ *         description: Unauthorized.
+ *       '500':
+ *         description: Failed get user.
+ */
+
 const { handler: getPostHandler }: CreateHandlerOutput = createHandler({
   rawHandler: async ({
     request: {

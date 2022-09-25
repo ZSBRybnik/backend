@@ -9,6 +9,7 @@ import getJsonRedisClientMiddleware from "../../middlewares/getJsonRedisClientMi
 import getDatabaseClientMiddleware from "../../middlewares/getPostgreSQLClientMiddleware/getPostgreSQLClientMiddleware";
 import getRedisClientMiddleware from "../../middlewares/getRedisClientMiddleware/getRedisClientMiddleware";
 import getSendWithValidFormatMiddleware from "../../middlewares/getSendWithValidFormatMiddleware/getSendWithValidFormatMiddleware";
+import getSwaggerMiddleware from "../../middlewares/getSwaggerMiddleware/getSwaggerMiddleware";
 import getTrpcMiddleware, {
   appRouter,
 } from "../../middlewares/getTrpcMiddleware/getTrpcMiddleware";
@@ -34,6 +35,7 @@ const applyMiddlewares: ApplyMiddlewares = ({
   instance.use("/trpc", getTrpcMiddleware());
   instance.use("/open-api/trpc", getTrpcOpenApiMiddleware());
   instance.use((Gun as any).serve);
+  instance.use("/swagger", serve, getSwaggerMiddleware());
   instance.use(
     "/swagger/trpc",
     serve,
@@ -43,18 +45,6 @@ const applyMiddlewares: ApplyMiddlewares = ({
         version: "1.0.0",
         baseUrl: "http://localhost:3000/trpc",
       }),
-    ),
-  );
-  instance.use(
-    "/swagger/rest",
-    serve,
-    setup(
-      {},
-      {
-        swaggerOptions: {
-          url: "http://localhost:3000/",
-        },
-      },
     ),
   );
 };
