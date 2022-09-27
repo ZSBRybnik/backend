@@ -2892,10 +2892,10 @@
     "@types/qs" "*"
     "@types/serve-static" "*"
 
-"@types/ffi-napi@^4.0.5":
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/@types/ffi-napi/-/ffi-napi-4.0.5.tgz#0b2dc2d549361947a117d55156ff34fd9632c3df"
-  integrity sha512-WDPpCcHaPhHmP1FIw3ds/+OLt8bYQ/h3SO7o+8kH771PL21kHVzTwii7+WyMBXMQrBsR6xVU2y7w+h+9ggpaQw==
+"@types/ffi-napi@^4.0.6":
+  version "4.0.6"
+  resolved "https://registry.yarnpkg.com/@types/ffi-napi/-/ffi-napi-4.0.6.tgz#cd1c65cc9e701de664e640ccb17a2e823a674d44"
+  integrity sha512-yrBtqeVD1aeVo271jXVEo3iAtbzSGVGRssJv9W9JlUfg5Z5FgHJx2MV88GRwVATu/XWg6zyenW/cb1MNAuOtaQ==
   dependencies:
     "@types/node" "*"
     "@types/ref-napi" "*"
