@@ -131,7 +131,7 @@
     "jsonwebtoken": "^8.5.1",
     "license-checker": "^25.0.1",
     "lodash": "^4.17.21",
-    "mongoose": "^6.5.2",
+    "mongoose": "^6.6.2",
     "neon-cli": "^0.10.1",
     "node-loader": "^2.0.0",
     "nodemailer": "^6.7.7",
