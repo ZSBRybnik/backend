@@ -1,4 +1,4 @@
-import { Post } from "@prisma/client";
+import { Post } from "@prisma/postgresql";
 import { InferLast } from "@trpc/server";
 import { ProcedureResolver } from "@trpc/server/dist/declarations/src/internals/procedure";
 import postgreSQLClient from "~backend/source/server/clients/postgreSQLClient/postgreSQLClient";
@@ -7,16 +7,16 @@ const updatePostResolver: ProcedureResolver<
   unknown,
   {
     id: number;
-    author: string;
+    authorId: number;
     title: string;
     content: string;
     brief: string;
   },
   InferLast<Post | null>
-> = ({ input: { id, author, title, content, brief } }) => {
+> = ({ input: { id, authorId, title, content, brief } }) => {
   return postgreSQLClient.post.update({
     where: { id },
-    data: { author, title, content, brief },
+    data: { authorId, title, content, brief },
   });
 };
 

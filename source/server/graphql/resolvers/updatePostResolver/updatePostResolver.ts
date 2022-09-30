@@ -5,14 +5,14 @@ import createResolver from "../../utils/createResolver/createResolver";
 const updatePostResolver = createResolver<
   {
     id: number;
-    author?: string;
+    authorId?: number;
     title?: string;
     content?: string;
     brief?: string;
   },
   {
     id?: boolean;
-    author?: boolean;
+    authorId?: boolean;
     title?: boolean;
     content?: boolean;
     brief?: boolean;
@@ -23,13 +23,13 @@ const updatePostResolver = createResolver<
       title: titleField = false,
       content: contentField = false,
       id: idField = false,
-      author: authorField = false,
+      authorId: authorIdField = false,
       brief: briefField = false,
     },
-    argument: { id, author, title, content, brief },
+    argument: { id, authorId, title, content, brief },
   }): Promise<Partial<Post>> => {
     await postgreSQLClient.post.update({
-      data: { author, title, content, brief },
+      data: { authorId, title, content, brief },
       where: { id },
     });
     return (
@@ -40,7 +40,7 @@ const updatePostResolver = createResolver<
           title: titleField,
           content: contentField,
           id: idField,
-          author: authorField,
+          authorId: authorIdField,
         },
       })) ?? {}
     );

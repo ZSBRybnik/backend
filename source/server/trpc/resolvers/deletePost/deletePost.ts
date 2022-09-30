@@ -1,4 +1,4 @@
-import { Post } from "@prisma/client";
+import { Post } from "@prisma/postgresql";
 import { InferLast } from "@trpc/server";
 import { ProcedureResolver } from "@trpc/server/dist/declarations/src/internals/procedure";
 import postgreSQLClient from "~backend/source/server/clients/postgreSQLClient/postgreSQLClient";
