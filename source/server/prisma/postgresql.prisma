@@ -19,16 +19,18 @@ model User {
   enabledTwoFactorAuthentication String  @default("application") @map("enabled_two_factor_authentication")
   lockerNumber                   Int?    @unique @map("locker_number")
   lockerPin                      Int?    @map("locker_pin")
+  posts                          Post[]
 
   @@map("users")
 }
 
 model Post {
-  id      Int    @id @default(autoincrement())
-  title   String @db.VarChar(255)
-  content String @db.Text
-  author  String @db.VarChar(255)
-  brief   String @db.VarChar(255)
+  id       Int    @id @default(autoincrement())
+  title    String @db.VarChar(255)
+  content  String @db.Text
+  author   User   @relation(fields: [authorId], references: [id])
+  authorId Int    @map("author_id")
+  brief    String @db.VarChar(255)
 
   @@map("posts")
 }
@@ -40,4 +42,13 @@ model Page {
   content String @db.Text
 
   @@map("pages")
+}
+
+model Product {
+  id       Int     @id @default(autoincrement())
+  name     String  @db.VarChar(255)
+  price    Decimal
+  quantity Int
+
+  @@map("products")
 }
