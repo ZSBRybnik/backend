@@ -45,10 +45,11 @@ model Page {
 }
 
 model Product {
-  id       Int     @id @default(autoincrement())
-  name     String  @db.VarChar(255)
-  price    Decimal
-  quantity Int
+  id          Int     @id @default(autoincrement())
+  name        String  @db.VarChar(255)
+  price       Decimal
+  quantity    Int
+  description String  @db.Text
 
   @@map("products")
 }
