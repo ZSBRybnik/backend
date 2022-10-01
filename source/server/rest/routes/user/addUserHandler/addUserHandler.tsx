@@ -111,7 +111,7 @@ const { handler: addUserHandler }: CreateHandlerOutput = createHandler({
     const { login, email } = body;
     await validateAddUserHandler({ response, next, data: body });
     verifyToken();
-    const randomPassword = generateRandomPassword();
+    const randomPassword: string = generateRandomPassword();
     const hashedPassword: string = await hash(randomPassword, 11);
     const googleAuthCode: string = authenticator.generateSecret();
     await addUserHandlerErrorCodes({
