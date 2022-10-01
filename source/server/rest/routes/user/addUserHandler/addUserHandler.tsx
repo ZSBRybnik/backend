@@ -95,6 +95,8 @@ export type AddUserHandlerBody = {
   role: Roles;
   phoneNumber: string;
   enabledTwoFactorAuthentication: EnabledTwoFactorAuthentication;
+  lockerNumber: number;
+  lockerPin: number;
 };
 
 const { handler: addUserHandler }: CreateHandlerOutput = createHandler({
