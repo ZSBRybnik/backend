@@ -1,4 +1,4 @@
-import { Page } from "@prisma/client";
+import { Page } from "@prisma/postgresql";
 import createHandler from "../../../utils/createHandler/createHandler";
 import { RawHandlerArguments } from "../../../utils/createHandler/createHandler.types";
 import updatePageHandlerErrorCodes from "./updatePageHandlerErrorCodes";

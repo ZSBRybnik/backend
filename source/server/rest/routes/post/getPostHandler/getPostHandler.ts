@@ -1,4 +1,4 @@
-import { Post } from "@prisma/client";
+import { Post, User } from "@prisma/postgresql";
 import createHandler from "../../../utils/createHandler/createHandler";
 import {
   CreateHandlerOutput,
@@ -50,11 +50,22 @@ const { handler: getPostHandler }: CreateHandlerOutput = createHandler({
     if (post) {
       response.sendWithValidFormat({ data: post });
     } else {
-      const databasePost: Omit<Post, "id" | "brief"> | null =
-        await postgreSQLClient.post.findUnique({
-          where: { id: parseInt(id) },
-          select: { title: true, author: true, content: true },
-        });
+      const databasePost:
+        | (Pick<Post, "title" | "content"> & {
+            author: Pick<User, "login">;
+          })
+        | null = await postgreSQLClient.post.findUnique({
+        where: { id: parseInt(id) },
+        select: {
+          title: true,
+          content: true,
+          author: {
+            select: {
+              login: true,
+            },
+          },
+        },
+      });
       if (databasePost) {
         await jsonRedisClient.set(`pages-${id}`, databasePost);
         response.sendWithValidFormat({ data: databasePost });

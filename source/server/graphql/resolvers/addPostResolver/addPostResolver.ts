@@ -1,6 +1,5 @@
-import { Post } from "@prisma/client";
+import { Post } from "@prisma/postgresql";
 import postgreSQLClient from "~backend/source/server/clients/postgreSQLClient/postgreSQLClient";
-
 import createResolver from "../../utils/createResolver/createResolver";
 
 const addPostResolver = createResolver<

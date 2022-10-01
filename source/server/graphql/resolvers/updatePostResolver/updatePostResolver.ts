@@ -1,4 +1,4 @@
-import { Post } from "@prisma/client";
+import { Post } from "@prisma/postgresql";
 import postgreSQLClient from "~backend/source/server/clients/postgreSQLClient/postgreSQLClient";
 import createResolver from "../../utils/createResolver/createResolver";
 
@@ -28,22 +28,17 @@ const updatePostResolver = createResolver<
     },
     argument: { id, authorId, title, content, brief },
   }): Promise<Partial<Post>> => {
-    await postgreSQLClient.post.update({
+    return await postgreSQLClient.post.update({
       data: { authorId, title, content, brief },
+      select: {
+        brief: briefField,
+        title: titleField,
+        content: contentField,
+        id: idField,
+        authorId: authorIdField,
+      },
       where: { id },
     });
-    return (
-      (await postgreSQLClient.post.findUnique({
-        where: { id },
-        select: {
-          brief: briefField,
-          title: titleField,
-          content: contentField,
-          id: idField,
-          authorId: authorIdField,
-        },
-      })) ?? {}
-    );
   },
 });
 

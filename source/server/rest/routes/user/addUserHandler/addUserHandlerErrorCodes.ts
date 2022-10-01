@@ -1,5 +1,5 @@
-import { User } from "@prisma/client";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime";
+import { User } from "@prisma/postgresql";
 import { NextFunction } from "express";
 import loggerClient from "~backend/source/server/clients/loggerClient/loggerClient";
 import postgreSQLClient from "~backend/source/server/clients/postgreSQLClient/postgreSQLClient";
