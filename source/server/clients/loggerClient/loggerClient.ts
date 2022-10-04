@@ -1,6 +1,6 @@
-import { createLogger, format, transports } from "winston";
+import { createLogger, format, Logger, transports } from "winston";
 
-const loggerClient = createLogger({
+const loggerClient: Logger = createLogger({
   format: format.json(),
   transports: [new transports.File({ filename: "logs.log" })],
 });

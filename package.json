@@ -19,7 +19,9 @@
     "setup-husky": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/setupHusky/setupHusky.ts",
     "test": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/runTests/runTests.ts",
     "update-dependencies": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/updateDependencies/updateDependencies.ts",
-    "build-and-start": "yarn run build && yarn run start"
+    "build-and-start": "yarn run build && yarn run start",
+    "generate-mongodb-types": "prisma generate --schema=./source/server/prisma/mongodb.prisma",
+    "generate-postgresql-types": "prisma generate --schema=./source/server/prisma/postgresql.prisma"
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
@@ -39,6 +41,7 @@
     "@prettier/plugin-pug": "^2.1.1",
     "@prisma/client": "^4.0.0",
     "@trpc/server": "^9.27.0",
+    "@types/aws-lambda": "^8.10.106",
     "@types/bcrypt": "^5.0.0",
     "@types/case-sensitive-paths-webpack-plugin": "^2.1.6",
     "@types/clean-webpack-plugin": "^0.1.3",
@@ -75,6 +78,7 @@
     "audit-ci": "^6.3.0",
     "aurora": "^2.1.3",
     "avsc": "^5.7.4",
+    "aws-lambda": "^1.0.7",
     "babel-loader": "^8.2.5",
     "backend-native-addon-go": "file:./source/native-addon-go",
     "backend-native-addon-rust": "file:./source/native-addon-rust",
@@ -123,6 +127,7 @@
     "ioredis": "^5.1.0",
     "jest": "^28.1.2",
     "jest-extended": "^2.0.0",
+    "jest-mock-extended": "^3.0.1",
     "js-yaml": "^4.1.0",
     "jsbi": "^4.3.0",
     "jsdoc": "^3.6.10",

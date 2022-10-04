@@ -1,4 +1,4 @@
-import { User } from "@prisma/client";
+import { User } from "@prisma/postgresql";
 import { compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
 import { authenticator } from "otplib";

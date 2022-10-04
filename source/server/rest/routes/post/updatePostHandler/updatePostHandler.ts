@@ -1,4 +1,4 @@
-import { Post } from "@prisma/client";
+import { Post } from "@prisma/postgresql";
 import createHandler from "../../../utils/createHandler/createHandler";
 
 /**
@@ -71,7 +71,7 @@ import updatePostHandlerValidator from "../../../validators/postValidators/updat
 const { handler: updatePostHandler }: CreateHandlerOutput = createHandler({
   rawHandler: async ({
     request: {
-      body: { title, author, content },
+      body: { title, content },
       params: { id },
       postgreSQLClient,
       jsonRedisClient,
@@ -84,7 +84,7 @@ const { handler: updatePostHandler }: CreateHandlerOutput = createHandler({
     const validator = updatePostHandlerValidator();
     try {
       await validator.validate(
-        { title, author, content },
+        { title, content },
         { strict: true, abortEarly: true },
       );
     } catch {
@@ -93,11 +93,11 @@ const { handler: updatePostHandler }: CreateHandlerOutput = createHandler({
     }
     await postgreSQLClient.post.update({
       where: { id: parseInt(id) },
-      data: { title, author, content },
+      data: { title, content },
     });
     const redisPost: Omit<Post, "id"> = await jsonRedisClient.get(`post-${id}`);
     if (redisPost) {
-      await jsonRedisClient.set(`post-${id}`, { title, author, content });
+      await jsonRedisClient.set(`post-${id}`, { title, content });
     }
     response.sendStatus(200);
   },

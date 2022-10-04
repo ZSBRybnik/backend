@@ -1,10 +1,10 @@
-import { Post } from "@prisma/client";
+import { Post } from "@prisma/postgresql";
 import postgreSQLClient from "~backend/source/server/clients/postgreSQLClient/postgreSQLClient";
 import createResolver from "../../utils/createResolver/createResolver";
 
 const addPostResolver = createResolver<
   {
-    author: string;
+    authorId: number;
     title: string;
     content: string;
     brief: string;
@@ -13,10 +13,15 @@ const addPostResolver = createResolver<
 >({
   // tslint:disable-next-line: typedef
   rawResolver: async ({
-    argument: { author, title, content, brief },
+    argument: { authorId, title, content, brief },
   }): Promise<Partial<Post>> => {
     return await postgreSQLClient.post.create({
-      data: { author, title, content, brief },
+      data: {
+        title,
+        content,
+        brief,
+        authorId,
+      },
     });
   },
 });
