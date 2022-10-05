@@ -32,6 +32,7 @@ const getDefinePlugin: GetDefinePlugin = ({
     "process.env.MODERN": JSON.stringify(targetToModern),
     "process.env.PUBLIC_URL": JSON.stringify(publicURL),
     "process.env.WEBSOCKET_URL": JSON.stringify(process.env.WEBSOCKET_URL),
+    "process.env.REDIS_ADDRESS": JSON.stringify(process.env.REDIS_ADDRESS),
     "process.env.LOCALIZED_LANGUAGES": JSON.stringify(getLocalizedLanguages()),
     "process.env.GOOGLE_ANALYTICS_ID": JSON.stringify(
       process.env.GOOGLE_ANALYTICS_ID,

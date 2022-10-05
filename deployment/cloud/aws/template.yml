@@ -1,0 +1,10 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: ZSB Lambda Handler
+Resources:
+  Function:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.default
+      Runtime: nodejs16.x
+      ImageUri: localhost:5000/zsb_lambda:latest
