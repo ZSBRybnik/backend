@@ -3,7 +3,6 @@
 ## Requirements
 
 - [Docker](https://www.docker.com/) (optional)
-- [Go] (optional, because of autoinstall script)
 
 ### Windows
 
