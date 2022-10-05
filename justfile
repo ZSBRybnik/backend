@@ -1,5 +1,7 @@
 set windows-shell := ["cmd.exe", "/c"]
 
+install:
+  yarn
 audit-dependencies:
   yarn run audit-dependencies
 build:
