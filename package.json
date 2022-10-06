@@ -41,7 +41,7 @@
     "@prettier/plugin-pug": "^2.1.1",
     "@prisma/client": "^4.0.0",
     "@pulumi/aws": "^5.16.0",
-    "@pulumi/pulumi": "^3.40.2",
+    "@pulumi/pulumi": "^3.41.1",
     "@trpc/server": "^9.27.0",
     "@types/aws-lambda": "^8.10.106",
     "@types/bcrypt": "^5.0.0",
