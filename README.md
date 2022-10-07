@@ -30,6 +30,8 @@ To successfully run project you have to set environmental variables in `.env` fi
 POSTGRESQL_URL="postgresql://login:password@address:port/database?schema=databaseSchema"
 EMAIL="email"
 EMAIL_PASSWORD="emailPassword"
+AWS_ACCESS_KEY_ID="id"
+AWS_SECRET_ACCESS_KEY="key"
 ```
 
 ## Commands
