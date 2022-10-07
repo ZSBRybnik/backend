@@ -42,7 +42,7 @@
     "@prisma/client": "^4.0.0",
     "@pulumi/aws": "^5.16.0",
     "@pulumi/azure": "^5.21.0",
-    "@pulumi/pulumi": "^3.40.2",
+    "@pulumi/pulumi": "^3.42.0",
     "@trpc/server": "^9.27.0",
     "@types/aws-lambda": "^8.10.106",
     "@types/bcrypt": "^5.0.0",
