@@ -1,12 +1,15 @@
 import { cosmosdb } from "@pulumi/azure";
 
-const { resourceGroupName, name }: cosmosdb.GetAccountResult =
-  await cosmosdb.getAccount({
+const { getAccount, MongoDatabase }: typeof cosmosdb = cosmosdb;
+
+const { resourceGroupName, name }: cosmosdb.GetAccountResult = await getAccount(
+  {
     name: "zsbrybnik",
     resourceGroupName: "zsbrybnik",
-  });
+  },
+);
 
-new cosmosdb.MongoDatabase("zsbrybnik", {
+new MongoDatabase("zsbrybnik", {
   resourceGroupName: resourceGroupName,
   accountName: name,
 });
