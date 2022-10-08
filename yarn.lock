@@ -7864,10 +7864,10 @@ i18next-chained-backend@^3.0.2:
   dependencies:
     "@babel/runtime" "^7.14.0"
 
-i18next@^21.8.15:
-  version "21.8.15"
-  resolved "https://registry.yarnpkg.com/i18next/-/i18next-21.8.15.tgz#21dadc234d031979ad5bec51fc83e95ea3d416b0"
-  integrity sha512-mmFh58QFYagWCMJUa0w9GfE9pf0Az6uI4YaXLbcXulZlJ/zKTlBC8Z6oIgBB3hrmlheL5smKPOWQ3FjKC3MFWA==
+i18next@^21.10.0:
+  version "21.10.0"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-21.10.0.tgz#85429af55fdca4858345d0e16b584ec29520197d"
+  integrity sha512-YeuIBmFsGjUfO3qBmMOc0rQaun4mIpGKET5WDwvu8lU7gvwpcariZLNtL0Fzj+zazcHUrlXHiptcFhBMFaxzfg==
   dependencies:
     "@babel/runtime" "^7.17.2"
 
