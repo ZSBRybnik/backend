@@ -10,7 +10,7 @@ import handlePostInstallWindows from "~backend/source/scripts/runner/utils/handl
     $.shell = "cmd";
     $.prefix = "";
   }
-  await $`husky install`;
+  await $`husky install && yarn run generate-postgresql-types && yarn run generate-mongodb-types`;
   if (os === "win32") {
     await handlePostInstallWindows();
   } else if (os === "darwin") {
