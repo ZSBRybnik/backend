@@ -155,6 +155,7 @@
     "prettier-plugin-prisma": "^4.1.0",
     "prisma": "^4.0.0",
     "pug": "^3.0.2",
+    "purs-loader": "^4.0.0",
     "qrcode": "^1.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
