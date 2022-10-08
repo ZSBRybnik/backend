@@ -2,6 +2,7 @@ import { RuleSetRule } from "webpack";
 import getCssLoader from "~backend/source/scripts/build/loaders/getCssLoader/getCssLoader";
 import getHaxeLoader from "~backend/source/scripts/build/loaders/getHaxeLoader/getHaxeLoader";
 import getJavaScriptModuleLoader from "~backend/source/scripts/build/loaders/getJavaScriptModuleLoader/getJavaScriptModuleLoader";
+import getNimLoader from "~backend/source/scripts/build/loaders/getNimLoader/getNimLoader";
 import getNodeLoader from "~backend/source/scripts/build/loaders/getNodeLoader/getNodeLoader";
 import getPugLoader from "~backend/source/scripts/build/loaders/getPugLoader/getPugLoader";
 import getPureScriptLoader from "~backend/source/scripts/build/loaders/getPureScriptLoader/getPureScriptLoader";
@@ -20,6 +21,7 @@ const getLoaders: GetLoader = (): RuleSetRule[] => {
     getPureScriptLoader(),
     getCssLoader(),
     getHaxeLoader(),
+    getNimLoader(),
   ];
 };
 
