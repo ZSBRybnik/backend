@@ -13,6 +13,11 @@ const handlePostInstallMacOS = async () => {
   } catch {
     await $`${Programs.Brew} install pulumi`;
   }
+  try {
+    await commandExists("cloud-nuke");
+  } catch {
+    await $`${Programs.Brew} install cloud-nuke`;
+  }
 };
 
 export default handlePostInstallMacOS;

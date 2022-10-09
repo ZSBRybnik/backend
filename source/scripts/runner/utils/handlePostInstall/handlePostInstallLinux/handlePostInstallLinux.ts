@@ -13,6 +13,11 @@ const handlePostInstallLinux = async () => {
   } catch {
     await $`curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`;
   }
+  try {
+    await commandExists("cloud-nuke");
+  } catch {
+    await $`${Programs.Brew} install cloud-nuke`;
+  }
 };
 
 export default handlePostInstallLinux;
