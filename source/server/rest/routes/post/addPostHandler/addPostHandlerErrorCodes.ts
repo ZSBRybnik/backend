@@ -1,4 +1,5 @@
 import { NextFunction } from "express";
+import ipfsClient from "~backend/source/server/clients/ipfsClient/ipfsClient";
 import mongoDBClient from "~backend/source/server/clients/mongoDBClient/mongoDBClient";
 import postgreSQLClient from "~backend/source/server/clients/postgreSQLClient/postgreSQLClient";
 import Response from "../../../types/response/response";
@@ -19,10 +20,19 @@ const addPostHandlerErrorCodes = async ({
     const post = await postgreSQLClient.post.create({
       data: { ...rest, content, brief: brief || content.slice(0, 150) },
     });
-    await mongoDBClient.post.create({
+    const mongoDBPromise = mongoDBClient.post.create({
       data: post,
     });
-  } catch {
+    const ipfsPromise = ipfsClient.add(post);
+    const [{ cid }] = await Promise.all([ipfsPromise, mongoDBPromise]);
+    console.log(cid);
+    //await faunaDBClient.query(
+    //Insert(Ref(Collection("posts")), 1, "create", {
+    //   data: { cid, id: post.id },
+    // }),
+    // );
+  } catch (e) {
+    console.error(e);
     response.sendStatus(400);
     return next();
   }
