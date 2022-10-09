@@ -6,7 +6,7 @@ import { AddPostHandler } from "./addPostHandler";
 type ValidateAddPostHandler = {
   response: Response;
   next: NextFunction;
-  validationData: Pick<AddPostHandler, "title" | "author" | "content">;
+  validationData: Pick<AddPostHandler, "title" | "authorId" | "content">;
 };
 
 const validateAddPostHandler = async ({
