@@ -21,7 +21,8 @@
     "update-dependencies": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/updateDependencies/updateDependencies.ts",
     "build-and-start": "yarn run build && yarn run start",
     "generate-mongodb-types": "prisma generate --schema=./source/server/prisma/mongodb.prisma",
-    "generate-postgresql-types": "prisma generate --schema=./source/server/prisma/postgresql.prisma"
+    "generate-postgresql-types": "prisma generate --schema=./source/server/prisma/postgresql.prisma",
+    "migrate": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/migrate/migrate.ts"
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",

@@ -1,9 +1,9 @@
-import { object, string } from "yup";
+import { number, object, string } from "yup";
 
 const addPostHandlerValidator = () => {
   return object().shape({
     title: string().required(),
-    author: string().required(),
+    authorId: number().required().positive().integer(),
     content: string().required(),
     brief: string(),
   });

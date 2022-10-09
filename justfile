@@ -32,3 +32,5 @@ update-dependencies:
   yarn run update-dependencies:
 build-and-start:
   yarn run build-and-start
+migrate:
+  yarn run migrate

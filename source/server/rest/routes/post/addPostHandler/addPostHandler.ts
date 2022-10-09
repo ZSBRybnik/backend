@@ -66,7 +66,7 @@ import validateAddPostHandler from "./validateAddPostHandler";
 
 export type AddPostHandler = {
   title: string;
-  author: string;
+  authorId: number;
   content: string;
   brief?: string;
 };
@@ -74,7 +74,7 @@ export type AddPostHandler = {
 const { handler: addPostHandler }: CreateHandlerOutput = createHandler({
   rawHandler: async ({
     request: {
-      body: { title, author, content, brief },
+      body: { title, authorId, content, brief },
     },
     response,
     next,
@@ -84,12 +84,12 @@ const { handler: addPostHandler }: CreateHandlerOutput = createHandler({
     validateAddPostHandler({
       response,
       next,
-      validationData: { title, author, content },
+      validationData: { title, authorId, content },
     });
     await addPostHandlerErrorCodes({
       response,
       next,
-      data: { title, author, content, brief },
+      data: { title, authorId, content, brief },
     });
   },
 });
