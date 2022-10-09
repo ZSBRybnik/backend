@@ -78,7 +78,7 @@
     "@types/webpack-node-externals": "^2.5.3",
     "@types/xml": "^1.0.8",
     "@typescript-eslint/eslint-plugin": "^5.30.5",
-    "@typescript-eslint/parser": "^5.30.5",
+    "@typescript-eslint/parser": "^5.39.0",
     "@vendia/serverless-express": "^4.10.1",
     "audit-ci": "^6.3.0",
     "aurora": "^2.1.3",
