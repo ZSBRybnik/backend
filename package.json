@@ -162,6 +162,7 @@
     "prettier-plugin-organize-imports": "^3.0.0",
     "prettier-plugin-prisma": "^4.1.0",
     "prisma": "^4.0.0",
+    "prop-types": "^15.8.1",
     "pug": "^3.0.2",
     "purs-loader": "^4.0.0",
     "qrcode": "^1.5.1",
