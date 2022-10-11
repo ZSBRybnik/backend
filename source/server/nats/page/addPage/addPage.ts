@@ -1,26 +1,26 @@
 /* eslint-disable max-params */
-import { Post } from "@prisma/postgresql";
+import { Page } from "@prisma/postgresql";
 import mongoDBClient from "~backend/source/server/clients/mongoDBClient/mongoDBClient";
 import natsClient, {
   jsonCodec,
 } from "~backend/source/server/clients/natsClient/natsClient";
 
-natsClient.subscribe("post.add", {
+natsClient.subscribe("page.add", {
   callback: async (_error, { data }) => {
     try {
-      const post: Post = jsonCodec.decode(data) as Post;
-      await mongoDBClient.post.create({
-        data: post,
+      const page: Page = jsonCodec.decode(data) as Page;
+      await mongoDBClient.page.create({
+        data: page,
       });
-      // const ipfsPromise = ipfsClient.add(post);
+      // const ipfsPromise = ipfsClient.add(page);
       // const [{ cid }] = await Promise.all([ipfsPromise, mongoDBPromise]);
       // await faunaDBClient.query(
-      //   Insert(Ref(Collection("posts")), 1, "create", {
+      //   Insert(Ref(Collection("pages")), 1, "create", {
       //     data: { cid, id: post.id },
       //   }),
       // );
     } catch {
-      natsClient.publish("post.add", data);
+      natsClient.publish("page.add", data);
     }
   },
 });
