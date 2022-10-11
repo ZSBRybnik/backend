@@ -1,6 +1,9 @@
 import { NextFunction } from "express";
 import ipfsClient from "~backend/source/server/clients/ipfsClient/ipfsClient";
 import mongoDBClient from "~backend/source/server/clients/mongoDBClient/mongoDBClient";
+import natsClient, {
+  jsonCodec,
+} from "~backend/source/server/clients/natsClient/natsClient";
 import postgreSQLClient from "~backend/source/server/clients/postgreSQLClient/postgreSQLClient";
 import Response from "../../../types/response/response";
 import { AddPostHandler } from "./addPostHandler";
@@ -20,6 +23,7 @@ const addPostHandlerErrorCodes = async ({
     const post = await postgreSQLClient.post.create({
       data: { ...rest, content, brief: brief || content.slice(0, 150) },
     });
+    natsClient.publish("add-post", jsonCodec.encode(post));
     const mongoDBPromise = mongoDBClient.post.create({
       data: post,
     });
