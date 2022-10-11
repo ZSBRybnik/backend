@@ -3,7 +3,7 @@ import natsClient, {
   jsonCodec,
 } from "~backend/source/server/clients/natsClient/natsClient";
 
-natsClient.subscribe("add-post", {
+natsClient.subscribe("post.add", {
   callback: (_error, { data }) => {
     console.log(jsonCodec.decode(data));
   },

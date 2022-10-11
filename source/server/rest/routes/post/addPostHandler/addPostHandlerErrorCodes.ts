@@ -23,7 +23,7 @@ const addPostHandlerErrorCodes = async ({
     const post = await postgreSQLClient.post.create({
       data: { ...rest, content, brief: brief || content.slice(0, 150) },
     });
-    natsClient.publish("add-post", jsonCodec.encode(post));
+    natsClient.publish("post.add", jsonCodec.encode(post));
     const mongoDBPromise = mongoDBClient.post.create({
       data: post,
     });
