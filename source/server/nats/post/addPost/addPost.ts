@@ -10,16 +10,20 @@ import natsClient, {
 
 natsClient.subscribe("post.add", {
   callback: async (_error, { data }) => {
-    const post: Post = jsonCodec.decode(data) as Post;
-    const mongoDBPromise = mongoDBClient.post.create({
-      data: post,
-    });
-    const ipfsPromise = ipfsClient.add(post);
-    const [{ cid }] = await Promise.all([ipfsPromise, mongoDBPromise]);
-    await faunaDBClient.query(
-      Insert(Ref(Collection("posts")), 1, "create", {
-        data: { cid, id: post.id },
-      }),
-    );
+    try {
+      const post: Post = jsonCodec.decode(data) as Post;
+      const mongoDBPromise = mongoDBClient.post.create({
+        data: post,
+      });
+      const ipfsPromise = ipfsClient.add(post);
+      const [{ cid }] = await Promise.all([ipfsPromise, mongoDBPromise]);
+      await faunaDBClient.query(
+        Insert(Ref(Collection("posts")), 1, "create", {
+          data: { cid, id: post.id },
+        }),
+      );
+    } catch {
+      natsClient.publish("post.add", data);
+    }
   },
 });
