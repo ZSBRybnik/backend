@@ -7,10 +7,10 @@ import natsClient, {
 
 natsClient.subscribe("post.add.*", {
   callback: async (_error, { data }) => {
+    const { id, ...postData }: Post = jsonCodec.decode(data) as Post;
     try {
-      const post: Post = jsonCodec.decode(data) as Post;
       await mongoDBClient.post.create({
-        data: post,
+        data: { id, ...postData },
       });
       // const ipfsPromise = ipfsClient.add(post);
       // const [{ cid }] = await Promise.all([ipfsPromise, mongoDBPromise]);
@@ -20,7 +20,7 @@ natsClient.subscribe("post.add.*", {
       //   }),
       // );
     } catch {
-      natsClient.publish("post.add", data);
+      natsClient.publish(`post.add.${id}`, data);
     }
   },
 });

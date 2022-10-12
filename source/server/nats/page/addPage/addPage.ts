@@ -5,12 +5,13 @@ import natsClient, {
   jsonCodec,
 } from "~backend/source/server/clients/natsClient/natsClient";
 
-natsClient.subscribe("page.add", {
+natsClient.subscribe("page.add.*", {
   callback: async (_error, { data }) => {
+    const { id, ...pageData }: Page = jsonCodec.decode(data) as Page;
+
     try {
-      const page: Page = jsonCodec.decode(data) as Page;
       await mongoDBClient.page.create({
-        data: page,
+        data: { id, ...pageData },
       });
       // const ipfsPromise = ipfsClient.add(page);
       // const [{ cid }] = await Promise.all([ipfsPromise, mongoDBPromise]);
@@ -20,7 +21,7 @@ natsClient.subscribe("page.add", {
       //   }),
       // );
     } catch {
-      natsClient.publish("page.add", data);
+      natsClient.publish(`page.add.${id}`, data);
     }
   },
 });
