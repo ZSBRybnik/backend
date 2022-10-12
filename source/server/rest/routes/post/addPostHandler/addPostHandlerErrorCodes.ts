@@ -1,3 +1,4 @@
+import { Post } from "@prisma/postgresql";
 import { NextFunction } from "express";
 import natsClient, {
   jsonCodec,
@@ -18,10 +19,10 @@ const addPostHandlerErrorCodes = async ({
   data: { brief, content, ...rest },
 }: AddPostHandlerErrorCodes): Promise<void> => {
   try {
-    const post = await postgreSQLClient.post.create({
+    const { id, ...postData }: Post = await postgreSQLClient.post.create({
       data: { ...rest, content, brief: brief || content.slice(0, 150) },
     });
-    natsClient.publish("post.add", jsonCodec.encode(post));
+    natsClient.publish(`post.add.${id}`, jsonCodec.encode({ id, ...postData }));
   } catch {
     response.sendStatus(400);
     return next();

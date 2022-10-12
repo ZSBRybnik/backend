@@ -8,7 +8,7 @@ import natsClient, {
   jsonCodec,
 } from "~backend/source/server/clients/natsClient/natsClient";
 
-natsClient.subscribe("post.add", {
+natsClient.subscribe("post.add.*", {
   callback: async (_error, { data }) => {
     try {
       const post: Post = jsonCodec.decode(data) as Post;
