@@ -1,4 +1,4 @@
-import { create } from "ipfs-http-client";
+import { create } from "ipfs-core";
 
 const ipfsClient = await create();
 
