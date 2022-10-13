@@ -11,7 +11,6 @@ import natsClient, {
 natsClient.subscribe("page.update.*", {
   callback: async (_error, { data }) => {
     const { id, name, ...pageData }: Page = jsonCodec.decode(data) as Page;
-
     try {
       const mongoDBPromise = mongoDBClient.page.update({
         data: { id, name, ...pageData },
