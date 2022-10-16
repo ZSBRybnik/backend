@@ -1,13 +1,13 @@
 FROM node:latest AS build
-ADD . /home/backend
-WORKDIR /home/backend
-RUN apt-get -qq update 
-RUN apt-get install -y -q build-essential curl golang-go 
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
-ENV PATH="/root/.cargo/bin:${PATH}"
-RUN yarn --ignore-engines
-RUN npx prisma generate --schema=./source/server/prisma/schema.prisma
-RUN yarn test
-RUN yarn run build
 EXPOSE 3000
-CMD ["yarn", "run", "run"]
+ENV PATH="/root/.cargo/bin:${PATH}"
+WORKDIR /home/backend
+CMD ["yarn", "run", "start"]
+RUN apt-get -qq update &&\
+    apt-get install -y -q build-essential curl golang-go &&\
+    curl https://sh.rustup.rs -sSf | sh -s -- -y
+COPY . .
+RUN yarn --ignore-engines &&\
+    yarn generate-postgresql-types &&\
+    yarn generate-mongodb-types &&\
+    yarn run build 
