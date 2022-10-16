@@ -28,6 +28,7 @@ To successfully run project you have to set environmental variables in `.env` fi
 
 ```env
 POSTGRESQL_URL="postgresql://login:password@address:port/database?schema=databaseSchema"
+MONGODB_URL="mongodb+srv://login:password@address:port/database?retryWrites=true&w=majority"
 EMAIL="email"
 EMAIL_PASSWORD="emailPassword"
 AWS_ACCESS_KEY_ID="id"
