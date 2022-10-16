@@ -16,4 +16,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 'latest'
-      - run: yarn test
+      - run: |
+          yarn config set network-timeout 1000000000 -g
+          yarn --ignore-engines
+          RUN yarn run build
+          yarn test
