@@ -17,8 +17,8 @@ spec:
       containers:
         - name: backend
           image: "{{ .Values.containers.containerName }}:{{ .Values.containers.tag }}"
-          imagePullPolicy: {{ .Values.containers.imagePullPolicy }}
-      imagePullSecrets:
-      - name: docker-github-cred
+          imagePullPolicy: {{ .Values.containers.imagePullPolicy }}     
           ports:
             - containerPort: {{ .Values.containers.containerPorts }}
+      imagePullSecrets:
+      - name: docker-github-cred
