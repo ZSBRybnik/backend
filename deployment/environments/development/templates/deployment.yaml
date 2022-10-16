@@ -21,4 +21,4 @@ spec:
           ports:
             - containerPort: {{ .Values.containers.containerPorts }}
       imagePullSecrets:
-      - name: docker-github-cred
+      - name: dockerconfigjson-github-com
