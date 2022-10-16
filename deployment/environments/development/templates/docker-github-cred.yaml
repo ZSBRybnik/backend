@@ -6,4 +6,4 @@ metadata:
   labels:
     app: zsb
 data:
-  .dockerconfigjson: {{ .imagePullSecrets }}
+  .dockerconfigjson: {{ .Values.containers.imagePullSecrets }}

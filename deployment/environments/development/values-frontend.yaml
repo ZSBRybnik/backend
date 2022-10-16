@@ -1,0 +1,16 @@
+
+replicasCount: 1
+
+containers:
+  containerName: zsb-frontend:latest
+  imagePullPolicy: Never
+  containerPorts: 8080
+
+metadata:
+  labels: frontend
+  selector: backend
+services:
+  type: LoadeBalancer
+  port: 5000
+  targetPort: 5000
+  
