@@ -119,6 +119,7 @@ const { handler: addUserHandler }: CreateHandlerOutput = createHandler({
       next,
       data: {
         ...body,
+        classId: 1,
         authenticatorCode: googleAuthCode,
         password: hashedPassword,
       },
