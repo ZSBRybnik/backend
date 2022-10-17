@@ -23,7 +23,7 @@
     "generate-mongodb-types": "prisma generate --schema=./source/server/prisma/mongodb.prisma",
     "generate-postgresql-types": "prisma generate --schema=./source/server/prisma/postgresql.prisma",
     "migrate": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/migrate/migrate.ts",
-    "storybook": "start-storybook -p 6006"
+    "storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006"
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
