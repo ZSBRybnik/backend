@@ -7,7 +7,9 @@ export default {
   component: Header,
 } as ComponentMeta<typeof Header>;
 
-const Template: ComponentStory<FunctionComponent> = (): JSX.Element => {
+const Template: ComponentStory<
+  FunctionComponent<unknown>
+> = (): JSX.Element => {
   return <Header />;
 };
 
