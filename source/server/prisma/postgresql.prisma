@@ -20,6 +20,8 @@ model User {
   lockerNumber                   Int?    @unique @map("locker_number")
   lockerPin                      Int?    @map("locker_pin")
   posts                          Post[]
+  class                          Class   @relation(fields: [classId], references: [id])
+  classId                        Int
 
   @@map("users")
 }
@@ -52,4 +54,12 @@ model Product {
   description String  @db.Text
 
   @@map("products")
+}
+
+model Class {
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar(10)
+  User User[]
+
+  @@map("classes")
 }

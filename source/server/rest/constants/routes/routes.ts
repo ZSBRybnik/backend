@@ -10,6 +10,7 @@ enum Routes {
   Page = "/page",
   PageWithName = "/page/:name",
   Weather = "/weather",
+  Classes = "/classes",
 }
 
 export default Routes;

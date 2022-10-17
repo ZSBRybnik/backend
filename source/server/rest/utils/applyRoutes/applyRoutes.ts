@@ -14,6 +14,7 @@ import addUserHandler from "~backend/source/server/rest/routes/user/addUserHandl
 import deleteUserHandler from "~backend/source/server/rest/routes/user/deleteUserHandler/deleteUserHandler";
 import updateUserHandler from "~backend/source/server/rest/routes/user/updateUserHandler/updateUserHandler";
 import verifyTokenHandler from "~backend/source/server/rest/routes/verifyTokenHandler/verifyTokenHandler";
+import generateClasses from "../../routes/discord/classes/generateClasses/generateClasses";
 import getWeather from "../../routes/weather/getWeather/getWeather";
 
 type ApplyRoutesArguments = {
@@ -38,6 +39,7 @@ const applyRoutes: ApplyRoutes = ({ instance }: ApplyRoutesArguments): void => {
   instance.put(Routes.PageWithName, updatePageHandler);
   instance.delete(Routes.PageWithName, deletePageHandler);
   instance.get(Routes.Weather, getWeather);
+  instance.get(Routes.Classes, generateClasses);
 };
 
 export default applyRoutes;
