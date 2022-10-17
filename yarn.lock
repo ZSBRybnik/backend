@@ -22076,10 +22076,10 @@ trough@^1.0.0:
   resolved "https://registry.yarnpkg.com/trough/-/trough-1.0.5.tgz#b8b639cefad7d0bb2abd37d433ff8293efa5f406"
   integrity sha512-rvuRbTarPXmMb79SmzEp8aqXNKcK+y0XaB298IXueQ8I2PsrATcPBCSPyK/dDNa2iWOhKlfNnOjdAOTBU/nkFA==
 
-trpc-openapi@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/trpc-openapi/-/trpc-openapi-0.5.0.tgz#a074d9c9072f747062620cd3d76028ddbcea9a39"
-  integrity sha512-ZgRRjxd6Lx+wJCwP7e1GT+VZb/dEKdTddgUlnUzyJfXquOdZ1K9mdHDjR4l8ucfct+ZLwOrRouj5Fa9/PemjIQ==
+trpc-openapi@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/trpc-openapi/-/trpc-openapi-0.7.0.tgz#2819a39f80c394deb670dca13278b452d0d927cf"
+  integrity sha512-QzUJMZ32HqPlk/d4Uax/uNAxZzFTuNz+Cm6QGwI/yphaXpQ7m28dVEMh7Akldy/jiEHaqcYjZl5ejWoTsfbRZw==
   dependencies:
     co-body "6.1.0"
     lodash.clonedeep "4.5.0"
