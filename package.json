@@ -171,7 +171,7 @@
     "prettier": "^2.7.1",
     "prettier-plugin-organize-imports": "^3.0.0",
     "prettier-plugin-prisma": "^4.1.0",
-    "prisma": "^4.0.0",
+    "prisma": "^4.4.0",
     "prom-client": "^14.1.0",
     "prop-types": "^15.8.1",
     "pug": "^3.0.2",
