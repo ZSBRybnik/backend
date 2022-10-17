@@ -4,6 +4,7 @@
 
 - [Docker](https://www.docker.com/) (optional)
 - [FaunaDB](https://fauna.com/)
+- [NATS Server](https://github.com/nats-io/nats-server/releases)
 
 ### Windows
 
