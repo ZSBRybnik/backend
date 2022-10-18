@@ -57,9 +57,27 @@ model Product {
 }
 
 model Class {
-  id   Int    @id @default(autoincrement())
-  name String @db.VarChar(10)
-  User User[]
+  id       Int                 @id @default(autoincrement())
+  name     String              @db.VarChar(10)
+  users    User[]
+  subjects SubjectsOnClasses[]
 
   @@map("classes")
+}
+
+model Subject {
+  id      Int                 @id @default(autoincrement())
+  name    String              @db.VarChar(100)
+  classes SubjectsOnClasses[]
+
+  @@map("subjects")
+}
+
+model SubjectsOnClasses {
+  class     Class   @relation(fields: [classId], references: [id])
+  classId   Int     @map("class_id")
+  subject   Subject @relation(fields: [subjectId], references: [id])
+  subjectId Int     @map("subject_id")
+
+  @@id([classId, subjectId])
 }
