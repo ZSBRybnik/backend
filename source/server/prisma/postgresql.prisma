@@ -21,7 +21,7 @@ model User {
   lockerPin                      Int?    @map("locker_pin")
   posts                          Post[]
   class                          Class   @relation(fields: [classId], references: [id])
-  classId                        Int
+  classId                        Int     @map("class_id")
 
   @@map("users")
 }
