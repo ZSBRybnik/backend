@@ -1,19 +1,16 @@
-import discordClient from "~backend/source/server/clients/discordClient/discordClient";
-import createHandler from "~backend/source/server/rest/utils/createHandler/createHandler";
-import {
-  CreateHandlerOutput,
-  RawHandlerArguments,
-} from "~backend/source/server/rest/utils/createHandler/createHandler.types";
+import ericClient from "~backend/source/server/clients/erisClient/ericClient";
+import postgreSQLClient from "~backend/source/server/clients/postgreSQLClient/postgreSQLClient";
 
-const { handler: getPostHandler }: CreateHandlerOutput = createHandler({
-  rawHandler: async ({
-    request: { postgreSQLClient },
-  }: RawHandlerArguments): Promise<void> => {
-    console.log("xxxxxxxxxxxxxxxxxxx");
+import createHandler from "~backend/source/server/rest/utils/createHandler/createHandler";
+
+const { handler: getPostHandler } = createHandler({
+  rawHandler: async (): Promise<void> => {
     const classes = await postgreSQLClient.class.findMany();
     classes.forEach(async ({ name }) => {
-      const cd = await discordClient.guilds.create({ name });
-      console.log(cd);
+      await ericClient.createChannel(
+        process.env.DISCORD_SERVER_ID as string,
+        name,
+      );
     });
   },
 });
