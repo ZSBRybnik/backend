@@ -57,6 +57,8 @@ EMAIL="email"
 EMAIL_PASSWORD="emailPassword"
 AWS_ACCESS_KEY_ID="id"
 AWS_SECRET_ACCESS_KEY="key"
+DISCORD_TOKEN="token"
+DISCORD_SERVER_ID="id"
 ```
 
 ## Commands
