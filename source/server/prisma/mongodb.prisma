@@ -1,48 +1,48 @@
 datasource db {
-    provider = "mongodb"
-    url      = env("MONGODB_URL")
+  provider = "mongodb"
+  url      = env("MONGODB_URL")
 }
 
 generator client {
-    provider = "prisma-client-js"
-    output   = "../../../node_modules/@prisma/mongodb"
+  provider = "prisma-client-js"
+  output   = "../../../node_modules/@prisma/mongodb"
 }
 
 model User {
-    mongo_id                       String  @id @default(auto()) @map("_id") @db.ObjectId
-    id                             Int     @unique
-    login                          String  @unique
-    role                           String  @default("user")
-    password                       String
-    email                          String  @unique
-    authenticatorCode              String? @map("authenticator_code")
-    phoneNumber                    String? @map("phone_number")
-    enabledTwoFactorAuthentication String  @default("application") @map("enabled_two_factor_authentication")
-    lockerNumber                   Int?    @unique @map("locker_number")
-    lockerPin                      Int?    @map("locker_pin")
-    posts                          Post[]
+  mongo_id                       String  @id @default(auto()) @map("_id") @db.ObjectId
+  id                             Int     @unique
+  login                          String  @unique
+  role                           String  @default("user")
+  password                       String
+  email                          String  @unique
+  authenticatorCode              String? @map("authenticator_code")
+  phoneNumber                    String? @map("phone_number")
+  enabledTwoFactorAuthentication String  @default("application") @map("enabled_two_factor_authentication")
+  lockerNumber                   Int?    @unique @map("locker_number")
+  lockerPin                      Int?    @map("locker_pin")
+  posts                          Post[]
 
-    @@map("users")
+  @@map("users")
 }
 
 model Page {
-    mongo_id String @id @default(auto()) @map("_id") @db.ObjectId
-    id       Int    @unique
-    name     String @unique
-    title    String
-    content  String
+  mongo_id String @id @default(auto()) @map("_id") @db.ObjectId
+  id       Int    @unique
+  name     String @unique
+  title    String
+  content  String
 
-    @@map("pages")
+  @@map("pages")
 }
 
 model Post {
-    mongo_id String @id @default(auto()) @map("_id") @db.ObjectId
-    id       Int    @unique
-    title    String
-    content  String
-    brief    String
-    author   User   @relation(fields: [authorId], references: [id])
-    authorId Int    @map("author_id")
+  mongo_id String @id @default(auto()) @map("_id") @db.ObjectId
+  id       Int    @unique
+  title    String
+  content  String
+  brief    String
+  author   User   @relation(fields: [authorId], references: [id])
+  authorId Int    @map("author_id")
 
-    @@map("posts")
+  @@map("posts")
 }
