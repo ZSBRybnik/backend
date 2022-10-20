@@ -22,6 +22,7 @@ model User {
   posts                          Post[]
   class                          Class   @relation(fields: [classId], references: [id])
   classId                        Int     @map("class_id")
+  discordNickname                String  @db.VarChar(37)
 
   @@map("users")
 }
