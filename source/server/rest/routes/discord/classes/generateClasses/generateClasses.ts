@@ -44,7 +44,15 @@ const { handler: getPostHandler } = createHandler({
       ]);
       const addRolesToUsersPromise = new Promise((resolve) => {
         users.forEach(({ discordNickname }) => {
-          const { id: userId } = Object(erisClient.users.get(discordNickname));
+          const { id: userId } = Object(
+            erisClient.guilds
+              .get(process.env.DISCORD_SERVER_ID as string)
+              ?.members.find(({ nick, discriminator }) => {
+                console.log(nick, discriminator, discordNickname);
+                return `${nick}#${discriminator}` === discordNickname;
+              }),
+          );
+          console.log(userId);
           if (userId) {
             erisClient.addGuildMemberRole(
               process.env.DISCORD_SERVER_ID as string,
