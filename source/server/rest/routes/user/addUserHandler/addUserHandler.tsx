@@ -1,3 +1,4 @@
+import { User } from "@prisma/postgresql";
 import { hash } from "bcrypt";
 import { authenticator } from "otplib";
 import { toDataURL } from "qrcode";
@@ -89,14 +90,17 @@ import validateAddUserHandler from "./validateAddUserHandler";
  *         description: Failed create user.
  */
 
-export type AddUserHandlerBody = {
-  login: string;
-  email: string;
+export type AddUserHandlerBody = Pick<
+  User,
+  | "login"
+  | "email"
+  | "phoneNumber"
+  | "discordNickname"
+  | "lockerNumber"
+  | "lockerPin"
+> & {
   role: Roles;
-  phoneNumber: string;
   enabledTwoFactorAuthentication: EnabledTwoFactorAuthentication;
-  lockerNumber: number;
-  lockerPin: number;
 };
 
 const { handler: addUserHandler }: CreateHandlerOutput = createHandler({
