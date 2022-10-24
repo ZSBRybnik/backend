@@ -37,11 +37,13 @@ services:
       - zsb-redis
       - zsb-ftp
       - zsb-vault
+      - zsb-nats
     links:
       - zsb-redis
       - zsb-watchtower
       - zsb-ftp
       - zsb-vault
+      - zsb-nats
   zsb-ftp:
     container_name: zsb-ftp
     image: fauria/vsftpd:latest
@@ -82,7 +84,19 @@ services:
     restart: on-failure
     networks:
       - fullstack
-
+  zsb-nats:
+    container_name: zsb-nats
+    image: nats:latest
+    depends_on:
+      - zsb-watchtower
+    networks:
+      - fullstack
+    ports:
+      - "8222:8222"
+      - "4222:4222"
+    restart: on-failure
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
 networks:
   fullstack:
     driver: bridge
