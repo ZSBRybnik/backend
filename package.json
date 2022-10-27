@@ -132,7 +132,7 @@
     "geoip-lite": "^1.4.6",
     "graphql": "^16.5.0",
     "graphql-config": "^4.3.1",
-    "graphql-tools": "^8.3.1",
+    "graphql-tools": "^8.3.7",
     "gun": "^0.2020.1238",
     "gun-flint": "^0.0.28",
     "gun-mongo": "^0.1.2",
