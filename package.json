@@ -189,6 +189,7 @@
     "rxjs": "^7.5.5",
     "serverless": "^3.23.0",
     "serverless-dynamodb-local": "^0.2.40",
+    "serverless-google-cloudfunctions": "^4.6.0",
     "serverless-offline": "^11.2.1",
     "snappy": "^7.1.1",
     "snyk": "^1.966.0",

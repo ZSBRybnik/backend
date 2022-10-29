@@ -1,0 +1,29 @@
+plugins:
+  - serverless-offline
+  - serverless-google-cloudfunctions
+service: zsbrybnik
+app: zsbrybnik
+org: zsbrybnik
+provider:
+  name: google
+  runtime: nodejs16.x
+
+# you can define service wide environment variables here
+#  environment:
+#    variable1: value1
+
+# you can add packaging information here
+#package:
+#  patterns:
+#    - '!exclude-me.js'
+#    - '!exclude-me-dir/**'
+#    - include-me.js
+#    - include-me-dir/**
+
+functions:
+  zsbrybnik:
+    handler: destination/source/handler.handler
+    events:
+      - http:
+          path: /{any+}
+          method: ANY
