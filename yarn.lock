@@ -4992,70 +4992,70 @@
   resolved "https://registry.yarnpkg.com/@n1ru4l/graphql-live-query/-/graphql-live-query-0.9.0.tgz#defaebdd31f625bee49e6745934f36312532b2bc"
   integrity sha512-BTpWy1e+FxN82RnLz4x1+JcEewVdfmUhV1C6/XYD5AjS7PQp9QFF7K8bCD6gzPTr2l+prvqOyVueQhFJxB1vfg==
 
-"@napi-rs/snappy-android-arm-eabi@7.1.1":
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/@napi-rs/snappy-android-arm-eabi/-/snappy-android-arm-eabi-7.1.1.tgz#9e514082e9588da9cf569a9eece3336ba858d903"
-  integrity sha512-NKd/ztuVEgQaAaNVQ5zZaCB9VV+7+uBXBHqhaE5iSapQhLc41szTlT0s68FCee75OoT3vhqdA6Jp5TrzZ2WOaw==
+"@napi-rs/snappy-android-arm-eabi@7.2.1":
+  version "7.2.1"
+  resolved "https://registry.yarnpkg.com/@napi-rs/snappy-android-arm-eabi/-/snappy-android-arm-eabi-7.2.1.tgz#13f17cf22832838b3da37d6b25e66ae65849f7cf"
+  integrity sha512-uBfNLw5lsNHxR9BCVKd5NrVmrcEzkeZBDkt1SJ2tTAG8XtzUOoMYUKrANHbQMHzue1bu1ApUF3MPw19ArHyVLQ==
 
-"@napi-rs/snappy-android-arm64@7.1.1":
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/@napi-rs/snappy-android-arm64/-/snappy-android-arm64-7.1.1.tgz#ec9b7b70bd8b3a589511cd0cd903a4acf339747d"
-  integrity sha512-DktruMAO0K0toTnxNHg2GWNIAPJqdvIchCsdsRaKyuEnG101qBg0mYiRCAhxHgbT6RJlOGbUPKkbA9KKRhEJUg==
+"@napi-rs/snappy-android-arm64@7.2.1":
+  version "7.2.1"
+  resolved "https://registry.yarnpkg.com/@napi-rs/snappy-android-arm64/-/snappy-android-arm64-7.2.1.tgz#0df62cebc0c673732c8e7a2f6ad182f3ea31cba6"
+  integrity sha512-waiollY8Z7LVZGI9NX1qmO965BJBtGCsr4sLUn9c/N9A0q/AXwnXdGrCEzyHXlc5NLRqd1Ks8VT962o0FTtYjA==
 
-"@napi-rs/snappy-darwin-arm64@7.1.1":
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/@napi-rs/snappy-darwin-arm64/-/snappy-darwin-arm64-7.1.1.tgz#4b0a95783cea97daef80057d2e060b311dc376a5"
-  integrity sha512-3LZyoAw3Qa5F7sCCTkSkhmGlydwUKU6L3Jl46eKHO2Ctm8Gcjxww6T7MfwlwGZ6JqAM6d1d++WLzUZPCGXVmag==
+"@napi-rs/snappy-darwin-arm64@7.2.1":
+  version "7.2.1"
+  resolved "https://registry.yarnpkg.com/@napi-rs/snappy-darwin-arm64/-/snappy-darwin-arm64-7.2.1.tgz#82d2b671276f66c9765c71354675bb6416060265"
+  integrity sha512-NJvt1YLCmQVzYrBwlyYfi6VVkNiGxQeJsp6aBY8FDaaiWH5yTeTCYbBDDwDCef8Td9UiJNXl1kGq5j1f92Ay0w==
 
-"@napi-rs/snappy-darwin-x64@7.1.1":
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/@napi-rs/snappy-darwin-x64/-/snappy-darwin-x64-7.1.1.tgz#d9eb124c6169fdbc3a8389c88f1962a4dad728ff"
-  integrity sha512-X1D2F67bQkPwr5iSR29/RnOrLwAkB55YO6t41toABzla3mflLDpzZcakz6FokIukykf7ey31/t73v/4pbgaBkg==
+"@napi-rs/snappy-darwin-x64@7.2.1":
+  version "7.2.1"
+  resolved "https://registry.yarnpkg.com/@napi-rs/snappy-darwin-x64/-/snappy-darwin-x64-7.2.1.tgz#c48cd6733c39c61d01cf642d5209b0089385eee3"
+  integrity sha512-wncn+rMum4Wqt5gpFfhQwL34zJt6dsVYC6SLe1S2Lxdt7+JqBGpC97COpovzp5Fxj6UC2pGyH3Gl9szwdFSWJw==
 
-"@napi-rs/snappy-freebsd-x64@7.1.1":
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/@napi-rs/snappy-freebsd-x64/-/snappy-freebsd-x64-7.1.1.tgz#bff06d3c5644d15da18dfaaad8fd33e198b3b7ef"
-  integrity sha512-vSeuf+An8jFVHPAn5IbWE9hTGU9PFAaZLj/X7rKTQQtZstnDsHgWe6u4g7FHLuOdwQ8TvhcxAEpNlYIXIk4AJg==
+"@napi-rs/snappy-freebsd-x64@7.2.1":
+  version "7.2.1"
+  resolved "https://registry.yarnpkg.com/@napi-rs/snappy-freebsd-x64/-/snappy-freebsd-x64-7.2.1.tgz#a6029962e8eb8c9dd238d73f26622a38c4cfc2b8"
+  integrity sha512-YRAvpZnOrHaiLrnwlMx25w8vCEfN9TRjzq5WrCM7thvuim7pzL+duVLFPmw+A7Nhw0UkFMRWHZOx+k2sOhQySw==
 
-"@napi-rs/snappy-linux-arm-gnueabihf@7.1.1":
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/@napi-rs/snappy-linux-arm-gnueabihf/-/snappy-linux-arm-gnueabihf-7.1.1.tgz#f8451e9738811a62baa97661a8ef1647c34ae580"
-  integrity sha512-/yyN6QsnOs3D1+jI3SfRX+gtnD86rbixdfmgxv9g40+FrDaDTLAu/3VuZIqH02qqq/xiWbDnkO+42RGxXDzTCw==
+"@napi-rs/snappy-linux-arm-gnueabihf@7.2.1":
+  version "7.2.1"
+  resolved "https://registry.yarnpkg.com/@napi-rs/snappy-linux-arm-gnueabihf/-/snappy-linux-arm-gnueabihf-7.2.1.tgz#ed85247ecde11c02fe53ce32f951a8874712f621"
+  integrity sha512-5jOHps+u4qSfJvIp6ZHulrHkVw6eFk8gdWhPuYFS0vTcOXZyu1G/my5HLkdPfNsNfRnyY9yCwMfH6W86MJvPwA==
 
-"@napi-rs/snappy-linux-arm64-gnu@7.1.1":
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/@napi-rs/snappy-linux-arm64-gnu/-/snappy-linux-arm64-gnu-7.1.1.tgz#24fe19bc4dc3008316645ff52cd42771a501ee13"
-  integrity sha512-StEeUCSwUoajgrBtiCQPTkHu+0Q4QlYndghGZNdbN1zJ1ny70YzPpevaFBUyjI/eJ+FN9uICKtwTPtQNSILS5g==
+"@napi-rs/snappy-linux-arm64-gnu@7.2.1":
+  version "7.2.1"
+  resolved "https://registry.yarnpkg.com/@napi-rs/snappy-linux-arm64-gnu/-/snappy-linux-arm64-gnu-7.2.1.tgz#f302302979ddcc243d7e86c156d19b4e11ec1c60"
+  integrity sha512-xiH74IrW/D4wboT8rVbRP8mzbXmPSkd34iXAU0sZA8f5eczDqh9FW+5hDWw09c7FiMsVSwl7xXNFZikn+IB/fg==
 
-"@napi-rs/snappy-linux-arm64-musl@7.1.1":
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/@napi-rs/snappy-linux-arm64-musl/-/snappy-linux-arm64-musl-7.1.1.tgz#0b270227725b40be81b8e3aadcf64dd520f37bc6"
-  integrity sha512-jWEBRzj+lswZVYf0b5eY0fjMlBL9L9yqjmTuv2UIMjJNHPuR282LK/s3Fm9sYIXQtKkiCo5JyhmIcoghZ3v0Eg==
+"@napi-rs/snappy-linux-arm64-musl@7.2.1":
+  version "7.2.1"
+  resolved "https://registry.yarnpkg.com/@napi-rs/snappy-linux-arm64-musl/-/snappy-linux-arm64-musl-7.2.1.tgz#e3824df39a5dccec5cb95b533d575e2d5c6eccb4"
+  integrity sha512-Fl4ABkw/W3JVWu5IkbUPYle+idFl+U02wmORgQ1hFsKhEpVV1eTW8e8wLrrErNwK/3bQYFK+lnP5lwFLEdVk1w==
 
-"@napi-rs/snappy-linux-x64-gnu@7.1.1":
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/@napi-rs/snappy-linux-x64-gnu/-/snappy-linux-x64-gnu-7.1.1.tgz#a3509c8a27fa78dd548a2c1f61cae96699193822"
-  integrity sha512-41DPoAUFAU9VNrj/96qKfStH2Xq88ZYIsSz8BlITDm2ScoeDGOGbmaWguCXU7I+bC2uKWTmUVMXKqk6tVY6LEg==
+"@napi-rs/snappy-linux-x64-gnu@7.2.1":
+  version "7.2.1"
+  resolved "https://registry.yarnpkg.com/@napi-rs/snappy-linux-x64-gnu/-/snappy-linux-x64-gnu-7.2.1.tgz#a1da244858a337e50d27f8ac9dc8b04387b64ecf"
+  integrity sha512-yAQvJK0yGXChD0UID4a4gFm4kHmRkzmpXHzEpWr5GstXynOXuCJHmp3BXOn8CSiyCwvmNJOl721vmz6w5Tf/oA==
 
-"@napi-rs/snappy-linux-x64-musl@7.1.1":
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/@napi-rs/snappy-linux-x64-musl/-/snappy-linux-x64-musl-7.1.1.tgz#d68d9fa950b1053ad86e123cbec1ed4e5affea9d"
-  integrity sha512-xR4hzFQqVq6J8Zf6XyUVtFJBaRgDyAQYUoBsCr92tZ7gI/0RlWCV6Q6JMO/wP5CSsvyFJIAtSUXXqlzIpw0GPA==
+"@napi-rs/snappy-linux-x64-musl@7.2.1":
+  version "7.2.1"
+  resolved "https://registry.yarnpkg.com/@napi-rs/snappy-linux-x64-musl/-/snappy-linux-x64-musl-7.2.1.tgz#4b4781518bb9d09ef2783de56406c9f6639afd14"
+  integrity sha512-81gXKADoXnk8sBVytYSghM5feiL2knE/wNPFWtVfECSElwDt4GJVmjBiIVTVn6PYyQ8C+BS73W1nQ5MChDkqcg==
 
-"@napi-rs/snappy-win32-arm64-msvc@7.1.1":
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/@napi-rs/snappy-win32-arm64-msvc/-/snappy-win32-arm64-msvc-7.1.1.tgz#7c53b6327ca55e6a7998a1b38f11e81563ccdcfc"
-  integrity sha512-2mHPadctsaYtrfSV5Na8ooTdI5rflPxP1pceY4us6vbjeWrfgB+KQCuEFOHsGXqFNfsi6L9nWH8nB9swnxnSyw==
+"@napi-rs/snappy-win32-arm64-msvc@7.2.1":
+  version "7.2.1"
+  resolved "https://registry.yarnpkg.com/@napi-rs/snappy-win32-arm64-msvc/-/snappy-win32-arm64-msvc-7.2.1.tgz#d0bb8993e6e5f69f41c0c386232d85ce841bf720"
+  integrity sha512-qTob4ExaWBDAw/Ii72GPd+7+kcJdT6F60bQBLr/UEMsd02ic2YQNlznlKswLJiGJTcuKlRyvUwbj5al3lt20IA==
 
-"@napi-rs/snappy-win32-ia32-msvc@7.1.1":
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/@napi-rs/snappy-win32-ia32-msvc/-/snappy-win32-ia32-msvc-7.1.1.tgz#a7b3ace9468e79fc1065309dcdbfff494eaaa6c0"
-  integrity sha512-FOMgs9W71hdgjyl3T9F7b/WEIuoryfgBqsyhtHjAaa/98R0BUHl0bOoHg8ka0b5GgnhLBHkX2Yd6VD+Si9Q2ww==
+"@napi-rs/snappy-win32-ia32-msvc@7.2.1":
+  version "7.2.1"
+  resolved "https://registry.yarnpkg.com/@napi-rs/snappy-win32-ia32-msvc/-/snappy-win32-ia32-msvc-7.2.1.tgz#391fb454af6711fa393695c972e7a68f5c06cc36"
+  integrity sha512-EAb5kWqJgC00c2qXSMl6DaqREvCiNCXacEM1Wd6Z8h16ouKWNiCRW4hRJpIqk4Lla+xNMtChVfPL4fB9RizM9g==
 
-"@napi-rs/snappy-win32-x64-msvc@7.1.1":
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/@napi-rs/snappy-win32-x64-msvc/-/snappy-win32-x64-msvc-7.1.1.tgz#d30667e62057b8ec60a117722cc0662617330691"
-  integrity sha512-Mu3yELySvzhBcNTVCq+hYxVh+lH3/KjoQ5HIEb3DDPoX0AGRTm3XZa+usq8pFWjl91Cgp9nWK+9lVSkCCIRaKA==
+"@napi-rs/snappy-win32-x64-msvc@7.2.1":
+  version "7.2.1"
+  resolved "https://registry.yarnpkg.com/@napi-rs/snappy-win32-x64-msvc/-/snappy-win32-x64-msvc-7.2.1.tgz#9042e5f6b7ef073256eb266002e0d50b97b0d9b8"
+  integrity sha512-KYrtHXhxCQyU+KfA0+66DJ6byj93RfZ36ZHbgJeBSFDzc764InM/WMkmxtfKe3zjJRTThvnXdyhgB86JkUnkKQ==
 
 "@noble/ed25519@^1.6.0":
   version "1.7.1"
@@ -23377,24 +23377,24 @@ snapdragon@^0.8.1:
     source-map-resolve "^0.5.0"
     use "^3.1.0"
 
-snappy@^7.1.1:
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/snappy/-/snappy-7.1.1.tgz#7fdd52bc06bd97bd5c19e8475d3201f8129ed75d"
-  integrity sha512-mL7GGPJ+WdsaFT5aR/uEqCq8cPg2VbhyifDEP7AeqIVDsAC8LBGYbZP1Qzoa2Ym84OW7JEQXqIpwqFp1EQw5BA==
+snappy@^7.2.1:
+  version "7.2.1"
+  resolved "https://registry.yarnpkg.com/snappy/-/snappy-7.2.1.tgz#f0c949c762a14ea0bfea1b5fca8fbcc1b87b611c"
+  integrity sha512-vfD2w3dz5Mp4OK/eQvci7SqK3BAb0j35tlR0oR1bqBNBmWgov3Q9Q8jl3eiDpHp5RkrYoWeThEUJGFr2KAIF4Q==
   optionalDependencies:
-    "@napi-rs/snappy-android-arm-eabi" "7.1.1"
-    "@napi-rs/snappy-android-arm64" "7.1.1"
-    "@napi-rs/snappy-darwin-arm64" "7.1.1"
-    "@napi-rs/snappy-darwin-x64" "7.1.1"
-    "@napi-rs/snappy-freebsd-x64" "7.1.1"
-    "@napi-rs/snappy-linux-arm-gnueabihf" "7.1.1"
-    "@napi-rs/snappy-linux-arm64-gnu" "7.1.1"
-    "@napi-rs/snappy-linux-arm64-musl" "7.1.1"
-    "@napi-rs/snappy-linux-x64-gnu" "7.1.1"
-    "@napi-rs/snappy-linux-x64-musl" "7.1.1"
-    "@napi-rs/snappy-win32-arm64-msvc" "7.1.1"
-    "@napi-rs/snappy-win32-ia32-msvc" "7.1.1"
-    "@napi-rs/snappy-win32-x64-msvc" "7.1.1"
+    "@napi-rs/snappy-android-arm-eabi" "7.2.1"
+    "@napi-rs/snappy-android-arm64" "7.2.1"
+    "@napi-rs/snappy-darwin-arm64" "7.2.1"
+    "@napi-rs/snappy-darwin-x64" "7.2.1"
+    "@napi-rs/snappy-freebsd-x64" "7.2.1"
+    "@napi-rs/snappy-linux-arm-gnueabihf" "7.2.1"
+    "@napi-rs/snappy-linux-arm64-gnu" "7.2.1"
+    "@napi-rs/snappy-linux-arm64-musl" "7.2.1"
+    "@napi-rs/snappy-linux-x64-gnu" "7.2.1"
+    "@napi-rs/snappy-linux-x64-musl" "7.2.1"
+    "@napi-rs/snappy-win32-arm64-msvc" "7.2.1"
+    "@napi-rs/snappy-win32-ia32-msvc" "7.2.1"
+    "@napi-rs/snappy-win32-x64-msvc" "7.2.1"
 
 snyk@^1.966.0:
   version "1.980.0"
