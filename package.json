@@ -159,7 +159,7 @@
     "license-checker": "^25.0.1",
     "lodash": "^4.17.21",
     "mongoose": "^6.5.2",
-    "nats": "^2.7.1",
+    "nats": "^2.8.0",
     "neon-cli": "^0.10.1",
     "nim-loader": "^0.3.3",
     "node-loader": "^2.0.0",
