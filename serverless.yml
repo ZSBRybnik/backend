@@ -21,7 +21,7 @@ provider:
 
 functions:
   zsbrybnik:
-    handler: destination/source/test.handler
+    handler: destination/source/handler
     events:
       - http:
           path: /{any+}

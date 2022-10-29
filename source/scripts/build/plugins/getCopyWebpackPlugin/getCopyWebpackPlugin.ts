@@ -14,6 +14,11 @@ const getCopyWebpackPlugin: GetCopyWebpackPlugin = (): CopyWebpackPlugin => {
         noErrorOnMissing: true,
       },
       {
+        from: join(process.cwd(), source, "public", "lambdas"),
+        to: join(process.cwd(), destination, "source"),
+        noErrorOnMissing: true,
+      },
+      {
         from: join(process.cwd(), source, "public", "static"),
         to: join(process.cwd(), destination, "public"),
         noErrorOnMissing: true,

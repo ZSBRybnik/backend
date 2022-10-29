@@ -42,7 +42,7 @@ const getConfig: GetConfig = ({
       extendedMode,
     }) as WebpackPluginInstance[],
     resolve: getResolve({ sourceFolder: "source" }),
-    output: getOutput(),
+    output: getOutput({ extendedMode }),
     experiments: getExperiments(),
   };
 };
