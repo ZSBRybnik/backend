@@ -4,6 +4,7 @@ import { DefinePlugin } from "webpack";
 import projectDependencies from "~backend/source/scripts/build/constants/projectDependencies/projectDependencies";
 import projectsDependenciesVersions from "~backend/source/scripts/build/constants/projectsDependenciesVersions/projectsDependenciesVersions";
 import Mode from "~backend/source/scripts/build/types/mode/mode";
+import { TargetType } from "~backend/source/shared/constants/TargetType";
 
 type GetLocalizedLanguages = () => string[];
 
@@ -28,6 +29,7 @@ const getDefinePlugin: GetDefinePlugin = ({
   publicURL,
 }: GetDefinePluginArguments): DefinePlugin => {
   return new DefinePlugin({
+    "process.env.TARGET": JSON.stringify(TargetType.Serverless),
     "process.env.DEVELOPMENT": JSON.stringify(mode === Mode.Development),
     "process.env.MODERN": JSON.stringify(targetToModern),
     "process.env.PUBLIC_URL": JSON.stringify(publicURL),

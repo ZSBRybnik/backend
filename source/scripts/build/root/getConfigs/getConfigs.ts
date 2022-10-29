@@ -5,7 +5,7 @@ import Mode from "~backend/source/scripts/build/types/mode/mode";
 import { TargetType } from "~backend/source/shared/constants/TargetType";
 
 export type ConfigsMapper = {
-  [key in TargetType]: Configuration[];
+  [key in TargetType]: () => Configuration[];
 };
 
 type GetConfingsArguments = {
@@ -19,15 +19,26 @@ const getConfings: GetConfings = ({
   mode,
 }: GetConfingsArguments): Configuration[] => {
   const configs: ConfigsMapper = {
-    [TargetType.Server]: [
-      getConfig({
-        mode,
-        targetToModern: true,
-        extendedMode: ExtendedMode.Server,
-      }),
-    ],
+    [TargetType.Server]: () => {
+      return [
+        getConfig({
+          mode,
+          targetToModern: true,
+          extendedMode: ExtendedMode.Server,
+        }),
+      ];
+    },
+    [TargetType.Serverless]: () => {
+      return [
+        getConfig({
+          mode,
+          targetToModern: true,
+          extendedMode: ExtendedMode.Serverless,
+        }),
+      ];
+    },
   };
-  return configs[TargetType.Server];
+  return configs[TargetType.Serverless]();
 };
 
 export default getConfings;

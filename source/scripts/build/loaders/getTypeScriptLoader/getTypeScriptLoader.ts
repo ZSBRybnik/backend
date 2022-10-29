@@ -1,4 +1,4 @@
-import { join } from "path";
+import { join, resolve } from "path";
 import source from "~backend/source/scripts/build/constants/source/source";
 
 const getTypeScriptLoader = () => {
@@ -7,6 +7,12 @@ const getTypeScriptLoader = () => {
     include: join(process.cwd(), source),
     exclude: /(node_modules)/,
     use: [
+      {
+        loader: "cache-loader",
+        options: {
+          cacheDirectory: resolve(".webpackCache"),
+        },
+      },
       {
         loader: "babel-loader",
         options: {
