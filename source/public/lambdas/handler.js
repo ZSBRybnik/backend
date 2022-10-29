@@ -3,7 +3,7 @@ const serverless = eval(`require(".")`);
 
 // @ts-ignore
 // eslint-disable-next-line max-params
-module.exports = async (event, context) => {
+module.exports.handler = async (event, context) => {
   const lambda = await serverless.zsbrybnik;
   return lambda.default(event, context);
 };
