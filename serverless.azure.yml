@@ -4,7 +4,7 @@ service: zsbrybnik
 app: zsbrybnik
 org: zsbrybnik
 provider:
-  name: aws
+  name: azure
   runtime: nodejs16.x
 
 # you can define service wide environment variables here
