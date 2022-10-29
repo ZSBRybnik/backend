@@ -1,7 +1,17 @@
+import { resolve } from "path";
+
 const getNimLoader = () => {
   return {
     test: /\.nim$/,
-    loader: "nim-loader",
+    use: [
+      {
+        loader: "cache-loader",
+        options: {
+          cacheDirectory: resolve(".webpackCache"),
+        },
+      },
+      "nim-loader",
+    ],
   };
 };
 

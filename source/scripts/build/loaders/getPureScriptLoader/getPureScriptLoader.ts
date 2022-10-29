@@ -1,7 +1,17 @@
+import { resolve } from "path";
+
 const getPureScriptLoader = () => {
   return {
     test: /\.purs$/,
-    loader: "purs-loader",
+    use: [
+      {
+        loader: "cache-loader",
+        options: {
+          cacheDirectory: resolve(".webpackCache"),
+        },
+      },
+      "purs-loader",
+    ],
     exclude: /node_modules/,
   };
 };

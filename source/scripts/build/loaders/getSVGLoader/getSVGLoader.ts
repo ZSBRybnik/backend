@@ -1,7 +1,17 @@
+import { resolve } from "path";
+
 const getSVGLoader = () => {
   return {
     test: /\.svg$/,
-    use: ["@svgr/webpack"],
+    use: [
+      {
+        loader: "cache-loader",
+        options: {
+          cacheDirectory: resolve(".webpackCache"),
+        },
+      },
+      "@svgr/webpack",
+    ],
   };
 };
 

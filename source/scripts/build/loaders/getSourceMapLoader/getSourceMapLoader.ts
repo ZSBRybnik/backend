@@ -1,9 +1,19 @@
+import { resolve } from "path";
+
 const getSourceMapLoader = () => {
   return {
     test: /\.(js)$/,
     enforce: "pre",
     exclude: /(node_modules)/,
-    use: ["source-map-loader"],
+    use: [
+      {
+        loader: "cache-loader",
+        options: {
+          cacheDirectory: resolve(".webpackCache"),
+        },
+      },
+      "source-map-loader",
+    ],
   };
 };
 

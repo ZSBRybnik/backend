@@ -1,7 +1,17 @@
+import { resolve } from "path";
+
 const getNodeLoader = () => {
   return {
     test: /\.node$/,
-    use: ["node-loader"],
+    use: [
+      {
+        loader: "cache-loader",
+        options: {
+          cacheDirectory: resolve(".webpackCache"),
+        },
+      },
+      "node-loader",
+    ],
   };
 };
 

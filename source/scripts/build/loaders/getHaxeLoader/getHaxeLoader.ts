@@ -1,7 +1,17 @@
+import { resolve } from "path";
+
 const getHaxeLoader = () => {
   return {
     test: /\.hxml$/,
-    loader: "haxe-loader",
+    use: [
+      {
+        loader: "cache-loader",
+        options: {
+          cacheDirectory: resolve(".webpackCache"),
+        },
+      },
+      "haxe-loader",
+    ],
   };
 };
 
