@@ -1,3 +1,3 @@
-export const mainPort: number = 3000;
+export const mainPort: number = 3_000;
 
 export default mainPort;
