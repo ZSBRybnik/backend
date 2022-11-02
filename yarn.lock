@@ -15457,10 +15457,10 @@ ion-js@^4.3.0:
   resolved "https://registry.yarnpkg.com/ion-js/-/ion-js-4.3.0.tgz#ea511b94a3a555ac6e2e58832c7b66c41c302a0f"
   integrity sha512-8yhU1yx6Uia109cMbiDQDQS0InGJj8BaXckjyaN+5vCzL0e8qEXzLVRy579TmNThBDq8IfUJfqe0565Syh+0JA==
 
-ioredis@^5.1.0:
-  version "5.2.2"
-  resolved "https://registry.yarnpkg.com/ioredis/-/ioredis-5.2.2.tgz#212467e04f6779b4e0e800cece7bb7d3d7b546d2"
-  integrity sha512-wryKc1ur8PcCmNwfcGkw5evouzpbDXxxkMkzPK8wl4xQfQf7lHe11Jotell5ikMVAtikXJEu/OJVaoV51BggRQ==
+ioredis@^5.2.4:
+  version "5.2.4"
+  resolved "https://registry.yarnpkg.com/ioredis/-/ioredis-5.2.4.tgz#9e262a668bc29bae98f2054c1e0d7efd86996b96"
+  integrity sha512-qIpuAEt32lZJQ0XyrloCRdlEdUUNGG9i0UOk6zgzK6igyudNWqEBxfH6OlbnOOoBBvr1WB02mm8fR55CnikRng==
   dependencies:
     "@ioredis/commands" "^1.1.1"
     cluster-key-slot "^1.1.0"
