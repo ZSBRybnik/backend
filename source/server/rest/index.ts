@@ -1,9 +1,9 @@
 import Gun /*, { GunOptions }*/ from "gun";
 import mainPort from "~backend/source/server/rest/constants/ports/ports";
 import createServer from "~backend/source/server/rest/utils/createServer/createServer";
-import { CreateServerOuput } from "~backend/source/server/rest/utils/createServer/createServer.types";
+import { CreateServerOutput } from "~backend/source/server/rest/utils/createServer/createServer.types";
 
-const { server, httpServer }: CreateServerOuput = createServer({
+const { server, httpServer }: CreateServerOutput = createServer({
   port: mainPort,
 });
 
