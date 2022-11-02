@@ -7,9 +7,9 @@ export type CreateServerArguments = {
 
 export type CreateServer = (
   argument: CreateServerArguments,
-) => CreateServerOuput;
+) => CreateServerOutput;
 
-export type CreateServerOuput = {
+export type CreateServerOutput = {
   server: Express;
   httpServer: Server;
 };

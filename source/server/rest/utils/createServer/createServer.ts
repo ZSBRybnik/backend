@@ -6,13 +6,13 @@ import applyRoutes from "~backend/source/server/rest/utils/applyRoutes/applyRout
 import type {
   CreateServer,
   CreateServerArguments,
-  CreateServerOuput,
+  CreateServerOutput,
 } from "~backend/source/server/rest/utils/createServer/createServer.types";
 import listenOnPort from "~backend/source/server/rest/utils/listenOnPort/listenOnPort";
 
 const createServer: CreateServer = ({
   port,
-}: CreateServerArguments): CreateServerOuput => {
+}: CreateServerArguments): CreateServerOutput => {
   const server: Express = express();
   applyMiddlewares({ instance: server });
   applyRoutes({ instance: server });
