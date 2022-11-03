@@ -33,6 +33,7 @@ const getTypeScriptLoader = () => {
               },
             ],
           ],
+          plugins: ["vuera/babel", "inline-react-svg", "@emotion"],
         },
       },
     ],

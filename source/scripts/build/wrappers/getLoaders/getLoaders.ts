@@ -7,6 +7,7 @@ import getNodeLoader from "~backend/source/scripts/build/loaders/getNodeLoader/g
 import getPugLoader from "~backend/source/scripts/build/loaders/getPugLoader/getPugLoader";
 import getPureScriptLoader from "~backend/source/scripts/build/loaders/getPureScriptLoader/getPureScriptLoader";
 import getSourceMapLoader from "~backend/source/scripts/build/loaders/getSourceMapLoader/getSourceMapLoader";
+import getSvelteLoader from "~backend/source/scripts/build/loaders/getSvelteLoader/getSvelteLoader";
 import getTypeScriptLoader from "~backend/source/scripts/build/loaders/getTypeScriptLoader/getTypeScriptLoader";
 
 type GetLoader = () => RuleSetRule[];
@@ -22,6 +23,7 @@ const getLoaders: GetLoader = (): RuleSetRule[] => {
     getCssLoader(),
     getHaxeLoader(),
     getNimLoader(),
+    getSvelteLoader(),
   ];
 };
 
