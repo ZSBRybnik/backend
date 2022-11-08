@@ -95,6 +95,7 @@
     "avsc": "^5.7.4",
     "aws-lambda": "^1.0.7",
     "babel-loader": "^8.2.5",
+    "babel-plugin-inline-react-svg": "^2.0.1",
     "backend-native-addon-go": "file:./source/native-addon-go",
     "backend-native-addon-rust": "file:./source/native-addon-rust",
     "bcrypt": "^5.0.1",
