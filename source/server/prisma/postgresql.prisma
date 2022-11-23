@@ -43,7 +43,7 @@ model PostContentItem {
   content String @db.Text
   runtime String @db.VarChar(255)
   Post    Post?  @relation(fields: [postId], references: [id])
-  postId  Int?   @map("post_id")
+  postId  Int    @map("post_id")
 
   @@map("posts_content_items")
 }
@@ -58,11 +58,11 @@ model Page {
 }
 
 model PageContentItem {
-  id       Int     @id @default(autoincrement())
-  content  String  @db.Text
-  runtime  String  @db.VarChar(255)
-  Page     Page?   @relation(fields: [pageName], references: [name])
-  pageName String? @map("page_name")
+  id       Int    @id @default(autoincrement())
+  content  String @db.Text
+  runtime  String @db.VarChar(255)
+  Page     Page?  @relation(fields: [pageName], references: [name])
+  pageName String @map("page_name")
 
   @@map("pages_content_items")
 }

@@ -7,5 +7,5 @@ import { $ } from "zx";
     $.shell = "cmd";
     $.prefix = "";
   }
-  await $`prisma db push --schema=./source/server/prisma/mongodb.prisma && prisma db push --schema=./source/server/prisma/postgresql.prisma`;
+  await $`prisma db push --schema=./source/server/prisma/mongodb.prisma --force-reset && prisma db push --schema=./source/server/prisma/postgresql.prisma --accept-data-loss`;
 })();

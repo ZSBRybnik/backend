@@ -36,13 +36,24 @@ model Page {
 }
 
 model Post {
-  mongo_id String @id @default(auto()) @map("_id") @db.ObjectId
-  id       Int    @unique
+  mongo_id String            @id @default(auto()) @map("_id") @db.ObjectId
+  id       Int               @unique
   title    String
-  content  String
   brief    String
-  author   User   @relation(fields: [authorId], references: [id])
-  authorId Int    @map("author_id")
+  author   User              @relation(fields: [authorId], references: [id])
+  authorId Int               @map("author_id")
+  content  PostContentItem[]
 
   @@map("posts")
+}
+
+model PostContentItem {
+  mongo_id String @id @default(auto()) @map("_id") @db.ObjectId
+  id       Int    @unique
+  content  String
+  runtime  String
+  Post     Post?  @relation(fields: [postId], references: [id])
+  postId   Int    @map("post_id")
+
+  @@map("posts_content_items")
 }

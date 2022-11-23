@@ -5,7 +5,7 @@ type RawResolverArguments<T extends object, K extends object> = {
 };
 
 type CreateResolverArguments<T extends object, K extends object> = {
-  rawResolver: (argument: RawResolverArguments<T, K>) => Promise<any>;
+  rawResolver: (argument: RawResolverArguments<T, K>) => Promise<unknown>;
 };
 
 const createResolver = <T extends object, K extends object>({
@@ -14,12 +14,24 @@ const createResolver = <T extends object, K extends object>({
   return async (
     _parent: object,
     argument: T,
-    _context: any,
-    { fieldNodes }: any,
+    _context: unknown,
+    {
+      fieldNodes,
+    }: Record<string, unknown> & {
+      fieldNodes: {
+        selectionSet: Record<string, unknown> & {
+          selections: {
+            name: Record<string, unknown> & {
+              value: unknown;
+            };
+          }[];
+        };
+      }[];
+    },
   ) => {
     const fields = (
-      fieldNodes.map(({ selectionSet: { selections } }: any) => {
-        return selections.map(({ name: { value } }: any) => {
+      fieldNodes.map(({ selectionSet: { selections } }) => {
+        return selections.map(({ name: { value } }) => {
           return value;
         });
       })[0] as string[]

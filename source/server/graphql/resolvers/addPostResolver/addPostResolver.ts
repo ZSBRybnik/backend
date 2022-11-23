@@ -1,4 +1,7 @@
-import { Post } from "@prisma/postgresql";
+import { PostContentItem } from "@prisma/postgresql";
+import natsClient, {
+  jsonCodec,
+} from "~backend/source/server/clients/natsClient/natsClient";
 import postgreSQLClient from "~backend/source/server/clients/postgreSQLClient/postgreSQLClient";
 import createResolver from "../../utils/createResolver/createResolver";
 
@@ -6,23 +9,25 @@ const addPostResolver = createResolver<
   {
     authorId: number;
     title: string;
-    content: string;
     brief: string;
+    content: Omit<PostContentItem, "id">[];
   },
   Record<string, boolean>
 >({
   // tslint:disable-next-line: typedef
-  rawResolver: async ({
-    argument: { authorId, title, content, brief },
-  }): Promise<Partial<Post>> => {
-    return await postgreSQLClient.post.create({
+  rawResolver: async ({ argument: { authorId, title, brief, content } }) => {
+    const { id, ...postData } = await postgreSQLClient.post.create({
       data: {
         title,
-        content,
         brief,
         authorId,
+        content: {
+          createMany: { data: content },
+        },
       },
     });
+    natsClient.publish(`post.add.${id}`, jsonCodec.encode({ id, ...postData }));
+    return { id, ...postData };
   },
 });
 
