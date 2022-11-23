@@ -9,14 +9,13 @@ const updatePostResolver: ProcedureResolver<
     id: number;
     authorId: number;
     title: string;
-    content: string;
     brief: string;
   },
   InferLast<Post | null>
-> = ({ input: { id, authorId, title, content, brief } }) => {
+> = ({ input: { id, authorId, title, brief } }) => {
   return postgreSQLClient.post.update({
     where: { id },
-    data: { authorId, title, content, brief },
+    data: { authorId, title, brief },
   });
 };
 

@@ -1,5 +1,10 @@
 import { Post } from "@prisma/postgresql";
 import createHandler from "../../../utils/createHandler/createHandler";
+import {
+  CreateHandlerOutput,
+  RawHandlerArguments,
+} from "../../../utils/createHandler/createHandler.types";
+import updatePostHandlerValidator from "../../../validators/postValidators/updatePostHandlerValidator/updatePostHandlerValidator";
 
 /**
  * @openapi
@@ -61,17 +66,10 @@ import createHandler from "../../../utils/createHandler/createHandler";
  *       '400':
  *         description: Bad request
  */
-
-import {
-  CreateHandlerOutput,
-  RawHandlerArguments,
-} from "../../../utils/createHandler/createHandler.types";
-import updatePostHandlerValidator from "../../../validators/postValidators/updatePostHandlerValidator/updatePostHandlerValidator";
-
 const { handler: updatePostHandler }: CreateHandlerOutput = createHandler({
   rawHandler: async ({
     request: {
-      body: { title, content },
+      body: { title },
       params: { id },
       postgreSQLClient,
       jsonRedisClient,
@@ -83,21 +81,18 @@ const { handler: updatePostHandler }: CreateHandlerOutput = createHandler({
   }>): Promise<void> => {
     const validator = updatePostHandlerValidator();
     try {
-      await validator.validate(
-        { title, content },
-        { strict: true, abortEarly: true },
-      );
+      await validator.validate({ title }, { strict: true, abortEarly: true });
     } catch {
       response.sendStatus(400);
       return next();
     }
     await postgreSQLClient.post.update({
       where: { id: parseInt(id) },
-      data: { title, content },
+      data: { title },
     });
     const redisPost: Omit<Post, "id"> = await jsonRedisClient.get(`post-${id}`);
     if (redisPost) {
-      await jsonRedisClient.set(`post-${id}`, { title, content });
+      await jsonRedisClient.set(`post-${id}`, { title });
     }
     response.sendStatus(200);
   },
