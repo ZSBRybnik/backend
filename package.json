@@ -141,6 +141,7 @@
     "gun-mongo": "^0.1.2",
     "gun-mongo-key": "^0.1.4",
     "haxe-loader": "^0.10.0",
+    "helmet": "^6.0.0",
     "husky": "^8.0.1",
     "i18next": "^21.8.15",
     "i18next-chained-backend": "^3.0.2",
