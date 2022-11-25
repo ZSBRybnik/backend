@@ -120,7 +120,7 @@
     "eris": "^0.17.1",
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-jest": "^26.5.3",
+    "eslint-plugin-jest": "^27.1.6",
     "eslint-plugin-jsdoc": "^39.3.3",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.2.1",
