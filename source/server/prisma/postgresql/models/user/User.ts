@@ -1,14 +1,16 @@
 import { createModel, PrismaModel } from "schemix";
 import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
+import postModel from "../post/Post";
 
-const model: PrismaModel = createModel((UserModal: PrismaModel): void => {
-  UserModal.int("id", {
+const UserModel: PrismaModel = createModel((UserModel: PrismaModel): void => {
+  UserModel.int("id", {
     raw: generatePrismaString({
       rawString: `#prisma 
           @id @default(autoincrement())
       `,
     }),
   })
+    .relation("posts", postModel, { list: true })
     .string("login", {
       unique: true,
       raw: generatePrismaString({
@@ -82,4 +84,4 @@ const model: PrismaModel = createModel((UserModal: PrismaModel): void => {
     .map("users");
 });
 
-export default model;
+export default UserModel;
