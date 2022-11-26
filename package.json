@@ -95,7 +95,7 @@
     "aurora": "^2.1.3",
     "avsc": "^5.7.4",
     "aws-lambda": "^1.0.7",
-    "babel-loader": "^8.2.5",
+    "babel-loader": "^9.1.0",
     "babel-plugin-inline-react-svg": "^2.0.1",
     "backend-native-addon-go": "file:./source/native-addon-go",
     "backend-native-addon-rust": "file:./source/native-addon-rust",
