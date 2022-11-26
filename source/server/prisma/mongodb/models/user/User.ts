@@ -1,5 +1,6 @@
 import { createModel, PrismaModel } from "schemix";
 import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
+import postModel from "../post/Post";
 
 const model: PrismaModel = createModel((UserModal: PrismaModel): void => {
   UserModal.string("mongo_id", {
@@ -13,6 +14,7 @@ const model: PrismaModel = createModel((UserModal: PrismaModel): void => {
     .int("id", {
       unique: true,
     })
+    .relation("posts", postModel, { list: true })
     .string("login", {
       unique: true,
     })
