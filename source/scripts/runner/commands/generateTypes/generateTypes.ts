@@ -11,7 +11,12 @@ const umlFolderPath = join(process.cwd(), "uml");
     $.shell = "cmd";
     $.prefix = "";
   }
-  await $`cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/server/prisma/postgresql/index.ts`;
+  const generatePostgreSQLSchemaPromise = $`cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/server/prisma/postgresql/index.ts`;
+  const generateMongoDBSchemaPromise = $`cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/server/prisma/mongodb/index.ts`;
+  await Promise.all([
+    generatePostgreSQLSchemaPromise,
+    generateMongoDBSchemaPromise,
+  ]);
   const generatePostgreSQLTypesPromise = $`yarn run generate-postgresql-types`;
   const generateMongoDBTypesPromise = $`yarn run generate-mongodb-types`;
   if (!existsSync(umlFolderPath)) {
