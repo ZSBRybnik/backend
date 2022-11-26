@@ -26,13 +26,23 @@ model User {
 }
 
 model Page {
-  mongo_id String @id @default(auto()) @map("_id") @db.ObjectId
-  id       Int    @unique
-  name     String @unique
+  mongo_id String            @id @default(auto()) @map("_id") @db.ObjectId
+  name     String            @unique
   title    String
-  content  String
+  content  PageContentItem[]
 
   @@map("pages")
+}
+
+model PageContentItem {
+  mongo_id String @id @default(auto()) @map("_id") @db.ObjectId
+  id       Int    @unique
+  content  String
+  runtime  String
+  Page     Page?  @relation(fields: [pageName], references: [name])
+  pageName String @map("page_name")
+
+  @@map("pages_content_items")
 }
 
 model Post {
