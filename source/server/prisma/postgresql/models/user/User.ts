@@ -6,7 +6,7 @@ const UserModel: PrismaModel = createModel((UserModel: PrismaModel): void => {
   UserModel.int("id", {
     raw: generatePrismaString({
       rawString: `#prisma 
-          @id @default(autoincrement())
+        @id @default(autoincrement())
       `,
     }),
   })
@@ -15,39 +15,39 @@ const UserModel: PrismaModel = createModel((UserModel: PrismaModel): void => {
       unique: true,
       raw: generatePrismaString({
         rawString: `#prisma 
-        @database.VarChar(255)
-      `,
+          @database.VarChar(255)
+        `,
       }),
     })
     .string("role", {
       default: "user",
       raw: generatePrismaString({
         rawString: `#prisma 
-        @database.VarChar(255)
-      `,
+          @database.VarChar(255)
+        `,
       }),
     })
     .string("password", {
       raw: generatePrismaString({
         rawString: `#prisma 
-        @database.VarChar(255)
-      `,
+          @database.VarChar(255)
+        `,
       }),
     })
     .string("email", {
       unique: true,
       raw: generatePrismaString({
         rawString: `#prisma 
-        @database.VarChar(255)
-      `,
+          @database.VarChar(255)
+        `,
       }),
     })
     .string("authenticatorCode", {
       optional: true,
       raw: generatePrismaString({
         rawString: `#prisma 
-        @database.VarChar(16)
-      `,
+          @database.VarChar(16)
+        `,
       }),
       map: "authenticator_code",
     })
@@ -55,8 +55,8 @@ const UserModel: PrismaModel = createModel((UserModel: PrismaModel): void => {
       optional: true,
       raw: generatePrismaString({
         rawString: `#prisma 
-        @database.VarChar(22)
-      `,
+          @database.VarChar(22)
+        `,
       }),
       map: "phone_number",
     })
@@ -77,8 +77,8 @@ const UserModel: PrismaModel = createModel((UserModel: PrismaModel): void => {
       map: "discord_nickname",
       raw: generatePrismaString({
         rawString: `#prisma 
-        @database.VarChar(37)
-      `,
+          @database.VarChar(37)
+        `,
       }),
     })
     .map("users");

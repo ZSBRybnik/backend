@@ -6,7 +6,7 @@ const model = createModel((ProductModel) => {
     map: "_id",
     raw: generatePrismaString({
       rawString: `#prisma 
-       @id @default(auto()) @database.ObjectId
+        @id @default(auto()) @database.ObjectId
       `,
     }),
   })

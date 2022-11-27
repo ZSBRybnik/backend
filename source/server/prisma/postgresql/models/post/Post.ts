@@ -7,15 +7,15 @@ const postModel = createModel((postModel) => {
     .int("id", {
       raw: generatePrismaString({
         rawString: `#prisma 
-        @id @default(autoincrement())
-      `,
+          @id @default(autoincrement())
+        `,
       }),
     })
     .string("title", {
       raw: generatePrismaString({
         rawString: `#prisma 
-         @database.VarChar(255)
-      `,
+          @database.VarChar(255)
+        `,
       }),
     })
     .relation("author", UserModel, {
@@ -29,7 +29,7 @@ const postModel = createModel((postModel) => {
       raw: generatePrismaString({
         rawString: `#prisma 
           @database.VarChar(255)
-      `,
+        `,
       }),
     })
     .map("posts");

@@ -5,15 +5,15 @@ const model = createModel((ProductModel) => {
   ProductModel.int("id", {
     raw: generatePrismaString({
       rawString: `#prisma 
-          @id @default(autoincrement())
+        @id @default(autoincrement())
       `,
     }),
   })
     .string("name", {
       raw: generatePrismaString({
         rawString: `#prisma 
-        @database.VarChar(255)
-      `,
+          @database.VarChar(255)
+        `,
       }),
     })
     .decimal("price")
@@ -22,7 +22,7 @@ const model = createModel((ProductModel) => {
       raw: generatePrismaString({
         rawString: `#prisma 
           @database.Text
-      `,
+        `,
       }),
     })
     .map("products");

@@ -8,7 +8,7 @@ const pageModel = createModel((pageModel) => {
       raw: generatePrismaString({
         rawString: `#prisma 
           @id @default(auto()) @database.ObjectId
-      `,
+        `,
       }),
     })
     .string("name", {
