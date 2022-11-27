@@ -49,10 +49,9 @@ model PostContentItem {
 }
 
 model Page {
-  name            String            @id @unique @db.VarChar(255)
-  title           String            @db.VarChar(255)
-  content         String            @db.Text
-  PageContentItem PageContentItem[]
+  name    String            @id @unique @db.VarChar(255)
+  title   String            @db.VarChar(255)
+  content PageContentItem[]
 
   @@map("pages")
 }
