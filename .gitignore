@@ -27,3 +27,4 @@ DerivedData/
 .swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
 .webpackcache
 uml
+.vagrant
