@@ -1,4 +1,4 @@
-datasource db {
+datasource database {
   provider = "postgresql"
   url      = env("POSTGRESQL_URL")
 }
@@ -8,96 +8,94 @@ generator client {
   output   = "../../../node_modules/@prisma/postgresql"
 }
 
-model User {
-  id                             Int     @id @default(autoincrement())
-  login                          String  @unique @db.VarChar(255)
-  role                           String  @default("user") @db.VarChar(255)
-  password                       String  @db.VarChar(255)
-  email                          String  @unique @db.VarChar(255)
-  authenticatorCode              String? @map("authenticator_code") @db.VarChar(16)
-  phoneNumber                    String? @map("phone_number") @db.VarChar(22)
-  enabledTwoFactorAuthentication String  @default("application") @map("enabled_two_factor_authentication")
-  lockerNumber                   Int?    @unique @map("locker_number")
-  lockerPin                      Int?    @map("locker_pin")
-  posts                          Post[]
-  class                          Class   @relation(fields: [classId], references: [id])
-  classId                        Int     @map("class_id")
-  discordNickname                String  @map("discord_nickname") @db.VarChar(37)
-
-  @@map("users")
-}
-
-model Post {
-  id       Int               @id @default(autoincrement())
-  title    String            @db.VarChar(255)
-  content  PostContentItem[]
-  author   User              @relation(fields: [authorId], references: [id])
-  authorId Int               @map("author_id")
-  brief    String            @db.VarChar(255)
-
-  @@map("posts")
-}
-
-model PostContentItem {
-  id      Int    @id @default(autoincrement())
-  content String @db.Text
-  runtime String @db.VarChar(255)
-  Post    Post?  @relation(fields: [postId], references: [id])
-  postId  Int    @map("post_id")
-
-  @@map("posts_content_items")
-}
-
-model Page {
-  name    String            @id @unique @db.VarChar(255)
-  title   String            @db.VarChar(255)
-  content PageContentItem[]
-
-  @@map("pages")
-}
-
-model PageContentItem {
-  id       Int    @id @default(autoincrement())
-  content  String @db.Text
-  runtime  String @db.VarChar(255)
-  Page     Page?  @relation(fields: [pageName], references: [name])
-  pageName String @map("page_name")
-
-  @@map("pages_content_items")
-}
-
-model Product {
-  id          Int     @id @default(autoincrement())
-  name        String  @db.VarChar(255)
-  price       Decimal
-  quantity    Int
-  description String  @db.Text
-
-  @@map("products")
-}
-
-model Class {
-  id       Int                 @id @default(autoincrement())
-  name     String              @db.VarChar(10)
-  users    User[]
-  subjects SubjectsOnClasses[]
-
-  @@map("classes")
-}
-
 model Subject {
   id      Int                 @id @default(autoincrement())
-  name    String              @db.VarChar(100)
   classes SubjectsOnClasses[]
+  name    String              @database.VarChar(255)
 
   @@map("subjects")
 }
 
 model SubjectsOnClasses {
-  class     Class   @relation(fields: [classId], references: [id])
+  id        Int     @id @default(autoincrement())
+  classes   Class   @relation(fields: [classId], references: [id])
+  subjects  Subject @relation(fields: [subjectId], references: [id])
   classId   Int     @map("class_id")
-  subject   Subject @relation(fields: [subjectId], references: [id])
   subjectId Int     @map("subject_id")
 
-  @@id([classId, subjectId])
+  @@map("subjects_on_classes")
+}
+
+model postContentItem {
+  id        Int    @id @default(autoincrement())
+  content   Post   @relation(fields: [contentId], references: [id])
+  contentId Int    @map("content_id")
+  runtime   String @database.VarChar(255)
+
+  @@map("posts_content_items")
+}
+
+model Post {
+  id                  Int               @id @default(autoincrement())
+  title               String            @database.VarChar(255)
+  author              User              @relation(fields: [authorId], references: [id])
+  posts_content_items postContentItem[]
+  authorId            Int               @map("author_id")
+  brief               String            @database.VarChar(255)
+
+  @@map("posts")
+}
+
+model User {
+  id                             Int     @id @default(autoincrement())
+  class                          Class   @relation(fields: [classId], references: [id])
+  classId                        Int     @map("class_id")
+  posts                          Post[]
+  login                          String  @unique @database.VarChar(255)
+  role                           String  @default("user") @database.VarChar(255)
+  password                       String  @database.VarChar(255)
+  email                          String  @unique @database.VarChar(255)
+  authenticatorCode              String? @map("authenticator_code") @database.VarChar(16)
+  phoneNumber                    String? @map("phone_number") @database.VarChar(22)
+  enabledTwoFactorAuthentication String  @default("application") @map("enabled_two_factor_authentication")
+  lockerNumber                   Int?    @map("locker_pin")
+  discordNickname                String  @map("discord_nickname") @database.VarChar(37)
+
+  @@map("users")
+}
+
+model Class {
+  id       Int                 @id @default(autoincrement())
+  users    User[]
+  subjects SubjectsOnClasses[]
+  name     String              @database.VarChar(255)
+
+  @@map("classes")
+}
+
+model PageContentItem {
+  id          Int    @id @default(autoincrement())
+  content     Page   @relation(fields: [contentName], references: [name])
+  contentName String @map("content_name")
+  runtime     String @database.VarChar(255)
+
+  @@map("pages_content_items")
+}
+
+model Page {
+  name                String            @unique @id @database.VarChar(255)
+  pages_content_items PageContentItem[]
+  title               String            @database.VarChar(255)
+
+  @@map("pages")
+}
+
+model product {
+  id          Int     @id @default(autoincrement())
+  name        String  @database.VarChar(255)
+  price       Decimal
+  quantity    Int
+  description String  @database.Text
+
+  @@map("products")
 }

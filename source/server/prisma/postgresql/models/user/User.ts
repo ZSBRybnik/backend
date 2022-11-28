@@ -1,7 +1,7 @@
 import { createModel, PrismaModel } from "schemix";
 import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
+import ClassModel from "../class/Class";
 import postModel from "../post/Post";
-
 const UserModel: PrismaModel = createModel((UserModel: PrismaModel): void => {
   UserModel.int("id", {
     raw: generatePrismaString({
@@ -10,6 +10,13 @@ const UserModel: PrismaModel = createModel((UserModel: PrismaModel): void => {
       `,
     }),
   })
+    .relation("class", ClassModel, {
+      fields: ["classId"],
+      references: ["id"],
+    })
+    .int("classId", {
+      map: "class_id",
+    })
     .relation("posts", postModel, { list: true })
     .string("login", {
       unique: true,

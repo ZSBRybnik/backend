@@ -1,5 +1,6 @@
 import { createModel } from "schemix";
 import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
+import postContentItemModel from "../postContentItem/postContentItem";
 import UserModel from "../user/User";
 
 const postModel = createModel((postModel) => {
@@ -22,6 +23,7 @@ const postModel = createModel((postModel) => {
       fields: ["authorId"],
       references: ["id"],
     })
+    .relation("posts_content_items", postContentItemModel, { list: true })
     .int("authorId", {
       map: "author_id",
     })
