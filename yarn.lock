@@ -23739,10 +23739,10 @@ snappy@^7.1.1:
     "@napi-rs/snappy-win32-ia32-msvc" "7.1.1"
     "@napi-rs/snappy-win32-x64-msvc" "7.1.1"
 
-snyk@^1.966.0:
-  version "1.980.0"
-  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.980.0.tgz#1d56514468f43db7e087bb523e1f1d0f3a5f1099"
-  integrity sha512-Ge/M3xNSB3LSqIsQAQlw4flWkbyviRwsWF4rMzThU3C5SCV33zDzJjXhqpWLzCgsmUFkXircR5wSyNNPMCm9+Q==
+snyk@^1.1063.0:
+  version "1.1063.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.1063.0.tgz#ba6eeb157195cb72585f942d8013a2b4745af663"
+  integrity sha512-vaRygspOXFByjjowYpZ2gi2394WAj1faXoUVqfI8WZUo72JygzH0y45LOozh87dto07VZ+svEwpURD62yZ6O/A==
 
 socket.io-adapter@~2.4.0:
   version "2.4.0"
