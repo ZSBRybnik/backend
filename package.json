@@ -161,7 +161,7 @@
     "jsonwebtoken": "^8.5.1",
     "license-checker": "^25.0.1",
     "lodash": "^4.17.21",
-    "mongoose": "^6.5.2",
+    "mongoose": "^6.7.4",
     "nats": "^2.7.1",
     "neon-cli": "^0.10.1",
     "nim-loader": "^0.3.3",
