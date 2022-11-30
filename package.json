@@ -94,7 +94,7 @@
     "@typescript-eslint/eslint-plugin": "^5.30.5",
     "@typescript-eslint/parser": "^5.30.5",
     "@vendia/serverless-express": "^4.10.1",
-    "@vitejs/plugin-react": "^2.1.0",
+    "@vitejs/plugin-react": "^2.2.0",
     "audit-ci": "^6.3.0",
     "aurora": "^2.1.3",
     "avsc": "^5.7.4",
