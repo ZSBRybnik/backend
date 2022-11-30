@@ -40,7 +40,7 @@
     "@docusaurus/preset-classic": "^2.2.0",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
-    "@faker-js/faker": "^7.3.0",
+    "@faker-js/faker": "^7.6.0",
     "@hookstate/core": "^4.0.0-rc17",
     "@iarna/toml": "^2.2.5",
     "@microsoft/tsdoc": "^0.14.1",
