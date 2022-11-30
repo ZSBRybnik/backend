@@ -213,7 +213,7 @@
     "swagger-jsdoc": "^6.2.5",
     "swagger-ui-express": "^4.5.0",
     "tcp-port-used": "^1.0.2",
-    "terser-webpack-plugin": "^5.3.3",
+    "terser-webpack-plugin": "^5.3.6",
     "trpc-openapi": "^0.5.0",
     "ts-jest": "^28.0.5",
     "ts-loader": "^9.3.1",
