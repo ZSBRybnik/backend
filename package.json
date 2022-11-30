@@ -103,7 +103,7 @@
     "babel-plugin-inline-react-svg": "^2.0.1",
     "backend-native-addon-go": "file:./source/native-addon-go",
     "backend-native-addon-rust": "file:./source/native-addon-rust",
-    "bcrypt": "^5.0.1",
+    "bcrypt": "^5.1.0",
     "better-docs": "^2.7.2",
     "bson": "^4.6.5",
     "cache-loader": "^4.1.0",
