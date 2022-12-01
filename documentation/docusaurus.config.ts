@@ -21,10 +21,13 @@ const config: Config = {
     defaultLocale: "en",
     locales: ["en"],
   },
+  plugins: [
+    require.resolve("@cmfcmf/docusaurus-search-local"),
+    require.resolve("plugin-image-zoom"),
+  ],
   presets: [
     [
       "classic",
-
       {
         docs: {
           sidebarPath: require.resolve("./sidebars.ts"),
