@@ -1,0 +1,15 @@
+---
+sidebar_position: 2
+title: Tabela zawartość strony
+---
+
+### Kolumny
+
+- `id` - reprezentuje unikalny ID zawartości strony. Jest generowane automatycznie. Nie może być nullem. Wartość jest liczbą typu całkowitego.
+- `runtime` - reprezentuje nazwę środowsiska wykonywania. Nie może być nullem. Wartość jest typu tekstowego o maksymalnej długości 255 znaków.
+- `content` - reprezentuje zawartość strony. Nie może być nullem. Wartość jest typu tekstowego oraz nie ma ograniczeń długości.
+
+### Relacje
+
+content Post @relation(fields: [contentId], references: [id])
+contentId Int @map("content_id")
