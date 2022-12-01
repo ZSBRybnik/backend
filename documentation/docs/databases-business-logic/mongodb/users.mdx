@@ -1,19 +1,8 @@
 ---
-sidebar_position: 2
-title: MongoDB
+title: Tabela użytkownicy
 ---
 
-💡 Baza danych MongoDB stanowi zapasową bazę danych w aplikacji
-
-## Diagram UML
-
-![MongoDB UML graph. In the case, when you don't see attached image, please generate it with command to generate types](../../../uml/mongodb.png)
-
-⚠️ Diagram UML odnosi się do wygenerowanego schematu bazy danych dla ORMa Prisma. Wszystkie nazwy kolumn oraz tabel są zapisane snake casem w bazie danych zamiast użytego na diagramie camel casea.
-
-## Tabela Użytkownik
-
-### Kolumny
+## Kolumny
 
 - mongo_id - unikalny klucz dla bazy danych. Wartość jest generowana automatycznie.
 - id - reprezentuje unikalny ID użytkownika. Nie może być nullem. Wartość jest liczbą typu całkowitego. Jest odniesiem do kolumny id w bazie danych PostgreSQL.
@@ -28,11 +17,9 @@ title: MongoDB
 - discord_nickname - reprezentuje nazwę użytkownika na portalu discord. Wartość jest typu tekstowego oraz nie może być dłuższa niż 37 znaków.
 - discord_id - reprezentuje id użytkownika na portalu discord. Wartość jest typu tekstowego oraz musi być równa 18 znaków.
 
-### Indeksy
+## Indeksy
 
-### Relacje
+## Relacje
 
 user -> posts[] - Użytkownik ma zapisane wszystkie posty, których jest autorem. Wartość jest przechowywana w postacii listy. Relacja typu jeden do wielu.
 user -> class - Użytkownik ma przypisaną klasę. Relacja typu jeden do jeden.
-
-## Tabela Produkty

@@ -3,7 +3,7 @@ sidebar_position: 2
 title: Tabela użytkownicy
 ---
 
-### Kolumny
+## Kolumny
 
 - `id` - reprezentuje unikalny ID użytkownika. Jest generowane automatycznie. Nie może być nullem. Wartość jest liczbą typu całkowitego.
 - `login` - reprezentuje unikalny login użytkownika. Nie jest to nazwa powiązana z imieniem i nazwiskiem. Nie może być nullem. Wartość jest typu tekstowego i nie może być dłuższa niż 32 znaki.
@@ -18,6 +18,6 @@ title: Tabela użytkownicy
 - `class_id` - reprezentuje id klasy do której uczeń należy. Jest to klucz obcy odpowiadający wartości id w tabeli klasy. Wartość jest liczbą typu całkowitego.
 - `discord_id` - reprezentuje id użytkownika na portalu discord. Wartość jest typu tekstowego oraz musi być równa 18 znaków.
 
-### Relacje
+## Relacje
 
 user -> class - Użytkownik ma przypisaną klasę. Relacja typu jeden do jeden. Kolumna `class_id`, która jest kluczem obcym odpowiada kluczowi głównemu `id` w tabeli `classes` (klasy).
