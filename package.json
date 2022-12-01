@@ -25,7 +25,9 @@
     "migrate": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/migrate/migrate.ts",
     "storybook": "cross-env start-storybook -p 6006",
     "generate-types": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/generateTypes/generateTypes.ts",
-    "documentation-start": "cd documentation && cross-env NODE_OPTIONS=--max-old-space-size=8192 docusaurus start"
+    "documentation-start": "cd documentation && cross-env NODE_OPTIONS=--max-old-space-size=8192 docusaurus start",
+    "documentation-build": "cd documentation && docusaurus build",
+    "documentation-serve": "cd documentation && docusaurus serve"
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
