@@ -1,6 +1,10 @@
 import commandExists from "command-exists";
+import { stat, symlink } from "fs/promises";
+import { join } from "path";
 import { $ } from "zx";
 import Programs from "~backend/source/scripts/runner/types/programs/programs";
+
+const documentationPath = join(process.cwd(), "documentation");
 
 const handlePostInstallWindows = async () => {
   /*try {
@@ -32,6 +36,15 @@ const handlePostInstallWindows = async () => {
   } catch {
     $.shell = "powershell";
     await $`start-process -filepath ${Programs.Choco} "install ${Programs.Pulumi} -y" -verb runas`;
+  }
+  try {
+    await stat(join(documentationPath, "src"));
+  } catch (error) {
+    await symlink(
+      join(documentationPath, "source"),
+      join(documentationPath, "src"),
+      "dir",
+    );
   }
 };
 
