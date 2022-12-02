@@ -1,0 +1,19 @@
+---
+title: Tabela - bloki zawartośći w postach i podstronach
+---
+
+## Kolumny
+
+- `postId` - Jest to klucz obcy odpowiadający wartości `id` w tabeli posty. Wartość jest liczbą typu całkowitego.
+- `pageName` - Jest to klucz obcy odpowiadający wartości `name` w tabeli podstron. Wartość jest typu tekstowego.
+- `contentItemId` - Jest to klucz obcy odpowiadający wartości `id` w tabeli bloki zawartości. Wartość jest liczbą typu całkowitego.
+
+## Relacje
+
+content_items_on_posts_and_subpages -> post - Użytkownik ma przypisaną klasę. Relacja typu jeden do jeden. Kolumna `post_id`, która jest kluczem obcym odpowiada kluczowi głównemu `id` w tabeli `posts` (posty).
+content_items_on_posts_and_subpages -> subpage - Użytkownik ma przypisaną klasę. Relacja typu jeden do jeden. Kolumna `subpage_id`, która jest kluczem obcym odpowiada kluczowi głównemu `name` w tabeli `subpages` (podstrony).
+content_items_on_posts_and_subpages -> content_item - Użytkownik ma przypisaną klasę. Relacja typu jeden do jeden. Kolumna `content_item_id`, która jest kluczem obcym odpowiada kluczowi głównemu `id` w tabeli `content_items` (bloki zawartości).
+content itemy mogą być posiadane przez posty oraz podstrony w związku z relacją z tabelą pośrednią content_items_on_posts_and_subpages. Relacja typu wiele do wielu.
+post Post @relation(fields: [postId], references: [id])
+page Page @relation(fields: [pageName], references: [name])
+contentItem ContentItem @relation(fields: [contentItemId], references: [id])

@@ -1,0 +1,8 @@
+{
+  "label": "SurrealDB",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "Sekcja ta tłumaczy logikę biznesową bazy danych SurrealDB"
+  }
+}

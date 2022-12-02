@@ -1,5 +1,5 @@
 ---
-title: Tabela bloków zawartości podstrony
+title: Tabela - bloki zawartości
 ---
 
 ## Kolumny
@@ -10,5 +10,4 @@ title: Tabela bloków zawartości podstrony
 
 ## Relacje
 
-content Post @relation(fields: [contentId], references: [id])
-contentId Int @map("content_id")
+content_items -> content_items_on_posts_and_subpages - content itemy mogą być posiadane przez posty oraz podstrony w związku z relacją z tabelą pośrednią content_items_on_posts_and_subpages. Relacja typu wiele do wielu.

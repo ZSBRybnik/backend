@@ -1,6 +1,5 @@
 ---
-sidebar_position: 2
-title: Tabela użytkownicy
+title: Tabela - użytkownicy
 ---
 
 ## Kolumny
@@ -21,3 +20,9 @@ title: Tabela użytkownicy
 ## Relacje
 
 user -> class - Użytkownik ma przypisaną klasę. Relacja typu jeden do jeden. Kolumna `class_id`, która jest kluczem obcym odpowiada kluczowi głównemu `id` w tabeli `classes` (klasy).
+
+## Indeksy
+
+- `users_email_key` - indeks ten odnosi się do wyszukiwania przy pomocy emailu. Kolumna `email` jest użytkownika dla unikatowa.
+- `users_locker_number_key` - indeks ten odnosi się do wyszukiwania przy pomoc numeru szafki użytkownika. Kolumna `locker_number` jest unikatowa dla użytkownika`
+- `users_login_key` - indeks ten odnosi się do wyszukiwania przy pomocy loginu. Kolumna `login` jest dla użytkownika unikatowa.
