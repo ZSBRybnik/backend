@@ -53,7 +53,7 @@
     "@pulumi/aws": "^5.16.0",
     "@pulumi/azure": "^5.21.0",
     "@pulumi/pulumi": "^3.40.2",
-    "@storybook/addon-actions": "^6.5.12",
+    "@storybook/addon-actions": "^6.5.14",
     "@storybook/addon-essentials": "^6.5.12",
     "@storybook/addon-interactions": "^6.5.12",
     "@storybook/addon-links": "^6.5.12",
