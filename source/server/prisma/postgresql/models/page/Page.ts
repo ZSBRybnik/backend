@@ -1,6 +1,7 @@
 import { createModel } from "schemix";
 import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
 import pageContentItemModel from "../pageContentItem/PageContentItem";
+
 const pageModel = createModel((pageModel) => {
   pageModel
     .string("name", {
@@ -8,6 +9,13 @@ const pageModel = createModel((pageModel) => {
       raw: generatePrismaString({
         rawString: `#prisma 
           @id @database.VarChar(255)
+        `,
+      }),
+    })
+    .string("category", {
+      raw: generatePrismaString({
+        rawString: `#prisma 
+          @database.VarChar(255)
         `,
       }),
     })
