@@ -1,6 +1,6 @@
 import { createModel } from "schemix";
 import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
-import postContentItemModel from "../postContentItem/postContentItem";
+import postContentItemModel from "../postContentItem/PostContentItem";
 import UserModel from "../user/User";
 
 const postModel = createModel((postModel) => {

@@ -80,11 +80,11 @@ const UserModel: PrismaModel = createModel((UserModel: PrismaModel): void => {
       optional: true,
       map: "locker_pin",
     })
-    .string("discordNickname", {
-      map: "discord_nickname",
+    .string("discordId", {
+      map: "discord_id",
       raw: generatePrismaString({
         rawString: `#prisma 
-          @database.VarChar(37)
+          @database.VarChar(18)
         `,
       }),
     })
