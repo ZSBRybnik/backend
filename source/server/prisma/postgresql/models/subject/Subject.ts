@@ -1,6 +1,7 @@
 import { createModel } from "schemix";
 import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
 import SubjectOnClassModel from "../subjectsOnClasses/SubjectsOnClasses";
+import SubjectTranslationsModel from "../subjectTranslations/SubjectTranslations";
 
 const model = createModel((SubjectModel) => {
   SubjectModel.int("id", {
@@ -10,6 +11,7 @@ const model = createModel((SubjectModel) => {
       `,
     }),
   })
+    .relation("subjectTranslations", SubjectTranslationsModel, { list: true })
     .relation("classes", SubjectOnClassModel, { list: true })
     .string("name", {
       raw: generatePrismaString({

@@ -1,6 +1,7 @@
 import { createModel } from "schemix";
 import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
 import postContentItemModel from "../postContentItem/PostContentItem";
+import PostTranslationsModel from "../postTranstations/PostTranslations";
 import UserModel from "../user/User";
 
 const postModel = createModel((postModel) => {
@@ -11,6 +12,9 @@ const postModel = createModel((postModel) => {
           @id @default(autoincrement())
         `,
       }),
+    })
+    .relation("postTranslations", PostTranslationsModel, {
+      list: true,
     })
     .string("title", {
       raw: generatePrismaString({
