@@ -11,7 +11,7 @@ const model = createModel((PageCategoryModel) => {
       `,
     }),
   })
-    .int("pageName", {
+    .string("pageName", {
       map: "page_name",
     })
     .relation("pageCategory", PageModel, {
