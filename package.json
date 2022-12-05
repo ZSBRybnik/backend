@@ -142,7 +142,7 @@
     "faunadb": "^4.7.0",
     "ffi-napi": "^4.0.3",
     "geoip-lite": "^1.4.6",
-    "graphql": "^16.5.0",
+    "graphql": "^16.6.0",
     "graphql-config": "^4.3.1",
     "graphql-tag": "^2.12.6",
     "graphql-tools": "^8.3.1",
