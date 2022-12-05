@@ -1,5 +1,6 @@
 import { createModel } from "schemix";
 import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
+import languagesEnum from "../../enums/languages/Languages";
 import PostModel from "../post/Post";
 
 const model = createModel((PostTranslationsModel) => {
@@ -11,7 +12,7 @@ const model = createModel((PostTranslationsModel) => {
       `,
     }),
   })
-    .string("language")
+    .enum("language", languagesEnum)
     .string("title")
     .string("brief")
     .int("postId", {

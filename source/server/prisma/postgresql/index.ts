@@ -7,8 +7,16 @@ createSchema({
     provider: "postgresql",
     url: { env: "POSTGRESQL_URL" },
   },
-  generator: {
-    provider: "prisma-client-js",
-    output: "../../../node_modules/@prisma/postgresql",
-  },
+  generator: [
+    {
+      name: "client",
+      provider: "prisma-client-js",
+      output: "../../../node_modules/@prisma/postgresql",
+    },
+    {
+      name: "tables",
+      provider: "node node_modules/prisma-enum-generator",
+      output: "../../../node_modules/@prisma/postgresql-tables",
+    },
+  ],
 }).export(join(__dirname, ".."), "postgresql");

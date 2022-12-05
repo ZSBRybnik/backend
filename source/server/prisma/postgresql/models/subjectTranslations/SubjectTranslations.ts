@@ -1,5 +1,6 @@
 import { createModel } from "schemix";
 import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
+import languagesEnum from "../../enums/languages/Languages";
 import SubjectModel from "../subject/Subject";
 
 const model = createModel((SubjectTranslationsModel) => {
@@ -11,7 +12,7 @@ const model = createModel((SubjectTranslationsModel) => {
       `,
     }),
   })
-    .string("language")
+    .enum("language", languagesEnum)
     .string("title")
     .int("subjectId", {
       map: "subject_id",

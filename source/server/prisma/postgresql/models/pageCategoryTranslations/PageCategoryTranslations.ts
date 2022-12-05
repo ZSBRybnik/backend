@@ -1,5 +1,6 @@
 import { createModel } from "schemix";
 import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
+import languagesEnum from "../../enums/languages/Languages";
 import PageContentModel from "../pageCategory/PageCategory";
 
 const model = createModel((SubjectTranslationsModel) => {
@@ -11,6 +12,7 @@ const model = createModel((SubjectTranslationsModel) => {
       `,
     }),
   })
+    .enum("language", languagesEnum)
     .string("name", {
       raw: generatePrismaString({
         rawString: `#prisma 
