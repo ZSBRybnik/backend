@@ -159,7 +159,7 @@
     "immutable": "^4.1.0",
     "ion-js": "^4.3.0",
     "ioredis": "^5.1.0",
-    "ipfs-core": "^0.16.1",
+    "ipfs-core": "^0.17.0",
     "ipfs-http-client": "56",
     "jest": "^28.1.2",
     "jest-extended": "^2.0.0",
