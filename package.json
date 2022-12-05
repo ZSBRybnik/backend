@@ -160,7 +160,7 @@
     "ion-js": "^4.3.0",
     "ioredis": "^5.1.0",
     "ipfs-core": "^0.16.1",
-    "ipfs-http-client": "56",
+    "ipfs-http-client": "59",
     "jest": "^28.1.2",
     "jest-extended": "^2.0.0",
     "jest-mock-extended": "^3.0.1",
