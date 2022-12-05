@@ -50,7 +50,7 @@
     "@msgpack/msgpack": "^2.7.2",
     "@prettier/plugin-pug": "^2.1.1",
     "@prisma/client": "^4.0.0",
-    "@pulumi/aws": "^5.16.0",
+    "@pulumi/aws": "^5.22.0",
     "@pulumi/azure": "^5.21.0",
     "@pulumi/pulumi": "^3.40.2",
     "@storybook/addon-actions": "^6.5.12",
