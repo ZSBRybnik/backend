@@ -1,5 +1,6 @@
 import { createModel } from "schemix";
 import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
+import postAndPageModifiers from "../../enums/postAndPageModifiers/PostAndPageModifiers";
 import postContentItemModel from "../postContentItem/PostContentItem";
 import PostTranslationsModel from "../postTranstations/PostTranslations";
 import UserModel from "../user/User";
@@ -13,6 +14,8 @@ const postModel = createModel((postModel) => {
         `,
       }),
     })
+    .boolean("isDisabled", { map: "is_disabled" })
+    .enum("modifiers", postAndPageModifiers, { list: true })
     .relation("postTranslations", PostTranslationsModel, {
       list: true,
     })

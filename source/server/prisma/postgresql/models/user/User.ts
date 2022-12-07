@@ -1,15 +1,19 @@
 import { createModel, PrismaModel } from "schemix";
 import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
+import userModifiers from "../../enums/userModifiers/UserModifiers";
 import ClassModel from "../class/Class";
 import postModel from "../post/Post";
 const UserModel: PrismaModel = createModel((UserModel: PrismaModel): void => {
   UserModel.int("id", {
+    id: true,
     raw: generatePrismaString({
       rawString: `#prisma 
-        @id @default(autoincrement())
+        @default(autoincrement())
       `,
     }),
   })
+    .boolean("isDisabled", { map: "is_disabled" })
+    .enum("modifiers", userModifiers, { list: true })
     .relation("class", ClassModel, {
       fields: ["classId"],
       references: ["id"],

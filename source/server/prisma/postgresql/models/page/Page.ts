@@ -1,10 +1,12 @@
 import { createModel } from "schemix";
 import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
+import postAndPageModifiers from "../../enums/postAndPageModifiers/PostAndPageModifiers";
 import PageCategoryModel from "../pageCategory/PageCategory";
 import pageContentItemModel from "../pageContentItem/PageContentItem";
 
 const pageModel = createModel((pageModel) => {
   pageModel
+    .boolean("isDisabled", { map: "is_disabled" })
     .string("name", {
       unique: true,
       raw: generatePrismaString({
@@ -13,6 +15,7 @@ const pageModel = createModel((pageModel) => {
         `,
       }),
     })
+    .enum("modifiers", postAndPageModifiers, { list: true })
     .relation("pages_content_items", pageContentItemModel, { list: true })
     .relation("pageCategory", PageCategoryModel, {
       list: true,
