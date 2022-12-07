@@ -155,7 +155,7 @@
     "husky": "^8.0.1",
     "i": "^0.3.7",
     "i18next": "^21.8.15",
-    "i18next-chained-backend": "^3.0.2",
+    "i18next-chained-backend": "^4.1.0",
     "immutable": "^4.1.0",
     "ion-js": "^4.3.0",
     "ioredis": "^5.1.0",
