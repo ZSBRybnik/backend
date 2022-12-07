@@ -19,6 +19,11 @@ generator dbml {
   output     = "../../../uml"
 }
 
+generator json {
+  provider = "prisma-json-schema-generator"
+  output   = "../../../uml/postgresql.json"
+}
+
 enum Languages {
   AD
   AE

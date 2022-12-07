@@ -30,5 +30,10 @@ createSchema({
       outputName: "postgresql.dbml",
       output: "../../../uml",
     },
+    {
+      name: "json",
+      provider: "prisma-json-schema-generator",
+      output: "../../../uml/postgresql",
+    },
   ],
 }).export(join(__dirname, ".."), "postgresql");
