@@ -8,10 +8,10 @@ const pageModel = createModel((pageModel) => {
   pageModel
     .boolean("isDisabled", { map: "is_disabled" })
     .string("name", {
-      unique: true,
+      id: true,
       raw: generatePrismaString({
         rawString: `#prisma 
-          @id @database.VarChar(255)
+          @database.VarChar(255)
         `,
       }),
     })

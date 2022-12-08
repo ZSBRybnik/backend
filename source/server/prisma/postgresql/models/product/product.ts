@@ -1,7 +1,9 @@
 import { createModel } from "schemix";
 import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
+import allergensOnProducts from "../allergensOnProducts/AllergensOnProducts";
+import orderModel from "../order/Order";
 
-const model = createModel((ProductModel) => {
+const productModel = createModel((ProductModel) => {
   ProductModel.int("id", {
     raw: generatePrismaString({
       rawString: `#prisma 
@@ -9,6 +11,11 @@ const model = createModel((ProductModel) => {
       `,
     }),
   })
+    .relation("order", orderModel, {
+      fields: ["orderId"],
+      references: ["id"],
+    })
+    .int("orderId")
     .string("name", {
       raw: generatePrismaString({
         rawString: `#prisma 
@@ -25,7 +32,10 @@ const model = createModel((ProductModel) => {
         `,
       }),
     })
+    .relation("allergensOnProducts", allergensOnProducts, {
+      list: true,
+    })
     .map("products");
 });
 
-export default model;
+export default productModel;

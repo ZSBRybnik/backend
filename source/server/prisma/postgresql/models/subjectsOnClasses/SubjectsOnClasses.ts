@@ -1,15 +1,10 @@
 import { createModel } from "schemix";
-import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
 import ClassModel from "../class/Class";
 import subjectModel from "../subject/Subject";
 
 const model = createModel((SubjectsOnClassesModel) => {
-  SubjectsOnClassesModel.int("id", {
-    raw: generatePrismaString({
-      rawString: `#prisma 
-        @id @default(autoincrement())
-      `,
-    }),
+  SubjectsOnClassesModel.id({
+    fields: ["classId", "subjectId"],
   })
     .map("subjects_on_classes")
     .relation("classes", ClassModel, {

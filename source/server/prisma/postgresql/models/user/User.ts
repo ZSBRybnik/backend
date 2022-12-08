@@ -6,6 +6,7 @@ import authenticationType, {
 import rolesEnum from "../../enums/roles/Roles";
 import userModifiers from "../../enums/userModifiers/UserModifiers";
 import ClassModel from "../class/Class";
+import orderModel from "../order/Order";
 import postModel from "../post/Post";
 
 const UserModel: PrismaModel = createModel((UserModel: PrismaModel): void => {
@@ -32,6 +33,7 @@ const UserModel: PrismaModel = createModel((UserModel: PrismaModel): void => {
       map: "class_id",
     })
     .relation("posts", postModel, { list: true })
+    .relation("orders", orderModel, { list: true })
     .string("login", {
       unique: true,
       raw: generatePrismaString({

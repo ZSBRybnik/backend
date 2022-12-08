@@ -317,19 +317,28 @@ model Subject {
   id                  Int                   @id @default(autoincrement())
   subjectTranslations SubjectTranslations[]
   classes             SubjectsOnClasses[]
-  name                String                @database.VarChar(255)
+  name                String                @database.VarChar(100)
 
   @@map("subjects")
 }
 
 model SubjectsOnClasses {
-  id        Int     @id @default(autoincrement())
   classes   Class   @relation(fields: [classId], references: [id])
   subjects  Subject @relation(fields: [subjectId], references: [id])
   classId   Int     @map("class_id")
   subjectId Int     @map("subject_id")
 
+  @@id([classId, subjectId])
   @@map("subjects_on_classes")
+}
+
+model Class {
+  id       Int                 @id @default(autoincrement())
+  users    User[]
+  subjects SubjectsOnClasses[]
+  name     String              @database.VarChar(10)
+
+  @@map("classes")
 }
 
 model ContentItem {
@@ -362,7 +371,7 @@ model PageCategory {
 
 model Page {
   isDisabled                          Boolean                          @map("is_disabled")
-  name                                String                           @unique @id @database.VarChar(255)
+  name                                String                           @id @database.VarChar(255)
   modifiers                           PostAndPageModifiers[]
   content_items_on_posts_and_supbages ContentItemsOnPostsAndSubpages[]
   pageCategory                        PageCategory[]
@@ -372,14 +381,14 @@ model Page {
 }
 
 model ContentItemsOnPostsAndSubpages {
-  posts         Post        @relation(fields: [postId], references: [id])
-  pages         Page        @relation(fields: [pageName], references: [name])
+  id            Int         @id @default(autoincrement())
+  posts         Post?       @relation(fields: [postId], references: [id])
+  pages         Page?       @relation(fields: [pageName], references: [name])
   contentItems  ContentItem @relation(fields: [contentItemId], references: [id])
-  pageName      String      @map("page_name")
+  pageName      String?     @map("page_name")
   contentItemId Int         @map("content_item_id")
-  postId        Int         @map("post_id")
+  postId        Int?        @map("post_id")
 
-  @@id([pageName, contentItemId, postId])
   @@map("content_items_on_posts_and_subpages")
 }
 
@@ -417,6 +426,7 @@ model User {
   class                          Class              @relation(fields: [classId], references: [id])
   classId                        Int                @map("class_id")
   posts                          Post[]
+  orders                         Order[]
   login                          String             @unique @database.VarChar(255)
   password                       String             @database.VarChar(255)
   email                          String             @unique @database.VarChar(255)
@@ -429,21 +439,26 @@ model User {
   @@map("users")
 }
 
-model Class {
-  id       Int                 @id @default(autoincrement())
-  users    User[]
-  subjects SubjectsOnClasses[]
-  name     String              @database.VarChar(255)
+model Order {
+  id              Int       @id @default(autoincrement())
+  payment_amount  Decimal   @map("payment_amount")
+  transactionDate DateTime  @map("transaction_date")
+  products        Product[]
+  user            User      @relation(fields: [userId], references: [id])
+  userId          Int
 
-  @@map("classes")
+  @@map("orders")
 }
 
 model Product {
-  id          Int     @id @default(autoincrement())
-  name        String  @database.VarChar(255)
-  price       Decimal
-  quantity    Int
-  description String  @database.Text
+  id                  Int                   @id @default(autoincrement())
+  order               Order                 @relation(fields: [orderId], references: [id])
+  orderId             Int
+  name                String                @database.VarChar(255)
+  price               Decimal
+  quantity            Int
+  description         String                @database.Text
+  allergensOnProducts AllergensOnProducts[]
 
   @@map("products")
 }
@@ -460,7 +475,18 @@ model ProductAllergensTranslations {
 
 model ProductAllergens {
   id                          Int                            @id @default(autoincrement())
+  allergensOnProducts         AllergensOnProducts[]
   productAllergenTranslations ProductAllergensTranslations[]
 
   @@map("product_allergens")
+}
+
+model AllergensOnProducts {
+  allergens  ProductAllergens @relation(fields: [allergenId], references: [id])
+  products   Product          @relation(fields: [productId], references: [id])
+  productId  Int              @map("product_id")
+  allergenId Int              @map("allergen_id")
+
+  @@id([productId])
+  @@map("allergens_on_products_model")
 }

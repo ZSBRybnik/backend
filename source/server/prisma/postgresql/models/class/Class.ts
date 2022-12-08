@@ -15,7 +15,7 @@ const model = createModel((ClassModel) => {
     .string("name", {
       raw: generatePrismaString({
         rawString: `#prisma 
-          @database.VarChar(255)
+          @database.VarChar(10)
         `,
       }),
     })
