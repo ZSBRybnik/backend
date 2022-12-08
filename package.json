@@ -49,7 +49,7 @@
     "@microsoft/tsdoc": "^0.14.1",
     "@mrleebo/prisma-ast": "^0.4.1",
     "@msgpack/msgpack": "^2.7.2",
-    "@prettier/plugin-pug": "^2.1.1",
+    "@prettier/plugin-pug": "^2.3.0",
     "@prisma/client": "^4.7.1",
     "@pulumi/aws": "^5.16.0",
     "@pulumi/azure": "^5.21.0",

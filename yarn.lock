@@ -6513,10 +6513,10 @@
   resolved "https://registry.yarnpkg.com/@polka/url/-/url-1.0.0-next.21.tgz#5de5a2385a35309427f6011992b544514d559aa1"
   integrity sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==
 
-"@prettier/plugin-pug@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@prettier/plugin-pug/-/plugin-pug-2.1.1.tgz#4426a0aa73abbaab36a5f8abc844e069bb2fe4e4"
-  integrity sha512-YSeE1Z1BCR/ylKv9WE66mvS0OqXaNRoRFFz/VtLoHeU98QZSljUUehyql7Se5NJSUhRSEbkpla42sPu8Ms6Epg==
+"@prettier/plugin-pug@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@prettier/plugin-pug/-/plugin-pug-2.3.0.tgz#6c9ec1be8af595b04d086d5b350a282cd512aa8b"
+  integrity sha512-aU2JwLtClbTrVi1yZdYvS7A/gh1xcUyxgoo87XbQnRXiIW0wis1QDeuHPiS8MDqKRjKpQd9R7i3UdQ0owzBpjQ==
   dependencies:
     pug-lexer "^5.0.0"
 
@@ -6527,7 +6527,7 @@
   dependencies:
     "@prisma/engines-version" "2.28.0-17.89facabd0366f63911d089156a7a70125bfbcd27"
 
-"@prisma/client@^4.0.0":
+"@prisma/client@^4.7.1":
   version "4.7.1"
   resolved "https://registry.yarnpkg.com/@prisma/client/-/client-4.7.1.tgz#66fe84aca25de17cb3d9141dec003f34714914b9"
   integrity sha512-/GbnOwIPtjiveZNUzGXOdp7RxTEkHL4DZP3vBaFNadfr6Sf0RshU5EULFzVaSi9i9PIK9PYd+1Rn7z2B2npb9w==
