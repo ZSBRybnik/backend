@@ -1,3 +1,4 @@
+// import { createPrismaSchemaBuilder, printSchema } from "@mrleebo/prisma-ast";
 import { existsSync, mkdirSync } from "fs";
 import { platform } from "os";
 import { join } from "path";
@@ -17,6 +18,40 @@ const umlFolderPath = join(process.cwd(), "uml");
     generatePostgreSQLSchemaPromise,
     generateMongoDBSchemaPromise,
   ]);
+  /*const postgreSQLSchemaContent = readFileSync(
+    join(process.cwd(), "source", "server", "prisma", "postgresql.prisma"),
+    "utf-8",
+  ).toString();
+  const postgreSQLSchemaBuilder = createPrismaSchemaBuilder(
+    postgreSQLSchemaContent,
+  );
+  const { type, list } = postgreSQLSchemaBuilder.getSchema();
+  const fixedSchema = {
+    type,
+    list: list.map((schemaElement) => {
+      const { name, assignments }: any = schemaElement;
+      if (name === "database") {
+        return {
+          ...schemaElement,
+          assignments: [
+            ...assignments,
+            {
+              type: "assignment",
+              key: "extensions",
+              value: "[zombodb, pg_tgrm]",
+            },
+          ],
+        };
+      }
+      return schemaElement;
+    }),
+  };
+  const postgreSQLSchema = printSchema(fixedSchema);
+  writeFileSync(
+    join(process.cwd(), "source", "server", "prisma", "postgresql.prisma"),
+    postgreSQLSchema,
+    "utf-8",
+  );*/
   const generatePostgreSQLTypesPromise = $`yarn run generate-postgresql-types`;
   const generateMongoDBTypesPromise = $`yarn run generate-mongodb-types`;
   if (!existsSync(umlFolderPath)) {
