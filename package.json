@@ -48,7 +48,7 @@
     "@iarna/toml": "^2.2.5",
     "@microsoft/tsdoc": "^0.14.1",
     "@mrleebo/prisma-ast": "^0.4.1",
-    "@msgpack/msgpack": "^2.7.2",
+    "@msgpack/msgpack": "^2.8.0",
     "@prettier/plugin-pug": "^2.1.1",
     "@prisma/client": "^4.7.1",
     "@pulumi/aws": "^5.16.0",
