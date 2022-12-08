@@ -1,7 +1,7 @@
 import { createModel } from "schemix";
 import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
 import postAndPageModifiers from "../../enums/postAndPageModifiers/PostAndPageModifiers";
-import postContentItemModel from "../postContentItem/PostContentItem";
+import contentItemsOnPostsAndSupbages from "../contentItemsOnPostsAndSubpages/ContentItemsOnPostsAndSubpages";
 import PostTranslationsModel from "../postTranstations/PostTranslations";
 import UserModel from "../user/User";
 
@@ -26,11 +26,17 @@ const postModel = createModel((postModel) => {
         `,
       }),
     })
+    .relation(
+      "content_items_on_posts_and_supbages",
+      contentItemsOnPostsAndSupbages,
+      {
+        list: true,
+      },
+    )
     .relation("author", UserModel, {
       fields: ["authorId"],
       references: ["id"],
     })
-    .relation("posts_content_items", postContentItemModel, { list: true })
     .int("authorId", {
       map: "author_id",
     })

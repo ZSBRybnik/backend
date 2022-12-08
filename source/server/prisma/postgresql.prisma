@@ -21,7 +21,14 @@ generator dbml {
 
 generator json {
   provider = "prisma-json-schema-generator"
-  output   = "../../../uml/postgresql.json"
+  output   = "../../../uml/postgresql"
+}
+
+enum AuthenticationType {
+  application
+  disabled
+  phone
+  phoneWithCalls
 }
 
 enum Languages {
@@ -286,6 +293,11 @@ enum Roles {
   BuffetOwner
 }
 
+enum RuntimeType {
+  classic
+  legacy
+}
+
 enum UserModifiers {
   BannedCommenting
   BannedReactingOnFeed
@@ -320,67 +332,13 @@ model SubjectsOnClasses {
   @@map("subjects_on_classes")
 }
 
-model PostContentItem {
-  id        Int    @id @default(autoincrement())
-  content   Post   @relation(fields: [contentId], references: [id])
-  contentId Int    @map("content_id")
-  runtime   String @database.VarChar(255)
+model ContentItem {
+  id                                  Int                              @id @default(autoincrement())
+  content_items_on_posts_and_supbages ContentItemsOnPostsAndSubpages[]
+  runtime                             RuntimeType                      @default(classic)
+  content                             String                           @database.Text
 
-  @@map("posts_content_items")
-}
-
-model PostTranslations {
-  id              Int       @id @default(autoincrement())
-  language        Languages
-  title           String
-  brief           String
-  postId          Int       @map("post_id")
-  postTranslation Post      @relation(fields: [postId], references: [id])
-
-  @@map("post_translations")
-}
-
-model Post {
-  id                  Int                    @id @default(autoincrement())
-  isDisabled          Boolean                @map("is_disabled")
-  modifiers           PostAndPageModifiers[]
-  postTranslations    PostTranslations[]
-  title               String                 @database.VarChar(255)
-  author              User                   @relation(fields: [authorId], references: [id])
-  posts_content_items PostContentItem[]
-  authorId            Int                    @map("author_id")
-  brief               String                 @database.VarChar(255)
-
-  @@map("posts")
-}
-
-model User {
-  id                             Int             @id @default(autoincrement())
-  isDisabled                     Boolean         @map("is_disabled")
-  modifiers                      UserModifiers[]
-  class                          Class           @relation(fields: [classId], references: [id])
-  classId                        Int             @map("class_id")
-  posts                          Post[]
-  login                          String          @unique @database.VarChar(255)
-  role                           String          @default("user") @database.VarChar(255)
-  password                       String          @database.VarChar(255)
-  email                          String          @unique @database.VarChar(255)
-  authenticatorCode              String?         @map("authenticator_code") @database.VarChar(16)
-  phoneNumber                    String?         @map("phone_number") @database.VarChar(22)
-  enabledTwoFactorAuthentication String          @default("application") @map("enabled_two_factor_authentication")
-  lockerNumber                   Int?            @map("locker_pin")
-  discordId                      String          @map("discord_id") @database.VarChar(18)
-
-  @@map("users")
-}
-
-model Class {
-  id       Int                 @id @default(autoincrement())
-  users    User[]
-  subjects SubjectsOnClasses[]
-  name     String              @database.VarChar(255)
-
-  @@map("classes")
+  @@map("content_items")
 }
 
 model PageCategoryTranslations {
@@ -402,24 +360,82 @@ model PageCategory {
   @@map("pages_category")
 }
 
-model PageContentItem {
-  id          Int    @id @default(autoincrement())
-  content     Page   @relation(fields: [contentName], references: [name])
-  contentName String @map("content_name")
-  runtime     String @database.VarChar(255)
-
-  @@map("pages_content_items")
-}
-
 model Page {
-  isDisabled          Boolean                @map("is_disabled")
-  name                String                 @unique @id @database.VarChar(255)
-  modifiers           PostAndPageModifiers[]
-  pages_content_items PageContentItem[]
-  pageCategory        PageCategory[]
-  title               String                 @database.VarChar(255)
+  isDisabled                          Boolean                          @map("is_disabled")
+  name                                String                           @unique @id @database.VarChar(255)
+  modifiers                           PostAndPageModifiers[]
+  content_items_on_posts_and_supbages ContentItemsOnPostsAndSubpages[]
+  pageCategory                        PageCategory[]
+  title                               String                           @database.VarChar(255)
 
   @@map("pages")
+}
+
+model ContentItemsOnPostsAndSubpages {
+  posts         Post        @relation(fields: [postId], references: [id])
+  pages         Page        @relation(fields: [pageName], references: [name])
+  contentItems  ContentItem @relation(fields: [contentItemId], references: [id])
+  pageName      String      @map("page_name")
+  contentItemId Int         @map("content_item_id")
+  postId        Int         @map("post_id")
+
+  @@id([pageName, contentItemId, postId])
+  @@map("content_items_on_posts_and_subpages")
+}
+
+model PostTranslations {
+  id              Int       @id @default(autoincrement())
+  language        Languages
+  title           String
+  brief           String
+  postId          Int       @map("post_id")
+  postTranslation Post      @relation(fields: [postId], references: [id])
+
+  @@map("post_translations")
+}
+
+model Post {
+  id                                  Int                              @id @default(autoincrement())
+  isDisabled                          Boolean                          @map("is_disabled")
+  modifiers                           PostAndPageModifiers[]
+  postTranslations                    PostTranslations[]
+  title                               String                           @database.VarChar(255)
+  content_items_on_posts_and_supbages ContentItemsOnPostsAndSubpages[]
+  author                              User                             @relation(fields: [authorId], references: [id])
+  authorId                            Int                              @map("author_id")
+  brief                               String                           @database.VarChar(255)
+
+  @@map("posts")
+}
+
+model User {
+  id                             Int                @id @default(autoincrement())
+  isDisabled                     Boolean            @map("is_disabled")
+  modifiers                      UserModifiers[]
+  roles                          Roles[]
+  enabledTwoFactorAuthentication AuthenticationType @default(application)                            @map("enabled_two_factor_authentication")
+  class                          Class              @relation(fields: [classId], references: [id])
+  classId                        Int                @map("class_id")
+  posts                          Post[]
+  login                          String             @unique @database.VarChar(255)
+  password                       String             @database.VarChar(255)
+  email                          String             @unique @database.VarChar(255)
+  authenticatorCode              String?            @map("authenticator_code") @database.VarChar(16)
+  phoneNumber                    String?            @map("phone_number") @database.VarChar(22)
+  lockerNumber                   Int?               @unique @map("locker_number")
+  lockerPin                      Int?               @map("locker_pin")
+  discordId                      String             @unique @map("discord_id") @database.VarChar(18)
+
+  @@map("users")
+}
+
+model Class {
+  id       Int                 @id @default(autoincrement())
+  users    User[]
+  subjects SubjectsOnClasses[]
+  name     String              @database.VarChar(255)
+
+  @@map("classes")
 }
 
 model Product {

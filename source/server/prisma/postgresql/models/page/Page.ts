@@ -1,8 +1,8 @@
 import { createModel } from "schemix";
 import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
 import postAndPageModifiers from "../../enums/postAndPageModifiers/PostAndPageModifiers";
+import contentItemsOnPostsAndSupbages from "../contentItemsOnPostsAndSubpages/ContentItemsOnPostsAndSubpages";
 import PageCategoryModel from "../pageCategory/PageCategory";
-import pageContentItemModel from "../pageContentItem/PageContentItem";
 
 const pageModel = createModel((pageModel) => {
   pageModel
@@ -16,7 +16,13 @@ const pageModel = createModel((pageModel) => {
       }),
     })
     .enum("modifiers", postAndPageModifiers, { list: true })
-    .relation("pages_content_items", pageContentItemModel, { list: true })
+    .relation(
+      "content_items_on_posts_and_supbages",
+      contentItemsOnPostsAndSupbages,
+      {
+        list: true,
+      },
+    )
     .relation("pageCategory", PageCategoryModel, {
       list: true,
     })

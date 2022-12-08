@@ -1,7 +1,8 @@
 import { createModel } from "schemix";
 import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
 import ClassModel from "../class/Class";
-import SubjectModel from "../subject/Subject";
+import subjectModel from "../subject/Subject";
+
 const model = createModel((SubjectsOnClassesModel) => {
   SubjectsOnClassesModel.int("id", {
     raw: generatePrismaString({
@@ -15,7 +16,7 @@ const model = createModel((SubjectsOnClassesModel) => {
       fields: ["classId"],
       references: ["id"],
     })
-    .relation("subjects", SubjectModel, {
+    .relation("subjects", subjectModel, {
       fields: ["subjectId"],
       references: ["id"],
     })

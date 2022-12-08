@@ -3,7 +3,7 @@ import generatePrismaString from "../../../utils/generatePrismaString/generatePr
 import SubjectOnClassModel from "../subjectsOnClasses/SubjectsOnClasses";
 import SubjectTranslationsModel from "../subjectTranslations/SubjectTranslations";
 
-const model = createModel((SubjectModel) => {
+const subjectModel = createModel((SubjectModel) => {
   SubjectModel.int("id", {
     raw: generatePrismaString({
       rawString: `#prisma 
@@ -23,4 +23,4 @@ const model = createModel((SubjectModel) => {
     .map("subjects");
 });
 
-export default model;
+export default subjectModel;

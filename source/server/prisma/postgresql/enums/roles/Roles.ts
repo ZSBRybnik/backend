@@ -2,10 +2,10 @@ import { createEnum } from "schemix";
 
 const roles: Set<string> = new Set(["Administrator", "BuffetOwner"]);
 
-const languagesEnum = createEnum((RolesEnum) => {
+const rolesEnum = createEnum((RolesEnum) => {
   roles.forEach((role) => {
     RolesEnum.addValue(role);
   });
 });
 
-export default languagesEnum;
+export default rolesEnum;
