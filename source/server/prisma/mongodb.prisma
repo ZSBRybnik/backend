@@ -312,6 +312,15 @@ model Page {
   @@map("pages")
 }
 
+model SchoolClass {
+  mongo_id String @map("_id") @id @default(auto()) @database.ObjectId
+  id       Int    @unique
+  users    User[]
+  name     String @unique
+
+  @@map("classes")
+}
+
 model User {
   mongo_id                       String             @map("_id") @id @default(auto()) @database.ObjectId
   id                             Int                @unique
@@ -319,6 +328,8 @@ model User {
   modifiers                      UserModifiers[]
   roles                          Roles[]
   enabledTwoFactorAuthentication AuthenticationType @default(application)                               @map("enabled_two_factor_authentication")
+  class                          SchoolClass        @relation(fields: [classId], references: [id])
+  classId                        Int                @map("class_id")
   posts                          Post[]
   login                          String             @unique
   password                       String
@@ -354,13 +365,4 @@ model Product {
   description String
 
   @@map("products")
-}
-
-model SchoolClass {
-  mongo_id String @map("_id") @id @default(auto()) @database.ObjectId
-  id       Int    @unique
-  users    User[]
-  name     String @unique
-
-  @@map("classes")
 }

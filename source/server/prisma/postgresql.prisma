@@ -303,44 +303,6 @@ enum UserModifiers {
   BannedReactingOnFeed
 }
 
-model SubjectTranslations {
-  id                 Int       @id @default(autoincrement())
-  language           Languages
-  title              String
-  subjectId          Int       @map("subject_id")
-  subjectTranslation Subject   @relation(fields: [subjectId], references: [id])
-
-  @@map("subject_translations")
-}
-
-model Subject {
-  id                  Int                   @id @default(autoincrement())
-  subjectTranslations SubjectTranslations[]
-  classes             SubjectsOnClasses[]
-  name                String                @database.VarChar(100)
-
-  @@map("subjects")
-}
-
-model SubjectsOnClasses {
-  classes   Class   @relation(fields: [classId], references: [id])
-  subjects  Subject @relation(fields: [subjectId], references: [id])
-  classId   Int     @map("class_id")
-  subjectId Int     @map("subject_id")
-
-  @@id([classId, subjectId])
-  @@map("subjects_on_classes")
-}
-
-model Class {
-  id       Int                 @id @default(autoincrement())
-  users    User[]
-  subjects SubjectsOnClasses[]
-  name     String              @database.VarChar(10)
-
-  @@map("classes")
-}
-
 model ContentItem {
   id                                  Int                              @id @default(autoincrement())
   content_items_on_posts_and_supbages ContentItemsOnPostsAndSubpages[]
@@ -417,13 +379,51 @@ model Post {
   @@map("posts")
 }
 
+model SubjectTranslations {
+  id                 Int       @id @default(autoincrement())
+  language           Languages
+  title              String
+  subjectId          Int       @map("subject_id")
+  subjectTranslation Subject   @relation(fields: [subjectId], references: [id])
+
+  @@map("subject_translations")
+}
+
+model Subject {
+  id                  Int                   @id @default(autoincrement())
+  subjectTranslations SubjectTranslations[]
+  classes             SubjectsOnClasses[]
+  name                String                @database.VarChar(100)
+
+  @@map("subjects")
+}
+
+model SubjectsOnClasses {
+  classes   SchoolClass @relation(fields: [classId], references: [id])
+  subjects  Subject     @relation(fields: [subjectId], references: [id])
+  classId   Int         @map("class_id")
+  subjectId Int         @map("subject_id")
+
+  @@id([classId, subjectId])
+  @@map("subjects_on_classes")
+}
+
+model SchoolClass {
+  id       Int                 @id @default(autoincrement())
+  users    User[]
+  subjects SubjectsOnClasses[]
+  name     String              @database.VarChar(10)
+
+  @@map("classes")
+}
+
 model User {
   id                             Int                @id @default(autoincrement())
   isDisabled                     Boolean            @map("is_disabled")
   modifiers                      UserModifiers[]
   roles                          Roles[]
   enabledTwoFactorAuthentication AuthenticationType @default(application)                            @map("enabled_two_factor_authentication")
-  class                          Class              @relation(fields: [classId], references: [id])
+  class                          SchoolClass        @relation(fields: [classId], references: [id])
   classId                        Int                @map("class_id")
   posts                          Post[]
   orders                         Order[]
