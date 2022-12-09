@@ -1,23 +1,32 @@
 import { createModel } from "schemix";
 import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
 
-const model = createModel((ProductModel) => {
+const productModel = createModel((ProductModel) => {
   ProductModel.string("mongo_id", {
     map: "_id",
+    id: true,
     raw: generatePrismaString({
       rawString: `#prisma 
-        @id @default(auto()) @database.ObjectId
+        @default(auto()) @database.ObjectId
       `,
     }),
   })
     .int("id", {
       unique: true,
-    })
+    }) /*
+    .relation("order", orderModel, {
+      fields: ["orderId"],
+      references: ["id"],
+    })*/
+    .int("orderId")
     .string("name")
     .float("price")
     .int("quantity")
-    .string("description")
+    .string("description") /*
+    .relation("allergensOnProducts", allergensOnProducts, {
+      list: true,
+    })*/
     .map("products");
 });
 
-export default model;
+export default productModel;

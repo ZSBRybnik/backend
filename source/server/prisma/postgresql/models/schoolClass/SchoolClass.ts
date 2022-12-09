@@ -2,7 +2,7 @@ import { createModel } from "schemix";
 import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
 import SubiectOnClassModel from "../subjectsOnClasses/SubjectsOnClasses";
 import UsersModel from "../user/User";
-const model = createModel((ClassModel) => {
+const classModel = createModel((ClassModel) => {
   ClassModel.int("id", {
     raw: generatePrismaString({
       rawString: `#prisma 
@@ -22,4 +22,4 @@ const model = createModel((ClassModel) => {
     .map("classes");
 });
 
-export default model;
+export default classModel;

@@ -1,5 +1,5 @@
 import { createModel } from "schemix";
-import ClassModel from "../class/Class";
+import ClassModel from "../schoolClass/SchoolClass";
 import subjectModel from "../subject/Subject";
 
 const model = createModel((SubjectsOnClassesModel) => {

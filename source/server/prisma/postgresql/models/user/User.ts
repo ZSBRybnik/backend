@@ -5,9 +5,9 @@ import authenticationType, {
 } from "../../enums/authenticationType/AuthenticationType";
 import rolesEnum from "../../enums/roles/Roles";
 import userModifiers from "../../enums/userModifiers/UserModifiers";
-import ClassModel from "../class/Class";
 import orderModel from "../order/Order";
 import postModel from "../post/Post";
+import ClassModel from "../schoolClass/SchoolClass";
 
 const UserModel: PrismaModel = createModel((UserModel: PrismaModel): void => {
   UserModel.int("id", {
