@@ -6527,7 +6527,7 @@
   dependencies:
     "@prisma/engines-version" "2.28.0-17.89facabd0366f63911d089156a7a70125bfbcd27"
 
-"@prisma/client@^4.0.0":
+"@prisma/client@^4.7.1":
   version "4.7.1"
   resolved "https://registry.yarnpkg.com/@prisma/client/-/client-4.7.1.tgz#66fe84aca25de17cb3d9141dec003f34714914b9"
   integrity sha512-/GbnOwIPtjiveZNUzGXOdp7RxTEkHL4DZP3vBaFNadfr6Sf0RshU5EULFzVaSi9i9PIK9PYd+1Rn7z2B2npb9w==
@@ -27348,10 +27348,10 @@ schema-utils@^4.0.0:
     ajv-formats "^2.1.1"
     ajv-keywords "^5.0.0"
 
-schemix@^1.8.3:
-  version "1.8.3"
-  resolved "https://registry.yarnpkg.com/schemix/-/schemix-1.8.3.tgz#abfb773820cba39ba647c862aedf8c2b3cd7059b"
-  integrity sha512-GAFNTW0rnxONdce/nGkiKDmPFacO5Bs3cEz9KN/OZiSEaiGHREJpgvFM1gCTUwnN19teBz5xoNeNtDAfZJMIPg==
+schemix@^1.8.4:
+  version "1.8.4"
+  resolved "https://registry.yarnpkg.com/schemix/-/schemix-1.8.4.tgz#fa8f92fe7a497d157d384835d7610a36e3d09e05"
+  integrity sha512-mCKHYOEwiXAndWCzkZHxXGk96MSUzf4An7IBCnf7nKTO6M2q1C32mNaOu8MV7WL6HvM8yAhxJJBJR8HAcuOv0A==
 
 scmp@^2.1.0:
   version "2.1.0"
