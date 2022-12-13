@@ -6527,7 +6527,7 @@
   dependencies:
     "@prisma/engines-version" "2.28.0-17.89facabd0366f63911d089156a7a70125bfbcd27"
 
-"@prisma/client@^4.0.0":
+"@prisma/client@^4.7.1":
   version "4.7.1"
   resolved "https://registry.yarnpkg.com/@prisma/client/-/client-4.7.1.tgz#66fe84aca25de17cb3d9141dec003f34714914b9"
   integrity sha512-/GbnOwIPtjiveZNUzGXOdp7RxTEkHL4DZP3vBaFNadfr6Sf0RshU5EULFzVaSi9i9PIK9PYd+1Rn7z2B2npb9w==
@@ -27178,17 +27178,10 @@ rxjs@^6.6.0:
   dependencies:
     tslib "^1.9.0"
 
-rxjs@^7.5.4:
-  version "7.5.7"
-  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.5.7.tgz#2ec0d57fdc89ece220d2e702730ae8f1e49def39"
-  integrity sha512-z9MzKh/UcOqB3i20H6rtrlaE/CgjLOvheWK/9ILrbhROGTweAi1BaFsTT9FbwZi5Trr1qNRs+MXkhmR06awzQA==
-  dependencies:
-    tslib "^2.1.0"
-
-rxjs@^7.5.5:
-  version "7.5.6"
-  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.5.6.tgz#0446577557862afd6903517ce7cae79ecb9662bc"
-  integrity sha512-dnyv2/YsXhnm461G+R/Pe5bWP41Nm6LBXEYWI6eiFP4fiwx6WRI/CD0zbdVAudd9xwLEF2IDcKXLHit0FYjUzw==
+rxjs@^7.5.4, rxjs@^7.5.5, rxjs@^7.6.0:
+  version "7.6.0"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.6.0.tgz#361da5362b6ddaa691a2de0b4f2d32028f1eb5a2"
+  integrity sha512-DDa7d8TFNUalGC9VqXvQ1euWNN7sc63TrUCuM9J998+ViviahMIjKSOU7rfcgFOF+FCD71BhDRv4hrFz+ImDLQ==
   dependencies:
     tslib "^2.1.0"
 
@@ -27348,10 +27341,10 @@ schema-utils@^4.0.0:
     ajv-formats "^2.1.1"
     ajv-keywords "^5.0.0"
 
-schemix@^1.8.3:
-  version "1.8.3"
-  resolved "https://registry.yarnpkg.com/schemix/-/schemix-1.8.3.tgz#abfb773820cba39ba647c862aedf8c2b3cd7059b"
-  integrity sha512-GAFNTW0rnxONdce/nGkiKDmPFacO5Bs3cEz9KN/OZiSEaiGHREJpgvFM1gCTUwnN19teBz5xoNeNtDAfZJMIPg==
+schemix@^1.8.5:
+  version "1.8.5"
+  resolved "https://registry.yarnpkg.com/schemix/-/schemix-1.8.5.tgz#11cf7a61abcbf2b4411dc705cdfdaa6fad4a6ccf"
+  integrity sha512-/xWXFQ3CWFILKEmekt37+zbjhthfLpJe2BMSYY8L+KQMrekhlGXikEUFbxmlD8GfhVjDuXJdI0qVo54QQFyQ+A==
 
 scmp@^2.1.0:
   version "2.1.0"

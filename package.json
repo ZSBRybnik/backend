@@ -208,7 +208,7 @@
     "react-i18next": "^11.18.3",
     "redis-json": "^6.0.3",
     "rimraf": "^3.0.2",
-    "rxjs": "^7.5.5",
+    "rxjs": "^7.6.0",
     "schemix": "^1.8.5",
     "serverless": "^3.23.0",
     "serverless-dynamodb-local": "^0.2.40",
