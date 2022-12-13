@@ -1,25 +1,44 @@
 import { createModel, PrismaModel } from "schemix";
 import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
+import authenticationType, {
+  AuthenticationTypes,
+} from "../../enums/authenticationType/AuthenticationType";
+import rolesEnum from "../../enums/roles/Roles";
+import userModifiers from "../../enums/userModifiers/UserModifiers";
 import postModel from "../post/Post";
+import classModel from "../schoolClass/SchoolClass";
 
 const model: PrismaModel = createModel((UserModal: PrismaModel): void => {
   UserModal.string("mongo_id", {
     map: "_id",
+    id: true,
     raw: generatePrismaString({
       rawString: `#prisma 
-       @id @default(auto()) @database.ObjectId
+        @default(auto()) @database.ObjectId
       `,
     }),
   })
     .int("id", {
       unique: true,
     })
+    .boolean("isDisabled", { map: "is_disabled" })
+    .enum("modifiers", userModifiers, { list: true })
+    .enum("roles", rolesEnum, { list: true })
+    .enum("enabledTwoFactorAuthentication", authenticationType, {
+      default: AuthenticationTypes.Application,
+      map: "enabled_two_factor_authentication",
+    })
+    .relation("class", classModel, {
+      fields: ["classId"],
+      references: ["id"],
+    })
+    .int("classId", {
+      map: "class_id",
+    })
+    //          .relation("orders", orderModel, { list: true })
     .relation("posts", postModel, { list: true })
     .string("login", {
       unique: true,
-    })
-    .string("role", {
-      default: "user",
     })
     .string("password")
     .string("email", {
@@ -33,21 +52,18 @@ const model: PrismaModel = createModel((UserModal: PrismaModel): void => {
       optional: true,
       map: "phone_number",
     })
-    .string("enabledTwoFactorAuthentication", {
-      default: "application",
-      map: "enabled_two_factor_authentication",
-    })
     .int("lockerNumber", {
       unique: true,
       optional: true,
       map: "locker_number",
     })
-    .int("lockerNumber", {
+    .int("lockerPin", {
       optional: true,
       map: "locker_pin",
     })
-    .string("discordNickname", {
-      map: "discord_nickname",
+    .string("discordId", {
+      unique: true,
+      map: "discord_id",
     })
     .map("users");
 });

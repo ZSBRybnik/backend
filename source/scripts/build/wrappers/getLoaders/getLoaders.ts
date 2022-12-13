@@ -9,12 +9,14 @@ import getPureScriptLoader from "~backend/source/scripts/build/loaders/getPureSc
 import getSourceMapLoader from "~backend/source/scripts/build/loaders/getSourceMapLoader/getSourceMapLoader";
 import getSvelteLoader from "~backend/source/scripts/build/loaders/getSvelteLoader/getSvelteLoader";
 import getTypeScriptLoader from "~backend/source/scripts/build/loaders/getTypeScriptLoader/getTypeScriptLoader";
+import getGraphQLLoader from "../../loaders/getGraphQLLoader/getGraphQLLoader";
 
 type GetLoader = () => RuleSetRule[];
 
 const getLoaders: GetLoader = (): RuleSetRule[] => {
   return [
     getSourceMapLoader(),
+    getGraphQLLoader(),
     getPugLoader(),
     getTypeScriptLoader(),
     getNodeLoader(),

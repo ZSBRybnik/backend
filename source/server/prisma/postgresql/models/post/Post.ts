@@ -1,6 +1,8 @@
 import { createModel } from "schemix";
 import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
-import postContentItemModel from "../postContentItem/postContentItem";
+import postAndPageModifiers from "../../enums/postAndPageModifiers/PostAndPageModifiers";
+import contentItemsOnPostsAndSupbages from "../contentItemsOnPostsAndSubpages/ContentItemsOnPostsAndSubpages";
+import PostTranslationsModel from "../postTranstations/PostTranslations";
 import UserModel from "../user/User";
 
 const postModel = createModel((postModel) => {
@@ -12,6 +14,11 @@ const postModel = createModel((postModel) => {
         `,
       }),
     })
+    .boolean("isDisabled", { map: "is_disabled" })
+    .enum("modifiers", postAndPageModifiers, { list: true })
+    .relation("postTranslations", PostTranslationsModel, {
+      list: true,
+    })
     .string("title", {
       raw: generatePrismaString({
         rawString: `#prisma 
@@ -19,11 +26,17 @@ const postModel = createModel((postModel) => {
         `,
       }),
     })
+    .relation(
+      "content_items_on_posts_and_supbages",
+      contentItemsOnPostsAndSupbages,
+      {
+        list: true,
+      },
+    )
     .relation("author", UserModel, {
       fields: ["authorId"],
       references: ["id"],
     })
-    .relation("posts_content_items", postContentItemModel, { list: true })
     .int("authorId", {
       map: "author_id",
     })

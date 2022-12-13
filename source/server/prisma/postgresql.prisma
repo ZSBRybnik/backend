@@ -8,94 +8,485 @@ generator client {
   output   = "../../../node_modules/@prisma/postgresql"
 }
 
+generator tables {
+  provider = "node node_modules/prisma-enum-generator"
+  output   = "../../../node_modules/@prisma/postgresql-tables"
+}
+
+generator dbml {
+  provider   = "prisma-dbml-generator"
+  outputName = "postgresql.dbml"
+  output     = "../../../uml"
+}
+
+generator json {
+  provider = "prisma-json-schema-generator"
+  output   = "../../../uml/postgresql"
+}
+
+enum AuthenticationType {
+  application
+  disabled
+  phone
+  phoneWithCalls
+}
+
+enum Languages {
+  AD
+  AE
+  AF
+  AG
+  AI
+  AL
+  AM
+  AO
+  AQ
+  AR
+  AS
+  AT
+  AU
+  AW
+  AX
+  AZ
+  BA
+  BB
+  BD
+  BE
+  BF
+  BG
+  BH
+  BI
+  BJ
+  BL
+  BM
+  BN
+  BO
+  BQ
+  BR
+  BS
+  BT
+  BV
+  BW
+  BY
+  BZ
+  CA
+  CC
+  CD
+  CF
+  CG
+  CH
+  CI
+  CK
+  CL
+  CM
+  CN
+  CO
+  CR
+  CU
+  CV
+  CW
+  CX
+  CY
+  CZ
+  DE
+  DJ
+  DK
+  DM
+  DO
+  DZ
+  EC
+  EE
+  EG
+  EH
+  ER
+  ES
+  ET
+  FI
+  FJ
+  FK
+  FM
+  FO
+  FR
+  GA
+  GB
+  GD
+  GE
+  GF
+  GG
+  GH
+  GI
+  GL
+  GM
+  GN
+  GP
+  GQ
+  GR
+  GS
+  GT
+  GU
+  GW
+  GY
+  HK
+  HM
+  HN
+  HR
+  HT
+  HU
+  ID
+  IE
+  IL
+  IM
+  IN
+  IO
+  IQ
+  IR
+  IS
+  IT
+  JE
+  JM
+  JO
+  JP
+  KE
+  KG
+  KH
+  KI
+  KM
+  KN
+  KP
+  KR
+  KW
+  KY
+  KZ
+  LA
+  LB
+  LC
+  LI
+  LK
+  LR
+  LS
+  LT
+  LU
+  LV
+  LY
+  MA
+  MC
+  MD
+  ME
+  MF
+  MG
+  MH
+  MK
+  ML
+  MM
+  MN
+  MO
+  MP
+  MQ
+  MR
+  MS
+  MT
+  MU
+  MV
+  MW
+  MX
+  MY
+  MZ
+  NA
+  NC
+  NE
+  NF
+  NG
+  NI
+  NL
+  NO
+  NP
+  NR
+  NU
+  NZ
+  OM
+  PA
+  PE
+  PF
+  PG
+  PH
+  PK
+  PL
+  PM
+  PN
+  PR
+  PS
+  PT
+  PW
+  PY
+  QA
+  RE
+  RO
+  RS
+  RU
+  RW
+  SA
+  SB
+  SC
+  SD
+  SE
+  SG
+  SH
+  SI
+  SJ
+  SK
+  SL
+  SM
+  SN
+  SO
+  SR
+  SS
+  ST
+  SV
+  SX
+  SY
+  SZ
+  TC
+  TD
+  TF
+  TG
+  TH
+  TJ
+  TK
+  TL
+  TM
+  TN
+  TO
+  TR
+  TT
+  TV
+  TW
+  TZ
+  UA
+  UG
+  UM
+  US
+  UY
+  UZ
+  VA
+  VC
+  VE
+  VG
+  VI
+  VN
+  VU
+  WF
+  WS
+  YE
+  YT
+  ZA
+  ZM
+  ZW
+}
+
+enum PostAndPageModifiers {
+  Archive
+  Live
+}
+
+enum Roles {
+  Administrator
+  BuffetOwner
+}
+
+enum RuntimeType {
+  classic
+  legacy
+}
+
+enum UserModifiers {
+  BannedCommenting
+  BannedReactingOnFeed
+}
+
+model ContentItem {
+  id                                  Int                              @id @default(autoincrement())
+  content_items_on_posts_and_supbages ContentItemsOnPostsAndSubpages[]
+  runtime                             RuntimeType                      @default(classic)
+  content                             String                           @database.Text
+
+  @@map("content_items")
+}
+
+model PageCategoryTranslations {
+  id                 Int          @id @default(autoincrement())
+  language           Languages
+  name               String       @database.VarChar(255)
+  pageCategoryId     Int          @map("page_category_id")
+  subjectTranslation PageCategory @relation(fields: [pageCategoryId], references: [id])
+
+  @@map("page_category_translations")
+}
+
+model PageCategory {
+  id                       Int                        @id @default(autoincrement())
+  pageName                 String                     @map("page_name")
+  pageCategory             Page                       @relation(fields: [pageName], references: [name])
+  pageCategoryTranslations PageCategoryTranslations[]
+
+  @@map("pages_category")
+}
+
+model Page {
+  isDisabled                          Boolean                          @map("is_disabled")
+  name                                String                           @id @database.VarChar(255)
+  modifiers                           PostAndPageModifiers[]
+  content_items_on_posts_and_supbages ContentItemsOnPostsAndSubpages[]
+  pageCategory                        PageCategory[]
+  title                               String                           @database.VarChar(255)
+
+  @@map("pages")
+}
+
+model ContentItemsOnPostsAndSubpages {
+  id            Int         @id @default(autoincrement())
+  posts         Post?       @relation(fields: [postId], references: [id])
+  pages         Page?       @relation(fields: [pageName], references: [name])
+  contentItems  ContentItem @relation(fields: [contentItemId], references: [id])
+  pageName      String?     @map("page_name")
+  contentItemId Int         @map("content_item_id")
+  postId        Int?        @map("post_id")
+
+  @@map("content_items_on_posts_and_subpages")
+}
+
+model PostTranslations {
+  id              Int       @id @default(autoincrement())
+  language        Languages
+  title           String
+  brief           String
+  postId          Int       @map("post_id")
+  postTranslation Post      @relation(fields: [postId], references: [id])
+
+  @@map("post_translations")
+}
+
+model Post {
+  id                                  Int                              @id @default(autoincrement())
+  isDisabled                          Boolean                          @map("is_disabled")
+  modifiers                           PostAndPageModifiers[]
+  postTranslations                    PostTranslations[]
+  title                               String                           @database.VarChar(255)
+  content_items_on_posts_and_supbages ContentItemsOnPostsAndSubpages[]
+  author                              User                             @relation(fields: [authorId], references: [id])
+  authorId                            Int                              @map("author_id")
+  brief                               String                           @database.VarChar(255)
+
+  @@map("posts")
+}
+
+model SubjectTranslations {
+  id                 Int       @id @default(autoincrement())
+  language           Languages
+  title              String
+  subjectId          Int       @map("subject_id")
+  subjectTranslation Subject   @relation(fields: [subjectId], references: [id])
+
+  @@map("subject_translations")
+}
+
 model Subject {
-  id      Int                 @id @default(autoincrement())
-  classes SubjectsOnClasses[]
-  name    String              @database.VarChar(255)
+  id                  Int                   @id @default(autoincrement())
+  subjectTranslations SubjectTranslations[]
+  classes             SubjectsOnClasses[]
+  name                String                @database.VarChar(100)
 
   @@map("subjects")
 }
 
 model SubjectsOnClasses {
-  id        Int     @id @default(autoincrement())
-  classes   Class   @relation(fields: [classId], references: [id])
-  subjects  Subject @relation(fields: [subjectId], references: [id])
-  classId   Int     @map("class_id")
-  subjectId Int     @map("subject_id")
+  classes   SchoolClass @relation(fields: [classId], references: [id])
+  subjects  Subject     @relation(fields: [subjectId], references: [id])
+  classId   Int         @map("class_id")
+  subjectId Int         @map("subject_id")
 
+  @@id([classId, subjectId])
   @@map("subjects_on_classes")
 }
 
-model postContentItem {
-  id        Int    @id @default(autoincrement())
-  content   Post   @relation(fields: [contentId], references: [id])
-  contentId Int    @map("content_id")
-  runtime   String @database.VarChar(255)
-
-  @@map("posts_content_items")
-}
-
-model Post {
-  id                  Int               @id @default(autoincrement())
-  title               String            @database.VarChar(255)
-  author              User              @relation(fields: [authorId], references: [id])
-  posts_content_items postContentItem[]
-  authorId            Int               @map("author_id")
-  brief               String            @database.VarChar(255)
-
-  @@map("posts")
-}
-
-model User {
-  id                             Int     @id @default(autoincrement())
-  class                          Class   @relation(fields: [classId], references: [id])
-  classId                        Int     @map("class_id")
-  posts                          Post[]
-  login                          String  @unique @database.VarChar(255)
-  role                           String  @default("user") @database.VarChar(255)
-  password                       String  @database.VarChar(255)
-  email                          String  @unique @database.VarChar(255)
-  authenticatorCode              String? @map("authenticator_code") @database.VarChar(16)
-  phoneNumber                    String? @map("phone_number") @database.VarChar(22)
-  enabledTwoFactorAuthentication String  @default("application") @map("enabled_two_factor_authentication")
-  lockerNumber                   Int?    @map("locker_pin")
-  discordNickname                String  @map("discord_nickname") @database.VarChar(37)
-
-  @@map("users")
-}
-
-model Class {
+model SchoolClass {
   id       Int                 @id @default(autoincrement())
   users    User[]
   subjects SubjectsOnClasses[]
-  name     String              @database.VarChar(255)
+  name     String              @database.VarChar(10)
 
   @@map("classes")
 }
 
-model PageContentItem {
-  id          Int    @id @default(autoincrement())
-  content     Page   @relation(fields: [contentName], references: [name])
-  contentName String @map("content_name")
-  runtime     String @database.VarChar(255)
+model User {
+  id                             Int                @id @default(autoincrement())
+  isDisabled                     Boolean            @map("is_disabled")
+  modifiers                      UserModifiers[]
+  roles                          Roles[]
+  enabledTwoFactorAuthentication AuthenticationType @default(application)                            @map("enabled_two_factor_authentication")
+  class                          SchoolClass        @relation(fields: [classId], references: [id])
+  classId                        Int                @map("class_id")
+  posts                          Post[]
+  orders                         Order[]
+  login                          String             @unique @database.VarChar(255)
+  password                       String             @database.VarChar(255)
+  email                          String             @unique @database.VarChar(255)
+  authenticatorCode              String?            @map("authenticator_code") @database.VarChar(16)
+  phoneNumber                    String?            @map("phone_number") @database.VarChar(22)
+  lockerNumber                   Int?               @unique @map("locker_number")
+  lockerPin                      Int?               @map("locker_pin")
+  discordId                      String             @unique @map("discord_id") @database.VarChar(18)
 
-  @@map("pages_content_items")
+  @@map("users")
 }
 
-model Page {
-  name                String            @unique @id @database.VarChar(255)
-  pages_content_items PageContentItem[]
-  title               String            @database.VarChar(255)
+model Order {
+  id              Int       @id @default(autoincrement())
+  payment_amount  Decimal   @map("payment_amount")
+  transactionDate DateTime  @map("transaction_date")
+  products        Product[]
+  user            User      @relation(fields: [userId], references: [id])
+  userId          Int
 
-  @@map("pages")
+  @@map("orders")
 }
 
-model product {
-  id          Int     @id @default(autoincrement())
-  name        String  @database.VarChar(255)
-  price       Decimal
-  quantity    Int
-  description String  @database.Text
+model Product {
+  id                  Int                   @id @default(autoincrement())
+  order               Order                 @relation(fields: [orderId], references: [id])
+  orderId             Int
+  name                String                @database.VarChar(255)
+  price               Decimal
+  quantity            Int
+  description         String                @database.Text
+  allergensOnProducts AllergensOnProducts[]
 
   @@map("products")
+}
+
+model ProductAllergensTranslations {
+  id                  Int              @id @default(autoincrement())
+  language            Languages
+  name                String
+  allergenId          Int              @map("allergen_id")
+  allergenTranslation ProductAllergens @relation(fields: [allergenId], references: [id])
+
+  @@map("product_allergens_translations")
+}
+
+model ProductAllergens {
+  id                          Int                            @id @default(autoincrement())
+  allergensOnProducts         AllergensOnProducts[]
+  productAllergenTranslations ProductAllergensTranslations[]
+
+  @@map("product_allergens")
+}
+
+model AllergensOnProducts {
+  allergens  ProductAllergens @relation(fields: [allergenId], references: [id])
+  products   Product          @relation(fields: [productId], references: [id])
+  productId  Int              @map("product_id")
+  allergenId Int              @map("allergen_id")
+
+  @@id([productId])
+  @@map("allergens_on_products_model")
 }

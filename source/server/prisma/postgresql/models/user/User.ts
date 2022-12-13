@@ -1,15 +1,30 @@
 import { createModel, PrismaModel } from "schemix";
 import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
-import ClassModel from "../class/Class";
+import authenticationType, {
+  AuthenticationTypes,
+} from "../../enums/authenticationType/AuthenticationType";
+import rolesEnum from "../../enums/roles/Roles";
+import userModifiers from "../../enums/userModifiers/UserModifiers";
+import orderModel from "../order/Order";
 import postModel from "../post/Post";
+import ClassModel from "../schoolClass/SchoolClass";
+
 const UserModel: PrismaModel = createModel((UserModel: PrismaModel): void => {
   UserModel.int("id", {
+    id: true,
     raw: generatePrismaString({
       rawString: `#prisma 
-        @id @default(autoincrement())
+        @default(autoincrement())
       `,
     }),
   })
+    .boolean("isDisabled", { map: "is_disabled" })
+    .enum("modifiers", userModifiers, { list: true })
+    .enum("roles", rolesEnum, { list: true })
+    .enum("enabledTwoFactorAuthentication", authenticationType, {
+      default: AuthenticationTypes.Application,
+      map: "enabled_two_factor_authentication",
+    })
     .relation("class", ClassModel, {
       fields: ["classId"],
       references: ["id"],
@@ -18,16 +33,9 @@ const UserModel: PrismaModel = createModel((UserModel: PrismaModel): void => {
       map: "class_id",
     })
     .relation("posts", postModel, { list: true })
+    .relation("orders", orderModel, { list: true })
     .string("login", {
       unique: true,
-      raw: generatePrismaString({
-        rawString: `#prisma 
-          @database.VarChar(255)
-        `,
-      }),
-    })
-    .string("role", {
-      default: "user",
       raw: generatePrismaString({
         rawString: `#prisma 
           @database.VarChar(255)
@@ -67,24 +75,21 @@ const UserModel: PrismaModel = createModel((UserModel: PrismaModel): void => {
       }),
       map: "phone_number",
     })
-    .string("enabledTwoFactorAuthentication", {
-      default: "application",
-      map: "enabled_two_factor_authentication",
-    })
     .int("lockerNumber", {
       unique: true,
       optional: true,
       map: "locker_number",
     })
-    .int("lockerNumber", {
+    .int("lockerPin", {
       optional: true,
       map: "locker_pin",
     })
-    .string("discordNickname", {
-      map: "discord_nickname",
+    .string("discordId", {
+      unique: true,
+      map: "discord_id",
       raw: generatePrismaString({
         rawString: `#prisma 
-          @database.VarChar(37)
+          @database.VarChar(18)
         `,
       }),
     })

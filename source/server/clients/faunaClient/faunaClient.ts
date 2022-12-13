@@ -1,3 +1,4 @@
+import "dotenv/config";
 import { Client } from "faunadb";
 
 const faunaDBClient = new Client({

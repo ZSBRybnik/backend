@@ -1,5 +1,5 @@
 ---
-title: Tabela klasy
+title: Tabela - klasy
 ---
 
 ## Kolumny
@@ -9,5 +9,5 @@ title: Tabela klasy
 
 ## Relacje
 
-users User[]
-subjects SubjectsOnClasses[]
+class -> users[] - Klasa może mieć tablicę z użytkownikami. Relacja typu jeden do wielu. Kolumna `id`, która jest kluczem głównym, który odpowiada kluczowi obcemu `class_id` w tabeli `users` (użytkownicy).
+class[] -> subjects_on_classes[] - Klasy mogą mieć tablicę z przedmiotami. Relacja wielu do wielu. Kolumna `id`, która jest kluczem główny, odpowiada kluczowi obcemu `class_id` w tabeli `subjects_on_classes` (przedmioty w klasie).

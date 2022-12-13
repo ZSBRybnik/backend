@@ -1,0 +1,8 @@
+{
+  "label": "FaunaDB",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "Sekcja ta tłumaczy logikę biznesową bazy danych FaunaDB"
+  }
+}

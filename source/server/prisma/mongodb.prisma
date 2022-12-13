@@ -1,4 +1,4 @@
-datasource db {
+datasource database {
   provider = "mongodb"
   url      = env("MONGODB_URL")
 }
@@ -8,62 +8,361 @@ generator client {
   output   = "../../../node_modules/@prisma/mongodb"
 }
 
-model User {
-  mongo_id                       String  @id @default(auto()) @map("_id") @db.ObjectId
-  id                             Int     @unique
-  login                          String  @unique
-  role                           String  @default("user")
-  password                       String
-  email                          String  @unique
-  authenticatorCode              String? @map("authenticator_code")
-  phoneNumber                    String? @map("phone_number")
-  enabledTwoFactorAuthentication String  @default("application") @map("enabled_two_factor_authentication")
-  lockerNumber                   Int?    @unique @map("locker_number")
-  lockerPin                      Int?    @map("locker_pin")
-  posts                          Post[]
+generator tables {
+  provider = "node node_modules/prisma-enum-generator"
+  output   = "../../../node_modules/@prisma/mongodb-tables"
+}
 
-  @@map("users")
+generator dbml {
+  provider   = "prisma-dbml-generator"
+  outputName = "mongodb.dbml"
+  output     = "../../../uml"
+}
+
+generator json {
+  provider = "prisma-json-schema-generator"
+  output   = "../../../uml/mongodb"
+}
+
+enum AuthenticationType {
+  application
+  disabled
+  phone
+  phoneWithCalls
+}
+
+enum Languages {
+  AD
+  AE
+  AF
+  AG
+  AI
+  AL
+  AM
+  AO
+  AQ
+  AR
+  AS
+  AT
+  AU
+  AW
+  AX
+  AZ
+  BA
+  BB
+  BD
+  BE
+  BF
+  BG
+  BH
+  BI
+  BJ
+  BL
+  BM
+  BN
+  BO
+  BQ
+  BR
+  BS
+  BT
+  BV
+  BW
+  BY
+  BZ
+  CA
+  CC
+  CD
+  CF
+  CG
+  CH
+  CI
+  CK
+  CL
+  CM
+  CN
+  CO
+  CR
+  CU
+  CV
+  CW
+  CX
+  CY
+  CZ
+  DE
+  DJ
+  DK
+  DM
+  DO
+  DZ
+  EC
+  EE
+  EG
+  EH
+  ER
+  ES
+  ET
+  FI
+  FJ
+  FK
+  FM
+  FO
+  FR
+  GA
+  GB
+  GD
+  GE
+  GF
+  GG
+  GH
+  GI
+  GL
+  GM
+  GN
+  GP
+  GQ
+  GR
+  GS
+  GT
+  GU
+  GW
+  GY
+  HK
+  HM
+  HN
+  HR
+  HT
+  HU
+  ID
+  IE
+  IL
+  IM
+  IN
+  IO
+  IQ
+  IR
+  IS
+  IT
+  JE
+  JM
+  JO
+  JP
+  KE
+  KG
+  KH
+  KI
+  KM
+  KN
+  KP
+  KR
+  KW
+  KY
+  KZ
+  LA
+  LB
+  LC
+  LI
+  LK
+  LR
+  LS
+  LT
+  LU
+  LV
+  LY
+  MA
+  MC
+  MD
+  ME
+  MF
+  MG
+  MH
+  MK
+  ML
+  MM
+  MN
+  MO
+  MP
+  MQ
+  MR
+  MS
+  MT
+  MU
+  MV
+  MW
+  MX
+  MY
+  MZ
+  NA
+  NC
+  NE
+  NF
+  NG
+  NI
+  NL
+  NO
+  NP
+  NR
+  NU
+  NZ
+  OM
+  PA
+  PE
+  PF
+  PG
+  PH
+  PK
+  PL
+  PM
+  PN
+  PR
+  PS
+  PT
+  PW
+  PY
+  QA
+  RE
+  RO
+  RS
+  RU
+  RW
+  SA
+  SB
+  SC
+  SD
+  SE
+  SG
+  SH
+  SI
+  SJ
+  SK
+  SL
+  SM
+  SN
+  SO
+  SR
+  SS
+  ST
+  SV
+  SX
+  SY
+  SZ
+  TC
+  TD
+  TF
+  TG
+  TH
+  TJ
+  TK
+  TL
+  TM
+  TN
+  TO
+  TR
+  TT
+  TV
+  TW
+  TZ
+  UA
+  UG
+  UM
+  US
+  UY
+  UZ
+  VA
+  VC
+  VE
+  VG
+  VI
+  VN
+  VU
+  WF
+  WS
+  YE
+  YT
+  ZA
+  ZM
+  ZW
+}
+
+enum PostAndPageModifiers {
+  Archive
+  Live
+}
+
+enum Roles {
+  Administrator
+  BuffetOwner
+}
+
+enum RuntimeType {
+  classic
+  legacy
+}
+
+enum UserModifiers {
+  BannedCommenting
+  BannedReactingOnFeed
 }
 
 model Page {
-  mongo_id String            @id @default(auto()) @map("_id") @db.ObjectId
-  name     String            @unique
-  title    String
-  content  PageContentItem[]
+  mongo_id   String  @map("_id") @id @default(auto()) @database.ObjectId
+  isDisabled Boolean @map("is_disabled")
+  name       String  @unique
+  title      String
 
   @@map("pages")
 }
 
-model PageContentItem {
-  mongo_id String @id @default(auto()) @map("_id") @db.ObjectId
+model SchoolClass {
+  mongo_id String @map("_id") @id @default(auto()) @database.ObjectId
   id       Int    @unique
-  content  String
-  runtime  String
-  Page     Page?  @relation(fields: [pageName], references: [name])
-  pageName String @map("page_name")
+  users    User[]
+  name     String @unique
 
-  @@map("pages_content_items")
+  @@map("classes")
+}
+
+model User {
+  mongo_id                       String             @map("_id") @id @default(auto()) @database.ObjectId
+  id                             Int                @unique
+  isDisabled                     Boolean            @map("is_disabled")
+  modifiers                      UserModifiers[]
+  roles                          Roles[]
+  enabledTwoFactorAuthentication AuthenticationType @default(application)                               @map("enabled_two_factor_authentication")
+  class                          SchoolClass        @relation(fields: [classId], references: [id])
+  classId                        Int                @map("class_id")
+  posts                          Post[]
+  login                          String             @unique
+  password                       String
+  email                          String             @unique
+  authenticatorCode              String?            @map("authenticator_code")
+  phoneNumber                    String?            @map("phone_number")
+  lockerNumber                   Int?               @unique @map("locker_number")
+  lockerPin                      Int?               @map("locker_pin")
+  discordId                      String             @unique @map("discord_id")
+
+  @@map("users")
 }
 
 model Post {
-  mongo_id String            @id @default(auto()) @map("_id") @db.ObjectId
-  id       Int               @unique
-  title    String
-  brief    String
-  author   User              @relation(fields: [authorId], references: [id])
-  authorId Int               @map("author_id")
-  content  PostContentItem[]
+  mongo_id   String  @map("_id") @id @default(auto()) @database.ObjectId
+  id         Int     @unique
+  isDisabled Boolean @map("is_disabled")
+  title      String
+  author     User    @relation(fields: [authorId], references: [id])
+  authorId   Int     @map("author_id")
+  brief      String
 
   @@map("posts")
 }
 
-model PostContentItem {
-  mongo_id String @id @default(auto()) @map("_id") @db.ObjectId
-  id       Int    @unique
-  content  String
-  runtime  String
-  Post     Post?  @relation(fields: [postId], references: [id])
-  postId   Int    @map("post_id")
+model Product {
+  mongo_id    String @map("_id") @id @default(auto()) @database.ObjectId
+  id          Int    @unique
+  orderId     Int
+  name        String
+  price       Float
+  quantity    Int
+  description String
 
-  @@map("posts_content_items")
+  @@map("products")
 }
