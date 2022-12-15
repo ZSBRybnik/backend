@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
-    "@aws-sdk/client-braket": "^3.131.0",
+    "@aws-sdk/client-braket": "^3.231.0",
     "@babel/core": "^7.18.6",
     "@babel/preset-env": "^7.18.6",
     "@babel/preset-react": "^7.18.6",
