@@ -210,7 +210,7 @@
     "redis-json": "^6.0.3",
     "rimraf": "^3.0.2",
     "rxjs": "^7.5.5",
-    "schemix": "^1.8.3",
+    "schemix": "^1.8.5",
     "serverless": "^3.23.0",
     "serverless-dynamodb-local": "^0.2.40",
     "serverless-google-cloudfunctions": "^4.6.0",
