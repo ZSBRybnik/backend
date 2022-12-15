@@ -27419,10 +27419,10 @@ schema-utils@^4.0.0:
     ajv-formats "^2.1.1"
     ajv-keywords "^5.0.0"
 
-schemix@^1.8.3:
-  version "1.8.3"
-  resolved "https://registry.yarnpkg.com/schemix/-/schemix-1.8.3.tgz#abfb773820cba39ba647c862aedf8c2b3cd7059b"
-  integrity sha512-GAFNTW0rnxONdce/nGkiKDmPFacO5Bs3cEz9KN/OZiSEaiGHREJpgvFM1gCTUwnN19teBz5xoNeNtDAfZJMIPg==
+schemix@^1.8.5:
+  version "1.8.5"
+  resolved "https://registry.yarnpkg.com/schemix/-/schemix-1.8.5.tgz#11cf7a61abcbf2b4411dc705cdfdaa6fad4a6ccf"
+  integrity sha512-/xWXFQ3CWFILKEmekt37+zbjhthfLpJe2BMSYY8L+KQMrekhlGXikEUFbxmlD8GfhVjDuXJdI0qVo54QQFyQ+A==
 
 scmp@^2.1.0:
   version "2.1.0"
@@ -29960,10 +29960,10 @@ typescript@^3.2.2:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.10.tgz#70f3910ac7a51ed6bef79da7800690b19bf778b8"
   integrity sha512-w6fIxVE/H1PkLKcCPsFqKE7Kv7QUwhU8qQY2MueZXWx5cPZdwFupLgKK3vntcK98BtNHZtAF4LA/yl2a7k8R6Q==
 
-typescript@^4.5.4, typescript@^4.7.4:
-  version "4.7.4"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.4.tgz#1a88596d1cf47d59507a1bcdfb5b9dfe4d488235"
-  integrity sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==
+typescript@^4.5.4, typescript@^4.9.4:
+  version "4.9.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.4.tgz#a2a3d2756c079abda241d75f149df9d561091e78"
+  integrity sha512-Uz+dTXYzxXXbsFpM86Wh3dKCxrQqUcVMxwU54orwlJjOpO3ao8L7j5lH+dWfTwgCwIuM9GQ2kvVotzYJMXTBZg==
 
 typescript@~3.8.3:
   version "3.8.3"
