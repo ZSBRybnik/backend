@@ -303,20 +303,126 @@ enum UserModifiers {
   BannedReactingOnFeed
 }
 
+model ContentItem {
+  mongo_id                            String                           @map("_id") @id @default(auto()) @database.ObjectId
+  id                                  Int                              @unique
+  content_items_on_posts_and_supbages ContentItemsOnPostsAndSupbages[]
+  runtime                             RuntimeType                      @default(classic)
+  content                             String
+
+  @@map("content_items")
+}
+
+model PageCategoryTranslations {
+  mongo_id           String       @map("_id") @id @default(auto()) @database.ObjectId
+  id                 Int          @unique
+  language           Languages
+  name               String
+  pageCategoryId     Int          @map("page_category_id")
+  subjectTranslation PageCategory @relation(fields: [pageCategoryId], references: [id])
+
+  @@map("page_category_translations")
+}
+
+model PageCategory {
+  mongo_id                 String                     @map("_id") @id @default(auto()) @database.ObjectId
+  id                       Int                        @unique
+  pageName                 String                     @map("page_name")
+  pageCategory             Page                       @relation(fields: [pageName], references: [name])
+  pageCategoryTranslations PageCategoryTranslations[]
+
+  @@map("pages_category")
+}
+
 model Page {
-  mongo_id   String  @map("_id") @id @default(auto()) @database.ObjectId
-  isDisabled Boolean @map("is_disabled")
-  name       String  @unique
-  title      String
+  mongo_id                            String                           @map("_id") @id @default(auto()) @database.ObjectId
+  isDisabled                          Boolean                          @map("is_disabled")
+  name                                String                           @unique
+  modifiers                           PostAndPageModifiers[]
+  content_items_on_posts_and_supbages ContentItemsOnPostsAndSupbages[]
+  pageCategory                        PageCategory[]
+  title                               String
 
   @@map("pages")
 }
 
+model ContentItemsOnPostsAndSupbages {
+  mongo_id      String      @map("_id") @id @default(auto()) @database.ObjectId
+  id            Int         @unique
+  posts         Post?       @relation(fields: [postId], references: [id])
+  pages         Page?       @relation(fields: [pageName], references: [name])
+  contentItems  ContentItem @relation(fields: [contentItemId], references: [id])
+  pageName      String?     @map("page_name")
+  contentItemId Int         @map("content_item_id")
+  postId        Int?        @map("post_id")
+
+  @@map("content_items_on_posts_and_subpages")
+}
+
+model PostTranslations {
+  mongo_id        String    @map("_id") @id @default(auto()) @database.ObjectId
+  id              Int       @unique
+  language        Languages
+  title           String
+  brief           String
+  postId          Int       @map("post_id")
+  postTranslation Post      @relation(fields: [postId], references: [id])
+
+  @@map("post_translations")
+}
+
+model Post {
+  mongo_id                            String                           @map("_id") @id @default(auto()) @database.ObjectId
+  id                                  Int                              @unique
+  isDisabled                          Boolean                          @map("is_disabled")
+  modifiers                           PostAndPageModifiers[]
+  postTranslations                    PostTranslations[]
+  title                               String
+  content_items_on_posts_and_supbages ContentItemsOnPostsAndSupbages[]
+  author                              User                             @relation(fields: [authorId], references: [id])
+  authorId                            Int                              @map("author_id")
+  brief                               String
+
+  @@map("posts")
+}
+
+model SubjectTranslations {
+  mongo_id           String    @map("_id") @id @default(auto()) @database.ObjectId
+  id                 Int       @unique
+  language           Languages
+  title              String
+  subjectId          Int       @map("subject_id")
+  subjectTranslation Subject   @relation(fields: [subjectId], references: [id])
+
+  @@map("subject_translations")
+}
+
+model Subject {
+  mongo_id            String                @map("_id") @id @default(auto()) @database.ObjectId
+  id                  Int                   @unique
+  subjectTranslations SubjectTranslations[]
+  classes             SubjectOnClass[]
+  name                String
+
+  @@map("subjects")
+}
+
+model SubjectOnClass {
+  mongo_id       String      @map("_id") @id @default(auto()) @database.ObjectId
+  subjects       Subject     @relation(fields: [subjectId], references: [id])
+  schoolClasses  SchoolClass @relation(fields: [schoolClasssId], references: [id])
+  subjectId      Int         @map("subject_id")
+  schoolClasssId Int         @map("school_classs_id")
+
+  @@map("subjects_on_classes")
+}
+
 model SchoolClass {
-  mongo_id String @map("_id") @id @default(auto()) @database.ObjectId
-  id       Int    @unique
+  mongo_id String           @map("_id") @id @default(auto()) @database.ObjectId
+  id       Int              @unique
   users    User[]
-  name     String @unique
+  subjects SubjectOnClass[]
+  name     String           @unique
 
   @@map("classes")
 }
@@ -330,6 +436,7 @@ model User {
   enabledTwoFactorAuthentication AuthenticationType @default(application)                               @map("enabled_two_factor_authentication")
   class                          SchoolClass        @relation(fields: [classId], references: [id])
   classId                        Int                @map("class_id")
+  orders                         Order[]
   posts                          Post[]
   login                          String             @unique
   password                       String
@@ -343,26 +450,58 @@ model User {
   @@map("users")
 }
 
-model Post {
-  mongo_id   String  @map("_id") @id @default(auto()) @database.ObjectId
-  id         Int     @unique
-  isDisabled Boolean @map("is_disabled")
-  title      String
-  author     User    @relation(fields: [authorId], references: [id])
-  authorId   Int     @map("author_id")
-  brief      String
+model Order {
+  mongo_id        String    @map("_id") @id @default(auto()) @database.ObjectId
+  id              Int       @unique
+  paymentAmount   String    @map("payment_amount")
+  transactionDate DateTime  @map("transaction_date")
+  products        Product[]
+  user            User      @relation(fields: [userId], references: [id])
+  userId          Int
 
-  @@map("posts")
+  @@map("orders")
 }
 
 model Product {
-  mongo_id    String @map("_id") @id @default(auto()) @database.ObjectId
-  id          Int    @unique
-  orderId     Int
-  name        String
-  price       Float
-  quantity    Int
-  description String
+  mongo_id            String                @map("_id") @id @default(auto()) @database.ObjectId
+  id                  Int                   @unique
+  order               Order                 @relation(fields: [orderId], references: [id])
+  orderId             Int
+  name                String
+  price               Float
+  quantity            Int
+  description         String
+  allergensOnProducts AllergensOnProducts[]
 
   @@map("products")
+}
+
+model ProductAllergensTranslations {
+  mongo_id            String           @map("_id") @id @default(auto()) @database.ObjectId
+  id                  Int              @unique
+  language            Languages
+  name                String
+  allergenId          Int              @map("allergen_id")
+  allergenTranslation ProductAllergens @relation(fields: [allergenId], references: [id])
+
+  @@map("product_allergens_translations")
+}
+
+model ProductAllergens {
+  mongo_id                    String                         @map("_id") @id @default(auto()) @database.ObjectId
+  id                          Int                            @unique
+  allergensOnProducts         AllergensOnProducts[]
+  productAllergenTranslations ProductAllergensTranslations[]
+
+  @@map("product_allergens")
+}
+
+model AllergensOnProducts {
+  mongo_id   String           @map("_id") @id @default(auto()) @database.ObjectId
+  allergens  ProductAllergens @relation(fields: [allergenId], references: [id])
+  products   Product          @relation(fields: [productId], references: [id])
+  productId  Int              @map("product_id")
+  allergenId Int              @map("allergen_id")
+
+  @@map("allergens_on_products")
 }

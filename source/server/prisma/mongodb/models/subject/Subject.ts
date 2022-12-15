@@ -1,10 +1,10 @@
 import { createModel } from "schemix";
 import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
 import SubjectsOnClassesModel from "../subjectOnClass/SubjectOnClass";
-import UsersModel from "../user/User";
+import SubjectTranslationsModel from "../subjectTranslations/SubjectTranslations";
 
-const classModel = createModel((SchoolClassModel) => {
-  SchoolClassModel.string("mongo_id", {
+const subjectModel = createModel((SubjectModel) => {
+  SubjectModel.string("mongo_id", {
     map: "_id",
     id: true,
     raw: generatePrismaString({
@@ -14,10 +14,10 @@ const classModel = createModel((SchoolClassModel) => {
     }),
   })
     .int("id", { unique: true })
-    .relation("users", UsersModel, { list: true })
-    .relation("subjects", SubjectsOnClassesModel, { list: true })
-    .string("name", { unique: true })
-    .map("classes");
+    .relation("subjectTranslations", SubjectTranslationsModel, { list: true })
+    .relation("classes", SubjectsOnClassesModel, { list: true })
+    .string("name")
+    .map("subjects");
 });
 
-export default classModel;
+export default subjectModel;
