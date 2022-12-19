@@ -224,7 +224,7 @@
     "superjson": "^1.9.1",
     "supertest": "^6.2.4",
     "surrealdb.js": "^0.5.0",
-    "swagger-jsdoc": "^6.2.5",
+    "swagger-jsdoc": "^6.2.7",
     "swagger-ui-express": "^4.5.0",
     "tcp-port-used": "^1.0.2",
     "terser-webpack-plugin": "^5.3.3",
