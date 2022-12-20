@@ -22749,12 +22749,13 @@ native-promise-only@^0.8.1:
   resolved "https://registry.yarnpkg.com/native-promise-only/-/native-promise-only-0.8.1.tgz#20a318c30cb45f71fe7adfbf7b21c99c1472ef11"
   integrity sha512-zkVhZUA3y8mbz652WrL5x0fB0ehrBkulWT3TomAQ9iDtyXZvzKeEA6GPxAItBYeNYl5yngKRX612qHOhvMkDeg==
 
-nats@^2.7.1:
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/nats/-/nats-2.7.1.tgz#d390a48df1a348a335143abc09afad03b2eb9687"
-  integrity sha512-aH0OXxasfLCTG+LQCFRaWoL1kqejCQg7B+t4z++JgLPgfdpQMET1Rqo95I06DEQyIJGTTgYpxkI/zC0ul8V3pw==
+nats@^2.10.0:
+  version "2.10.0"
+  resolved "https://registry.yarnpkg.com/nats/-/nats-2.10.0.tgz#88f343dc3abe62110f06fede64f135b861f542cb"
+  integrity sha512-ykhXN2IohSj7W8A2j7ptQO/tS8y6SGpi+H7xZoHJEBsBLK6bQcY5pVmOdu5ZTa9QfNlD7AWlFRL63kNAWny0lg==
   dependencies:
-    nkeys.js "^1.0.0-9"
+    nkeys.js "1.0.3"
+    web-streams-polyfill "^3.2.1"
 
 natural-compare@^1.4.0:
   version "1.4.0"
@@ -22857,7 +22858,7 @@ nim-loader@^0.3.3:
     schema-utils "^4.0.0"
     tempy "^1.0.1"
 
-nkeys.js@^1.0.0-9:
+nkeys.js@1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/nkeys.js/-/nkeys.js-1.0.3.tgz#487688a6f4f36f4a2796eee000cc6e54e122cb08"
   integrity sha512-p5Bpb/acPaQmCrbe4gNmMBY/naZJV8Q7m2B9UkXT8BQRC6wjX8zqD2ya8eZu9mpSXQffodV46HCP9OckmxcwYA==
@@ -27419,10 +27420,10 @@ schema-utils@^4.0.0:
     ajv-formats "^2.1.1"
     ajv-keywords "^5.0.0"
 
-schemix@^1.8.3:
-  version "1.8.3"
-  resolved "https://registry.yarnpkg.com/schemix/-/schemix-1.8.3.tgz#abfb773820cba39ba647c862aedf8c2b3cd7059b"
-  integrity sha512-GAFNTW0rnxONdce/nGkiKDmPFacO5Bs3cEz9KN/OZiSEaiGHREJpgvFM1gCTUwnN19teBz5xoNeNtDAfZJMIPg==
+schemix@^1.8.5:
+  version "1.8.5"
+  resolved "https://registry.yarnpkg.com/schemix/-/schemix-1.8.5.tgz#11cf7a61abcbf2b4411dc705cdfdaa6fad4a6ccf"
+  integrity sha512-/xWXFQ3CWFILKEmekt37+zbjhthfLpJe2BMSYY8L+KQMrekhlGXikEUFbxmlD8GfhVjDuXJdI0qVo54QQFyQ+A==
 
 scmp@^2.1.0:
   version "2.1.0"
@@ -30895,7 +30896,7 @@ web-streams-polyfill@4.0.0-beta.1:
   resolved "https://registry.yarnpkg.com/web-streams-polyfill/-/web-streams-polyfill-4.0.0-beta.1.tgz#3b19b9817374b7cee06d374ba7eeb3aeb80e8c95"
   integrity sha512-3ux37gEX670UUphBF9AMCq8XM6iQ8Ac6A+DSRRjDoRBm1ufCkaCDdNVbaqq60PsEkdNlLKrGtv/YBP4EJXqNtQ==
 
-web-streams-polyfill@^3.0.3, web-streams-polyfill@^3.2.0:
+web-streams-polyfill@^3.0.3, web-streams-polyfill@^3.2.0, web-streams-polyfill@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/web-streams-polyfill/-/web-streams-polyfill-3.2.1.tgz#71c2718c52b45fd49dbeee88634b3a60ceab42a6"
   integrity sha512-e0MO3wdXWKrLbL0DgGnUV7WHVuw9OUvL4hjgnPkIeEvESk74gAITi5G606JtZPp39cd8HA9VQzCIvA49LpPN5Q==
