@@ -125,7 +125,7 @@
     "depcheck": "^1.4.3",
     "discord.js": "^14.6.0",
     "docusaurus-prince-pdf": "^1.1.1",
-    "dotenv": "^16.0.1",
+    "dotenv": "^16.0.3",
     "duplicate-package-checker-webpack-plugin": "^3.0.0",
     "envfile": "^6.18.0",
     "eris": "^0.17.1",
