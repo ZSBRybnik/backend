@@ -127,6 +127,7 @@
     "docusaurus-prince-pdf": "^1.1.1",
     "dotenv": "^16.0.1",
     "duplicate-package-checker-webpack-plugin": "^3.0.0",
+    "envfile": "^6.18.0",
     "eris": "^0.17.1",
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.5.0",
