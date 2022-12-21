@@ -1,11 +1,16 @@
-import { createEnum } from "schemix";
+import { createEnum, PrismaEnum } from "schemix";
+import Roles from "~backend/source/server/constants/roles/roles";
 
-const roles: Set<string> = new Set(["Administrator", "BuffetOwner"]);
+const allRoles: Set<Roles> = new Set([
+  Roles.Administrator,
+  Roles.Student,
+  Roles.BuffetOwner,
+]);
 
-const rolesEnum = createEnum((RolesEnum) => {
-  roles.forEach((role) => {
-    RolesEnum.addValue(role);
+const roles: PrismaEnum = createEnum((rolesEnum: PrismaEnum): void => {
+  allRoles.forEach((role: Roles): void => {
+    rolesEnum.addValue(role);
   });
 });
 
-export default rolesEnum;
+export default roles;

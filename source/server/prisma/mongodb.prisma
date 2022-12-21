@@ -304,7 +304,7 @@ enum UserModifiers {
 }
 
 model ContentItem {
-  mongo_id                            String                           @map("_id") @id @default(auto()) @database.ObjectId
+  mongo_id                            String                           @id @default(auto()) @map("_id") @database.ObjectId
   id                                  Int                              @unique
   content_items_on_posts_and_supbages ContentItemsOnPostsAndSupbages[]
   runtime                             RuntimeType                      @default(classic)
@@ -314,7 +314,7 @@ model ContentItem {
 }
 
 model PageCategoryTranslations {
-  mongo_id           String       @map("_id") @id @default(auto()) @database.ObjectId
+  mongo_id           String       @id @default(auto()) @map("_id") @database.ObjectId
   id                 Int          @unique
   language           Languages
   name               String
@@ -325,7 +325,7 @@ model PageCategoryTranslations {
 }
 
 model PageCategory {
-  mongo_id                 String                     @map("_id") @id @default(auto()) @database.ObjectId
+  mongo_id                 String                     @id @default(auto()) @map("_id") @database.ObjectId
   id                       Int                        @unique
   pageName                 String                     @map("page_name")
   pageCategory             Page                       @relation(fields: [pageName], references: [name])
@@ -335,7 +335,7 @@ model PageCategory {
 }
 
 model Page {
-  mongo_id                            String                           @map("_id") @id @default(auto()) @database.ObjectId
+  mongo_id                            String                           @id @default(auto()) @map("_id") @database.ObjectId
   isDisabled                          Boolean                          @map("is_disabled")
   name                                String                           @unique
   modifiers                           PostAndPageModifiers[]
@@ -347,7 +347,7 @@ model Page {
 }
 
 model ContentItemsOnPostsAndSupbages {
-  mongo_id      String      @map("_id") @id @default(auto()) @database.ObjectId
+  mongo_id      String      @id @default(auto()) @map("_id") @database.ObjectId
   id            Int         @unique
   posts         Post?       @relation(fields: [postId], references: [id])
   pages         Page?       @relation(fields: [pageName], references: [name])
@@ -360,7 +360,7 @@ model ContentItemsOnPostsAndSupbages {
 }
 
 model PostTranslations {
-  mongo_id        String    @map("_id") @id @default(auto()) @database.ObjectId
+  mongo_id        String    @id @default(auto()) @map("_id") @database.ObjectId
   id              Int       @unique
   language        Languages
   title           String
@@ -372,7 +372,7 @@ model PostTranslations {
 }
 
 model Post {
-  mongo_id                            String                           @map("_id") @id @default(auto()) @database.ObjectId
+  mongo_id                            String                           @id @default(auto()) @map("_id") @database.ObjectId
   id                                  Int                              @unique
   isDisabled                          Boolean                          @map("is_disabled")
   modifiers                           PostAndPageModifiers[]
@@ -387,7 +387,7 @@ model Post {
 }
 
 model SubjectTranslations {
-  mongo_id           String    @map("_id") @id @default(auto()) @database.ObjectId
+  mongo_id           String    @id @default(auto()) @map("_id") @database.ObjectId
   id                 Int       @unique
   language           Languages
   title              String
@@ -398,7 +398,7 @@ model SubjectTranslations {
 }
 
 model Subject {
-  mongo_id            String                @map("_id") @id @default(auto()) @database.ObjectId
+  mongo_id            String                @id @default(auto()) @map("_id") @database.ObjectId
   id                  Int                   @unique
   subjectTranslations SubjectTranslations[]
   classes             SubjectOnClass[]
@@ -408,7 +408,7 @@ model Subject {
 }
 
 model SubjectOnClass {
-  mongo_id       String      @map("_id") @id @default(auto()) @database.ObjectId
+  mongo_id       String      @id @default(auto()) @map("_id") @database.ObjectId
   subjects       Subject     @relation(fields: [subjectId], references: [id])
   schoolClasses  SchoolClass @relation(fields: [schoolClasssId], references: [id])
   subjectId      Int         @map("subject_id")
@@ -418,7 +418,7 @@ model SubjectOnClass {
 }
 
 model SchoolClass {
-  mongo_id String           @map("_id") @id @default(auto()) @database.ObjectId
+  mongo_id String           @id @default(auto()) @map("_id") @database.ObjectId
   id       Int              @unique
   users    User[]
   subjects SubjectOnClass[]
@@ -428,12 +428,12 @@ model SchoolClass {
 }
 
 model User {
-  mongo_id                       String             @map("_id") @id @default(auto()) @database.ObjectId
+  mongo_id                       String             @id @default(auto()) @map("_id") @database.ObjectId
   id                             Int                @unique
   isDisabled                     Boolean            @map("is_disabled")
   modifiers                      UserModifiers[]
   roles                          Roles[]
-  enabledTwoFactorAuthentication AuthenticationType @default(application)                               @map("enabled_two_factor_authentication")
+  enabledTwoFactorAuthentication AuthenticationType @default(application) @map("enabled_two_factor_authentication")
   class                          SchoolClass        @relation(fields: [classId], references: [id])
   classId                        Int                @map("class_id")
   orders                         Order[]
@@ -451,7 +451,7 @@ model User {
 }
 
 model Order {
-  mongo_id        String    @map("_id") @id @default(auto()) @database.ObjectId
+  mongo_id        String    @id @default(auto()) @map("_id") @database.ObjectId
   id              Int       @unique
   paymentAmount   String    @map("payment_amount")
   transactionDate DateTime  @map("transaction_date")
@@ -463,7 +463,7 @@ model Order {
 }
 
 model Product {
-  mongo_id            String                @map("_id") @id @default(auto()) @database.ObjectId
+  mongo_id            String                @id @default(auto()) @map("_id") @database.ObjectId
   id                  Int                   @unique
   order               Order                 @relation(fields: [orderId], references: [id])
   orderId             Int
@@ -477,7 +477,7 @@ model Product {
 }
 
 model ProductAllergensTranslations {
-  mongo_id            String           @map("_id") @id @default(auto()) @database.ObjectId
+  mongo_id            String           @id @default(auto()) @map("_id") @database.ObjectId
   id                  Int              @unique
   language            Languages
   name                String
@@ -488,7 +488,7 @@ model ProductAllergensTranslations {
 }
 
 model ProductAllergens {
-  mongo_id                    String                         @map("_id") @id @default(auto()) @database.ObjectId
+  mongo_id                    String                         @id @default(auto()) @map("_id") @database.ObjectId
   id                          Int                            @unique
   allergensOnProducts         AllergensOnProducts[]
   productAllergenTranslations ProductAllergensTranslations[]
@@ -497,7 +497,7 @@ model ProductAllergens {
 }
 
 model AllergensOnProducts {
-  mongo_id   String           @map("_id") @id @default(auto()) @database.ObjectId
+  mongo_id   String           @id @default(auto()) @map("_id") @database.ObjectId
   allergens  ProductAllergens @relation(fields: [allergenId], references: [id])
   products   Product          @relation(fields: [productId], references: [id])
   productId  Int              @map("product_id")
