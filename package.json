@@ -171,7 +171,7 @@
     "jsdoc": "^3.6.10",
     "json-minimizer-webpack-plugin": "^4.0.0",
     "json5": "^2.2.1",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "license-checker": "^25.0.1",
     "lodash": "^4.17.21",
     "mongoose": "^6.5.2",
