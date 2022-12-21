@@ -1,4 +1,5 @@
-import { createEnum, PrismaEnum } from "schemix";
+import type { PrismaEnum } from "schemix";
+import { createEnum } from "schemix";
 import UserModifiers from "~backend/source/server/constants/userModifiers/userModifiers";
 
 const modifiers: Set<UserModifiers> = new Set([
@@ -6,7 +7,7 @@ const modifiers: Set<UserModifiers> = new Set([
   UserModifiers.BannedReactingOnFeed,
 ]);
 
-const userModifiers: PrismaEnum = createEnum(
+const schemixUserModifiersEnum: PrismaEnum = createEnum(
   (userModifiersEnum: PrismaEnum): void => {
     modifiers.forEach((modifier: UserModifiers): void => {
       userModifiersEnum.addValue(modifier);
@@ -14,4 +15,4 @@ const userModifiers: PrismaEnum = createEnum(
   },
 );
 
-export default userModifiers;
+export default schemixUserModifiersEnum;

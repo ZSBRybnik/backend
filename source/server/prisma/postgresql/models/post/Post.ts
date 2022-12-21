@@ -1,53 +1,56 @@
-import { createModel } from "schemix";
-import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
-import postAndPageModifiers from "../../enums/postAndPageModifiers/PostAndPageModifiers";
-import contentItemsOnPostsAndSupbages from "../contentItemsOnPostsAndSubpages/ContentItemsOnPostsAndSubpages";
-import PostTranslationsModel from "../postTranstations/PostTranslations";
-import UserModel from "../user/User";
+import { createModel, PrismaModel } from "schemix";
+import schemixPostAndSubpageModifiersEnum from "~backend/source/server/prisma/postgresql/enums/postAndSubpageModifiers/PostAndSubpageModifiers";
+import schemixContentItemsOnPostsAndSubpagesModel from "~backend/source/server/prisma/postgresql/models/contentItemsOnPostsAndSubpages/ContentItemsOnPostsAndSubpages";
+import schemixPostTranslationsModel from "~backend/source/server/prisma/postgresql/models/postTranslation/PostTranslation";
+import schemixUserModel from "~backend/source/server/prisma/postgresql/models/user/User";
+import generatePrismaString from "~backend/source/server/prisma/utils/generatePrismaString/generatePrismaString";
 
-const postModel = createModel((postModel) => {
-  postModel
-    .int("id", {
-      raw: generatePrismaString({
-        rawString: `#prisma 
-          @id @default(autoincrement())
-        `,
-      }),
-    })
-    .boolean("isDisabled", { map: "is_disabled" })
-    .enum("modifiers", postAndPageModifiers, { list: true })
-    .relation("postTranslations", PostTranslationsModel, {
-      list: true,
-    })
-    .string("title", {
-      raw: generatePrismaString({
-        rawString: `#prisma 
-          @database.VarChar(255)
-        `,
-      }),
-    })
-    .relation(
-      "content_items_on_posts_and_supbages",
-      contentItemsOnPostsAndSupbages,
-      {
+const schemixPostModel: PrismaModel = createModel(
+  (schemixPostModel: PrismaModel): void => {
+    schemixPostModel
+      .int("id", {
+        id: true,
+        raw: generatePrismaString({
+          rawString: `#prisma 
+            @default(autoincrement())
+          `,
+        }),
+      })
+      .boolean("isDisabled", { map: "is_disabled" })
+      .enum("modifiers", schemixPostAndSubpageModifiersEnum, { list: true })
+      .relation("postTranslations", schemixPostTranslationsModel, {
         list: true,
-      },
-    )
-    .relation("author", UserModel, {
-      fields: ["authorId"],
-      references: ["id"],
-    })
-    .int("authorId", {
-      map: "author_id",
-    })
-    .string("brief", {
-      raw: generatePrismaString({
-        rawString: `#prisma 
-          @database.VarChar(255)
-        `,
-      }),
-    })
-    .map("posts");
-});
+      })
+      .string("title", {
+        raw: generatePrismaString({
+          rawString: `#prisma 
+            @database.VarChar(255)
+          `,
+        }),
+      })
+      .relation(
+        "contentItemsOnPostsAndSubpages",
+        schemixContentItemsOnPostsAndSubpagesModel,
+        {
+          list: true,
+        },
+      )
+      .relation("author", schemixUserModel, {
+        fields: ["authorId"],
+        references: ["id"],
+      })
+      .int("authorId", {
+        map: "author_id",
+      })
+      .string("brief", {
+        raw: generatePrismaString({
+          rawString: `#prisma 
+            @database.VarChar(255)
+          `,
+        }),
+      })
+      .map("posts");
+  },
+);
 
-export default postModel;
+export default schemixPostModel;

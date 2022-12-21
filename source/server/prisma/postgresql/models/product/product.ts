@@ -1,41 +1,46 @@
-import { createModel } from "schemix";
+import { createModel, PrismaModel } from "schemix";
+import schemixOrderModel from "~backend/source/server/prisma/postgresql/models/order/Order";
 import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
-import allergensOnProducts from "../allergensOnProducts/AllergensOnProducts";
-import orderModel from "../order/Order";
+import schemixAllergensOnProductsModel from "../allergensOnProducts/AllergensOnProducts";
 
-const productModel = createModel((ProductModel) => {
-  ProductModel.int("id", {
-    raw: generatePrismaString({
-      rawString: `#prisma 
-        @id @default(autoincrement())
-      `,
-    }),
-  })
-    .relation("order", orderModel, {
-      fields: ["orderId"],
-      references: ["id"],
-    })
-    .int("orderId")
-    .string("name", {
+const schemixProductModel: PrismaModel = createModel(
+  (ProductModel: PrismaModel): void => {
+    ProductModel.int("id", {
+      id: true,
       raw: generatePrismaString({
         rawString: `#prisma 
-          @database.VarChar(255)
+          @default(autoincrement())
         `,
       }),
     })
-    .decimal("price")
-    .int("quantity")
-    .string("description", {
-      raw: generatePrismaString({
-        rawString: `#prisma 
-          @database.Text
-        `,
-      }),
-    })
-    .relation("allergensOnProducts", allergensOnProducts, {
-      list: true,
-    })
-    .map("products");
-});
+      .relation("orders", schemixOrderModel, {
+        fields: ["orderId"],
+        references: ["id"],
+      })
+      .int("orderId", {
+        map: "order_id",
+      })
+      .string("name", {
+        raw: generatePrismaString({
+          rawString: `#prisma 
+            @database.VarChar(255)
+          `,
+        }),
+      })
+      .decimal("price")
+      .int("quantity")
+      .string("description", {
+        raw: generatePrismaString({
+          rawString: `#prisma 
+            @database.Text
+          `,
+        }),
+      })
+      .relation("allergensOnProducts", schemixAllergensOnProductsModel, {
+        list: true,
+      })
+      .map("products");
+  },
+);
 
-export default productModel;
+export default schemixProductModel;

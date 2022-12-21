@@ -14,10 +14,10 @@ const authenticationTypes: Set<AuthenticationTypes> = new Set([
   AuthenticationTypes.PhoneWithCalls,
 ]);
 
-const authenticationType = createEnum((authenticationTypeEnum) => {
+const schemixAuthenticationTypeEnum = createEnum((authenticationTypeEnum) => {
   authenticationTypes.forEach((type) => {
     authenticationTypeEnum.addValue(type);
   });
 });
 
-export default authenticationType;
+export default schemixAuthenticationTypeEnum;

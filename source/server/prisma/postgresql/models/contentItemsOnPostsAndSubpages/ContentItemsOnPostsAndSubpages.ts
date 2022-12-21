@@ -1,37 +1,38 @@
+import type { PrismaModel } from "schemix";
 import { createModel } from "schemix";
-import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
-import contentItemModel from "../contentItem/ContentItem";
-import pageModel from "../page/Page";
-import postModel from "../post/Post";
+import schemixContentItemModel from "~backend/source/server/prisma/postgresql/models/contentItem/ContentItem";
+import schemixPostModel from "~backend/source/server/prisma/postgresql/models/post/Post";
+import schemixPageModel from "~backend/source/server/prisma/postgresql/models/subpage/Subpage";
+import generatePrismaString from "~backend/source/server/prisma/utils/generatePrismaString/generatePrismaString";
 
-const contentItemsOnPostsAndSupbages = createModel(
-  (ContentItemsOnPostsAndSupbagesModel) => {
-    ContentItemsOnPostsAndSupbagesModel.int("id", {
+const schemixContentItemsOnPostsAndSubpagesModel: PrismaModel = createModel(
+  (ContentItemsOnPostsAndSubpagesModel: PrismaModel): void => {
+    ContentItemsOnPostsAndSubpagesModel.int("id", {
       id: true,
       raw: generatePrismaString({
         rawString: `#prisma
-            @default(autoincrement())
-          `,
+          @default(autoincrement())
+        `,
       }),
     })
       .map("content_items_on_posts_and_subpages")
-      .relation("posts", postModel, {
+      .relation("posts", schemixPostModel, {
         fields: ["postId"],
         optional: true,
         references: ["id"],
       })
-      .relation("pages", pageModel, {
-        fields: ["pageName"],
+      .relation("subpages", schemixPageModel, {
+        fields: ["subpageName"],
         optional: true,
         references: ["name"],
       })
-      .relation("contentItems", contentItemModel, {
+      .relation("contentItems", schemixContentItemModel, {
         fields: ["contentItemId"],
         references: ["id"],
       })
-      .string("pageName", {
+      .string("subpageName", {
         optional: true,
-        map: "page_name",
+        map: "subpage_name",
       })
       .int("contentItemId", {
         map: "content_item_id",
@@ -43,4 +44,4 @@ const contentItemsOnPostsAndSupbages = createModel(
   },
 );
 
-export default contentItemsOnPostsAndSupbages;
+export default schemixContentItemsOnPostsAndSubpagesModel;

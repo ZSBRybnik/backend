@@ -1,26 +1,30 @@
+import type { PrismaModel } from "schemix";
 import { createModel } from "schemix";
-import ClassModel from "../schoolClass/SchoolClass";
-import subjectModel from "../subject/Subject";
+import schemixClassModel from "~backend/source/server/prisma/postgresql/models/schoolClass/SchoolClass";
+import schemixSubjectModel from "~backend/source/server/prisma/postgresql/models/subject/Subject";
 
-const model = createModel((SubjectsOnClassesModel) => {
-  SubjectsOnClassesModel.id({
-    fields: ["classId", "subjectId"],
-  })
-    .map("subjects_on_classes")
-    .relation("classes", ClassModel, {
-      fields: ["classId"],
-      references: ["id"],
-    })
-    .relation("subjects", subjectModel, {
-      fields: ["subjectId"],
-      references: ["id"],
-    })
-    .int("classId", {
-      map: "class_id",
-    })
-    .int("subjectId", {
-      map: "subject_id",
-    });
-});
+const schemixSubjectsOnClassesModel: PrismaModel = createModel(
+  (schemixSubjectsOnClassesModel: PrismaModel): void => {
+    schemixSubjectsOnClassesModel
+      .id({
+        fields: ["classId", "subjectId"],
+      })
+      .map("subjects_on_classes")
+      .relation("classes", schemixClassModel, {
+        fields: ["classId"],
+        references: ["id"],
+      })
+      .relation("subjects", schemixSubjectModel, {
+        fields: ["subjectId"],
+        references: ["id"],
+      })
+      .int("classId", {
+        map: "class_id",
+      })
+      .int("subjectId", {
+        map: "subject_id",
+      });
+  },
+);
 
-export default model;
+export default schemixSubjectsOnClassesModel;

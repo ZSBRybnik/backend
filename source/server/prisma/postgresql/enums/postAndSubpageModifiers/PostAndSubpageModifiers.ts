@@ -1,4 +1,5 @@
-import { createEnum, PrismaEnum } from "schemix";
+import type { PrismaEnum } from "schemix";
+import { createEnum } from "schemix";
 import PostAndSubpageModifiers from "~backend/source/server/constants/postAndSubpageModifiers/postAndSubpageModifiers";
 
 const modifiers: Set<PostAndSubpageModifiers> = new Set([
@@ -6,7 +7,7 @@ const modifiers: Set<PostAndSubpageModifiers> = new Set([
   PostAndSubpageModifiers.Live,
 ]);
 
-const postAndSubpageModifiers: PrismaEnum = createEnum(
+const schemixPostAndSubpageModifiersEnum: PrismaEnum = createEnum(
   (postAndSubpageModifiersEnum: PrismaEnum): void => {
     modifiers.forEach((modifier: PostAndSubpageModifiers): void => {
       postAndSubpageModifiersEnum.addValue(modifier);
@@ -14,4 +15,4 @@ const postAndSubpageModifiers: PrismaEnum = createEnum(
   },
 );
 
-export default postAndSubpageModifiers;
+export default schemixPostAndSubpageModifiersEnum;

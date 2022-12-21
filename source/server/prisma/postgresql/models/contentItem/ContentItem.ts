@@ -1,9 +1,11 @@
-import { createModel, PrismaModel } from "schemix";
-import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
-import runtimeType, { RuntimeTypes } from "../../enums/runtimeType/RuntimeType";
-import contentItemsOnPostsAndSupbages from "../contentItemsOnPostsAndSubpages/ContentItemsOnPostsAndSubpages";
+import type { PrismaModel } from "schemix";
+import { createModel } from "schemix";
+import RuntimeType from "~backend/source/server/constants/runtimeType/runtimeType";
+import schemixRuntimeTypeEnum from "~backend/source/server/prisma/postgresql/enums/runtimeType/RuntimeType";
+import schemixContentItemsOnPostsAndSubpagesModel from "~backend/source/server/prisma/postgresql/models/contentItemsOnPostsAndSubpages/ContentItemsOnPostsAndSubpages";
+import generatePrismaString from "~backend/source/server/prisma/utils/generatePrismaString/generatePrismaString";
 
-const contentItemModel: PrismaModel = createModel(
+const schemixContentItemModel: PrismaModel = createModel(
   (contentItemModel: PrismaModel): void => {
     contentItemModel
       .int("id", {
@@ -15,14 +17,14 @@ const contentItemModel: PrismaModel = createModel(
         }),
       })
       .relation(
-        "content_items_on_posts_and_supbages",
-        contentItemsOnPostsAndSupbages,
+        "contentItemsOnPostsAndSubpages",
+        schemixContentItemsOnPostsAndSubpagesModel,
         {
           list: true,
         },
       )
-      .enum("runtime", runtimeType, {
-        default: RuntimeTypes.Classic,
+      .enum("runtime", schemixRuntimeTypeEnum, {
+        default: RuntimeType.Classic,
       })
       .string("content", {
         raw: generatePrismaString({
@@ -35,4 +37,4 @@ const contentItemModel: PrismaModel = createModel(
   },
 );
 
-export default contentItemModel;
+export default schemixContentItemModel;

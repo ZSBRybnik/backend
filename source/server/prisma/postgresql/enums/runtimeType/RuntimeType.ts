@@ -1,4 +1,5 @@
-import { createEnum, PrismaEnum } from "schemix";
+import type { PrismaEnum } from "schemix";
+import { createEnum } from "schemix";
 import RuntimeType from "~backend/source/server/constants/runtimeType/runtimeType";
 
 const runtimeTypes: Set<RuntimeType> = new Set([
@@ -6,7 +7,7 @@ const runtimeTypes: Set<RuntimeType> = new Set([
   RuntimeType.Legacy,
 ]);
 
-const runtimeType: PrismaEnum = createEnum(
+const schemixRuntimeTypeEnum: PrismaEnum = createEnum(
   (runtimeTypeEnum: PrismaEnum): void => {
     runtimeTypes.forEach((runtime: RuntimeType): void => {
       runtimeTypeEnum.addValue(runtime);
@@ -14,4 +15,4 @@ const runtimeType: PrismaEnum = createEnum(
   },
 );
 
-export default runtimeType;
+export default schemixRuntimeTypeEnum;

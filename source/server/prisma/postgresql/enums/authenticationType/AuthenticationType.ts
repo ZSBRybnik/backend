@@ -1,4 +1,5 @@
-import { createEnum, PrismaEnum } from "schemix";
+import type { PrismaEnum } from "schemix";
+import { createEnum } from "schemix";
 import AuthenticationTypes from "~backend/source/server/constants/authenticationType/authenticationType";
 
 const authenticationTypes: Set<AuthenticationTypes> = new Set([

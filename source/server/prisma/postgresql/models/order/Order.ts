@@ -1,28 +1,31 @@
+import type { PrismaModel } from "schemix";
 import { createModel } from "schemix";
-import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
-import productModel from "../product/Product";
-import UserModel from "../user/User";
+import schemixProductModel from "~backend/source/server/prisma/postgresql/models/product/Product";
+import schemixUserModel from "~backend/source/server/prisma/postgresql/models/user/User";
+import generatePrismaString from "~backend/source/server/prisma/utils/generatePrismaString/generatePrismaString";
 
-const orderModel = createModel((OrderModel) => {
-  OrderModel.int("id", {
-    id: true,
-    raw: generatePrismaString({
-      rawString: `#prisma 
-        @default(autoincrement())
-      `,
-    }),
-  })
-    .decimal("payment_amount", {
-      map: "payment_amount",
+const schemixOrderModel: PrismaModel = createModel(
+  (OrderModel: PrismaModel): void => {
+    OrderModel.int("id", {
+      id: true,
+      raw: generatePrismaString({
+        rawString: `#prisma 
+          @default(autoincrement())
+        `,
+      }),
     })
-    .dateTime("transactionDate", { map: "transaction_date" })
-    .relation("products", productModel, { list: true })
-    .relation("user", UserModel, {
-      fields: ["userId"],
-      references: ["id"],
-    })
-    .int("userId")
-    .map("orders");
-});
+      .decimal("paymentAmount", {
+        map: "payment_amount",
+      })
+      .dateTime("transactionDate", { map: "transaction_date" })
+      .relation("products", schemixProductModel, { list: true })
+      .relation("user", schemixUserModel, {
+        fields: ["userId"],
+        references: ["id"],
+      })
+      .int("userId")
+      .map("orders");
+  },
+);
 
-export default orderModel;
+export default schemixOrderModel;

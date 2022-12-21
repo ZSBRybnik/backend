@@ -1,26 +1,26 @@
+import type { PrismaModel } from "schemix";
 import { createModel } from "schemix";
-import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
-import SubjectOnClassModel from "../subjectsOnClasses/SubjectsOnClasses";
-import SubjectTranslationsModel from "../subjectTranslations/SubjectTranslations";
+import schemixSubjectsOnClassesModel from "~backend/source/server/prisma/postgresql/models/subjectsOnClasses/SubjectsOnClasses";
+import schemixSubjectTranslationsModel from "~backend/source/server/prisma/postgresql/models/subjectTranslations/SubjectTranslations";
+import generatePrismaString from "~backend/source/server/prisma/utils/generatePrismaString/generatePrismaString";
 
-const subjectModel = createModel((SubjectModel) => {
-  SubjectModel.int("id", {
-    raw: generatePrismaString({
-      rawString: `#prisma 
-        @id @default(autoincrement())
-      `,
-    }),
-  })
-    .relation("subjectTranslations", SubjectTranslationsModel, { list: true })
-    .relation("classes", SubjectOnClassModel, { list: true })
-    .string("name", {
-      raw: generatePrismaString({
-        rawString: `#prisma 
-          @database.VarChar(100)
-        `,
-      }),
-    })
-    .map("subjects");
-});
+const schemixSubjectModel: PrismaModel = createModel(
+  (schemixSubjectModel: PrismaModel): void => {
+    schemixSubjectModel
+      .int("id", {
+        id: true,
+        raw: generatePrismaString({
+          rawString: `#prisma 
+            @default(autoincrement())
+          `,
+        }),
+      })
+      .relation("subjectTranslations", schemixSubjectTranslationsModel, {
+        list: true,
+      })
+      .relation("classes", schemixSubjectsOnClassesModel, { list: true })
+      .map("subjects");
+  },
+);
 
-export default subjectModel;
+export default schemixSubjectModel;
