@@ -23,7 +23,7 @@ const updatePageHandlerErrorCodes: UpdatePageHandlerErrorCodes = async ({
   where,
 }: UpdatePageHandlerErrorCodesArguments): Promise<void> => {
   const { name }: UpdatePageHandlerErrorCodesArguments["where"] = where;
-  await postgreSQLClient.page.update({
+  await postgreSQLClient.subpage.update({
     where,
     data,
   });

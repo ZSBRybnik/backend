@@ -1,5 +1,5 @@
 /* eslint-disable max-params */
-import { Page } from "@prisma/postgresql";
+import { Subpage } from "@prisma/postgresql";
 import { Delete, Index, Match } from "faunadb";
 import faunaDBClient from "~backend/source/server/clients/faunaClient/faunaClient";
 import mongoDBClient from "~backend/source/server/clients/mongoDBClient/mongoDBClient";
@@ -9,7 +9,7 @@ import natsClient, {
 
 natsClient.subscribe("page.delete.*", {
   callback: async (_error, { data }) => {
-    const { id, name }: Page = jsonCodec.decode(data) as Page;
+    const { name }: Subpage = jsonCodec.decode(data) as Subpage;
     try {
       const mongoDBPromise = mongoDBClient.page.delete({
         where: { name },
@@ -19,7 +19,7 @@ natsClient.subscribe("page.delete.*", {
       );
       await Promise.all([faunaDBPromise, mongoDBPromise]);
     } catch {
-      natsClient.publish(`page.delete.${id}`, data);
+      natsClient.publish(`page.delete.${name}`, data);
     }
   },
 });

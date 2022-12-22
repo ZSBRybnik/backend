@@ -1,4 +1,4 @@
-import { Post, PostContentItem } from "@prisma/postgresql";
+import { ContentItem, Post } from "@prisma/postgresql";
 import { InferLast } from "@trpc/server";
 import { ProcedureResolver } from "@trpc/server/dist/declarations/src/internals/procedure";
 import natsClient, {
@@ -12,16 +12,17 @@ const addPost: ProcedureResolver<
     authorId: number;
     title: string;
     brief: string;
-    content: PostContentItem[];
+    content: ContentItem[];
   },
   InferLast<Post | null>
-> = async ({ input: { authorId, title, brief, content } }) => {
+> = async ({ input: { authorId, title, brief /* content*/ } }) => {
   const { id, ...postData } = await postgreSQLClient.post.create({
     data: {
+      isDisabled: false,
       authorId,
       title,
       brief,
-      content: { createMany: { data: content } },
+      // content: { createMany: { data: content } },
     },
   });
   natsClient.publish(`post.add.${id}`, jsonCodec.encode({ id, ...postData }));

@@ -3,13 +3,13 @@ import createResolver from "../../utils/createResolver/createResolver";
 
 const deletePagesResolver = createResolver<
   {
-    id: number;
+    name: string;
   },
   Record<string, boolean>
 >({
-  rawResolver: async ({ argument: { id } }): Promise<void> => {
-    await postgreSQLClient.page.delete({
-      where: { id },
+  rawResolver: async ({ argument: { name } }): Promise<void> => {
+    await postgreSQLClient.subpage.delete({
+      where: { name },
     });
   },
 });

@@ -17,7 +17,7 @@ const postsResolver = createResolver<
     fields: {
       id = false,
       title = false,
-      content = false,
+      //content = false,
       author = false,
       brief = false,
     },
@@ -28,7 +28,7 @@ const postsResolver = createResolver<
         return { id };
       }) ?? null;
     return await postgreSQLClient.post.findMany({
-      select: { id, title, content, author, brief },
+      select: { id, title /*, content*/, author, brief },
       where: conditions ? { OR: conditions } : undefined,
     });
   },

@@ -2,8 +2,8 @@ import { User } from "@prisma/postgresql";
 import { hash } from "bcrypt";
 import { authenticator } from "otplib";
 import { toDataURL } from "qrcode";
-import EnabledTwoFactorAuthentication from "~backend/source/server/constants/enabledTwoFactorAuthentication/enabledTwoFactorAuthentication";
-import Roles from "~backend/source/server/constants/roles/Roles";
+import AuthenticationType from "~backend/source/server/constants/authenticationType/authenticationType";
+import Roles from "~backend/source/server/constants/roles/roles";
 import AddUserEmail from "~backend/source/server/emails/templates/addUserEmail/addUserEmail";
 import createHandler from "~backend/source/server/rest/utils/createHandler/createHandler";
 import {
@@ -92,15 +92,10 @@ import validateAddUserHandler from "./validateAddUserHandler";
 
 export type AddUserHandlerBody = Pick<
   User,
-  | "login"
-  | "email"
-  | "phoneNumber"
-  | "discordNickname"
-  | "lockerNumber"
-  | "lockerPin"
+  "login" | "email" | "phoneNumber" | "discordId" | "lockerNumber" | "lockerPin"
 > & {
   role: Roles;
-  enabledTwoFactorAuthentication: EnabledTwoFactorAuthentication;
+  enabledTwoFactorAuthentication: AuthenticationType;
 };
 
 const { handler: addUserHandler }: CreateHandlerOutput = createHandler({
@@ -125,7 +120,10 @@ const { handler: addUserHandler }: CreateHandlerOutput = createHandler({
         ...body,
         classId: 1,
         authenticatorCode: googleAuthCode,
+        roles: [],
         password: hashedPassword,
+        isDisabled: false,
+        modifiers: [],
       },
     });
     const qrCodeString: string = `otpauth://totp/zsbrybnik?secret=${googleAuthCode}`;

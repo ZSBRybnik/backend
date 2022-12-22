@@ -16,11 +16,20 @@ type AddPostHandlerErrorCodes = {
 const addPostHandlerErrorCodes = async ({
   response,
   next,
-  data: { brief, content, ...rest },
+  data: { brief /*, content,*/, ...rest },
 }: AddPostHandlerErrorCodes): Promise<void> => {
   try {
     const { id, ...postData }: Post = await postgreSQLClient.post.create({
-      data: { ...rest, content, brief: brief || content.slice(0, 150) },
+      data: {
+        ...rest,
+        isDisabled: false,
+        brief: brief || "",
+        /*content: {
+          createMany: {
+            data: content as unknown as PostContentItem[],
+          },
+        },*/
+      },
     });
     natsClient.publish(`post.add.${id}`, jsonCodec.encode({ id, ...postData }));
   } catch {

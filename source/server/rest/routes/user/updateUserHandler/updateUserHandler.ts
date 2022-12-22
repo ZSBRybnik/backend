@@ -1,4 +1,4 @@
-import Roles from "~backend/source/server/constants/roles/Roles";
+import Roles from "~backend/source/server/constants/roles/roles";
 import createHandler from "~backend/source/server/rest/utils/createHandler/createHandler";
 import {
   CreateHandlerOutput,
@@ -101,7 +101,7 @@ const { handler: updateUserHandler }: CreateHandlerOutput = createHandler({
     try {
       await postgreSQLClient.user.update({
         where: { id: parseInt(id) },
-        data: { login, role, email },
+        data: { login, email },
       });
       response.sendStatus(200);
     } catch {

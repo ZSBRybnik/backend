@@ -1,24 +1,20 @@
 /* eslint-disable max-params */
-import { Post, PostContentItem } from "@prisma/postgresql";
-import { Collection, Create } from "faunadb";
-import faunaDBClient from "~backend/source/server/clients/faunaClient/faunaClient";
-import ipfsClient from "~backend/source/server/clients/ipfsClient/ipfsClient";
-import mongoDBClient from "~backend/source/server/clients/mongoDBClient/mongoDBClient";
+import { ContentItem, Post } from "@prisma/postgresql";
 import natsClient, {
   jsonCodec,
 } from "~backend/source/server/clients/natsClient/natsClient";
 
 type PostWithContent = Post & {
-  content: PostContentItem[];
+  content: ContentItem[];
 };
 
 natsClient.subscribe("post.add.*", {
   callback: async (_error, { data }) => {
-    const { id, ...postData }: PostWithContent = jsonCodec.decode(
+    const { id /*...postData*/ }: PostWithContent = jsonCodec.decode(
       data,
     ) as PostWithContent;
     try {
-      const mongoDBPromise = mongoDBClient.post.create({
+      /*const mongoDBPromise = mongoDBClient.post.create({
         data: { id, ...postData },
       });
       const ipfsPromise = ipfsClient.add(JSON.stringify({ id, ...postData }));
@@ -27,7 +23,8 @@ natsClient.subscribe("post.add.*", {
         Create(Collection("posts"), {
           data: { cid: cid.toString(), id },
         }),
-      );
+      );*/
+      console.log("test");
     } catch (error) {
       natsClient.publish(`post.add.${id}`, data);
     }

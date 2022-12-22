@@ -47,7 +47,7 @@ const { handler: getPostsHandler } = createHandler({
         where: {
           OR: startId ? (conditions as { id: number }[]) : undefined,
         },
-        select: { title: true, content: true, id: true },
+        select: { title: true, id: true },
       });
       jsonRedisClient.set(
         startId

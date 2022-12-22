@@ -50,15 +50,26 @@ const { handler: getPostHandler }: CreateHandlerOutput = createHandler({
     if (post) {
       response.sendWithValidFormat({ data: post });
     } else {
+      const parsedId = parseInt(id);
       const databasePost:
-        | (Pick<Post, "title" | "content"> & {
+        | (Pick<Post, "title"> & {
             author: Pick<User, "login">;
+            // content: Pick<ContentItem, "runtime">[];
           })
         | null = await postgreSQLClient.post.findUnique({
-        where: { id: parseInt(id) },
+        where: { id: parsedId },
         select: {
           title: true,
-          content: true,
+          /*content: {
+            select: {
+              //content: true,
+              runtime: true,
+              id: true,
+            },
+            where: {
+              postId: parsedId,
+            },
+          },*/
           author: {
             select: {
               login: true,

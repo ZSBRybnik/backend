@@ -18,10 +18,16 @@ const addPageHandlerErrorCodes = async ({
   data,
 }: AddPageHandlerErrorCodes): Promise<void> => {
   try {
-    const { id, ...pageData } = await postgreSQLClient.page.create({
-      data,
+    const { name, ...pageData } = await postgreSQLClient.subpage.create({
+      data: {
+        ...data,
+        isDisabled: false,
+      },
     });
-    natsClient.publish(`page.add.${id}`, jsonCodec.encode({ id, ...pageData }));
+    natsClient.publish(
+      `page.add.${name}`,
+      jsonCodec.encode({ name, ...pageData }),
+    );
   } catch {
     response.sendStatus(404);
     return next();

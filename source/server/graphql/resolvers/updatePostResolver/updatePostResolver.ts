@@ -1,4 +1,4 @@
-import { Post, PostContentItem } from "@prisma/postgresql";
+import { ContentItem, Post } from "@prisma/postgresql";
 import natsClient, {
   jsonCodec,
 } from "~backend/source/server/clients/natsClient/natsClient";
@@ -11,7 +11,7 @@ const updatePostResolver = createResolver<
     authorId?: number;
     title?: string;
     brief?: string;
-    content: PostContentItem[];
+    content: ContentItem[];
   },
   {
     id?: boolean;
@@ -24,14 +24,14 @@ const updatePostResolver = createResolver<
   rawResolver: async ({
     fields: {
       title: titleField = false,
-      content: contentField = false,
+      //content: contentField = false,
       id: idField = false,
       authorId: authorIdField = false,
       brief: briefField = false,
     },
     argument: { id, authorId, title, brief, content },
   }): Promise<Partial<Post>> => {
-    const contentIds = content.map(({ id: contentId }) => {
+    content.map(({ id: contentId }) => {
       return contentId;
     });
     const { id: postId, ...postData } = await postgreSQLClient.post.update({
@@ -39,7 +39,7 @@ const updatePostResolver = createResolver<
         authorId,
         title,
         brief,
-        content: {
+        /*content: {
           updateMany: {
             data: content,
             where: {
@@ -47,11 +47,12 @@ const updatePostResolver = createResolver<
             },
           },
         },
+        */
       },
       select: {
         brief: briefField,
         title: titleField,
-        content: contentField,
+        //content: contentField,
         id: idField,
         authorId: authorIdField,
       },

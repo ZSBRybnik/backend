@@ -1,4 +1,4 @@
-import { Page } from "@prisma/postgresql";
+import { Subpage } from "@prisma/postgresql";
 import { NextFunction } from "express";
 import postgreSQLClient from "~backend/source/server/clients/postgreSQLClient/postgreSQLClient";
 import Request from "../../../types/request/request";
@@ -22,10 +22,10 @@ const getPageHandlerErrorCodes = async ({
   if (page) {
     response.sendWithValidFormat({ data: page });
   } else {
-    const databasePage: Pick<Page, "content" | "title" | "id"> | null =
-      await postgreSQLClient.page.findUnique({
+    const databasePage: Pick<Subpage, "name"> | null =
+      await postgreSQLClient.subpage.findUnique({
         where,
-        select: { content: true, title: true, id: true },
+        select: { /*content: true, title: true, */ name: true },
       });
     if (databasePage) {
       await jsonRedisClient.set(`pages-${where}`, databasePage);

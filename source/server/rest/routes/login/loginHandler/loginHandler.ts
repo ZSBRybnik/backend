@@ -2,7 +2,7 @@ import { User } from "@prisma/postgresql";
 import { compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
 import { authenticator } from "otplib";
-import EnabledTwoFactorAuthentication from "~backend/source/server/constants/enabledTwoFactorAuthentication/enabledTwoFactorAuthentication";
+import AuthenticationType from "~backend/source/server/constants/authenticationType/authenticationType";
 import createHandler from "~backend/source/server/rest/utils/createHandler/createHandler";
 import type {
   CreateHandlerOutput,
@@ -41,7 +41,7 @@ const { handler: loginHandler }: CreateHandlerOutput = createHandler({
     }
     const user:
       | (Pick<User, "password" | "phoneNumber" | "authenticatorCode"> & {
-          enabledTwoFactorAuthentication: EnabledTwoFactorAuthentication;
+          enabledTwoFactorAuthentication: AuthenticationType;
         })
       | null = (await postgreSQLClient.user.findUnique({
       where: { login },
@@ -52,7 +52,7 @@ const { handler: loginHandler }: CreateHandlerOutput = createHandler({
         authenticatorCode: true,
       },
     })) as Pick<User, "password" | "phoneNumber" | "authenticatorCode"> & {
-      enabledTwoFactorAuthentication: EnabledTwoFactorAuthentication;
+      enabledTwoFactorAuthentication: AuthenticationType;
     };
     if (user) {
       const {
@@ -66,10 +66,7 @@ const { handler: loginHandler }: CreateHandlerOutput = createHandler({
         databasePassword,
       );
       if (isPasswordValid) {
-        if (
-          enabledTwoFactorAuthentication ===
-          EnabledTwoFactorAuthentication.Application
-        ) {
+        if (enabledTwoFactorAuthentication === AuthenticationType.Application) {
           if (!databaseAuthenticatorCode) {
             response.sendStatus(500);
             return next();
@@ -87,10 +84,7 @@ const { handler: loginHandler }: CreateHandlerOutput = createHandler({
             return next();
           }
         }
-        if (
-          enabledTwoFactorAuthentication ===
-          EnabledTwoFactorAuthentication.Phone
-        ) {
+        if (enabledTwoFactorAuthentication === AuthenticationType.Phone) {
           if (!phoneNumber) {
             response.sendStatus(500);
             return next();

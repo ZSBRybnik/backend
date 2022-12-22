@@ -1,6 +1,9 @@
-import { Page } from "@prisma/postgresql";
+import { Subpage } from "@prisma/postgresql";
 import createHandler from "../../../utils/createHandler/createHandler";
-import { RawHandlerArguments } from "../../../utils/createHandler/createHandler.types";
+import {
+  JSONTypes,
+  RawHandlerArguments,
+} from "../../../utils/createHandler/createHandler.types";
 import updatePageHandlerErrorCodes from "./updatePageHandlerErrorCodes";
 import validateUpdatePageHandler from "./validateUpdatePageHandler";
 
@@ -63,23 +66,27 @@ const { handler: updatePageHandler } = createHandler({
   defaultSuccessfullStatusCode: 204,
   rawHandler: async ({
     request: {
-      body: { title, content },
+      body: { /*title, category,*/ content },
       params: { name },
       jsonRedisClient,
     },
     response,
     next,
-  }: RawHandlerArguments<{ body: Omit<Page, "id"> }>): Promise<void> => {
+  }: RawHandlerArguments<{
+    body: Omit<Subpage, "id"> & { content: JSONTypes[] };
+  }>): Promise<void> => {
+    const title = "";
+    const category = "";
     await validateUpdatePageHandler({
       response,
       next,
-      validationData: { title, content },
+      validationData: { title, category, content },
     });
     await updatePageHandlerErrorCodes({
       request: { jsonRedisClient },
       response,
       next,
-      data: { title, content },
+      data: { title, category, content },
       where: { name },
     });
   },

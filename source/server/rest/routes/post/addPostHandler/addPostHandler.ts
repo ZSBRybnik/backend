@@ -1,6 +1,7 @@
 import createHandler from "~backend/source/server/rest/utils/createHandler/createHandler";
 import type {
   CreateHandlerOutput,
+  JSONTypes,
   RawHandlerArguments,
 } from "~backend/source/server/rest/utils/createHandler/createHandler.types";
 import addPostHandlerErrorCodes from "./addPostHandlerErrorCodes";
@@ -67,7 +68,7 @@ import validateAddPostHandler from "./validateAddPostHandler";
 export type AddPostHandler = {
   title: string;
   authorId: number;
-  content: string;
+  content: JSONTypes[];
   brief?: string;
 };
 

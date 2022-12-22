@@ -3,25 +3,24 @@ import createResolver from "../../utils/createResolver/createResolver";
 
 const pagesResolver = createResolver<
   {
-    ids?: number[];
+    names?: string[];
   },
   {
     name?: boolean;
-    id?: boolean;
     title?: boolean;
     content?: boolean;
   }
 >({
   rawResolver: async ({
-    fields: { name = false, id = false, title = false, content = false },
-    argument: { ids },
+    fields: { name = false /*title = false, content = false */ },
+    argument: { names },
   }) => {
     const conditions =
-      ids?.map((id: number): { id: number } => {
-        return { id };
+      names?.map((name: string): { name: string } => {
+        return { name };
       }) ?? null;
-    return await postgreSQLClient.page.findMany({
-      select: { id, name, title, content },
+    return await postgreSQLClient.subpage.findMany({
+      select: { name /*title, content*/ },
       where: conditions ? { OR: conditions } : undefined,
     });
   },

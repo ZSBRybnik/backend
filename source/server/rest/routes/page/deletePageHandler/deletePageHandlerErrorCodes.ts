@@ -19,7 +19,7 @@ const deletePageHandlerErrorCodes = async ({
 }: DeletePageHandlerErrorCodes) => {
   try {
     const redisDelete = jsonRedisClient.del(`page-${where}`);
-    const postgreDelete = postgreSQLClient.page.delete({
+    const postgreDelete = postgreSQLClient.subpage.delete({
       where,
     });
     await Promise.all([redisDelete, postgreDelete]);

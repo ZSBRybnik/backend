@@ -1,4 +1,4 @@
-import { Page } from "@prisma/postgresql";
+import { Subpage } from "@prisma/postgresql";
 import { InferLast } from "@trpc/server";
 import { ProcedureResolver } from "@trpc/server/dist/declarations/src/internals/procedure";
 import postgreSQLClient from "~backend/source/server/clients/postgreSQLClient/postgreSQLClient";
@@ -8,9 +8,9 @@ const deletePage: ProcedureResolver<
   {
     name: string;
   },
-  InferLast<Page | null>
+  InferLast<Subpage | null>
 > = ({ input: { name } }) => {
-  return postgreSQLClient.page.delete({
+  return postgreSQLClient.subpage.delete({
     where: { name },
   });
 };

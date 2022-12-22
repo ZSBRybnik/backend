@@ -1,6 +1,7 @@
 import createHandler from "../../../utils/createHandler/createHandler";
 import {
   CreateHandlerOutput,
+  JSONTypes,
   RawHandlerArguments,
 } from "../../../utils/createHandler/createHandler.types";
 import addPageHandlerErrorCodes from "./addPageHandlerErrorCodes";
@@ -62,14 +63,15 @@ import validateAddPageHandler from "./validateAddPageHandler";
 export type AddPageHandlerBody = {
   name: string;
   title: string;
-  content: string;
+  category: string;
+  content: JSONTypes[];
 };
 
 const { handler: addPageHandler }: CreateHandlerOutput = createHandler({
   defaultSuccessfullStatusCode: 201,
   rawHandler: async ({
     request: {
-      body: { name, title, content },
+      body: { name, title, category, content },
     },
     response,
     next,
@@ -77,12 +79,12 @@ const { handler: addPageHandler }: CreateHandlerOutput = createHandler({
     await validateAddPageHandler({
       response,
       next,
-      validationData: { name, title, content },
+      validationData: { name, title, category, content },
     });
     await addPageHandlerErrorCodes({
       response,
       next,
-      data: { name, title, content },
+      data: { name, title, category, content },
     });
   },
 });

@@ -1,42 +1,42 @@
-import { Page } from "@prisma/postgresql";
+import { Subpage } from "@prisma/postgresql";
 import postgreSQLClient from "~backend/source/server/clients/postgreSQLClient/postgreSQLClient";
 import createResolver from "../../utils/createResolver/createResolver";
 
 const updatePagesResolver = createResolver<
   {
-    id: number;
     name?: string;
     title?: string;
-    content?: string;
+    category?: string;
   },
   {
-    id?: boolean;
     name?: boolean;
     title?: boolean;
-    content?: boolean;
+    category?: boolean;
   }
 >({
   rawResolver: async ({
     fields: {
-      title: titleField = false,
-      content: contentField = false,
-      id: idField = false,
+      //title: titleField = false,
+      // category: categoryField = false,
       name: nameField = false,
     },
-    argument: { id, name, title, content },
-  }): Promise<Partial<Page>> => {
-    await postgreSQLClient.page.update({
-      data: { name, title, content },
-      where: { id },
+    argument: { name /*title, category*/ },
+  }): Promise<Partial<Subpage>> => {
+    await postgreSQLClient.subpage.update({
+      data: {
+        name,
+        //title,
+        //category,
+      },
+      where: { name },
     });
     return (
-      (await postgreSQLClient.page.findUnique({
-        where: { id },
+      (await postgreSQLClient.subpage.findUnique({
+        where: { name },
         select: {
           name: nameField,
-          title: titleField,
-          content: contentField,
-          id: idField,
+          //title: titleField,
+          //category: categoryField,
         },
       })) ?? {}
     );
