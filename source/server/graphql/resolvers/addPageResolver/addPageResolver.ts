@@ -1,5 +1,6 @@
-import { Page } from "@prisma/postgresql";
+import { Subpage } from "@prisma/postgresql";
 import postgreSQLClient from "~backend/source/server/clients/postgreSQLClient/postgreSQLClient";
+
 import createResolver from "../../utils/createResolver/createResolver";
 
 const addPagesResolver = createResolver<
@@ -10,11 +11,9 @@ const addPagesResolver = createResolver<
   },
   Record<string, boolean>
 >({
-  rawResolver: async ({
-    argument: { name, title, content },
-  }): Promise<Partial<Page>> => {
-    return await postgreSQLClient.page.create({
-      data: { name, title, content },
+  rawResolver: async ({ argument: { name } }): Promise<Partial<Subpage>> => {
+    return await postgreSQLClient.subpage.create({
+      data: { name /*, title, content */, isDisabled: false },
     });
   },
 });

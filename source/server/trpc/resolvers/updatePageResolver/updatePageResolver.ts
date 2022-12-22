@@ -1,4 +1,4 @@
-import { Page } from "@prisma/postgresql";
+import { Subpage } from "@prisma/postgresql";
 import { InferLast } from "@trpc/server";
 import { ProcedureResolver } from "@trpc/server/dist/declarations/src/internals/procedure";
 import postgreSQLClient from "~backend/source/server/clients/postgreSQLClient/postgreSQLClient";
@@ -11,11 +11,11 @@ const updatePageResolver: ProcedureResolver<
     title: string;
     content: string;
   },
-  InferLast<Page | null>
+  InferLast<Subpage | null>
 > = ({ input: { id, name, title, content } }) => {
-  return postgreSQLClient.page.update({
-    where: { id },
-    data: { name, title, content },
+  return postgreSQLClient.subpage.update({
+    where: { name },
+    data: { name /*title, content*/ },
   });
 };
 
