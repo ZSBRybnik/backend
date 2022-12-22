@@ -1,28 +1,21 @@
-import { ContentItem } from "@prisma/postgresql";
+import { Subpage } from "@prisma/postgresql";
 import postgreSQLClient from "~backend/source/server/clients/postgreSQLClient/postgreSQLClient";
+
 import createResolver from "../../utils/createResolver/createResolver";
 
 const addPagesResolver = createResolver<
   {
     name: string;
     title: string;
-    category: string;
-    content: Omit<ContentItem, "id">[];
+    content: string;
   },
   Record<string, boolean>
 >({
-  // tslint:disable-next-line: typedef
-  rawResolver: async ({ argument: { name /* title, category, content*/ } }) => {
+  rawResolver: async ({
+    argument: { name /*title, content*/ },
+  }): Promise<Partial<Subpage>> => {
     return await postgreSQLClient.subpage.create({
-      data: {
-        name,
-        isDisabled: false,
-        /*title,
-        category,
-        content: {
-          createMany: { data: content },
-        },*/
-      },
+      data: { name, isDisabled: false /*title, content*/ },
     });
   },
 });

@@ -19,9 +19,9 @@ const addPostResolver = createResolver<
     const { id, ...postData } = await postgreSQLClient.post.create({
       data: {
         title,
-        isDisabled: false,
         brief,
         authorId,
+        isDisabled: false,
         /*content: {
           createMany: { data: content },
         },*/

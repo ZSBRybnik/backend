@@ -6,16 +6,15 @@ import postgreSQLClient from "~backend/source/server/clients/postgreSQLClient/po
 const updatePageResolver: ProcedureResolver<
   unknown,
   {
-    id: number;
     name: string;
     title: string;
-    category: string;
+    content: string;
   },
   InferLast<Subpage | null>
-> = ({ input: { name /*title, category*/ } }) => {
+> = ({ input: { name /* title, content*/ } }) => {
   return postgreSQLClient.subpage.update({
     where: { name },
-    data: { name /*title, category*/ },
+    data: { name /*title, content*/ },
   });
 };
 
