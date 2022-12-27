@@ -283,14 +283,15 @@ enum Languages {
   ZW
 }
 
-enum PostAndPageModifiers {
-  Archive
-  Live
+enum PostAndSubpageModifiers {
+  archive
+  live
 }
 
 enum Roles {
-  Administrator
-  BuffetOwner
+  administrator
+  student
+  buffetOwner
 }
 
 enum RuntimeType {
@@ -299,16 +300,16 @@ enum RuntimeType {
 }
 
 enum UserModifiers {
-  BannedCommenting
-  BannedReactingOnFeed
+  bannedCommenting
+  bannedReactingOnFeed
 }
 
 model ContentItem {
-  mongo_id                            String                           @map("_id") @id @default(auto()) @database.ObjectId
-  id                                  Int                              @unique
-  content_items_on_posts_and_supbages ContentItemsOnPostsAndSupbages[]
-  runtime                             RuntimeType                      @default(classic)
-  content                             String
+  mongo_id                       String                           @map("_id") @id @default(auto()) @database.ObjectId
+  id                             Int                              @unique
+  contentItemsOnPostsAndSubpages ContentItemsOnPostsAndSubpages[]
+  runtime                        RuntimeType                      @default(classic)
+  content                        String
 
   @@map("content_items")
 }
@@ -335,18 +336,18 @@ model PageCategory {
 }
 
 model Page {
-  mongo_id                            String                           @map("_id") @id @default(auto()) @database.ObjectId
-  isDisabled                          Boolean                          @map("is_disabled")
-  name                                String                           @unique
-  modifiers                           PostAndPageModifiers[]
-  content_items_on_posts_and_supbages ContentItemsOnPostsAndSupbages[]
-  pageCategory                        PageCategory[]
-  title                               String
+  mongo_id                       String                           @map("_id") @id @default(auto()) @database.ObjectId
+  isDisabled                     Boolean                          @map("is_disabled")
+  name                           String                           @unique
+  modifiers                      PostAndSubpageModifiers[]
+  contentItemsOnPostsAndSubpages ContentItemsOnPostsAndSubpages[]
+  pageCategory                   PageCategory[]
+  title                          String
 
   @@map("pages")
 }
 
-model ContentItemsOnPostsAndSupbages {
+model ContentItemsOnPostsAndSubpages {
   mongo_id      String      @map("_id") @id @default(auto()) @database.ObjectId
   id            Int         @unique
   posts         Post?       @relation(fields: [postId], references: [id])
@@ -372,16 +373,16 @@ model PostTranslations {
 }
 
 model Post {
-  mongo_id                            String                           @map("_id") @id @default(auto()) @database.ObjectId
-  id                                  Int                              @unique
-  isDisabled                          Boolean                          @map("is_disabled")
-  modifiers                           PostAndPageModifiers[]
-  postTranslations                    PostTranslations[]
-  title                               String
-  content_items_on_posts_and_supbages ContentItemsOnPostsAndSupbages[]
-  author                              User                             @relation(fields: [authorId], references: [id])
-  authorId                            Int                              @map("author_id")
-  brief                               String
+  mongo_id                       String                           @map("_id") @id @default(auto()) @database.ObjectId
+  id                             Int                              @unique
+  isDisabled                     Boolean                          @map("is_disabled")
+  modifiers                      PostAndSubpageModifiers[]
+  postTranslations               PostTranslations[]
+  title                          String
+  contentItemsOnPostsAndSubpages ContentItemsOnPostsAndSubpages[]
+  author                         User                             @relation(fields: [authorId], references: [id])
+  authorId                       Int                              @map("author_id")
+  brief                          String
 
   @@map("posts")
 }

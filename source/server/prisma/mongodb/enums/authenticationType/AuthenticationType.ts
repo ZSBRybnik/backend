@@ -1,11 +1,6 @@
+import type { PrismaEnum } from "schemix";
 import { createEnum } from "schemix";
-
-export enum AuthenticationTypes {
-  Application = "application",
-  Phone = "phone",
-  PhoneWithCalls = "phoneWithCalls",
-  Disabled = "disabled",
-}
+import AuthenticationTypes from "~backend/source/server/constants/authenticationType/authenticationType";
 
 const authenticationTypes: Set<AuthenticationTypes> = new Set([
   AuthenticationTypes.Application,
@@ -14,10 +9,12 @@ const authenticationTypes: Set<AuthenticationTypes> = new Set([
   AuthenticationTypes.PhoneWithCalls,
 ]);
 
-const schemixAuthenticationTypeEnum = createEnum((authenticationTypeEnum) => {
-  authenticationTypes.forEach((type) => {
-    authenticationTypeEnum.addValue(type);
-  });
-});
+const schemixAuthenticationType: PrismaEnum = createEnum(
+  (authenticationTypeEnum: PrismaEnum): void => {
+    authenticationTypes.forEach((type: AuthenticationTypes): void => {
+      authenticationTypeEnum.addValue(type);
+    });
+  },
+);
 
-export default schemixAuthenticationTypeEnum;
+export default schemixAuthenticationType;

@@ -1,7 +1,7 @@
 import { createModel } from "schemix";
 import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
-import postAndPageModifiers from "../../enums/postAndPageModifiers/PostAndPageModifiers";
-import contentItemsOnPostsAndSupbages from "../contentItemsOnPostsAndSupbages/ContentItemsOnPostsAndSupbages";
+import postAndSubpageModifiers from "../../enums/postAndSubpageModifiers/PostAndSubpageModifiers";
+import contentItemsOnPostsAndSubpages from "../contentItemsOnPostsAndSubpages/ContentItemsOnPostsAndSubpages";
 import PageCategoryModel from "../pageCategory/PageCategory";
 
 const pageModel = createModel((pageModel) => {
@@ -19,10 +19,10 @@ const pageModel = createModel((pageModel) => {
     .string("name", {
       unique: true,
     })
-    .enum("modifiers", postAndPageModifiers, { list: true })
+    .enum("modifiers", postAndSubpageModifiers, { list: true })
     .relation(
-      "content_items_on_posts_and_supbages",
-      contentItemsOnPostsAndSupbages,
+      "contentItemsOnPostsAndSubpages",
+      contentItemsOnPostsAndSubpages,
       {
         list: true,
       },

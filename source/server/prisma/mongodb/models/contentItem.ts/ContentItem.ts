@@ -1,7 +1,8 @@
 import { createModel, PrismaModel } from "schemix";
+import RuntimeTypes from "~backend/source/server/constants/runtimeType/runtimeType";
 import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
-import runtimeType, { RuntimeTypes } from "../../enums/runtimeType/RuntimeType";
-import contentItemsOnPostsAndSupbages from "../contentItemsOnPostsAndSupbages/ContentItemsOnPostsAndSupbages";
+import runtimeType from "../../enums/runtimeType/RuntimeType";
+import contentItemsOnPostsAndSubpages from "../contentItemsOnPostsAndSubpages/ContentItemsOnPostsAndSubpages";
 
 const contentItemModel: PrismaModel = createModel(
   (contentItemModel: PrismaModel): void => {
@@ -17,8 +18,8 @@ const contentItemModel: PrismaModel = createModel(
       })
       .int("id", { unique: true })
       .relation(
-        "content_items_on_posts_and_supbages",
-        contentItemsOnPostsAndSupbages,
+        "contentItemsOnPostsAndSubpages",
+        contentItemsOnPostsAndSubpages,
         {
           list: true,
         },

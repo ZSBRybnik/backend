@@ -1,8 +1,7 @@
 import { createModel, PrismaModel } from "schemix";
+import AuthenticationTypes from "~backend/source/server/constants/authenticationType/authenticationType";
 import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
-import authenticationType, {
-  AuthenticationTypes,
-} from "../../enums/authenticationType/AuthenticationType";
+import schemixAuthenticationType from "../../enums/authenticationType/AuthenticationType";
 import rolesEnum from "../../enums/roles/Roles";
 import userModifiers from "../../enums/userModifiers/UserModifiers";
 import orderModel from "../order/Order";
@@ -25,7 +24,7 @@ const model: PrismaModel = createModel((UserModal: PrismaModel): void => {
     .boolean("isDisabled", { map: "is_disabled" })
     .enum("modifiers", userModifiers, { list: true })
     .enum("roles", rolesEnum, { list: true })
-    .enum("enabledTwoFactorAuthentication", authenticationType, {
+    .enum("enabledTwoFactorAuthentication", schemixAuthenticationType, {
       default: AuthenticationTypes.Application,
       map: "enabled_two_factor_authentication",
     })

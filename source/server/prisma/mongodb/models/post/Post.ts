@@ -1,7 +1,7 @@
 import { createModel } from "schemix";
 import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
-import postAndPageModifiers from "../../enums/postAndPageModifiers/PostAndPageModifiers";
-import contentItemsOnPostsAndSupbages from "../contentItemsOnPostsAndSupbages/ContentItemsOnPostsAndSupbages";
+import postAndSubpageModifiers from "../../enums/postAndSubpageModifiers/PostAndSubpageModifiers";
+import contentItemsOnPostsAndSubpages from "../contentItemsOnPostsAndSubpages/ContentItemsOnPostsAndSubpages";
 import PostTranslationsModel from "../postTranslations/PostTranslations";
 import UserModel from "../user/User";
 
@@ -20,14 +20,14 @@ const postModel = createModel((postModel) => {
       unique: true,
     })
     .boolean("isDisabled", { map: "is_disabled" })
-    .enum("modifiers", postAndPageModifiers, { list: true })
+    .enum("modifiers", postAndSubpageModifiers, { list: true })
     .relation("postTranslations", PostTranslationsModel, {
       list: true,
     })
     .string("title")
     .relation(
-      "content_items_on_posts_and_supbages",
-      contentItemsOnPostsAndSupbages,
+      "contentItemsOnPostsAndSubpages",
+      contentItemsOnPostsAndSubpages,
       {
         list: true,
       },
