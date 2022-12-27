@@ -1,4 +1,4 @@
-/* eslint-disable no-debugger */
+import "dotenv/config";
 import { parse, stringify } from "envfile";
 import { Collection, CreateCollection, CreateIndex } from "faunadb";
 import { readFileSync, writeFileSync } from "fs";
@@ -13,9 +13,9 @@ const submitSelector = "button[type=submit]";
   const page = (await browser.pages())[0];
   await page.goto("https://dashboard.fauna.com/accounts/login");
   const emailInput = await page.waitForSelector("#email");
-  await emailInput?.type("nidaheg317@edinel.com");
+  await emailInput?.type(process.env.FAUNADB_USERNAME || "");
   const passwordInput = await page.waitForSelector("#password");
-  await passwordInput?.type("JebaćMirkaS2137");
+  await passwordInput?.type(process.env.FAUNADB_PASSWORD || "");
   const submitButton = await page.waitForSelector(submitSelector);
   await submitButton?.click();
   const createDatabaseButton = await page.waitForSelector(
