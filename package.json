@@ -117,7 +117,7 @@
     "command-exists": "^1.2.9",
     "commander": "^9.3.0",
     "copy-webpack-plugin": "^11.0.0",
-    "core-js": "^3.23.3",
+    "core-js": "^3.27.1",
     "cors": "^2.8.5",
     "countries-and-timezones": "^3.4.0",
     "cross-env": "^7.0.3",
