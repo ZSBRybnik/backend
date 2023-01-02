@@ -170,7 +170,7 @@
     "jsbi": "^4.3.0",
     "jsdoc": "^3.6.10",
     "json-minimizer-webpack-plugin": "^4.0.0",
-    "json5": "^2.2.1",
+    "json5": "^2.2.3",
     "jsonwebtoken": "^8.5.1",
     "license-checker": "^25.0.1",
     "lodash": "^4.17.21",
