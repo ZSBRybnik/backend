@@ -198,7 +198,7 @@
     "prisma-enum-generator": "^1.0.3",
     "prisma-json-schema-generator": "^3.1.1",
     "prisma-uml": "^1.1.18",
-    "prom-client": "^14.1.0",
+    "prom-client": "^14.1.1",
     "prop-types": "^15.8.1",
     "pug": "^3.0.2",
     "puppeteer": "^19.4.0",
