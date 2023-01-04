@@ -1,0 +1,53 @@
+{
+  "env": {
+    "es2021": true,
+    "jest/globals": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jsdoc/recommended",
+    "prettier",
+    "plugin:sonarjs/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "eslint-plugin-tsdoc",
+    "jsdoc",
+    "jest",
+    "prettier",
+    "sonarjs"
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
+    "max-params": ["error", 1],
+    "@typescript-eslint/no-inferrable-types": "off",
+    "no-invalid-this": "error",
+    "no-console": "warn",
+    "no-nested-ternary": "off"
+  },
+  "overrides": [
+    {
+      "files": ["*.js"],
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off"
+      }
+    }
+  ]
+}

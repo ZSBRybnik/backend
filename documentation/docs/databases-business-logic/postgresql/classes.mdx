@@ -1,0 +1,13 @@
+---
+title: Tabela - klasy
+---
+
+## Kolumny
+
+- `id` - reprezentuje unikalny ID klasy. Jest generowane automatycznie. Nie może być nullem. Wartość jest liczbą typu całkowitego.
+- `name` - reprezentuje unikalną nazwę klasy. Nie może być nullem. Wartość jest typu tekstowego oraz nie może być dłuższa niż 4 znaki.
+
+## Relacje
+
+class -> users[] - Klasa może mieć tablicę z użytkownikami. Relacja typu jeden do wielu. Kolumna `id`, która jest kluczem głównym, który odpowiada kluczowi obcemu `class_id` w tabeli `users` (użytkownicy).
+class[] -> subjects_on_classes[] - Klasy mogą mieć tablicę z przedmiotami. Relacja wielu do wielu. Kolumna `id`, która jest kluczem główny, odpowiada kluczowi obcemu `class_id` w tabeli `subjects_on_classes` (przedmioty w klasie).

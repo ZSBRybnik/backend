@@ -1,0 +1,15 @@
+---
+title: Tabela - posty
+---
+
+### Kolumny
+
+- `id` - reprezentuje unikalny ID użytkownika. Jest generowane automatycznie. Nie może być nullem. Wartość jest liczbą typu całkowitego.
+- `title` - reprezentuje tytuł posta. Nie może być nullem. Wartość jest typu tekstowego o maksymalnej długości 255 znaków.
+- `authorId` - reprezentuje Id użytkownika do którego należy post. Nie może być nullem. Wartość jest liczbą typu całkowitego.
+- `brief` - reprezentuje skrótowy opis zawartości posta. Nie może być nullem. Wartość jest typu tekstowego o maksymalnej długości 255 znaków.
+
+### Relacje
+
+- author User @relation(fields: [authorId], references: [id])
+- posts_content_items PostContentItem[]

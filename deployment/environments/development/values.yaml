@@ -1,0 +1,18 @@
+
+replicasCount: 1
+
+containers:
+  containerName: zsb-backend
+  tag: latest
+  imagePullPolicy: Never
+  containerPorts: 8080
+  imagePullSecrets: ""
+
+metadata:
+  labels: backend
+  selector: backend
+services:
+  type: NodePort
+  port: 3000
+  targetPort: 3000
+  

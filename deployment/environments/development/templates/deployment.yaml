@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    app: {{ .Values.metadata.labels }}
+spec:
+  replicas: {{ .Values.replicasCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.metadata.labels }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.metadata.labels }}
+    spec:
+      containers:
+        - name: backend
+          image: "{{ .Values.containers.containerName }}:{{ .Values.containers.tag }}"
+          imagePullPolicy: {{ .Values.containers.imagePullPolicy }}     
+          ports:
+            - containerPort: {{ .Values.containers.containerPorts }}
+      imagePullSecrets:
+      - name: dockerconfigjson-github-com

@@ -1,0 +1,16 @@
+[package]
+name = "native-addon-rust"
+version = "0.1.0"
+license = "ISC"
+edition = "2021"
+exclude = ["./destination/index.node"]
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+
+[dependencies.neon]
+version = "0.10"
+default-features = false
+features = ["napi-6"]

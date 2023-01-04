@@ -1,0 +1,8 @@
+destination/
+target/
+yarn.lock
+android/
+.husky/
+bundle-analyzes/
+coverage/
+ios/

@@ -1,0 +1,13 @@
+---
+title: Tabela - bloki zawartości
+---
+
+## Kolumny
+
+- `id` - reprezentuje unikalny ID zawartości strony. Jest generowane automatycznie. Nie może być nullem. Wartość jest liczbą typu całkowitego.
+- `runtime` - reprezentuje nazwę środowsiska wykonywania. Nie może być nullem. Wartość jest typu tekstowego o maksymalnej długości 255 znaków.
+- `content` - reprezentuje zawartość strony. Nie może być nullem. Wartość jest typu tekstowego oraz nie ma ograniczeń długości.
+
+## Relacje
+
+content_items -> content_items_on_posts_and_subpages - content itemy mogą być posiadane przez posty oraz podstrony w związku z relacją z tabelą pośrednią content_items_on_posts_and_subpages. Relacja typu wiele do wielu.

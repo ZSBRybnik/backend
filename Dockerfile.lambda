@@ -1,0 +1,14 @@
+FROM node:latest as build
+ADD . /home/backend
+WORKDIR /home/backend
+RUN apt-get -qq update 
+RUN apt-get install -y -q build-essential curl golang-go 
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
+ENV PATH="/root/.cargo/bin:${PATH}"
+RUN yarn --ignore-engines
+RUN yarn run generate-postgresql-types
+RUN yarn run generate-mongodb-types
+RUN yarn run build
+FROM public.ecr.aws/lambda/nodejs:latest
+COPY --from=build /home/backend/destination ${LAMBDA_TASK_ROOT}
+CMD ["index.default"]

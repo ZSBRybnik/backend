@@ -1,0 +1,29 @@
+---
+title: Tabela - użytkownicy
+---
+
+## Kolumny
+
+- `id` - reprezentuje unikalny ID użytkownika. Jest generowane automatycznie. Nie może być nullem. Wartość jest liczbą typu całkowitego.
+- `login` - reprezentuje unikalny login użytkownika. Nie jest to nazwa powiązana z imieniem i nazwiskiem. Nie może być nullem. Wartość jest typu tekstowego i nie może być dłuższa niż 32 znaki.
+- `roles` (role) - reprezentuje role użytkownika w serwisie. Nie może być nullem. Dostępne do wyboru role to wartości enuma `Roles` (role). Wartość jest tablicą stringów.
+- `password` (hasło) - reprezentuje zahashowane hasło użytkownika. Nie może być nullem. Wartość jest typu tekstowego i nie może być dłuższa niż 255 znaków.
+- `email` - reprezentuje unikatowy adres email użytkownika. Nie może być nullem. Wartość jest typu tekstowego i nie może być dłuższa niż 64 znaki.
+- `authenticator_code` - reprezentuje klucz TOTP do 2 etapowej autentyfikacji. Wartość jest typu tekstowego oraz musi być równa 16 znaków.
+- `phone_number` - reprezentuje numer telefonu użytkownika. Wartość jest typu tekstowego i nie może być dłuższa niż 22 znaki.
+- `two_factor_authentication` - reprezentuje stan czy autentyfikacja dwuetapowa ma być włączona dla użytkownika i w jakiej formie. Wartością domyślną jest `two_factor_authentication::application`. Null jest równoznaczne z wyłączeniem dwuetapowej weryfikacji dla użytkownika.
+- `locker_number` - reprezentuje numer szafki użytkownika. Wartość jest unikatowa oraz jest typu liczbowego. Nie może być dłuższa niż 5 znaków.
+- `locker_pin` - reprezentuje indywidualny kod pin użytkownika do szafki. Wartość jest typu liczbowego oraz nie może być dłuższa niż 4 znaki.
+- `class_id` - reprezentuje id klasy do której uczeń należy. Jest to klucz obcy odpowiadający wartości id w tabeli klasy. Wartość jest liczbą typu całkowitego.
+- `discord_id` - reprezentuje id użytkownika na portalu discord. Wartość jest typu tekstowego oraz musi być równa 18 znaków.
+
+## Relacje
+
+user[] -> class - Użytkownik ma przypisaną klasę. Relacja typu wiele do jednego. Kolumna `class_id`, która jest kluczem obcym, który odpowiada kluczowi głównemu `id` w tabeli `classes` (klasy).
+user -> posts[] - Użytkownik może mieć więcej niż jeden post. Relacja typu jeden do wielu. Kolumna `author_id` jest kluczem obcym, który odpowiada kluczowi głównemu `id` w tabeli `users` (użytkownicy).
+
+## Indeksy
+
+- `users_email_key` - indeks ten odnosi się do wyszukiwania przy pomocy emailu. Kolumna `email` jest użytkownika dla unikatowa.
+- `users_locker_number_key` - indeks ten odnosi się do wyszukiwania przy pomoc numeru szafki użytkownika. Kolumna `locker_number` jest unikatowa dla użytkownika`
+- `users_login_key` - indeks ten odnosi się do wyszukiwania przy pomocy loginu. Kolumna `login` jest dla użytkownika unikatowa.

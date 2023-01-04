@@ -1,0 +1,18 @@
+---
+sidebar_position: 1
+title: Informacje ogólne
+---
+
+💡 Baza danych PostgreSQL stanowi główną bazę danych w całej logice biznesowej.
+
+## Diagram UML
+
+![PostgreSQL UML graph. In the case, when you don't see attached image, please generate it with command to generate types](../../../../uml/postgresql.png)
+
+⚠️ Diagram UML odnosi się do wygenerowanego schematu bazy danych dla ORMa Prisma. Wszystkie nazwy kolumn oraz tabel są zapisane snake casem w bazie danych zamiast użytego na diagramie camel casea.
+
+## Enumy
+
+- `roles` - reprezentuje wszystkie wartości ról. Jego wartości są lustrzanym odbiciem tabeli `roles` (role).
+- `two_factor_authentication` - reprezentuje wszystkie opcje ustawienia wartości dla kolumny `enabled_two_factor_authentication`.
+- `runtime` - Używany jest w postcie oraz podstronie do określenia środowiska wykonywania komponentów z zawartości pola `content`. Jego możliwości to `classic` oraz `legacy`

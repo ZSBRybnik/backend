@@ -1,0 +1,25 @@
+---
+title: Tabela użytkownicy
+---
+
+## Kolumny
+
+- mongo_id - unikalny klucz dla bazy danych. Wartość jest generowana automatycznie.
+- id - reprezentuje unikalny ID użytkownika. Nie może być nullem. Wartość jest liczbą typu całkowitego. Jest odniesiem do kolumny id w bazie danych PostgreSQL.
+- login - reprezentuje unikalny login użytkownika. Nie jest to nazwa powiązana z imieniem i nazwiskiem. Nie może być nullem. Wartość jest typu tekstowego i nie może być dłuższa niż 32 znaki.
+- role (rola) - reprezentuje rolę użytkownika w serwisie. Nie może być nullem. Dostępne do wyboru role to: administrator oraz user. (administrator oraz użytkownik).
+- password (hasło) - reprezentuje zahashowane hasło użytkownika. Nie może być nullem. Wartość jest typu tekstowego i nie może być dłuższa niż 255 znaków.
+- email - reprezentuje unikatowy adres email użytkownika. Nie może być nullem. Wartość jest typu tekstowego i nie może być dłuższa niż 64 znaki.
+- authenticator_code - reprezentuje klucz TOTP do 2 etapowej autentyfikacji. Wartość jest typu tekstowego oraz musi być równa 16 znaków.
+- phone_number - reprezentuje numer telefonu użytkownika. Wartość jest typu tekstowego i nie może być dłuższa niż 22 znaki.
+- locker_number - reprezentuje numer szafki użytkownika. Wartość jest unikatowa oraz jest typu liczbowego. Nie może być dłuższa niż 5 znaków.
+- locker_pin - reprezentuje indywidualny kod pin użytkownika do szafki. Wartość jest typu liczbowego oraz nie może być dłuższa niż 4 znaki.
+- discord_nickname - reprezentuje nazwę użytkownika na portalu discord. Wartość jest typu tekstowego oraz nie może być dłuższa niż 37 znaków.
+- discord_id - reprezentuje id użytkownika na portalu discord. Wartość jest typu tekstowego oraz musi być równa 18 znaków.
+
+## Indeksy
+
+## Relacje
+
+user -> posts[] - Użytkownik ma zapisane wszystkie posty, których jest autorem. Wartość jest przechowywana w postacii listy. Relacja typu jeden do wielu.
+user -> class - Użytkownik ma przypisaną klasę. Relacja typu jeden do jeden.

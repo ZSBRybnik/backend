@@ -1,0 +1,92 @@
+version: "3.9"
+services:
+  zsb-watchtower:
+    image: containrrr/watchtower:latest
+    container_name: zsb-watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./watchtower/config.json:/config.json
+    command: --label-enable --cleanup --interval 300
+    restart: always
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    networks:
+      - fullstack
+  zsb-redis:
+    container_name: zsb-redis
+    image: redis:latest
+    restart: on-failure
+    networks:
+      - fullstack
+    expose:
+      - "6379"
+    ports:
+      - "6379:6379"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    depends_on:
+      - zsb-watchtower
+  zsb-backend:
+    build: .
+    ports:
+      - 3000:3000
+    depends_on:
+      - zsb-watchtower
+      - zsb-redis
+      - zsb-ftp
+      - zsb-vault
+      - zsb-nats
+    links:
+      - zsb-redis
+      - zsb-watchtower
+      - zsb-ftp
+      - zsb-vault
+      - zsb-nats
+  zsb-ftp:
+    container_name: zsb-ftp
+    image: fauria/vsftpd:latest
+    environment:
+      PASV_ADDRESS: 127.0.0.1
+      PASV_MIN_PORT: 21100
+      PASV_MAX_PORT: 21110
+    ports:
+      - "21:21"
+      - "20:20"
+      - "21100-21110:21100-21110"
+    networks:
+      - fullstack
+    volumes:
+      - ./:/home/vsftpd/admin
+    restart: on-failure
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+  zsb-vault:
+    container_name: zsb-vault
+    image: vault:latest
+    depends_on:
+      - zsb-watchtower
+    networks:
+      - fullstack
+    ports:
+      - "8200:8200"
+    volumes:
+      - ./vault:/vault/file
+    restart: on-failure
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+  zsb-nats:
+    container_name: zsb-nats
+    image: nats:latest
+    depends_on:
+      - zsb-watchtower
+    networks:
+      - fullstack
+    ports:
+      - "8222:8222"
+      - "4222:4222"
+    restart: on-failure
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+networks:
+  fullstack:
+    driver: bridge
