@@ -4,7 +4,10 @@ import source from "~backend/source/scripts/build/constants/source/source";
 const getTypeScriptLoader = () => {
   return {
     test: /\.(ts|tsx|js|jsx)$/,
-    include: join(process.cwd(), source),
+    include: [
+      join(process.cwd(), source),
+      join(process.cwd(), "..", "frontend"),
+    ],
     exclude: /(node_modules)/,
     use: [
       {
@@ -33,7 +36,18 @@ const getTypeScriptLoader = () => {
               },
             ],
           ],
-          plugins: ["vuera/babel", "inline-react-svg", "@emotion"],
+          plugins: [
+            "universal-import",
+            "vuera/babel",
+            "inline-react-svg",
+            "@emotion",
+          ],
+        },
+      },
+      {
+        loader: "ts-loader",
+        options: {
+          configFile: join(process.cwd(), "tsconfig.webpack.json"),
         },
       },
     ],

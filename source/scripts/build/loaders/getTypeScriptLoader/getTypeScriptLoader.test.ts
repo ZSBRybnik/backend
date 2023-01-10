@@ -9,8 +9,10 @@ describe("getTypeScriptLoader", () => {
   });
   it("should inlucde codebase", () => {
     const { include } = getTypeScriptLoader();
-    const lastFolder: string | undefined = include.split(sep).pop();
-    expect(lastFolder).toStrictEqual(source);
+    const lastFolders: (string | undefined)[] = include.map((folderPath) => {
+      return folderPath.split(sep).pop();
+    });
+    expect(lastFolders).toContain(source);
   });
   it("should match TypeScript", () => {
     const { test } = getTypeScriptLoader();
