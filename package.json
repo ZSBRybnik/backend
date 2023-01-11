@@ -109,7 +109,7 @@
     "backend-native-addon-rust": "file:./source/native-addon-rust",
     "bcrypt": "^5.0.1",
     "better-docs": "^2.7.2",
-    "bson": "^4.6.5",
+    "bson": "^4.7.2",
     "cache-loader": "^4.1.0",
     "cargo-cp-artifact": "^0.1.6",
     "case-sensitive-paths-webpack-plugin": "^2.4.0",
