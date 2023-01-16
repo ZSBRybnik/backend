@@ -209,7 +209,7 @@
     "react-html-email": "^3.0.0",
     "react-i18next": "^11.18.3",
     "redis-json": "^6.0.3",
-    "rimraf": "^3.0.2",
+    "rimraf": "^4.0.7",
     "rxjs": "^7.5.5",
     "schemix": "^1.8.5",
     "serverless": "^3.23.0",
