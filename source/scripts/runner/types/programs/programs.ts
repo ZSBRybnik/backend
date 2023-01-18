@@ -20,6 +20,7 @@ enum Programs {
   NPMCheckUpdates = "ncu",
   TypeScriptCompiler = "tsc",
   ElectronBuildEnvironment = "electron-build-env",
+  Cocoapods = "cocoapods",
 }
 
 export default Programs;

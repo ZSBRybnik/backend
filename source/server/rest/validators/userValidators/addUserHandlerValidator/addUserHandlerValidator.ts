@@ -1,6 +1,6 @@
 import { mixed, object, string } from "yup";
 import AuthenticationType from "~backend/source/server/constants/authenticationType/authenticationType";
-import Roles from "~backend/source/server/constants/roles/roles";
+import Roles from "~backend/source/server/constants/roles/Roles";
 
 const addUserHandlerValidator = () => {
   return object().shape({

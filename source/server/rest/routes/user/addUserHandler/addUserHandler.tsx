@@ -3,7 +3,7 @@ import { hash } from "bcrypt";
 import { authenticator } from "otplib";
 import { toDataURL } from "qrcode";
 import AuthenticationType from "~backend/source/server/constants/authenticationType/authenticationType";
-import Roles from "~backend/source/server/constants/roles/roles";
+import Roles from "~backend/source/server/constants/roles/Roles";
 import AddUserEmail from "~backend/source/server/emails/templates/addUserEmail/addUserEmail";
 import createHandler from "~backend/source/server/rest/utils/createHandler/createHandler";
 import {

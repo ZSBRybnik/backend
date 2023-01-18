@@ -18,6 +18,11 @@ const handlePostInstallMacOS = async () => {
   } catch {
     await $`${Programs.Brew} install cloud-nuke`;
   }
+  try {
+    await $`pod search ${Programs.Cocoapods}`;
+  } catch {
+    await $`sudo gem install ${Programs.Cocoapods}`;
+  }
 };
 
 export default handlePostInstallMacOS;
