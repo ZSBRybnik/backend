@@ -22761,12 +22761,13 @@ native-promise-only@^0.8.1:
   resolved "https://registry.yarnpkg.com/native-promise-only/-/native-promise-only-0.8.1.tgz#20a318c30cb45f71fe7adfbf7b21c99c1472ef11"
   integrity sha512-zkVhZUA3y8mbz652WrL5x0fB0ehrBkulWT3TomAQ9iDtyXZvzKeEA6GPxAItBYeNYl5yngKRX612qHOhvMkDeg==
 
-nats@^2.7.1:
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/nats/-/nats-2.7.1.tgz#d390a48df1a348a335143abc09afad03b2eb9687"
-  integrity sha512-aH0OXxasfLCTG+LQCFRaWoL1kqejCQg7B+t4z++JgLPgfdpQMET1Rqo95I06DEQyIJGTTgYpxkI/zC0ul8V3pw==
+nats@^2.11.0:
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/nats/-/nats-2.11.0.tgz#d16956e4ad3b416e7f0d44554d6486caf8e77c5a"
+  integrity sha512-Zkjtw4LRT0F9IZwSpLr6O0aLbK0w8rX7kU6PHSdk52YzB0c/pkiXstuGcdUpYdkAYkBS06FHfmRE4BVvCn7Pag==
   dependencies:
-    nkeys.js "^1.0.0-9"
+    nkeys.js "1.0.4"
+    web-streams-polyfill "^3.2.1"
 
 natural-compare@^1.4.0:
   version "1.4.0"
@@ -22869,10 +22870,10 @@ nim-loader@^0.3.3:
     schema-utils "^4.0.0"
     tempy "^1.0.1"
 
-nkeys.js@^1.0.0-9:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/nkeys.js/-/nkeys.js-1.0.3.tgz#487688a6f4f36f4a2796eee000cc6e54e122cb08"
-  integrity sha512-p5Bpb/acPaQmCrbe4gNmMBY/naZJV8Q7m2B9UkXT8BQRC6wjX8zqD2ya8eZu9mpSXQffodV46HCP9OckmxcwYA==
+nkeys.js@1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/nkeys.js/-/nkeys.js-1.0.4.tgz#0902bd44129569c4bd3857ce87d8b69f1c0e7253"
+  integrity sha512-xeNDE6Ha5I3b3PnlHyT9AbmBxq3Vb9KHzmaI/h4IXYg0PUVZSUXNHNhTfU20oBsubw2ZdV/1AdC6hnRuMiZfMQ==
   dependencies:
     tweetnacl "1.0.3"
 
@@ -30907,7 +30908,7 @@ web-streams-polyfill@4.0.0-beta.1:
   resolved "https://registry.yarnpkg.com/web-streams-polyfill/-/web-streams-polyfill-4.0.0-beta.1.tgz#3b19b9817374b7cee06d374ba7eeb3aeb80e8c95"
   integrity sha512-3ux37gEX670UUphBF9AMCq8XM6iQ8Ac6A+DSRRjDoRBm1ufCkaCDdNVbaqq60PsEkdNlLKrGtv/YBP4EJXqNtQ==
 
-web-streams-polyfill@^3.0.3, web-streams-polyfill@^3.2.0:
+web-streams-polyfill@^3.0.3, web-streams-polyfill@^3.2.0, web-streams-polyfill@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/web-streams-polyfill/-/web-streams-polyfill-3.2.1.tgz#71c2718c52b45fd49dbeee88634b3a60ceab42a6"
   integrity sha512-e0MO3wdXWKrLbL0DgGnUV7WHVuw9OUvL4hjgnPkIeEvESk74gAITi5G606JtZPp39cd8HA9VQzCIvA49LpPN5Q==
