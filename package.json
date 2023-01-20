@@ -197,7 +197,7 @@
     "prisma": "^4.7.1",
     "prisma-dbml-generator": "^0.10.0",
     "prisma-enum-generator": "^1.0.3",
-    "prisma-json-schema-generator": "^3.1.1",
+    "prisma-json-schema-generator": "^3.1.2",
     "prisma-uml": "^1.1.18",
     "prom-client": "^14.1.0",
     "prop-types": "^15.8.1",
