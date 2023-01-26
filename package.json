@@ -56,7 +56,7 @@
     "@pulumi/pulumi": "^3.40.2",
     "@storybook/addon-actions": "^6.5.12",
     "@storybook/addon-essentials": "^6.5.12",
-    "@storybook/addon-interactions": "^6.5.12",
+    "@storybook/addon-interactions": "^6.5.16",
     "@storybook/addon-links": "^6.5.12",
     "@storybook/builder-vite": "^0.2.4",
     "@storybook/node-logger": "^6.5.12",
