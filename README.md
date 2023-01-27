@@ -1,5 +1,7 @@
 # backend
 
+![Alt](https://repobeats.axiom.co/api/embed/39e8da86b7d91bd5607a636cc0d0cc76fd4c7dab.svg "Repobeats analytics image")
+
 ## Requirements
 
 - [Docker](https://www.docker.com/) (optional)
