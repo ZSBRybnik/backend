@@ -120,7 +120,7 @@
     "copy-webpack-plugin": "^11.0.0",
     "core-js": "^3.23.3",
     "cors": "^2.8.5",
-    "countries-and-timezones": "^3.4.0",
+    "countries-and-timezones": "^3.4.1",
     "cross-env": "^7.0.3",
     "date-fns": "^2.28.0",
     "depcheck": "^1.4.3",
