@@ -220,7 +220,7 @@
     "snappy": "^7.1.1",
     "snyk": "^1.966.0",
     "socket.io": "^4.5.1",
-    "sort-package-json": "^1.57.0",
+    "sort-package-json": "^2.4.0",
     "source-map-loader": "^4.0.0",
     "source-map-support": "^0.5.21",
     "superjson": "^1.9.1",
