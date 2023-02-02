@@ -7018,10 +7018,10 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
-"@pulumi/aws@^5.16.0":
-  version "5.16.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-5.16.0.tgz#7047b90bd9c04186a5c6615f3ce8b4217a4100fd"
-  integrity sha512-j8yT4EBq8JOEH9URk0nmXtu5/WaXnOn60ra4poQAa0BijAcAqodgNb7eAtLyUPaTgDlOHa6bpoeqKPGfTfm0Tg==
+"@pulumi/aws@^5.29.0":
+  version "5.29.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-5.29.0.tgz#d707f2f6c97a0fb14d51c85b6406f2a752398e5d"
+  integrity sha512-iOv4Qkk3nNKZ1ncQc1MfqvOKTkg5eYd9B72SP8vSO6LTzOQNEtAM6MU7HzIn6tXE6NREHUm1f+Cxp+QNxR/V3w==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
     aws-sdk "^2.0.0"
@@ -10799,42 +10799,10 @@ aws-lambda@^1.0.7:
     js-yaml "^3.14.1"
     watchpack "^2.0.0-beta.10"
 
-aws-sdk@^2.0.0:
-  version "2.1228.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1228.0.tgz#8c778ea2ca3fed3b3bfe0ba5f87ef73ab6fb4132"
-  integrity sha512-fc/eQEUiw+rOYl7SoIJBnmigFaET3t1zZiSUlMfnLfmpv2KGuhOoMaBTGQn9KkaFI1sSbeeoUjof7bxItgFDRA==
-  dependencies:
-    buffer "4.9.2"
-    events "1.1.1"
-    ieee754 "1.1.13"
-    jmespath "0.16.0"
-    querystring "0.2.0"
-    sax "1.2.1"
-    url "0.10.3"
-    util "^0.12.4"
-    uuid "8.0.0"
-    xml2js "0.4.19"
-
-aws-sdk@^2.1231.0, aws-sdk@^2.7.0:
+aws-sdk@^2.0.0, aws-sdk@^2.1231.0, aws-sdk@^2.7.0, aws-sdk@^2.814.0:
   version "2.1243.0"
   resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1243.0.tgz#b3058c549e970effc1de545108598d9f006eb97d"
   integrity sha512-EI/UrfbNMNULU9I6wsLRmnBK771LxLnhABGvcvNUrJ7evYkGsuOcBLgi2+J9Zdz0Epqlwu5vomxkNYRan434AQ==
-  dependencies:
-    buffer "4.9.2"
-    events "1.1.1"
-    ieee754 "1.1.13"
-    jmespath "0.16.0"
-    querystring "0.2.0"
-    sax "1.2.1"
-    url "0.10.3"
-    util "^0.12.4"
-    uuid "8.0.0"
-    xml2js "0.4.19"
-
-aws-sdk@^2.814.0:
-  version "2.1227.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1227.0.tgz#2ef47b77aa104f07bf5b233c06adf51f166cd390"
-  integrity sha512-L6vnopVXVXKEqi0R4i54F6xSemczd/aRy4UscqnfpyvNYr9yLL3jVApFo7OX8hxompe/tgxdQFXvMiNzhkSrwQ==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
