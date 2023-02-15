@@ -7030,10 +7030,10 @@
     read-package-tree "^5.2.1"
     resolve "^1.7.1"
 
-"@pulumi/azure@^5.21.0":
-  version "5.21.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/azure/-/azure-5.21.0.tgz#561f32a748dbd7be29b28ca247de49c7f8a66dca"
-  integrity sha512-lVUFHXSOc0z9SXUSgrqyTwfdFa+ukj41eX9m1SsPZlP8fLcYjaDC/OzGQbMAPYRkw1PWymBBaNUDj4/rLaDLNQ==
+"@pulumi/azure@^5.35.0":
+  version "5.35.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/azure/-/azure-5.35.0.tgz#298a962297464546abdbfca959c4a3299e68237e"
+  integrity sha512-Z6zs9KjmLHiudllUib6s+M2eroM5nK2D4KiHHrrBmLDzO1fu/kbDnHYo3MciIFx/6haagJc4TDDsshaGdbptNg==
   dependencies:
     "@azure/eventgrid" "^4.6.0"
     "@azure/functions" "=1.2.2"
