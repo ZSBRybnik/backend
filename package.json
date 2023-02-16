@@ -202,7 +202,7 @@
     "prom-client": "^14.1.0",
     "prop-types": "^15.8.1",
     "pug": "^3.0.2",
-    "puppeteer": "^19.4.0",
+    "puppeteer": "^19.7.1",
     "purs-loader": "^4.0.0",
     "qrcode": "^1.5.1",
     "react": "^18.2.0",
