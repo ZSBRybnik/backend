@@ -52,17 +52,12 @@ const umlFolderPath = join(process.cwd(), "uml");
     postgreSQLSchema,
     "utf-8",
   );*/
-  const generatePostgreSQLTypesPromise = $`yarn run generate-postgresql-types`;
-  const generateMongoDBTypesPromise = $`yarn run generate-mongodb-types`;
+  /** These commands can't be split, because they are blocking access to prisma engine in the file system */
+  await $`yarn run generate-postgresql-types && yarn run generate-mongodb-types`;
   if (!existsSync(umlFolderPath)) {
     mkdirSync(umlFolderPath);
   }
   const generatePostgreSQLUMLPromise = $`prisma-uml ./source/server/prisma/postgresql.prisma -o png -f ./uml/postgresql.png`;
   const generateMongoSQLUMLPromise = $`prisma-uml ./source/server/prisma/mongodb.prisma -o png -f ./uml/mongodb.png`;
-  await Promise.all([
-    generatePostgreSQLTypesPromise,
-    generateMongoDBTypesPromise,
-    generatePostgreSQLUMLPromise,
-    generateMongoSQLUMLPromise,
-  ]);
+  await Promise.all([generatePostgreSQLUMLPromise, generateMongoSQLUMLPromise]);
 })();
