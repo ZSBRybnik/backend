@@ -349,7 +349,7 @@
     "react-use": "^17.4.0",
     "react-visibility-sensor": "^5.1.1",
     "redis-json": "^6.0.3",
-    "rimraf": "^3.0.2",
+    "rimraf": "^4.1.2",
     "robotstxt-webpack-plugin": "^8.0.0",
     "rxjs": "^7.8.0",
     "sass": "^1.57.1",
