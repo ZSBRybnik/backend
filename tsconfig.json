@@ -10,7 +10,7 @@
     "jsx": "react-jsx",
     "incremental": true,
     "target": "esnext",
-    "lib": ["esnext"],
+    "lib": ["esnext", "dom", "dom.iterable"],
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
@@ -23,7 +23,6 @@
     "noImplicitAny": true,
     "downlevelIteration": true,
     "pretty": true,
-    "noEmit": true,
     "isolatedModules": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -40,17 +39,25 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "~backend/*": ["*"]
+      "~backend/*": ["*"],
+      "~frontend/*": ["../frontend/*"]
     },
     "plugins": [
       {
         "transform": "typescript-transform-paths"
-      },
-      {
-        "transform": "ts-macros"
       }
     ]
   },
-  "include": [".", "../backend"],
-  "exclude": ["node_modules", "coverage", "destination"]
+  "include": [".", "../frontend"],
+  "exclude": [
+    "node_modules",
+    "coverage",
+    "destination",
+    "../frontend/android",
+    "../frontend/documentation",
+    "../frontend/ios",
+    "../frontend/destination",
+    "../frontend/coverage",
+    "../frontend/node_modules"
+  ]
 }
