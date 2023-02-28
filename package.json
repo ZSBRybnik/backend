@@ -264,7 +264,7 @@
     "ion-js": "^4.3.0",
     "ioredis": "^5.2.4",
     "ip": "^1.1.8",
-    "ipfs-core": "^0.17.0",
+    "ipfs-core": "^0.18.0",
     "ipfs-http-client": "56",
     "is-alphanumerical": "^2.0.1",
     "is-decimal": "^2.0.1",
