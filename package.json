@@ -154,7 +154,7 @@
     "@types/webpack": "^5.28.0",
     "@types/webpack-bundle-analyzer": "^4.6.0",
     "@types/webpack-dev-server": "^4.7.2",
-    "@types/webpack-node-externals": "^2.5.3",
+    "@types/webpack-node-externals": "^3.0.0",
     "@types/workbox-webpack-plugin": "^6.0.0",
     "@types/xml": "^1.0.8",
     "@typescript-eslint/eslint-plugin": "^5.48.1",
