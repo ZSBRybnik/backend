@@ -1,5 +1,5 @@
 import { mixed, object, string } from "yup";
-import Roles from "~backend/source/server/constants/roles/roles";
+import Roles from "~backend/source/server/constants/roles/Roles";
 
 const updateUserHandlerValidator = () => {
   return object().shape({

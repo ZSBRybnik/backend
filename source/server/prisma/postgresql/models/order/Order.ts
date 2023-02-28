@@ -1,6 +1,6 @@
 import type { PrismaModel } from "schemix";
 import { createModel } from "schemix";
-import schemixProductModel from "~backend/source/server/prisma/postgresql/models/product/Product";
+import schemixProductModel from "~backend/source/server/prisma/postgresql/models/product/product";
 import schemixUserModel from "~backend/source/server/prisma/postgresql/models/user/User";
 import generatePrismaString from "~backend/source/server/prisma/utils/generatePrismaString/generatePrismaString";
 
