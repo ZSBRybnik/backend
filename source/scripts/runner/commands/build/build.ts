@@ -30,6 +30,6 @@ type BuildFlagsOptions = {
   } else {
     await $`cd ./${source}/native-addon-go && ${Programs.CrossEnvironment} ${Programs.Yarn} run build && cd .. && cd ..`;
     await $`cd ./${source}/native-addon-rust && ${Programs.CrossEnvironment} ${Programs.Yarn} run build && cd .. && cd ..`;
-    await $`${Programs.Yarn} run ${scriptsKeys["remove-build"]} && ${Programs.CrossEnvironment} ${Programs.TypeScriptCompiler} && ${Programs.CrossEnvironment} TS_NODE_PROJECT=tsconfig.json ${Programs.Webpack} --mode production`;
+    await $`${Programs.Yarn} run ${scriptsKeys["remove-build"]} && ${Programs.CrossEnvironment} ${Programs.TypeScriptCompiler} --project tsconfig.noemit.json && ${Programs.CrossEnvironment} TS_NODE_PROJECT=tsconfig.json ${Programs.Webpack} --mode production`;
   }
 })();

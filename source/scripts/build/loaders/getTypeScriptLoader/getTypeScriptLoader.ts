@@ -18,12 +18,12 @@ const getTypeScriptLoader = () => {
         },
       },
       getBabelLoader(),
-      {
+      /*{
         loader: "ts-loader",
         options: {
-          configFile: join(process.cwd(), "tsconfig.webpack.json"),
+          configFile: join(process.cwd(), "tsconfig.json"),
         },
-      },
+      },*/
     ],
   };
 };

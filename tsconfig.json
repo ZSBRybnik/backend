@@ -23,7 +23,6 @@
     "noImplicitAny": true,
     "downlevelIteration": true,
     "pretty": true,
-    "noEmit": true,
     "isolatedModules": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -42,8 +41,7 @@
     "paths": {
       "~backend/*": ["*"]
     },
-    "plugins": [
-      {
+    "plugins": [{
         "transform": "typescript-transform-paths"
       },
       {
