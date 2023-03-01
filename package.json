@@ -57,7 +57,7 @@
     "@emotion/styled": "^11.10.5",
     "@faker-js/faker": "^7.3.0",
     "@fluentui/svg-icons": "^1.1.191",
-    "@geometricpanda/storybook-addon-badges": "^0.2.2",
+    "@geometricpanda/storybook-addon-badges": "^1.1.1",
     "@hookstate/core": "^4.0.0-rc17",
     "@iarna/toml": "^2.2.5",
     "@ionic/cli": "^6.20.6",
