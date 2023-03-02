@@ -238,7 +238,7 @@
     "framer-motion": "^8.4.2",
     "fslightbox-react": "^1.6.2-2",
     "geoip-lite": "^1.4.6",
-    "glob": "^8.0.3",
+    "glob": "^9.1.2",
     "graphql": "^16.5.0",
     "graphql-config": "^4.4.0",
     "graphql-tag": "^2.12.6",
