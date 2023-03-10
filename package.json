@@ -184,7 +184,7 @@
     "cap": "^0.2.1",
     "cargo-cp-artifact": "^0.1.7",
     "case-sensitive-paths-webpack-plugin": "^2.4.0",
-    "chatgpt": "^4.8.1",
+    "chatgpt": "^5.0.9",
     "character-entities-legacy": "^3.0.0",
     "character-reference-invalid": "^2.0.1",
     "chart.js": "^4.1.2",
