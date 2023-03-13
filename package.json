@@ -235,7 +235,7 @@
     "faunadb": "^4.7.1",
     "ffi-napi": "^4.0.3",
     "formik": "^2.2.9",
-    "framer-motion": "^8.4.2",
+    "framer-motion": "^10.2.5",
     "fslightbox-react": "^1.6.2-2",
     "geoip-lite": "^1.4.6",
     "glob": "^8.0.3",
