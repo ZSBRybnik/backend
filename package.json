@@ -205,7 +205,7 @@
     "docusaurus-prince-pdf": "^1.1.1",
     "dotenv": "^16.0.3",
     "duplicate-package-checker-webpack-plugin": "^3.0.0",
-    "electron": "^22.0.1",
+    "electron": "^23.1.4",
     "electron-build-env": "^0.2.0",
     "electron-is-dev": "^2.0.0",
     "electron-log": "^4.4.8",
