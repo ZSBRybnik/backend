@@ -37,7 +37,7 @@
     "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.18.6",
     "@blainehansen/macro-ts": "^0.1.12",
-    "@capacitor/android": "^4.6.1",
+    "@capacitor/android": "^4.7.1",
     "@capacitor/app": "^4.1.1",
     "@capacitor/cli": "^4.6.1",
     "@capacitor/core": "^4.6.1",
