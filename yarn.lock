@@ -4223,10 +4223,10 @@
     tslib "^2.0.1"
     write-file-atomic "^3.0.0"
 
-"@ionic/cli@^6.20.6":
-  version "6.20.8"
-  resolved "https://registry.yarnpkg.com/@ionic/cli/-/cli-6.20.8.tgz#3632ff84c9298b24bdd4051e5152acb97174e487"
-  integrity sha512-xoV1mKP2FMtO6WoPbcwKFR6ex1wCqX4iv6zspHKJrY/A7dtwzaPHd2ORInOcbElS05SWBmF5FKt1Yyz1MgvTCg==
+"@ionic/cli@^6.20.9":
+  version "6.20.9"
+  resolved "https://registry.yarnpkg.com/@ionic/cli/-/cli-6.20.9.tgz#1ca380802295c4a7782d4f5f076a2965879ab587"
+  integrity sha512-sItLCi7zXq1zARWIpZDinHhK8hvy+wzOx176QMOJV90BjDybkjGYu3rGu5TBjoqn104dRIZTC8rtCsnD/P3cQw==
   dependencies:
     "@ionic/cli-framework" "5.1.3"
     "@ionic/cli-framework-output" "2.2.5"
