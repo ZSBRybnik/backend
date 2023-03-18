@@ -26,6 +26,7 @@ const sendEmail = async ({
       from: "zsbrybnik@gmail.com",
       to,
       subject,
+      // eslint-disable-next-line xss/no-mixed-html
       html: renderEmail(html),
     });
   } catch {

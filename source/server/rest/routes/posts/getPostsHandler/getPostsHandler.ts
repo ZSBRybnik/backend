@@ -38,6 +38,7 @@ const { handler: getPostsHandler } = createHandler({
       if (startId) {
         conditions = [];
         const limit = range || (endId - startId || 0) + 1;
+        // eslint-disable-next-line no-loops/no-loops
         for (let iterator = 0; iterator < limit; iterator++) {
           conditions.push({ id: startId + iterator });
         }

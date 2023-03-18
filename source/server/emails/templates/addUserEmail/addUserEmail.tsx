@@ -23,7 +23,7 @@ const AddUserEmail: FunctionComponent<AddUserEmailProperties> = ({
           password,
         })}
       </div>
-      <img src={qrCode} width="200px" height="200px" />
+      <img alt="qr-code" src={qrCode} width="200px" height="200px" />
     </Email>
   );
 };

@@ -1,4 +1,4 @@
-import { ContentItem, Post } from "@prisma/postgresql";
+import { Post } from "@prisma/postgresql";
 import natsClient, {
   jsonCodec,
 } from "~backend/source/server/clients/natsClient/natsClient";
@@ -11,13 +11,13 @@ const updatePostResolver = createResolver<
     authorId?: number;
     title?: string;
     brief?: string;
-    content: ContentItem[];
+    //content: ContentItem[];
   },
   {
     id?: boolean;
     authorId?: boolean;
     title?: boolean;
-    content?: boolean;
+    //content?: boolean;
     brief?: boolean;
   }
 >({
@@ -29,11 +29,11 @@ const updatePostResolver = createResolver<
       authorId: authorIdField = false,
       brief: briefField = false,
     },
-    argument: { id, authorId, title, brief, content },
+    argument: { id, authorId, title, brief /*content*/ },
   }): Promise<Partial<Post>> => {
-    content.map(({ id: contentId }) => {
+    /*content.map(({ id: contentId }) => {
       return contentId;
-    });
+    });*/
     const { id: postId, ...postData } = await postgreSQLClient.post.update({
       data: {
         authorId,

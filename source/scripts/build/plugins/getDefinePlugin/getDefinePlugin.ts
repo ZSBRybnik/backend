@@ -29,7 +29,7 @@ const getDefinePlugin: GetDefinePlugin = ({
   publicURL,
 }: GetDefinePluginArguments): DefinePlugin => {
   return new DefinePlugin({
-    "process.env.TARGET": JSON.stringify(TargetType.Serverless),
+    "process.env.TARGET": JSON.stringify(TargetType.Server),
     "process.env.DEVELOPMENT": JSON.stringify(mode === Mode.Development),
     "process.env.MODERN": JSON.stringify(targetToModern),
     "process.env.PUBLIC_URL": JSON.stringify(publicURL),
