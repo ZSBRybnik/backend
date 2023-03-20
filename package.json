@@ -186,7 +186,7 @@
     "character-entities-legacy": "^3.0.0",
     "character-reference-invalid": "^2.0.1",
     "chart.js": "^4.1.2",
-    "chatgpt": "^4.8.1",
+    "chatgpt": "^5.1.2",
     "clean-webpack-plugin": "^4.0.0",
     "comma-separated-tokens": "^2.0.3",
     "command-exists": "^1.2.9",
