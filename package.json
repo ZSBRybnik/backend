@@ -311,7 +311,7 @@
     "pg-mem": "^2.6.3",
     "piscina": "^3.2.0",
     "plugin-image-zoom": "^1.1.0",
-    "prettier": "^2.8.2",
+    "prettier": "^2.8.5",
     "prettier-plugin-organize-imports": "^3.2.1",
     "prettier-plugin-prisma": "^4.8.0",
     "prism-react-renderer": "^1.3.5",
