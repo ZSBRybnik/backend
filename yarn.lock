@@ -3638,10 +3638,10 @@
     "@figspec/components" "^1.0.1"
     "@lit-labs/react" "^1.0.2"
 
-"@fluentui/svg-icons@^1.1.191":
-  version "1.1.196"
-  resolved "https://registry.yarnpkg.com/@fluentui/svg-icons/-/svg-icons-1.1.196.tgz#de12a0d7d00d7164da7ae5bc4a9f55b3fb7656be"
-  integrity sha512-6+ZzEZRHHyXo4BvQdF0HwNHsrtla8yBfdeRdyiUXq3mhfAdWqjmWtARYlnUpUNcraEb2fvq0Uwuw8h7pUzuvNw==
+"@fluentui/svg-icons@^1.1.197":
+  version "1.1.197"
+  resolved "https://registry.yarnpkg.com/@fluentui/svg-icons/-/svg-icons-1.1.197.tgz#e05510217a1265916c4df9b96f1bc574c0ea756d"
+  integrity sha512-Uvuc6BTu4KtlnWzFdYw8tq5pXk/5CoLkEJfgORVGYzLLO0Oc/b7vMlAKuANHlNu742q0Ow8I+BEhVVZvMdhnDg==
 
 "@fractalwagmi/popup-connection@^1.0.18":
   version "1.0.21"
