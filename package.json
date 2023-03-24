@@ -284,7 +284,7 @@
     "jwt-decode": "^3.1.2",
     "katex": "^0.16.4",
     "license-checker": "^25.0.1",
-    "lighthouse": "^9.6.8",
+    "lighthouse": "^10.1.0",
     "lodash": "^4.17.21",
     "lookpath": "^1.2.2",
     "markdown-to-jsx": "^7.1.8",
