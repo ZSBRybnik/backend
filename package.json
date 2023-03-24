@@ -289,7 +289,7 @@
     "lookpath": "^1.2.2",
     "markdown-to-jsx": "^7.1.8",
     "memlab": "^1.1.36",
-    "mongoose": "^6.5.2",
+    "mongoose": "^7.0.3",
     "mousetrap": "^1.6.5",
     "move-file-cli": "^3.0.0",
     "nats": "^2.7.1",
