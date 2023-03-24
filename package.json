@@ -79,7 +79,7 @@
     "@pulumi/aws": "^5.16.0",
     "@pulumi/azure": "^5.21.0",
     "@pulumi/pulumi": "^3.40.2",
-    "@sentry/browser": "^7.30.0",
+    "@sentry/browser": "^7.45.0",
     "@sentry/electron": "^4.1.2",
     "@sentry/node": "^7.30.0",
     "@sentry/tracing": "^7.30.0",
