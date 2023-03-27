@@ -28375,10 +28375,10 @@ office-addin-cli@^1.5.5:
     node-fetch "^2.6.1"
     read-package-json-fast "^2.0.2"
 
-office-addin-dev-certs@^1.11.0:
-  version "1.11.2"
-  resolved "https://registry.yarnpkg.com/office-addin-dev-certs/-/office-addin-dev-certs-1.11.2.tgz#1621d618d9ca3b6bc4a52f74a57d3aaffa7bf45a"
-  integrity sha512-N5JMZIAiJ6Dzbqob/NR5taaLs4zaF1/DaQuvQ5kkqL2ZsfKwoX4t8B4Y1B7FaRvKUHhzY2dSNQV2WYT5YNVF0Q==
+office-addin-dev-certs@^1.11.3:
+  version "1.11.3"
+  resolved "https://registry.yarnpkg.com/office-addin-dev-certs/-/office-addin-dev-certs-1.11.3.tgz#2a8e172b20063bb2821c0d614c3b4109702cb813"
+  integrity sha512-qVJq9zpPTwsJFiCl+UP3tvhoYq7xHL/3tJLHfHsPYR8qWysylP6XAEGaR4bPILHw6xAhXau6TzcssTTJB5GK1g==
   dependencies:
     commander "^6.2.0"
     fs-extra "^7.0.1"
