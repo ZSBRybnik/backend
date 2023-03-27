@@ -158,7 +158,7 @@
     "@types/workbox-webpack-plugin": "^6.0.0",
     "@types/xml": "^1.0.8",
     "@typescript-eslint/eslint-plugin": "^5.48.1",
-    "@typescript-eslint/parser": "^5.48.1",
+    "@typescript-eslint/parser": "^5.57.0",
     "@vendia/serverless-express": "^4.10.1",
     "@vitejs/plugin-react": "^3.0.1",
     "@vue/preload-webpack-plugin": "^2.0.0",
