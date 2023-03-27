@@ -131,7 +131,7 @@
     "@types/jsonwebtoken": "^9.0.0",
     "@types/lodash": "^4.14.191",
     "@types/mousetrap": "^1.6.11",
-    "@types/node": "^18.11.18",
+    "@types/node": "^18.15.10",
     "@types/nodemailer": "^6.4.4",
     "@types/nodemon": "^1.19.2",
     "@types/pug": "^2.0.6",
