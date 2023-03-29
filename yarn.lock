@@ -6099,23 +6099,23 @@
   resolved "https://registry.yarnpkg.com/@napi-rs/snappy-win32-x64-msvc/-/snappy-win32-x64-msvc-7.2.2.tgz#4f598d3a5d50904d9f72433819f68b21eaec4f7d"
   integrity sha512-a43cyx1nK0daw6BZxVcvDEXxKMFLSBSDTAhsFD0VqSKcC7MGUBMaqyoWUcMiI7LBSz4bxUmxDWKfCYzpEmeb3w==
 
-"@nativescript/types-android@~8.4.0":
-  version "8.4.0"
-  resolved "https://registry.yarnpkg.com/@nativescript/types-android/-/types-android-8.4.0.tgz#2fa1325f43cd1343e53ddc51ef0ad1b42297c433"
-  integrity sha512-WmDVH72ZeBlxy7k5OAJFk7wPSW9K2xjRzFwHAkQ1mjKr7k+UcFzGkpbAXjtgQZ5SybBPCzYGLGcvv7kJDNJ/mQ==
+"@nativescript/types-android@~8.5.0":
+  version "8.5.0"
+  resolved "https://registry.yarnpkg.com/@nativescript/types-android/-/types-android-8.5.0.tgz#620a854979b3731c7b41d094568f385105d8721c"
+  integrity sha512-3jBIF5JOwyKbjIUypyTkBHaJACRhGz8SN7ArVzbXV2RP9qLSx3+w1Y9lu4Ak9TN+4O6p7Y6lMtgNW6pt8dE6xQ==
 
-"@nativescript/types-ios@~8.4.0":
-  version "8.4.0"
-  resolved "https://registry.yarnpkg.com/@nativescript/types-ios/-/types-ios-8.4.0.tgz#4c0a0ee1d4f5e9ce237a768a6f8797a24723b13f"
-  integrity sha512-6Sx4yuSar2qk4UpYtZCs9B53Jv0wLRGvrg6Vsg5tC8mdYeQOKsizNxPa625pHbFrNjTF8NkdoGOGZiFM/XkiOQ==
+"@nativescript/types-ios@~8.5.0":
+  version "8.5.0"
+  resolved "https://registry.yarnpkg.com/@nativescript/types-ios/-/types-ios-8.5.0.tgz#97dc08286d7551942056c01010726224cbfee4f6"
+  integrity sha512-MAdp+mMTLTVG7NIA7/o0Y6Rz8cOSuhA/fhX4XIX7zq085Tl6a0DdrRV+NN1ypSRY/XWZR3x9hAySY5O7IJRfiA==
 
-"@nativescript/types@^8.4.0":
-  version "8.4.0"
-  resolved "https://registry.yarnpkg.com/@nativescript/types/-/types-8.4.0.tgz#7b68c25ce1971b5ad37004c250d648bf9ef4a764"
-  integrity sha512-AsHLbzYi/3rNAQYxG5etVlTiq96KG+RHJ+UgZ3zynER4vw+mLN6TkVJ9hR6ciKMfFhQBM0JZvxBuHqm3xmlRzw==
+"@nativescript/types@^8.5.0":
+  version "8.5.0"
+  resolved "https://registry.yarnpkg.com/@nativescript/types/-/types-8.5.0.tgz#2e0aad808c59a4304be8d6426e521ba5a39048c1"
+  integrity sha512-aYDAhwNttjSgqp8VWxz8iodRCtrllS3bS8hIHiILnfH6UJ/MgceR99hc3f+jCZimOyi/0YxieOuFE+ftLDkRTA==
   dependencies:
-    "@nativescript/types-android" "~8.4.0"
-    "@nativescript/types-ios" "~8.4.0"
+    "@nativescript/types-android" "~8.5.0"
+    "@nativescript/types-ios" "~8.5.0"
 
 "@ngraveio/bc-ur@^1.0.0", "@ngraveio/bc-ur@^1.1.5":
   version "1.1.6"
