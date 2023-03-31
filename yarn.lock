@@ -2461,10 +2461,10 @@
     eip1193-provider "^1.0.1"
     js-sha3 "^0.8.0"
 
-"@capacitor/android@^4.6.1":
-  version "4.7.0"
-  resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-4.7.0.tgz#00c909d800a9aa9d7e337ee5ccdfc2be2741ca20"
-  integrity sha512-hyglxuzY2mktY0ST+6Y9IpZjSKxBLsG2xtnKWsIqDvXKKBjy5xRjHJMueP4P3u5z+bpLrdY6YlyR9JMIV/Pwcg==
+"@capacitor/android@^4.7.2":
+  version "4.7.2"
+  resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-4.7.2.tgz#e0dab056c6ce801603f9bcbe67286eeec7cea7e2"
+  integrity sha512-tqVnF1bBpwYKuqA3z3y6riXnc/PITxL62U+GEER7yM8yAos3O+R2bxJFneihZavyGT5U/tF3cFqVOnOo7NYJSA==
 
 "@capacitor/app@^4.1.1":
   version "4.1.1"
