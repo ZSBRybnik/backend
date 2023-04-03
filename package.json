@@ -386,7 +386,7 @@
     "storybook-addon-designs": "^6.3.1",
     "storybook-dark-mode": "^2.0.5",
     "style-loader": "^3.3.1",
-    "stylelint-config-standard": "^29.0.0",
+    "stylelint-config-standard": "^32.0.0",
     "super-expressive": "^1.4.2",
     "superjson": "^1.9.1",
     "supertest": "^6.2.4",
