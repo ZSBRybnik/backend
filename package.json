@@ -80,7 +80,7 @@
     "@pulumi/azure": "^5.21.0",
     "@pulumi/pulumi": "^3.40.2",
     "@sentry/browser": "^7.30.0",
-    "@sentry/electron": "^4.1.2",
+    "@sentry/electron": "^4.4.0",
     "@sentry/node": "^7.30.0",
     "@sentry/tracing": "^7.30.0",
     "@solana/wallet-adapter-base": "^0.9.20",
