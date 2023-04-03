@@ -371,7 +371,7 @@
     "serverless": "^3.23.0",
     "serverless-dynamodb-local": "^0.2.40",
     "serverless-google-cloudfunctions": "^4.6.0",
-    "serverless-offline": "^11.2.1",
+    "serverless-offline": "^12.0.4",
     "sitemap-webpack-plugin": "^1.1.1",
     "snappy": "^7.1.1",
     "snyk": "^1.1084.0",
