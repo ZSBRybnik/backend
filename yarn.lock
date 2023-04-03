@@ -10222,10 +10222,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/fslightbox-react@^1.4.2":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@types/fslightbox-react/-/fslightbox-react-1.7.0.tgz#4a485ba4037dda19c557dbbe22f95f1043f1b59a"
-  integrity sha512-1PzXEYKtQDMZfE9v8C8mk+sSY+7B7UK8ibjPzCGwJCnGDr/DoIOZ93ytUjBls6LwmJ2/GcIcmw2mm7tjf8CTzw==
+"@types/fslightbox-react@^1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@types/fslightbox-react/-/fslightbox-react-1.7.1.tgz#3f5fa6588980c129cc67f59387a174dc8a497e56"
+  integrity sha512-1kS+VpSfHEJqsPtQ9GjNYsy7l2qMdRbfmh8INWFw15+wMGBJnpKswrVWD87yn3u8HDPCy3K56PeiRzCnSDoR1g==
   dependencies:
     "@types/react" "*"
 

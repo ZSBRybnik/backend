@@ -121,7 +121,7 @@
     "@types/expect-puppeteer": "^5.0.2",
     "@types/express": "^4.17.15",
     "@types/ffi-napi": "^4.0.7",
-    "@types/fslightbox-react": "^1.4.2",
+    "@types/fslightbox-react": "^1.7.1",
     "@types/geoip-lite": "^1.4.1",
     "@types/glob": "^8.0.0",
     "@types/i18next-xhr-backend": "^1.4.2",
