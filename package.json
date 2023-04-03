@@ -74,7 +74,7 @@
     "@microsoft/tsdoc": "^0.14.2",
     "@mrleebo/prisma-ast": "^0.4.1",
     "@msgpack/msgpack": "^2.7.2",
-    "@nativescript/types": "^8.4.0",
+    "@nativescript/types": "^8.5.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
     "@prettier/plugin-pug": "^2.3.0",
     "@prisma/client": "^4.8.1",
