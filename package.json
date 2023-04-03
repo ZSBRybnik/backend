@@ -299,7 +299,7 @@
     "lighthouse": "^9.6.8",
     "lodash": "^4.17.21",
     "lookpath": "^1.2.2",
-    "markdown-to-jsx": "^7.1.8",
+    "markdown-to-jsx": "^7.2.0",
     "memlab": "^1.1.36",
     "mongoose": "^6.5.2",
     "mousetrap": "^1.6.5",
