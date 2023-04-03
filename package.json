@@ -110,7 +110,7 @@
     "@trpc/client": "^10.8.2",
     "@trpc/react": "^9.27.4",
     "@trpc/server": "^9.27.0",
-    "@types/aws-lambda": "^8.10.106",
+    "@types/aws-lambda": "^8.10.114",
     "@types/bcrypt": "^5.0.0",
     "@types/case-sensitive-paths-webpack-plugin": "^2.1.6",
     "@types/clean-webpack-plugin": "^0.1.3",
