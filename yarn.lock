@@ -4417,10 +4417,10 @@
     "@hapi/bourne" "^3.0.0"
     "@hapi/hoek" "^11.0.2"
 
-"@hookstate/core@^4.0.0-rc17":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@hookstate/core/-/core-4.0.0.tgz#a70ffdc38b7456213b3557789aac28884ea83b97"
-  integrity sha512-l0UNUB4FK/oX+yhMY9JeI6oXlzUUGkXI9E59mFS7TR3HLJao7MQrR2dk4oriMV2Rb5l+6vzXfp1DwhGnq/IgPg==
+"@hookstate/core@^4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@hookstate/core/-/core-4.0.1.tgz#6744380e96ce13fe3488c926c1cbae93bbea0ff6"
+  integrity sha512-Uh2D8Z0z/pqOJ7t+SfC+2sj13JQcB4yFhtL+T1choCaBxTSlgOS/CKRBohgJ4cjTKoxOmTT8uSQysu3gUjX+Gw==
 
 "@html-eslint/eslint-plugin@^0.17.1":
   version "0.17.1"

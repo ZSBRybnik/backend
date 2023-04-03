@@ -58,7 +58,7 @@
     "@faker-js/faker": "^7.3.0",
     "@fluentui/svg-icons": "^1.1.191",
     "@geometricpanda/storybook-addon-badges": "^0.2.2",
-    "@hookstate/core": "^4.0.0-rc17",
+    "@hookstate/core": "^4.0.1",
     "@html-eslint/eslint-plugin": "^0.17.1",
     "@iarna/toml": "^2.2.5",
     "@ionic/cli": "^6.20.6",
