@@ -33285,10 +33285,10 @@ schema-utils@^4.0.0:
     ajv-formats "^2.1.1"
     ajv-keywords "^5.0.0"
 
-schemix@^1.8.5:
-  version "1.9.1"
-  resolved "https://registry.yarnpkg.com/schemix/-/schemix-1.9.1.tgz#97b225a1b3813671b51190a74662761215e64c9f"
-  integrity sha512-thw7Z1i6y9bJjUxO54SrkPGhzK/mrjEaJoVMKFU8EqdcUhnqd7IJtf/PIntLXbMo73BaGWj2XO41b7o3EkDBVw==
+schemix@^1.10.0:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/schemix/-/schemix-1.10.0.tgz#61c043edde9d361f21d11c5c61917f0281fed0b2"
+  integrity sha512-4QujqDZewrcz5dpUMzYnw/5NFlPCWvKHRhimjNJWHzQvyTRDw4Ab/VFnEi8gSgmhtsvJduCiEns9k7QrsWPZSg==
 
 scmp@^2.1.0:
   version "2.1.0"
