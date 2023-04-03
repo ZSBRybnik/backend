@@ -63,7 +63,7 @@
     "@iarna/toml": "^2.2.5",
     "@ionic/cli": "^6.20.6",
     "@ionic/storage": "^3.0.6",
-    "@mdi/js": "^7.1.96",
+    "@mdi/js": "^7.2.96",
     "@mdi/react": "^1.6.1",
     "@mdx-js/loader": "^2.2.1",
     "@mdx-js/mdx": "^2.2.1",
