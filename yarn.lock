@@ -18830,6 +18830,11 @@ expect-puppeteer@^6.1.1:
   resolved "https://registry.yarnpkg.com/expect-puppeteer/-/expect-puppeteer-6.1.1.tgz#f446cd2a6f9db895077e4fe591db432b5d7f34b5"
   integrity sha512-cnQF96qdoEcOD63j5NQMc0RtW9WRMW/WHKXEKsuDQ2tszhVH3qC7zkXXS4D0LTt9qCB3DEExioqylsQXvqPrUw==
 
+expect-puppeteer@^8.0.5:
+  version "8.0.5"
+  resolved "https://registry.yarnpkg.com/expect-puppeteer/-/expect-puppeteer-8.0.5.tgz#544c635b1968b6ecb954560a030921505e8a134e"
+  integrity sha512-PtJ/HKYdt/SqoGIWYninAENrSRxRSDb+5I78Pke73+Nxp/nzX05yUU2B+ULUro7wPG4VdD5caKi8UN2NPkpvBA==
+
 expect@^29.0.0, expect@^29.5.0:
   version "29.5.0"
   resolved "https://registry.yarnpkg.com/expect/-/expect-29.5.0.tgz#68c0509156cb2a0adb8865d413b137eeaae682f7"

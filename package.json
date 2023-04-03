@@ -239,7 +239,7 @@
     "eslint-plugin-xss": "^0.1.12",
     "eslint-plugin-yml": "^1.5.0",
     "eslint-webpack-plugin": "^3.2.0",
-    "expect-puppeteer": "^6.1.1",
+    "expect-puppeteer": "^8.0.5",
     "express": "^4.18.2",
     "express-graphql": "^0.12.0",
     "express-rate-limit": "^6.7.0",
