@@ -372,7 +372,7 @@
     "sqlite3": "^5.1.4",
     "store2": "^2.14.2",
     "storybook-addon-designs": "^6.3.1",
-    "storybook-dark-mode": "^2.0.5",
+    "storybook-dark-mode": "^3.0.0",
     "style-loader": "^3.3.1",
     "stylelint-config-standard": "^29.0.0",
     "super-expressive": "^1.4.2",
