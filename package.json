@@ -39,7 +39,7 @@
     "@blainehansen/macro-ts": "^0.1.12",
     "@capacitor/android": "^4.6.1",
     "@capacitor/app": "^4.1.1",
-    "@capacitor/cli": "^4.6.1",
+    "@capacitor/cli": "^4.7.3",
     "@capacitor/core": "^4.6.1",
     "@capacitor/haptics": "^4.1.0",
     "@capacitor/ios": "^4.6.1",
