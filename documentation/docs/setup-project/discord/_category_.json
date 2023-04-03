@@ -1,0 +1,8 @@
+{
+  "label": "Discord",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Sekcja ta tłumaczy przygotowanie związane z działaniem bota Discord wewnątrz aplikacji"
+  }
+}

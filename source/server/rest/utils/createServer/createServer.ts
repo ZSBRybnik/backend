@@ -16,7 +16,13 @@ const createServer: CreateServer = ({
   const server: Express = express();
   applyMiddlewares({ instance: server });
   applyRoutes({ instance: server });
-  const httpServer: Server = listenOnPort({ instance: server, port });
+  const httpServer: Server = listenOnPort({
+    instance: server,
+    port,
+    callback: () => {
+      console.log(`Server started on port: ${port}`);
+    },
+  });
   return { server, httpServer };
 };
 export default createServer;
