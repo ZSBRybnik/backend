@@ -338,7 +338,7 @@
     "property-information": "^6.2.0",
     "pug": "^3.0.2",
     "pug-html-loader": "^1.1.5",
-    "puppeteer": "^19.5.1",
+    "puppeteer": "^19.8.3",
     "purs-loader": "^4.0.0",
     "push.js": "^1.0.12",
     "qrcode": "^1.5.1",
