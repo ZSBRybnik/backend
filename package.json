@@ -77,7 +77,7 @@
     "@nativescript/types": "^8.4.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
     "@prettier/plugin-pug": "^2.3.0",
-    "@prisma/client": "^4.8.1",
+    "@prisma/client": "^4.12.0",
     "@pulumi/aws": "^5.16.0",
     "@pulumi/azure": "^5.21.0",
     "@pulumi/pulumi": "^3.40.2",
