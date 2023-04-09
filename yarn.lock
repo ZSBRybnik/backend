@@ -323,6 +323,14 @@
     "@jridgewell/gen-mapping" "^0.1.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
+"@anthropic-ai/sdk@^0.4.2":
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/@anthropic-ai/sdk/-/sdk-0.4.3.tgz#372878ad2b86b7e10e047eafd781e3aea69f8a80"
+  integrity sha512-SZrlXvjUUYT9rPmSzlTtmVk1OjVNpkCzILRluhiYwNcxXfQyvPJDi0CI6PyymygcgtqEF5EVqhKmC/PtPsNEIw==
+  dependencies:
+    "@fortaine/fetch-event-source" "^3.0.6"
+    cross-fetch "^3.1.5"
+
 "@apideck/better-ajv-errors@^0.3.1":
   version "0.3.6"
   resolved "https://registry.yarnpkg.com/@apideck/better-ajv-errors/-/better-ajv-errors-0.3.6.tgz#957d4c28e886a64a8141f7522783be65733ff097"
@@ -3919,6 +3927,11 @@
   version "1.1.196"
   resolved "https://registry.yarnpkg.com/@fluentui/svg-icons/-/svg-icons-1.1.196.tgz#de12a0d7d00d7164da7ae5bc4a9f55b3fb7656be"
   integrity sha512-6+ZzEZRHHyXo4BvQdF0HwNHsrtla8yBfdeRdyiUXq3mhfAdWqjmWtARYlnUpUNcraEb2fvq0Uwuw8h7pUzuvNw==
+
+"@fortaine/fetch-event-source@^3.0.6":
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/@fortaine/fetch-event-source/-/fetch-event-source-3.0.6.tgz#b8552a2ca2c5202f5699b93a92be0188d422b06e"
+  integrity sha512-621GAuLMvKtyZQ3IA6nlDWhV1V/7PGOTNIGLUifxt0KzM+dZIweJ6F3XvQF3QnqeNfS1N7WQ0Kil1Di/lhChEw==
 
 "@fractalwagmi/popup-connection@^1.0.18":
   version "1.0.21"
@@ -12860,7 +12873,7 @@ axios@^0.25.0:
   dependencies:
     follow-redirects "^1.14.7"
 
-axios@^0.26.1:
+axios@^0.26.0, axios@^0.26.1:
   version "0.26.1"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.26.1.tgz#1ede41c51fcf51bbbd6fd43669caaa4f0495aaa9"
   integrity sha512-fPwcX4EvnSHuInCMItEhAGnaSEXRBjtzh9fOtsE6E1G6p7vl7edEeZe11QHf18+6+9gR5PbKV/sGKNaD8YaMeA==
@@ -13979,6 +13992,11 @@ browser-level@^1.0.1:
     catering "^2.1.1"
     module-error "^1.0.2"
     run-parallel-limit "^1.1.0"
+
+browser-or-node@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/browser-or-node/-/browser-or-node-2.1.1.tgz#738790b3a86a8fc020193fa581273fbe65eaea0f"
+  integrity sha512-8CVjaLJGuSKMVTxJ2DpBl5XnlNDiT4cQFeuCJJrvJmts9YrTZDizTX7PjC2s6W4x+MBGZeEY6dGMrF04/6Hgqg==
 
 browser-process-hrtime@^1.0.0:
   version "1.0.0"
@@ -18855,6 +18873,16 @@ expect@^29.0.0, expect@^29.5.0:
     jest-message-util "^29.5.0"
     jest-util "^29.5.0"
 
+exponential-backoff@^3.1.0:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/exponential-backoff/-/exponential-backoff-3.1.1.tgz#64ac7526fe341ab18a39016cd22c787d01e00bf6"
+  integrity sha512-dX7e/LHVJ6W3DE1MHWi9S1EYzDESENfLrYohG2G++ovZrYOkm4Knwa0mc1cn84xJOR4KEU0WSchhLbd0UklbHw==
+
+expr-eval@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/expr-eval/-/expr-eval-2.0.2.tgz#fa6f044a7b0c93fde830954eb9c5b0f7fbc7e201"
+  integrity sha512-4EMSHGOPSwAfBiibw3ndnP0AvjDWLsMvGOvWEZ2F96IGk0bIVdjQisOHxReSkE13mHcfbuCiXw+G4y0zv6N8Eg==
+
 express-graphql@^0.12.0:
   version "0.12.0"
   resolved "https://registry.yarnpkg.com/express-graphql/-/express-graphql-0.12.0.tgz#58deabc309909ca2c9fe2f83f5fbe94429aa23df"
@@ -22681,7 +22709,7 @@ is-binary-path@^1.0.0:
   dependencies:
     binary-extensions "^1.0.0"
 
-is-binary-path@~2.1.0:
+is-binary-path@^2.1.0, is-binary-path@~2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/is-binary-path/-/is-binary-path-2.1.0.tgz#ea1f7f3b80f064236e83470f86c09c254fb45b09"
   integrity sha512-ZMERYes6pDydyuGidse7OsHxtbI7WVeUEozgR/g7rd0xUimYNlvZRE/K2MgZTjWy725IfelLeVcEM97mmtRGXw==
@@ -24742,7 +24770,7 @@ jsonpath-plus@^7.2.0:
   resolved "https://registry.yarnpkg.com/jsonpath-plus/-/jsonpath-plus-7.2.0.tgz#7ad94e147b3ed42f7939c315d2b9ce490c5a3899"
   integrity sha512-zBfiUPM5nD0YZSBT/o/fbCUlCcepMIdP0CJZxM1+KgA4f2T206f6VAg9e7mX35+KlMaIc5qXW34f3BnwJ3w+RA==
 
-jsonpointer@^5.0.0:
+jsonpointer@^5.0.0, jsonpointer@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/jsonpointer/-/jsonpointer-5.0.1.tgz#2110e0af0900fd37467b5907ecd13a7884a1b559"
   integrity sha512-p/nXbhSEcu3pZRdkW1OfJhpsVtW1gd4Wa1fnQc9YLiTfAjn0312eMKimbdIQzuZl9aa9xUGaRlP9T/CJE/ditQ==
@@ -25005,6 +25033,26 @@ kuler@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/kuler/-/kuler-2.0.0.tgz#e2c570a3800388fb44407e851531c1d670b061b3"
   integrity sha512-Xq9nH7KlWZmXAtodXDDRE7vs6DU1gTU8zYDHDiWLSip45Egwq3plLHzPn27NgvzL2r1LMPC1vdqh98sQxtqj4A==
+
+langchain@^0.0.51:
+  version "0.0.51"
+  resolved "https://registry.yarnpkg.com/langchain/-/langchain-0.0.51.tgz#429016787965656d1eb5a6ff44a94af8327c960f"
+  integrity sha512-uKjH4NZjiuKXVFfRhHSNEiPpwFb/P34hVpkg6HSFCJ2iynrtLTRNRLLAHbkXb1e2gMZT0cFVrKZuwC59xL13+g==
+  dependencies:
+    "@anthropic-ai/sdk" "^0.4.2"
+    "@fortaine/fetch-event-source" "^3.0.6"
+    browser-or-node "^2.1.1"
+    exponential-backoff "^3.1.0"
+    expr-eval "^2.0.2"
+    flat "^5.0.2"
+    is-binary-path "^2.1.0"
+    jsonpointer "^5.0.1"
+    object-hash "^3.0.0"
+    openai "^3.2.0"
+    p-queue "^6.6.2"
+    uuid "^9.0.0"
+    yaml "^2.2.1"
+    zod "^3.21.4"
 
 language-subtag-registry@~0.3.2:
   version "0.3.22"
@@ -28794,6 +28842,14 @@ open@^8.0.9, open@^8.4.0, open@^8.4.2:
     is-docker "^2.1.1"
     is-wsl "^2.2.0"
 
+openai@^3.2.0:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/openai/-/openai-3.2.1.tgz#1fa35bdf979cbde8453b43f2dd3a7d401ee40866"
+  integrity sha512-762C9BNlJPbjjlWZi4WYK9iM2tAVAv0uUp1UmI34vb0CN5T2mjB/qM6RYBmNKMh/dN9fC+bxqPwWJZUTWW052A==
+  dependencies:
+    axios "^0.26.0"
+    form-data "^4.0.0"
+
 openapi-types@12.0.0:
   version "12.0.0"
   resolved "https://registry.yarnpkg.com/openapi-types/-/openapi-types-12.0.0.tgz#458a99d048f9eae1c067e15d56a8bfb3726041f1"
@@ -29076,6 +29132,14 @@ p-memoize@^7.1.1:
     mimic-fn "^4.0.0"
     type-fest "^3.0.0"
 
+p-queue@^6.6.2:
+  version "6.6.2"
+  resolved "https://registry.yarnpkg.com/p-queue/-/p-queue-6.6.2.tgz#2068a9dcf8e67dd0ec3e7a2bcb76810faa85e426"
+  integrity sha512-RwFpb72c/BhQLEXIZ5K2e+AhgNVmIejGlTgiB9MzZ0e93GRvqZ7uSi0dvRF7/XIXDeNkra2fNHBxTyPDGySpjQ==
+  dependencies:
+    eventemitter3 "^4.0.4"
+    p-timeout "^3.2.0"
+
 p-queue@^7.2.0, p-queue@^7.3.0:
   version "7.3.4"
   resolved "https://registry.yarnpkg.com/p-queue/-/p-queue-7.3.4.tgz#7ef7d89b6c1a0563596d98adbc9dc404e9ed4a84"
@@ -29125,7 +29189,7 @@ p-timeout@^1.1.1:
   dependencies:
     p-finally "^1.0.0"
 
-p-timeout@^3.1.0:
+p-timeout@^3.1.0, p-timeout@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/p-timeout/-/p-timeout-3.2.0.tgz#c7e17abc971d2a7962ef83626b35d635acf23dfe"
   integrity sha512-rhIwUycgwwKcP9yTOOFK/AKsAopjjCakVqLHePO3CC6Mir1Z99xT+R63jZxAT5lFZLa2inS5h+ZS2GvR99/FBg==
@@ -38789,7 +38853,7 @@ zod-to-json-schema@3.17.1:
   resolved "https://registry.yarnpkg.com/zod-to-json-schema/-/zod-to-json-schema-3.17.1.tgz#681cb645837e0af71852f9b3e1033b419c145cdf"
   integrity sha512-h1WLfvkdwM6lcRt5q09ytNh2OKcU13vY9D0FetN/7Erdd7lVraIiMkEnObg3KELm5EQlMqvi0r5nzMa0EA+8qw==
 
-zod@^3.18.0:
+zod@^3.18.0, zod@^3.21.4:
   version "3.21.4"
   resolved "https://registry.yarnpkg.com/zod/-/zod-3.21.4.tgz#10882231d992519f0a10b5dd58a38c9dabbb64db"
   integrity sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==

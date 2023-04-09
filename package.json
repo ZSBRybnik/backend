@@ -295,6 +295,7 @@
     "jsonwebtoken": "^9.0.0",
     "jwt-decode": "^3.1.2",
     "katex": "^0.16.4",
+    "langchain": "^0.0.51",
     "license-checker": "^25.0.1",
     "lighthouse": "^9.6.8",
     "lodash": "^4.17.21",
