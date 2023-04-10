@@ -8,7 +8,7 @@ let handler: APIGatewayProxyHandler | undefined;
 
 if (target === TargetType.Server) {
   const createClientPromise = import(
-    "~backend/source/server/discrod/utils/createClient/createClient"
+    "~backend/source/server/discord/utils/createClient/createClient"
   );
   const natsClient = import("~backend/source/server/nats/index");
   const restPromise = import("~backend/source/server/rest/index");

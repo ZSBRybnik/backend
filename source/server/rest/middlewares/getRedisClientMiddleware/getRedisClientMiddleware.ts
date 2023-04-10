@@ -1,4 +1,4 @@
-import redisClient from "~backend/source/server/clients/redisClient/redisClient";
+import ioRedisClient from "~backend/source/server/clients/ioRedisClient/ioRedisClient";
 import createMiddleware from "../../utils/createMiddleware/createMiddleware";
 import {
   CreateMiddlewareOutput,
@@ -12,7 +12,7 @@ const getRedisClientMiddleware = () => {
         request,
         next,
       }: RawMiddlewareArguments): Promise<void> => {
-        request.redisClient = redisClient;
+        request.redisClient = ioRedisClient;
         next();
       },
     });

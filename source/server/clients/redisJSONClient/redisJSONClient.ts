@@ -1,6 +1,6 @@
 import JSONCache from "redis-json";
-import redis from "../redisClient/redisClient";
+import ioRedisClient from "../ioRedisClient/ioRedisClient";
 
-const redisJSONClient: JSONCache = new JSONCache(redis);
+const redisJSONClient: JSONCache = new JSONCache(ioRedisClient);
 
 export default redisJSONClient;
