@@ -19268,6 +19268,11 @@ extract-files@^11.0.0:
   resolved "https://registry.yarnpkg.com/extract-files/-/extract-files-11.0.0.tgz#b72d428712f787eef1f5193aff8ab5351ca8469a"
   integrity sha512-FuoE1qtbJ4bBVvv94CC7s0oTnKUGvQs+Rjf1L2SJFfS+HTVVjhPFtehPdQ0JiGPqVNfSSZvL5yzHHQq2Z4WNhQ==
 
+extract-files@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/extract-files/-/extract-files-9.0.0.tgz#8a7744f2437f81f5ed3250ed9f1550de902fe54a"
+  integrity sha512-CvdFfHkC95B4bBBk36hcEmvdR2awOdhhVUYH6S/zrVj3477zven/fJMYg7121h4T1xHZC+tetUpubpAhxwI7hQ==
+
 extract-zip@2.0.1, extract-zip@^2.0.0, extract-zip@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/extract-zip/-/extract-zip-2.0.1.tgz#663dca56fe46df890d5f131ef4a06d22bb8ba13a"
@@ -21115,6 +21120,16 @@ graphql-config@^4.4.0:
     minimatch "4.2.3"
     string-env-interpolation "1.0.1"
     tslib "^2.4.0"
+
+graphql-request@^5.1.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/graphql-request/-/graphql-request-5.2.0.tgz#a05fb54a517d91bb2d7aefa17ade4523dc5ebdca"
+  integrity sha512-pLhKIvnMyBERL0dtFI3medKqWOz/RhHdcgbZ+hMMIb32mEPa5MJSzS4AuXxfI4sRAu6JVVk5tvXuGfCWl9JYWQ==
+  dependencies:
+    "@graphql-typed-document-node/core" "^3.1.1"
+    cross-fetch "^3.1.5"
+    extract-files "^9.0.0"
+    form-data "^3.0.0"
 
 graphql-tag@^2.12.6:
   version "2.12.6"
@@ -38116,6 +38131,15 @@ weak-map@^1.0.5:
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/weak-map/-/weak-map-1.0.8.tgz#394c18a9e8262e790544ed8b55c6a4ddad1cb1a3"
   integrity sha512-lNR9aAefbGPpHO7AEnY0hCFjz1eTkWCXYvkTRrTHs9qv8zJp+SkVYpzfLIFXQQiG3tVvbNFQgVg2bQS8YGgxyw==
+
+weaviate-ts-client@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/weaviate-ts-client/-/weaviate-ts-client-1.0.0.tgz#500428a1349f7ee93f667f8c3857d19dd3149ad8"
+  integrity sha512-p2OdWyv5m4MmF3XV2lXqVufA9ak8p7eJDcjmvIoGiVeLnQoQCn7aLgKbb72BvszXkii6FCOgqhklQ33qezNGHg==
+  dependencies:
+    graphql-request "^5.1.0"
+    isomorphic-fetch "^3.0.0"
+    tar "^6.1.13"
 
 web-namespaces@^1.0.0:
   version "1.1.4"
