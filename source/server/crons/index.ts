@@ -1,0 +1,3 @@
+import "./updateBackendGithubRepositoryVectorData/updateBackendGithubRepositoryVectorData";
+import "./updateFrontendGithubRepositoryVectorData/updateFrontendGithubRepositoryVectorData";
+import "./updateMainGithubRepositoryVectorData/updateMainGithubRepositoryVectorData";

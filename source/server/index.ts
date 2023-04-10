@@ -12,7 +12,13 @@ if (target === TargetType.Server) {
   );
   const natsClient = import("~backend/source/server/nats/index");
   const restPromise = import("~backend/source/server/rest/index");
-  await Promise.all([createClientPromise, natsClient, restPromise]);
+  const cronsPromise = import("~backend/source/server/crons");
+  await Promise.all([
+    createClientPromise,
+    natsClient,
+    restPromise,
+    cronsPromise,
+  ]);
 } else if (target === TargetType.Serverless) {
   handler = (await import("~backend/source/server/lambdas/index")).default;
 }
