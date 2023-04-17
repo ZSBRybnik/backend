@@ -7,6 +7,7 @@ import target, { TargetType } from "../shared/constants/TargetType";
 let handler: APIGatewayProxyHandler | undefined;
 
 if (target === TargetType.Server) {
+  await import("./clients/programClient/programClient");
   const createClientPromise = import(
     "~backend/source/server/discord/utils/createClient/createClient"
   );
