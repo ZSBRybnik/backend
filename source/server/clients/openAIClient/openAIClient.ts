@@ -1,4 +1,4 @@
-import { OpenAI } from "langchain";
+import { OpenAI } from "langchain/llms/openai";
 //import { RedisCache } from "langchain/cache";
 //import type { RedisClientType } from "redis";
 //import redisClient from "../redisClient/redisClient";
