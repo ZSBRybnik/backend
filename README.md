@@ -52,15 +52,22 @@
 To successfully run project you have to set environmental variables in `.env` file.
 
 ```env
-POSTGRESQL_URL="postgresql://login:password@address:port/database?schema=databaseSchema"
-MONGODB_URL="mongodb+srv://login:password@address:port/database?retryWrites=true&w=majority"
-FAUNADB_KEY="key"
-EMAIL="email"
-EMAIL_PASSWORD="emailPassword"
-AWS_ACCESS_KEY_ID="id"
-AWS_SECRET_ACCESS_KEY="key"
-DISCORD_TOKEN="token"
-DISCORD_SERVER_ID="id"
+POSTGRESQL_URL=postgresql://login:password@address:port/database?schema=databaseSchema
+MONGODB_URL=mongodb+srv://login:password@address:port/database?retryWrites=true&w=majority
+FAUNADB_KEY=key
+FAUNADB_USERNAME=username
+FAUNADB_PASSWORD=password
+EMAIL=email
+EMAIL_PASSWORD=password
+AWS_ACCESS_KEY_ID=id
+AWS_SECRET_ACCESS_KEY=key
+DISCORD_TOKEN=token
+DISCORD_SERVER_ID=id
+REPLICATE_TOKEN=token
+OPENAI_API_KEY=key
+SERPAPI_API_KEY=key
+VIRUS_TOTAL_API_KEY=key
+REDIS_ADDRESS=redis://username:password@address:port
 ```
 
 ## Commands
