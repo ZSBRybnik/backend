@@ -4,6 +4,11 @@ import {
   VectorStoreToolkit,
 } from "langchain/agents";
 import { Chroma } from "langchain/vectorstores/chroma";
+import {
+  zsbrybnikBackendCollectionsCollectionName,
+  zsbrybnikFrontendCollectionsCollectionName,
+  zsbrybnikMainRepositoryCollectionName,
+} from "~backend/source/server/constants/vectorDatabaseCollectionsNames/vectorDatabaseCollectionsNames";
 import openAIClient from "../../clients/openAIClient/openAIClient";
 import openAIEmbeddingsClient from "../../clients/openAIEmbeddingsClient/openAIEmbeddingsClient";
 import langchainModelTools from "../../constants/langchainModelTools/langchainModelTools";
@@ -11,21 +16,21 @@ import langchainModelTools from "../../constants/langchainModelTools/langchainMo
 const vectorStoreMainRepositoryPromise = Chroma.fromExistingCollection(
   openAIEmbeddingsClient,
   {
-    collectionName: "zsbrybnik-main-repository",
+    collectionName: zsbrybnikMainRepositoryCollectionName,
   },
 );
 
 const vectorStoreFrontendRepositoryPromise = Chroma.fromExistingCollection(
   openAIEmbeddingsClient,
   {
-    collectionName: "zsbrybnik-frontend-repository",
+    collectionName: zsbrybnikFrontendCollectionsCollectionName,
   },
 );
 
 const vectorStoreBackendRepositoryPromise = Chroma.fromExistingCollection(
   openAIEmbeddingsClient,
   {
-    collectionName: "zsbrybnik-backend-repository",
+    collectionName: zsbrybnikBackendCollectionsCollectionName,
   },
 );
 
