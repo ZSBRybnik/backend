@@ -3,7 +3,7 @@ import developerAgent from "../../langchain-agents/developer-agent/developer-age
 import scanRepositoryToVectorStore from "../../utils/scanRepositoryToVectorStore/scanRepositoryToVectorStore";
 
 const updateFrontendGithubRepositoryVectorData: CronJob = new CronJob(
-  "08 17 * * *",
+  "42 19 * * *",
   async (): Promise<void> => {
     scanRepositoryToVectorStore({
       collectionName: "zsbrybnik-frontend-repository",

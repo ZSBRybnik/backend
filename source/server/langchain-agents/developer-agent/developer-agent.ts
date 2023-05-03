@@ -22,14 +22,26 @@ const vectorStoreFrontendRepositoryPromise = Chroma.fromExistingCollection(
   },
 );
 
-const [vectorStoreMainRepository, vectorStoreFrontendRepository] =
-  await Promise.all([
-    vectorStoreMainRepositoryPromise,
-    vectorStoreFrontendRepositoryPromise,
-  ]);
+const vectorStoreBackendRepositoryPromise = Chroma.fromExistingCollection(
+  openAIEmbeddingsClient,
+  {
+    collectionName: "zsbrybnik-backend-repository",
+  },
+);
+
+const [
+  vectorStoreMainRepository,
+  vectorStoreFrontendRepository,
+  vectorStoreBackendRepository,
+] = await Promise.all([
+  vectorStoreMainRepositoryPromise,
+  vectorStoreFrontendRepositoryPromise,
+  vectorStoreBackendRepositoryPromise,
+]);
 Promise.all([
   vectorStoreMainRepository.ensureCollection(),
   vectorStoreFrontendRepository.ensureCollection(),
+  vectorStoreBackendRepository.ensureCollection(),
 ]);
 
 const vectorStoreMainRepositoryInfo = {
@@ -44,6 +56,12 @@ const vectorStoreFrontendRepositoryInfo = {
   vectorStore: vectorStoreFrontendRepository,
 };
 
+const vectorStoreBackendRepositoryInfo = {
+  name: "zsbrybnik-backend-repository",
+  description: "zsbrybnik backend repository data",
+  vectorStore: vectorStoreFrontendRepository,
+};
+
 const { tools: mainRepositoryTools } = new VectorStoreToolkit(
   vectorStoreMainRepositoryInfo,
   openAIClient,
@@ -54,8 +72,18 @@ const { tools: frontendRepositoryTools } = new VectorStoreToolkit(
   openAIClient,
 );
 
+const { tools: backendRepositoryTools } = new VectorStoreToolkit(
+  vectorStoreBackendRepositoryInfo,
+  openAIClient,
+);
+
 const developerAgent: AgentExecutor = await initializeAgentExecutor(
-  [...mainRepositoryTools, ...frontendRepositoryTools, ...langchainModelTools],
+  [
+    ...mainRepositoryTools,
+    ...frontendRepositoryTools,
+    ...backendRepositoryTools,
+    ...langchainModelTools,
+  ],
   openAIClient,
   "zero-shot-react-description",
 );

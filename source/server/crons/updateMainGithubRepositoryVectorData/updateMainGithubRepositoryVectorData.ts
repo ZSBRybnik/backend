@@ -2,7 +2,7 @@ import { CronJob } from "cron";
 import scanRepositoryToVectorStore from "../../utils/scanRepositoryToVectorStore/scanRepositoryToVectorStore";
 
 const updateMainGithubRepositoryVectorData: CronJob = new CronJob(
-  "0 12 * * 1", // 0 12 * * 1
+  "42 19 * * *", // 0 12 * * 1
   async (): Promise<void> => {
     scanRepositoryToVectorStore({
       collectionName: "zsbrybnik-main-repository",

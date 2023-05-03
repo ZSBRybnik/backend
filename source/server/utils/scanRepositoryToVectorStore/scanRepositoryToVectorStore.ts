@@ -22,7 +22,7 @@ const scanRepositoryToVectorStore = async ({
   const documents: LangchainDocument<Record<string, any>>[] =
     await githubRepositoryVectorDataLoader.load();
   await Chroma.fromDocuments(documents, openAIEmbeddingsClient, {
-    collectionName: collectionName,
+    collectionName,
   });
   return documents;
 };
