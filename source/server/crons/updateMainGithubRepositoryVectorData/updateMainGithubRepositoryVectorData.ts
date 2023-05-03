@@ -1,29 +1,19 @@
 import { CronJob } from "cron";
+import scanRepositoryToVectorStore from "../../utils/scanRepositoryToVectorStore/scanRepositoryToVectorStore";
 
 const updateMainGithubRepositoryVectorData: CronJob = new CronJob(
-  "38 21 * * 2", // 0 12 * * 1
+  "0 12 * * 1", // 0 12 * * 1
   async (): Promise<void> => {
-    console.log("dziala");
-
-    /*const githubRepositoryVectorDataLoader = new GithubRepoLoader(
-      "https://github.com/ZSBRybnik/ZSB",
-      { branch: "master", recursive: true, unknown: "warn" },
-    );
-    const documents = await githubRepositoryVectorDataLoader.load();
-    await Chroma.fromDocuments(documents, new OpenAIEmbeddings(), {
-      collectionName: "ZSBRybnik",
-    });*/
-    const developerAgent: any = await import(
-      "../../langchain-agents/developer-agent/developer-agent"
-    );
-    console.log(
-      (
-        await developerAgent.call({
-          value:
-            "Wypisz użytkowników  wylistowanych w repozytorium ZSB jako CODEOWNERS",
-        })
-      ).default,
-    );
+    scanRepositoryToVectorStore({
+      collectionName: "zsbrybnik",
+      repositoryURL: "https://github.com/ZSBRybnik/ZSB",
+    });
+    /*console.log(
+      await developerAgent.call({
+        input:
+          "Wypisz użytkowników  wylistowanych w repozytorium ZSB jako CODEOWNERS",
+      }),
+    );*/
   },
   null,
   true,

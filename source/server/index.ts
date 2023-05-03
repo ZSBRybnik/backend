@@ -3,6 +3,7 @@ import "dotenv/config";
 import "source-map-support/register";
 import "v8-compile-cache";
 import target, { TargetType } from "../shared/constants/TargetType";
+import "./clients/chromaClient/chromaClient";
 
 let handler: APIGatewayProxyHandler | undefined;
 

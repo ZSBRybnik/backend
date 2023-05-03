@@ -11,13 +11,16 @@ import langchainModelTools from "../../constants/langchainModelTools/langchainMo
 const vectorStore = await Chroma.fromExistingCollection(
   new OpenAIEmbeddings(),
   {
-    collectionName: "ZSBRybnik",
+    collectionName: "zsbrybnik",
+    // url: "http://chromadb:8000",
   },
 );
 
+await vectorStore.ensureCollection();
+
 const vectorStoreInfo = {
-  name: "ZSBRybnik",
-  description: "ZSBRybnik data",
+  name: "zsbrybnik",
+  description: "zsbrybnik data",
   vectorStore,
 };
 
