@@ -1,9 +1,20 @@
 import { CronJob } from "cron";
+import developerAgent from "../../langchain-agents/developer-agent/developer-agent";
+import scanRepositoryToVectorStore from "../../utils/scanRepositoryToVectorStore/scanRepositoryToVectorStore";
 
 const updateFrontendGithubRepositoryVectorData: CronJob = new CronJob(
-  "0 13 * * * 1",
-  (): void => {
-    console.log("You will see this message every second");
+  "08 17 * * *",
+  async (): Promise<void> => {
+    scanRepositoryToVectorStore({
+      collectionName: "zsbrybnik-frontend-repository",
+      repositoryURL: "https://github.com/ZSBRybnik/frontend",
+    });
+    console.log(
+      await developerAgent.call({
+        input:
+          "Wypisz wszystkie pakiety używane w ZSB Frontend, które są powiązane z eslintem",
+      }),
+    );
   },
   null,
   true,

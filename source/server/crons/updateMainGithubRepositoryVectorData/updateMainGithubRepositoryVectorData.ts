@@ -5,7 +5,7 @@ const updateMainGithubRepositoryVectorData: CronJob = new CronJob(
   "0 12 * * 1", // 0 12 * * 1
   async (): Promise<void> => {
     scanRepositoryToVectorStore({
-      collectionName: "zsbrybnik",
+      collectionName: "zsbrybnik-main-repository",
       repositoryURL: "https://github.com/ZSBRybnik/ZSB",
     });
     /*console.log(

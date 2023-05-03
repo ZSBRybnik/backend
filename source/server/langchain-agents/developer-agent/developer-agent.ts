@@ -3,31 +3,59 @@ import {
   initializeAgentExecutor,
   VectorStoreToolkit,
 } from "langchain/agents";
-import { OpenAIEmbeddings } from "langchain/embeddings/openai";
 import { Chroma } from "langchain/vectorstores/chroma";
 import openAIClient from "../../clients/openAIClient/openAIClient";
+import openAIEmbeddingsClient from "../../clients/openAIEmbeddingsClient/openAIEmbeddingsClient";
 import langchainModelTools from "../../constants/langchainModelTools/langchainModelTools";
 
-const vectorStore = await Chroma.fromExistingCollection(
-  new OpenAIEmbeddings(),
+const vectorStoreMainRepositoryPromise = Chroma.fromExistingCollection(
+  openAIEmbeddingsClient,
   {
-    collectionName: "zsbrybnik",
-    // url: "http://chromadb:8000",
+    collectionName: "zsbrybnik-main-repository",
   },
 );
 
-await vectorStore.ensureCollection();
+const vectorStoreFrontendRepositoryPromise = Chroma.fromExistingCollection(
+  openAIEmbeddingsClient,
+  {
+    collectionName: "zsbrybnik-frontend-repository",
+  },
+);
 
-const vectorStoreInfo = {
-  name: "zsbrybnik",
-  description: "zsbrybnik data",
-  vectorStore,
+const [vectorStoreMainRepository, vectorStoreFrontendRepository] =
+  await Promise.all([
+    vectorStoreMainRepositoryPromise,
+    vectorStoreFrontendRepositoryPromise,
+  ]);
+Promise.all([
+  vectorStoreMainRepository.ensureCollection(),
+  vectorStoreFrontendRepository.ensureCollection(),
+]);
+
+const vectorStoreMainRepositoryInfo = {
+  name: "zsbrybnik-main-repository",
+  description: "zsbrybnik main repository data",
+  vectorStore: vectorStoreMainRepository,
 };
 
-const { tools } = new VectorStoreToolkit(vectorStoreInfo, openAIClient);
+const vectorStoreFrontendRepositoryInfo = {
+  name: "zsbrybnik-frontend-repository",
+  description: "zsbrybnik frontend repository data",
+  vectorStore: vectorStoreFrontendRepository,
+};
+
+const { tools: mainRepositoryTools } = new VectorStoreToolkit(
+  vectorStoreMainRepositoryInfo,
+  openAIClient,
+);
+
+const { tools: frontendRepositoryTools } = new VectorStoreToolkit(
+  vectorStoreFrontendRepositoryInfo,
+  openAIClient,
+);
 
 const developerAgent: AgentExecutor = await initializeAgentExecutor(
-  [...tools, ...langchainModelTools],
+  [...mainRepositoryTools, ...frontendRepositoryTools, ...langchainModelTools],
   openAIClient,
   "zero-shot-react-description",
 );
