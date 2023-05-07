@@ -3503,10 +3503,10 @@
   resolved "https://registry.npmjs.org/@dqbd/tiktoken/-/tiktoken-0.4.0.tgz"
   integrity sha512-iaHgmwKAOqowBFZKxelyszoeGLoNw62eOULcmyme1aA1Ymr3JgYl0V7jwpuUm7fksalycZajx3loFn9TRUaviw==
 
-"@dqbd/tiktoken@^1.0.4":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@dqbd/tiktoken/-/tiktoken-1.0.6.tgz#96bfd0a4909726c61551a8c783493f01841bd163"
-  integrity sha512-umSdeZTy/SbPPKVuZKV/XKyFPmXSN145CcM3iHjBbmhlohBJg7vaDp4cPCW+xNlWL6L2U1sp7T2BD+di2sUKdA==
+"@dqbd/tiktoken@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@dqbd/tiktoken/-/tiktoken-1.0.7.tgz#612871cf91eba5599c804f100c573aa4d8596f57"
+  integrity sha512-bhR5k5W+8GLzysjk8zTMVygQZsgvf7W1F0IlL4ZQ5ugjo5rCyiwGM5d8DYriXspytfu98tv59niang3/T+FoDw==
 
 "@electron/asar@^3.2.1":
   version "3.2.3"
@@ -3940,7 +3940,7 @@
 
 "@fortaine/fetch-event-source@^3.0.6":
   version "3.0.6"
-  resolved "https://registry.npmjs.org/@fortaine/fetch-event-source/-/fetch-event-source-3.0.6.tgz"
+  resolved "https://registry.yarnpkg.com/@fortaine/fetch-event-source/-/fetch-event-source-3.0.6.tgz#b8552a2ca2c5202f5699b93a92be0188d422b06e"
   integrity sha512-621GAuLMvKtyZQ3IA6nlDWhV1V/7PGOTNIGLUifxt0KzM+dZIweJ6F3XvQF3QnqeNfS1N7WQ0Kil1Di/lhChEw==
 
 "@fractalwagmi/popup-connection@^1.0.18":
@@ -14190,7 +14190,7 @@ browser-level@^1.0.1:
 
 browser-or-node@^2.1.1:
   version "2.1.1"
-  resolved "https://registry.npmjs.org/browser-or-node/-/browser-or-node-2.1.1.tgz"
+  resolved "https://registry.yarnpkg.com/browser-or-node/-/browser-or-node-2.1.1.tgz#738790b3a86a8fc020193fa581273fbe65eaea0f"
   integrity sha512-8CVjaLJGuSKMVTxJ2DpBl5XnlNDiT4cQFeuCJJrvJmts9YrTZDizTX7PjC2s6W4x+MBGZeEY6dGMrF04/6Hgqg==
 
 browser-process-hrtime@^1.0.0:
@@ -15193,7 +15193,7 @@ chownr@^2.0.0:
   resolved "https://registry.npmjs.org/chownr/-/chownr-2.0.0.tgz"
   integrity sha512-bIomtDF5KGpdogkLd9VspvFzk9KfpyyGlS8YFVZl7TGPBHL5snIOnxeshwVgPteQ9b4Eydl+pVbIyE1DcvCWgQ==
 
-chromadb@^1.4.0:
+chromadb@1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/chromadb/-/chromadb-1.4.0.tgz#2cd3c9ca3f38327743b0b1046e86680f434f6b73"
   integrity sha512-FeIidtLSXhjqapdPmY+46QlB0rzf4ZWNwIyp8ZAkGF7su//78yozafA3ayor7bs6CK3T27C0isNVxZaoq0uQOg==
@@ -19131,7 +19131,7 @@ expect@^29.0.0, expect@^29.5.0:
 
 expr-eval@^2.0.2:
   version "2.0.2"
-  resolved "https://registry.npmjs.org/expr-eval/-/expr-eval-2.0.2.tgz"
+  resolved "https://registry.yarnpkg.com/expr-eval/-/expr-eval-2.0.2.tgz#fa6f044a7b0c93fde830954eb9c5b0f7fbc7e201"
   integrity sha512-4EMSHGOPSwAfBiibw3ndnP0AvjDWLsMvGOvWEZ2F96IGk0bIVdjQisOHxReSkE13mHcfbuCiXw+G4y0zv6N8Eg==
 
 express-graphql@^0.12.0:
@@ -22976,9 +22976,9 @@ is-alphanumerical@^2.0.0, is-alphanumerical@^2.0.1:
     is-decimal "^2.0.0"
 
 is-any-array@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/is-any-array/-/is-any-array-2.0.0.tgz#e71bc13741537c06afac03c07885967ef56d8742"
-  integrity sha512-WdPV58rT3aOWXvvyuBydnCq4S2BM1Yz8shKxlEpk/6x+GX202XRvXOycEFtNgnHVLoc46hpexPFx8Pz1/sMS0w==
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/is-any-array/-/is-any-array-2.0.1.tgz#9233242a9c098220290aa2ec28f82ca7fa79899e"
+  integrity sha512-UtilS7hLRu++wb/WBAw9bNuP1Eg04Ivn1vERJck8zJthEvXCBEBpGR/33u/xLKWEQf95803oalHrVDptcAvFdQ==
 
 is-arguments@^1.0.4, is-arguments@^1.1.1:
   version "1.1.1"
@@ -25387,13 +25387,14 @@ kuler@^2.0.0:
   resolved "https://registry.npmjs.org/kuler/-/kuler-2.0.0.tgz"
   integrity sha512-Xq9nH7KlWZmXAtodXDDRE7vs6DU1gTU8zYDHDiWLSip45Egwq3plLHzPn27NgvzL2r1LMPC1vdqh98sQxtqj4A==
 
-langchain@^0.0.57:
-  version "0.0.57"
-  resolved "https://registry.yarnpkg.com/langchain/-/langchain-0.0.57.tgz#84d332344c2786a54643aba072c7e07b1df039fd"
-  integrity sha512-Ik8SGMzl6woXkqmdWnNIqY7ds3+y1b6FLYDhCXpTT3fHHD+vsNgiapAAdJ/lkThnYQ0y0i3gtv1pHbjfsYS5qw==
+langchain@0.0.71:
+  version "0.0.71"
+  resolved "https://registry.yarnpkg.com/langchain/-/langchain-0.0.71.tgz#ec636355dd7c5077eeba15c4a8f35cb9a56209c9"
+  integrity sha512-xMaKOfNPdKn4diI5adhys6P9J/dHLq/oCtXraotbBeHvOeYkQ6Xo2ywtqQZN+OywhOUv/2Kg34QnFnKPDjn3xA==
   dependencies:
     "@anthropic-ai/sdk" "^0.4.3"
-    "@dqbd/tiktoken" "^1.0.4"
+    "@dqbd/tiktoken" "^1.0.7"
+    ansi-styles "^5.0.0"
     binary-extensions "^2.2.0"
     browser-or-node "^2.1.1"
     expr-eval "^2.0.2"
@@ -25407,6 +25408,7 @@ langchain@^0.0.57:
     uuid "^9.0.0"
     yaml "^2.2.1"
     zod "^3.21.4"
+    zod-to-json-schema "^3.20.4"
 
 language-subtag-registry@~0.3.2:
   version "0.3.22"
@@ -29361,7 +29363,7 @@ open@^8.0.9, open@^8.4.0, open@^8.4.2:
 
 openai@^3.2.0:
   version "3.2.1"
-  resolved "https://registry.npmjs.org/openai/-/openai-3.2.1.tgz"
+  resolved "https://registry.yarnpkg.com/openai/-/openai-3.2.1.tgz#1fa35bdf979cbde8453b43f2dd3a7d401ee40866"
   integrity sha512-762C9BNlJPbjjlWZi4WYK9iM2tAVAv0uUp1UmI34vb0CN5T2mjB/qM6RYBmNKMh/dN9fC+bxqPwWJZUTWW052A==
   dependencies:
     axios "^0.26.0"
@@ -29656,7 +29658,7 @@ p-memoize@^7.1.1:
 
 p-queue@^6.6.2:
   version "6.6.2"
-  resolved "https://registry.npmjs.org/p-queue/-/p-queue-6.6.2.tgz"
+  resolved "https://registry.yarnpkg.com/p-queue/-/p-queue-6.6.2.tgz#2068a9dcf8e67dd0ec3e7a2bcb76810faa85e426"
   integrity sha512-RwFpb72c/BhQLEXIZ5K2e+AhgNVmIejGlTgiB9MzZ0e93GRvqZ7uSi0dvRF7/XIXDeNkra2fNHBxTyPDGySpjQ==
   dependencies:
     eventemitter3 "^4.0.4"
@@ -39529,6 +39531,11 @@ zod-to-json-schema@3.17.1:
   version "3.17.1"
   resolved "https://registry.npmjs.org/zod-to-json-schema/-/zod-to-json-schema-3.17.1.tgz"
   integrity sha512-h1WLfvkdwM6lcRt5q09ytNh2OKcU13vY9D0FetN/7Erdd7lVraIiMkEnObg3KELm5EQlMqvi0r5nzMa0EA+8qw==
+
+zod-to-json-schema@^3.20.4:
+  version "3.21.0"
+  resolved "https://registry.yarnpkg.com/zod-to-json-schema/-/zod-to-json-schema-3.21.0.tgz#b6f2fc4284c44c0d0b7ed121620f2a0107609d1e"
+  integrity sha512-+KyFCzqKwE6CxMSZxEUBaGmdXzB09BoFebO+xef/ISE4cTfReQlyThYbS8aqd3uWkdt9fz5BGHsY0CbY+Ra9oA==
 
 zod@^3.18.0, zod@^3.21.4:
   version "3.21.4"

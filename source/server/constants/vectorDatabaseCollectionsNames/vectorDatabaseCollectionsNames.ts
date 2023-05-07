@@ -1,9 +1,8 @@
-export const zsbrybnikMainRepositoryCollectionName =
-  "zsbrybnik-main-repository";
+export const zsbrybnikMainRepositoryCollectionName = "zsbrybnikmainrepository";
 export const zsbrybnikFrontendCollectionsCollectionName =
-  "zsbrybnik-frontend-repository";
+  "zsbrybnikfrontendrepository";
 export const zsbrybnikBackendCollectionsCollectionName =
-  "zsbrybnik-backend-repository";
+  "zsbrybnikbackendrepository";
 
 const vectorDatabaseCollectionsNames: Set<string> = new Set([
   zsbrybnikMainRepositoryCollectionName,

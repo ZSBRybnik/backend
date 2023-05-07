@@ -21,6 +21,14 @@ const scanRepositoryToVectorStore = async ({
   });
   const documents: LangchainDocument<Record<string, any>>[] =
     await githubRepositoryVectorDataLoader.load();
+  /*console.log(rawDocuments);
+  const textSplitter = new RecursiveCharacterTextSplitter({
+    chunkSize: 1000,
+    chunkOverlap: 200,
+  });
+  const documents = await textSplitter.splitDocuments(rawDocuments);
+  console.log(documents);*/
+
   await Chroma.fromDocuments(documents, openAIEmbeddingsClient, {
     collectionName,
   });

@@ -1,12 +1,13 @@
 import { CronJob } from "cron";
+import { zsbrybnikFrontendCollectionsCollectionName } from "../../constants/vectorDatabaseCollectionsNames/vectorDatabaseCollectionsNames";
 import developerAgent from "../../langchain-agents/developer-agent/developer-agent";
 import scanRepositoryToVectorStore from "../../utils/scanRepositoryToVectorStore/scanRepositoryToVectorStore";
 
 const updateFrontendGithubRepositoryVectorData: CronJob = new CronJob(
-  "42 19 * * *",
+  "15 20 * * *",
   async (): Promise<void> => {
-    scanRepositoryToVectorStore({
-      collectionName: "zsbrybnik-frontend-repository",
+    await scanRepositoryToVectorStore({
+      collectionName: zsbrybnikFrontendCollectionsCollectionName,
       repositoryURL: "https://github.com/ZSBRybnik/frontend",
     });
     console.log(

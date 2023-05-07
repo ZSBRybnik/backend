@@ -67,6 +67,8 @@ const config: Linter.Config = {
     "lodash/import-scope": "off",
     "no-loops/no-loops": "error",
     "lodash/prefer-lodash-method": "off",
+    "node/no-unpublished-require": "off",
+    "node/no-unpublished-import": "off",
     "prettier/prettier": [
       "error",
       {

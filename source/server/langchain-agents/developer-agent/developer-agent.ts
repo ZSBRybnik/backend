@@ -43,7 +43,7 @@ const [
   vectorStoreFrontendRepositoryPromise,
   vectorStoreBackendRepositoryPromise,
 ]);
-Promise.all([
+await Promise.all([
   vectorStoreMainRepository.ensureCollection(),
   vectorStoreFrontendRepository.ensureCollection(),
   vectorStoreBackendRepository.ensureCollection(),
@@ -62,7 +62,7 @@ const vectorStoreFrontendRepositoryInfo = {
 };
 
 const vectorStoreBackendRepositoryInfo = {
-  name: "zsbrybnik-backend-repository",
+  name: zsbrybnikBackendCollectionsCollectionName,
   description: "zsbrybnik backend repository data",
   vectorStore: vectorStoreFrontendRepository,
 };
@@ -84,8 +84,8 @@ const { tools: backendRepositoryTools } = new VectorStoreToolkit(
 
 const developerAgent: AgentExecutor = await initializeAgentExecutor(
   [
-    ...mainRepositoryTools,
     ...frontendRepositoryTools,
+    ...mainRepositoryTools,
     ...backendRepositoryTools,
     ...langchainModelTools,
   ],
