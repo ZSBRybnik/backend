@@ -7,9 +7,7 @@ import { launch } from "puppeteer";
 
 const submitSelector = "button[type=submit]";
 (async () => {
-  const browser = await launch({
-    headless: false,
-  });
+  const browser = await launch();
   const page = (await browser.pages())[0];
   await page.goto("https://dashboard.fauna.com/accounts/login");
   const emailInput = await page.waitForSelector("#email");
