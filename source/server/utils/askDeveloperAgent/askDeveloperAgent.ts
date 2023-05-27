@@ -1,8 +1,10 @@
 import { join } from "path";
 import { python } from "pythonia";
+
 import type {
   AskDeveloperAgentArguments,
   AskDeveloperAgentOutput,
+  PythoniaOutput,
 } from "./askDeveloperAgent.types";
 
 const filePath = join(
@@ -16,22 +18,19 @@ const filePath = join(
 );
 
 console.log(filePath);
-const { ask_developer_agent: askDeveloperAgentInPython } = await python(
-  filePath,
-);
+const { ask_developer_agent: askDeveloperAgentInPython }: PythoniaOutput =
+  await python(filePath);
 
 const askDeveloperAgent = async ({
   prompt,
 }: AskDeveloperAgentArguments): Promise<AskDeveloperAgentOutput> => {
-  console.log("dupa");
   const output = {
-    output: askDeveloperAgentInPython(
-      "",
+    output: await askDeveloperAgentInPython(
+      "", // ggml-gpt4all-j-v1.3-groovy.bin
       "paraphrase-multilingual-mpnet-base-v2",
       prompt,
     ),
   };
-  console.log(output);
   return output;
 };
 

@@ -22,11 +22,20 @@ def ask_developer_agent(
         vectorstore=vector_store_main_repository
     )
     toolkit = VectorStoreToolkit(vectorstore_info=vectorstore_info)
-    llm = GPT4All(model=model_path, callbacks=callbacks,
-                  n_ctx=1000, verbose=False)
+    llm = GPT4All(model=model_path, backend='gptj', callbacks=callbacks,
+                  n_ctx=1024, verbose=False)
     agent_executor = create_vectorstore_agent(
         llm=llm,
         toolkit=toolkit,
-        verbose=True
+        verbose=True,
+        handle_parsing_errors=True
     )
-    agent_executor.run(prompt)
+    try:
+        response = agent_executor.run(prompt)
+    except ValueError as e:
+        response = str(e)
+        if not response.startswith("Could not parse LLM output: `"):
+            raise e
+        response = response.removeprefix("Could not parse LLM output: `").removesuffix("`")
+    return response
+    
