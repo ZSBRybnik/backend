@@ -1,6 +1,6 @@
 import {
   AgentExecutor,
-  initializeAgentExecutor,
+  initializeAgentExecutorWithOptions,
   VectorStoreToolkit,
 } from "langchain/agents";
 import { Chroma } from "langchain/vectorstores/chroma";
@@ -82,7 +82,7 @@ const { tools: backendRepositoryTools } = new VectorStoreToolkit(
   openAIClient,
 );
 
-const developerAgent: AgentExecutor = await initializeAgentExecutor(
+const developerAgent: AgentExecutor = await initializeAgentExecutorWithOptions(
   [
     ...frontendRepositoryTools,
     ...mainRepositoryTools,
@@ -90,7 +90,9 @@ const developerAgent: AgentExecutor = await initializeAgentExecutor(
     ...langchainModelTools,
   ],
   openAIClient,
-  "zero-shot-react-description",
+  {
+    agentType: "zero-shot-react-description",
+  },
 );
 
 export default developerAgent;
