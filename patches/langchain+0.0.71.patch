@@ -1,0 +1,13 @@
+diff --git a/node_modules/langchain/dist/vectorstores/chroma.cjs b/node_modules/langchain/dist/vectorstores/chroma.cjs
+index 6cbf4de..00b882d 100644
+--- a/node_modules/langchain/dist/vectorstores/chroma.cjs
++++ b/node_modules/langchain/dist/vectorstores/chroma.cjs
+@@ -151,7 +151,7 @@ class Chroma extends base_js_1.VectorStore {
+     }
+     static async imports() {
+         try {
+-            const { ChromaClient } = await import("chromadb");
++            const { ChromaClient } = require("chromadb");
+             return { ChromaClient };
+         }
+         catch (e) {

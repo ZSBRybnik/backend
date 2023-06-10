@@ -325,6 +325,7 @@
     "openweather-apis": "^4.4.2",
     "otplib": "^12.0.1",
     "parse-entities": "^4.0.0",
+    "patch-package": "^7.0.0",
     "pg-connection-string": "^2.5.0",
     "pg-mem": "^2.6.3",
     "piscina": "^3.2.0",
