@@ -15,6 +15,8 @@ import deleteUserHandler from "~backend/source/server/rest/routes/user/deleteUse
 import updateUserHandler from "~backend/source/server/rest/routes/user/updateUserHandler/updateUserHandler";
 import verifyTokenHandler from "~backend/source/server/rest/routes/verifyTokenHandler/verifyTokenHandler";
 import generateClasses from "../../routes/discord/classes/generateClasses/generateClasses";
+import getPaymentLink from "../../routes/payment/solana/getPaymentLink/getPaymentLink";
+import processPayment from "../../routes/payment/solana/processPayment/processPayment";
 import getWeather from "../../routes/weather/getWeather/getWeather";
 
 type ApplyRoutesArguments = {
@@ -40,6 +42,8 @@ const applyRoutes: ApplyRoutes = ({ instance }: ApplyRoutesArguments): void => {
   instance.delete(Routes.PageWithName, deletePageHandler);
   instance.get(Routes.Weather, getWeather);
   instance.get(Routes.Classes, generateClasses);
+  instance.get(Routes.SolanaPayment, getPaymentLink);
+  instance.post(Routes.SolanaPayment, processPayment);
 };
 
 export default applyRoutes;

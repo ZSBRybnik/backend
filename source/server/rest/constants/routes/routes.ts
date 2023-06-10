@@ -11,6 +11,7 @@ enum Routes {
   PageWithName = "/page/:name",
   Weather = "/weather",
   Classes = "/classes",
+  SolanaPayment = "/payment/solana",
 }
 
 export default Routes;
