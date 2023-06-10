@@ -3,15 +3,10 @@ import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import { clusterApiUrl, Connection, PublicKey } from "@solana/web3.js";
 import { BigNumber } from "bignumber.js";
 import createHandler from "~backend/source/server/rest/utils/createHandler/createHandler";
-import {
-  CreateHandlerOutput,
-  RawHandlerArguments,
-} from "~backend/source/server/rest/utils/createHandler/createHandler.types";
+import { CreateHandlerOutput } from "~backend/source/server/rest/utils/createHandler/createHandler.types";
 
 const { handler: processPayment }: CreateHandlerOutput = createHandler({
-  rawHandler: async ({
-    response,
-  }: RawHandlerArguments<Record<string, unknown>>): Promise<void> => {
+  rawHandler: async (): Promise<void> => {
     const endpoint = clusterApiUrl(WalletAdapterNetwork.Devnet);
     const connection = new Connection(endpoint, "confirmed");
     const { signature } = await findReference(

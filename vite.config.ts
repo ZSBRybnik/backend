@@ -1,8 +1,8 @@
 import reactPlugin from "@vitejs/plugin-react";
-import { defineConfig } from "vite";
+import { defineConfig, PluginOption } from "vite";
 
 export default defineConfig({
-  plugins: [reactPlugin()],
+  plugins: [reactPlugin() as PluginOption],
   define: {
     global: "window",
   },
