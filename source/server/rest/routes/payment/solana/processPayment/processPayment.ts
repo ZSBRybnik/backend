@@ -14,13 +14,13 @@ const { handler: processPayment }: CreateHandlerOutput = createHandler({
       new PublicKey("3UYtgxgGnWFV6CCoTDqywV392sDB1xkMt7hKW3CWrraD"),
       { finality: "confirmed" },
     );
-    try {
-      await validateTransfer(connection, signature, {
-        recipient: new PublicKey(process.env.SOLANA_MERCHANT_WALLET || ""),
-        amount: new BigNumber(20),
-      });
-      //response.sendStatus();
-    } catch {}
+    //try {
+    await validateTransfer(connection, signature, {
+      recipient: new PublicKey(process.env.SOLANA_MERCHANT_WALLET || ""),
+      amount: new BigNumber(20),
+    });
+    //response.sendStatus();
+    //} catch {}
   },
 });
 

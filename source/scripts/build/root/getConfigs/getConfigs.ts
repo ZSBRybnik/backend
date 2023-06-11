@@ -17,6 +17,7 @@ type GetConfings = (argument: GetConfingsArguments) => Configuration[];
 
 const getConfings: GetConfings = ({
   mode,
+  targetType,
 }: GetConfingsArguments): Configuration[] => {
   const configs: ConfigsMapper = {
     [TargetType.Server]: () => {
@@ -38,7 +39,7 @@ const getConfings: GetConfings = ({
       ];
     },
   };
-  return configs[TargetType.Serverless]();
+  return configs[targetType]();
 };
 
 export default getConfings;

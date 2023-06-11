@@ -17,7 +17,7 @@ const getOutput = ({
   return {
     path: join(process.cwd(), destination, "source"),
     publicPath: getOutputPublicPath(),
-    filename: "index.js",
+    filename: "[name].js",
     libraryTarget:
       extendedMode === ExtendedMode.Serverless ? "commonjs2" : undefined,
     library: extendedMode === ExtendedMode.Serverless ? "zsbrybnik" : undefined,

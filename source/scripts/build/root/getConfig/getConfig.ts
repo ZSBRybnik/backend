@@ -12,7 +12,7 @@ import getOutput from "~backend/source/scripts/build/wrappers/getOutput/getOutpu
 import getPlugins from "~backend/source/scripts/build/wrappers/getPlugins/getPlugins";
 import getResolve from "~backend/source/scripts/build/wrappers/getResolve/getResolve";
 
-type GetConfigArguments = {
+export type GetConfigArguments = {
   extendedMode: ExtendedMode;
   targetToModern: boolean;
   mode: Mode;
@@ -27,7 +27,7 @@ const getConfig: GetConfig = ({
 }: GetConfigArguments): Configuration => {
   return {
     mode: mode === Mode.Development ? mode : Mode.Production,
-    entry: getEntryPoint(),
+    entry: getEntryPoint({ extendedMode }),
     devtool: "source-map",
     target: getTarget(),
     optimization: getOptimization({ mode }),
