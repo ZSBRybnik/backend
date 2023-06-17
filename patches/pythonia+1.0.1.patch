@@ -1,0 +1,25 @@
+diff --git a/node_modules/pythonia/src/pythonia/Bridge.js b/node_modules/pythonia/src/pythonia/Bridge.js
+index 6989302..feebac5 100644
+--- a/node_modules/pythonia/src/pythonia/Bridge.js
++++ b/node_modules/pythonia/src/pythonia/Bridge.js
+@@ -3,7 +3,7 @@ const { JSBridge } = require('./jsi')
+ const errors = require('./errors')
+ const log = process.env.DEBUG ? console.debug : () => {}
+ // const log = console.log
+-const REQ_TIMEOUT = 100000
++const REQ_TIMEOUT = Number.MAX_SAFE_INTEGER;
+ 
+ class BridgeException extends Error {
+   constructor (...a) {
+diff --git a/node_modules/pythonia/src/pythonia/__pycache__/Bridge.cpython-310.pyc b/node_modules/pythonia/src/pythonia/__pycache__/Bridge.cpython-310.pyc
+new file mode 100644
+index 0000000..696fe45
+Binary files /dev/null and b/node_modules/pythonia/src/pythonia/__pycache__/Bridge.cpython-310.pyc differ
+diff --git a/node_modules/pythonia/src/pythonia/__pycache__/json_patch.cpython-310.pyc b/node_modules/pythonia/src/pythonia/__pycache__/json_patch.cpython-310.pyc
+new file mode 100644
+index 0000000..7d5334e
+Binary files /dev/null and b/node_modules/pythonia/src/pythonia/__pycache__/json_patch.cpython-310.pyc differ
+diff --git a/node_modules/pythonia/src/pythonia/__pycache__/proxy.cpython-310.pyc b/node_modules/pythonia/src/pythonia/__pycache__/proxy.cpython-310.pyc
+new file mode 100644
+index 0000000..d9d129d
+Binary files /dev/null and b/node_modules/pythonia/src/pythonia/__pycache__/proxy.cpython-310.pyc differ
