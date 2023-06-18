@@ -7,9 +7,5 @@ export type AskDeveloperAgentOutput = {
 };
 
 export type PythoniaOutput = {
-  ask_developer_agent: (
-    modelPath: string,
-    embeddingsModelName: string,
-    prompt: string,
-  ) => Promise<string>;
+  ask_developer_agent: (agent: any, prompt: string) => Promise<string>;
 };

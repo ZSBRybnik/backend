@@ -1,5 +1,6 @@
 import { join } from "path";
 import { python } from "pythonia";
+import developerAgent from "../../langchain-agents/developer-agent-py/developer-agent-py";
 
 import type {
   AskDeveloperAgentArguments,
@@ -17,21 +18,15 @@ const filePath = join(
   "ask_developer_agent.py",
 );
 
-console.log(filePath);
 const { ask_developer_agent: askDeveloperAgentInPython }: PythoniaOutput =
   await python(filePath);
 
 const askDeveloperAgent = async ({
   prompt,
 }: AskDeveloperAgentArguments): Promise<AskDeveloperAgentOutput> => {
-  const output = {
-    output: await askDeveloperAgentInPython(
-      "", // ggml-gpt4all-j-v1.3-groovy.bin
-      "paraphrase-multilingual-mpnet-base-v2",
-      prompt,
-    ),
+  return {
+    output: await (askDeveloperAgentInPython as any)(developerAgent, prompt),
   };
-  return output;
 };
 
 export default askDeveloperAgent;
