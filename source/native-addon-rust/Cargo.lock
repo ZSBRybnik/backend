@@ -604,6 +604,7 @@ dependencies = [
  "colored",
  "hashlink",
  "indexmap",
+ "lazy_static",
  "linked_hash_set",
  "napi",
  "napi-build",
