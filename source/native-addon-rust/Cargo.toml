@@ -8,9 +8,27 @@ exclude = ["./destination/index.node"]
 [lib]
 crate-type = ["cdylib"]
 
-[dependencies]
-
 [dependencies.neon]
 version = "0.10"
 default-features = false
 features = ["napi-6"]
+
+[dependencies]
+napi = { version = "2.12.5" }
+napi-build = { version = "2.0.1" }
+napi-derive = { version = "2.12.3" }
+napi-sys = { version = "2.2.3" }
+rayon = { version = "1.7.0" }
+tokio = { version = "1.29.1" }
+async-trait = { version = "0.1.71" }
+async-recursion = { version = "1.0.4" }
+async-scoped = { version = "0.7.1" }
+hashlink = { version = "0.8.3" }
+indexmap = { version = "1.9.3" }
+linked_hash_set = { version = "0.1.4" }
+serde = { version = "1.0.171" }
+serde_json = { version = "1.0.100" }
+cfg-if = "1.0.0"
+colored = "2.0.4"
+chrono = "0.4.26"
+rand = "0.8.4"
