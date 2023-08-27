@@ -5,6 +5,7 @@
   "main": "./destination/index.dll",
   "scripts": {
     "build": "cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/scripts/runner/commands/build/build.ts",
+    "bun-build": "cross-env bun ./source/scripts/runner/commands/build/build.ts",
     "install": "yarn run build"
   },
   "dependencies": {

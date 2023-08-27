@@ -3,6 +3,7 @@ import { existsSync, mkdirSync } from "fs";
 import { platform } from "os";
 import { join } from "path";
 import { $ } from "zx";
+import runtime, { Runtime } from "~backend/source/shared/constants/runtime";
 
 const umlFolderPath = join(process.cwd(), "uml");
 
@@ -12,8 +13,12 @@ const umlFolderPath = join(process.cwd(), "uml");
     $.shell = "cmd";
     $.prefix = "";
   }
-  const generatePostgreSQLSchemaPromise = $`cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/server/prisma/postgresql/index.ts`;
-  const generateMongoDBSchemaPromise = $`cross-env TS_NODE_PROJECT=tsconfig.json ts-node ./source/server/prisma/mongodb/index.ts`;
+  const invokeTsNodeOrBunCommand: string =
+    runtime === Runtime.Bun ? "bun" : "TS_NODE_PROJECT=tsconfig.json ts-node";
+  const invokeYarnOrBunCommand: string =
+    runtime === Runtime.Bun ? "bun" : "yarn";
+  const generatePostgreSQLSchemaPromise = $`cross-env ${invokeTsNodeOrBunCommand} ./source/server/prisma/postgresql/index.ts`;
+  const generateMongoDBSchemaPromise = $`cross-env ${invokeTsNodeOrBunCommand} ./source/server/prisma/mongodb/index.ts`;
   await Promise.all([
     generatePostgreSQLSchemaPromise,
     generateMongoDBSchemaPromise,
@@ -53,7 +58,7 @@ const umlFolderPath = join(process.cwd(), "uml");
     "utf-8",
   );*/
   /** These commands can't be split, because they are blocking access to prisma engine in the file system */
-  await $`yarn run generate-postgresql-types && yarn run generate-mongodb-types`;
+  await $`${invokeYarnOrBunCommand} run generate-postgresql-types && ${invokeYarnOrBunCommand} run generate-mongodb-types`;
   if (!existsSync(umlFolderPath)) {
     mkdirSync(umlFolderPath);
   }

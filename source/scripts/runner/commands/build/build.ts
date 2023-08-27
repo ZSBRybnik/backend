@@ -4,6 +4,7 @@ import { $ } from "zx";
 import scriptsKeys from "~backend/source/scripts/build/constants/scriptsKeys/scriptsKeys";
 import source from "~backend/source/scripts/build/constants/source/source";
 import Programs from "~backend/source/scripts/runner/types/programs/programs";
+import runtime, { Runtime } from "~backend/source/shared/constants/runtime";
 
 type BuildFlagsOptions = {
   docker: string;
@@ -28,9 +29,15 @@ type BuildFlagsOptions = {
     //  await $`${Programs.Docker} build -t web -f ./dockerfiles/web/Dockerfile.web .`;
     //}
   } else {
-    const golangBuildPromise = $`cd ./${source}/native-addon-go && ${Programs.CrossEnvironment} ${Programs.Yarn} run build && cd .. && cd ..`;
-    const rustBuildPromise = $`cd ./${source}/native-addon-rust && ${Programs.CrossEnvironment} ${Programs.Yarn} run build && cd .. && cd ..`;
+    const invokeYarnOrBunCommand: string =
+      runtime === Runtime.Bun ? "bun" : "yarn";
+    const golangBuildPromise = $`cd ./${source}/native-addon-go && ${
+      Programs.CrossEnvironment
+    } ${invokeYarnOrBunCommand} run ${
+      runtime === Runtime.Bun ? "bun-" : ""
+    }build && cd .. && cd ..`;
+    const rustBuildPromise = $`cd ./${source}/native-addon-rust && ${Programs.CrossEnvironment} ${invokeYarnOrBunCommand} run build && cd .. && cd ..`;
     await Promise.all([golangBuildPromise, rustBuildPromise]);
-    await $`${Programs.Yarn} run ${scriptsKeys["remove-build"]} && ${Programs.CrossEnvironment} ${Programs.TypeScriptCompiler} --project tsconfig.noemit.json && ${Programs.CrossEnvironment} TS_NODE_PROJECT=tsconfig.json ${Programs.Webpack} --mode production --env target=${target}`;
+    await $`${invokeYarnOrBunCommand} run ${scriptsKeys["remove-build"]} && ${Programs.CrossEnvironment} ${Programs.TypeScriptCompiler} --project tsconfig.noemit.json && ${Programs.CrossEnvironment} TS_NODE_PROJECT=tsconfig.json ${Programs.Webpack} --mode production --env target=${target}`;
   }
 })();

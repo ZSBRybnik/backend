@@ -1,16 +1,14 @@
-FROM node:latest AS build
+FROM oven/bun:latest AS build
 ENV PATH="/root/.cargo/bin:${PATH}"
 WORKDIR /home/backend
 RUN apt-get -qq update &&\
     apt-get install -y -q build-essential curl golang-go &&\
     curl https://sh.rustup.rs -sSf | sh -s -- -y
 COPY . .
-RUN yarn config set network-timeout 1000000000 -g &&\
-    yarn --ignore-engines &&\
-    yarn generate-postgresql-types &&\
-    yarn generate-mongodb-types &&\
-    yarn run build 
-FROM jarredsumner/bun:edge
+RUN bun install --yarn &&\
+    bun run bun-generate-types &&\
+    bun run bun-build 
+FROM oven/bun:latest
 EXPOSE 3000
 WORKDIR /home/backend
 CMD ["bun", "index.js"]

@@ -45,7 +45,12 @@
     },
     "plugins": [{
       "transform": "typescript-transform-paths"
-    }]
+    }],
+    "typeRoots": [
+      "node_modules/bun-types",
+      "node_modules/@types"
+    ],
+    "types": ["bun-types"]
   },
   "include": [".", "../frontend"],
   "exclude": [
@@ -57,6 +62,7 @@
     "../frontend/ios",
     "../frontend/destination",
     "../frontend/coverage",
-    "../frontend/node_modules"
+    "../frontend/node_modules",
+    "./source/wasm-assemblyscript"
   ]
 }
