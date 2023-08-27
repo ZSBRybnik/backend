@@ -18,12 +18,12 @@ createSchema({
       provider: "node node_modules/prisma-enum-generator",
       output: "../../../node_modules/@prisma/mongodb-tables",
     },
-    {
+    /*{
       name: "dbml",
       provider: "prisma-dbml-generator",
       outputName: "mongodb.dbml",
       output: "../../../uml",
-    },
+    },*/
     {
       name: "json",
       provider: "prisma-json-schema-generator",

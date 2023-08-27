@@ -24,12 +24,12 @@ createSchema({
       provider: "node node_modules/prisma-enum-generator",
       output: "../../../node_modules/@prisma/postgresql-tables",
     },
-    {
+    /*{
       name: "dbml",
       provider: "prisma-dbml-generator",
       outputName: "postgresql.dbml",
       output: "../../../uml",
-    },
+    },*/
     {
       name: "json",
       provider: "prisma-json-schema-generator",

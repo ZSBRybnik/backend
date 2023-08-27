@@ -13,12 +13,6 @@ generator tables {
   output   = "../../../node_modules/@prisma/postgresql-tables"
 }
 
-generator dbml {
-  provider   = "prisma-dbml-generator"
-  outputName = "postgresql.dbml"
-  output     = "../../../uml"
-}
-
 generator json {
   provider = "prisma-json-schema-generator"
   output   = "../../../uml/postgresql"

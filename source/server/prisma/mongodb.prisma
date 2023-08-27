@@ -13,12 +13,6 @@ generator tables {
   output   = "../../../node_modules/@prisma/mongodb-tables"
 }
 
-generator dbml {
-  provider   = "prisma-dbml-generator"
-  outputName = "mongodb.dbml"
-  output     = "../../../uml"
-}
-
 generator json {
   provider = "prisma-json-schema-generator"
   output   = "../../../uml/mongodb"

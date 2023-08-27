@@ -2,6 +2,7 @@ import { Command } from "commander";
 import { platform } from "os";
 import { $ } from "zx";
 import Programs from "~backend/source/scripts/runner/types/programs/programs";
+import runtime, { Runtime } from "~backend/source/shared/constants/runtime";
 
 (async (): Promise<void> => {
   const program: Command = new Command();
@@ -14,5 +15,7 @@ import Programs from "~backend/source/scripts/runner/types/programs/programs";
     $.shell = "cmd";
     $.prefix = "";
   }
-  await $`${Programs.CrossEnvironment} node ./destination/source/index.js`;
+  await $`${Programs.CrossEnvironment} ${
+    runtime === Runtime.Bun ? "bun" : "node"
+  } ./destination/source/index.js`;
 })();
