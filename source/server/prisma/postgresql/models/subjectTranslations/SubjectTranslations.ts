@@ -8,14 +8,14 @@ const schemixSubjectTranslationsModel: PrismaModel = createModel(
       .int("id", {
         id: true,
         raw: /* prisma */ ` 
-            @default(autoincrement())
-          `,
+          @default(autoincrement())
+        `.trim(),
       })
       .enum("language", schemixLanguagesEnum)
       .string("name", {
         raw: /* prisma */ `
-            @database.VarChar(100)
-          `,
+          @database.VarChar(100)
+        `.trim(),
       })
       .int("subjectId", {
         map: "subject_id",

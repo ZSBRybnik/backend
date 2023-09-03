@@ -8,7 +8,7 @@ const contentItemsOnPostsAndSupbages = createModel(
     ContentItemsOnPostsAndSupbagesModel.string("mongo_id", {
       map: "_id",
       id: true,
-      raw: /* prisma */ `@default(auto()) @database.ObjectId`,
+      raw: /* prisma */ `@default(auto()) @database.ObjectId`.trim(),
     })
       .int("id", { unique: true })
       .map("content_items_on_posts_and_subpages")

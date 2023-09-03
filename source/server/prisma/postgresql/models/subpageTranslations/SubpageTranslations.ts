@@ -8,14 +8,14 @@ const schemixSubpageTranslationsModel: PrismaModel = createModel(
       .int("id", {
         id: true,
         raw: /* prisma */ `
-        @default(autoincrement())
-        `,
+          @default(autoincrement())
+        `.trim(),
       })
       .enum("language", schemixLanguagesEnum)
       .string("subpageName", {
         raw: /* prisma */ `
-            @database.VarChar(255)
-          `,
+          @database.VarChar(255)
+        `.trim(),
       })
       .relation("subpageTranslation", schemixSubpageModel, {
         fields: ["subpageName"],
@@ -23,8 +23,8 @@ const schemixSubpageTranslationsModel: PrismaModel = createModel(
       })
       .string("title", {
         raw: /* prisma */ ` 
-            @database.VarChar(255)
-          `,
+          @database.VarChar(255)
+        `.trim(),
       })
       .map("subpage_translations");
   },

@@ -9,15 +9,15 @@ const schemixClassModel: PrismaModel = createModel(
       .int("id", {
         id: true,
         raw: /* prisma */ ` 
-            @default(autoincrement())
-          `,
+          @default(autoincrement())
+        `.trim(),
       })
       .relation("users", schemixUserModel, { list: true })
       .relation("subjects", schemixSubjectsOnClassesModel, { list: true })
       .string("name", {
         raw: /* prisma */ ` 
-            @database.VarChar(10)
-          `,
+          @database.VarChar(10)
+        `.trim(),
       })
       .map("classes");
   },

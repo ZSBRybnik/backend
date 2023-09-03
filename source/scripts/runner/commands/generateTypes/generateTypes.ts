@@ -14,7 +14,9 @@ const umlFolderPath = join(process.cwd(), "uml");
     $.prefix = "";
   }
   const invokeTsNodeOrBunCommand: string =
-    runtime === Runtime.Bun ? "bun" : "TS_NODE_PROJECT=tsconfig.json ts-node";
+    runtime === Runtime.Bun
+      ? "bun"
+      : "TS_NODE_PROJECT=tsconfig.node.json ts-node";
   const invokeYarnOrBunCommand: string =
     runtime === Runtime.Bun ? "bun" : "yarn";
   const generatePostgreSQLSchemaPromise = $`cross-env ${invokeTsNodeOrBunCommand} ./source/server/prisma/postgresql/index.ts`;

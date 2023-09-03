@@ -10,8 +10,8 @@ const schemixPostModel: PrismaModel = createModel(
       .int("id", {
         id: true,
         raw: /* prisma */ ` 
-            @default(autoincrement())
-          `,
+          @default(autoincrement())
+        `.trim(),
       })
       .boolean("isDisabled", { map: "is_disabled" })
       .enum("modifiers", schemixPostAndSubpageModifiersEnum, { list: true })
@@ -20,8 +20,8 @@ const schemixPostModel: PrismaModel = createModel(
       })
       .string("title", {
         raw: /* prisma */ `
-            @database.VarChar(255)
-          `,
+          @database.VarChar(255)
+        `.trim(),
       })
       .relation(
         "contentItemsOnPostsAndSubpages",
@@ -39,8 +39,8 @@ const schemixPostModel: PrismaModel = createModel(
       })
       .string("brief", {
         raw: /* prisma */ `
-            @database.VarChar(255)
-          `,
+          @database.VarChar(255)
+        `.trim(),
       })
       .map("posts");
   },

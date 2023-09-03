@@ -8,7 +8,7 @@ const pageModel = createModel((pageModel) => {
     .string("mongo_id", {
       map: "_id",
       id: true,
-      raw: /* prisma */ `@default(auto()) @database.ObjectId`,
+      raw: /* prisma */ `@default(auto()) @database.ObjectId`.trim(),
     })
     .boolean("isDisabled", { map: "is_disabled" })
     .string("name", {

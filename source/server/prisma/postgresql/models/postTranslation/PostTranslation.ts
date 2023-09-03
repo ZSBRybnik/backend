@@ -9,8 +9,8 @@ const schemixPostTranslationModel: PrismaModel = createModel(
       .int("id", {
         id: true,
         raw: /* prisma */ `
-            @default(autoincrement())
-          `,
+          @default(autoincrement())
+        `.trim(),
       })
       .enum("language", schemixLanguagesEnum)
       .string("title")

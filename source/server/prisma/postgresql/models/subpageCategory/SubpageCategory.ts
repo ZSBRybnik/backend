@@ -10,7 +10,7 @@ const schemixSubpageCategoryModel: PrismaModel = createModel(
         id: true,
         raw: /* prisma */ `
           @default(autoincrement())
-      `,
+        `.trim(),
       })
       .string("subpageName", {
         map: "subpage_name",

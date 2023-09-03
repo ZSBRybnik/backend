@@ -11,7 +11,7 @@ const model: PrismaModel = createModel((UserModal: PrismaModel): void => {
   UserModal.string("mongo_id", {
     map: "_id",
     id: true,
-    raw: /* prisma */ `@default(auto()) @database.ObjectId`,
+    raw: /* prisma */ `@default(auto()) @database.ObjectId`.trim(),
   })
     .int("id", {
       unique: true,

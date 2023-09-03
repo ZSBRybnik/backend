@@ -7,14 +7,14 @@ const schemixSubpageCategoryTranslationsModel: PrismaModel = createModel(
     SubjectTranslationsModel.int("id", {
       id: true,
       raw: /* prisma */ `
-          @default(autoincrement())
-        `,
+        @default(autoincrement())
+      `.trim(),
     })
       .enum("language", schemixLanguagesEnum)
       .string("name", {
         raw: /* prisma */ `
-            @database.VarChar(255)
-          `,
+          @database.VarChar(255)
+        `.trim(),
       })
       .int("subpageCategoryId", {
         map: "subpage_category_id",

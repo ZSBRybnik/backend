@@ -12,8 +12,8 @@ const schemixSubpageModel: PrismaModel = createModel(
       .string("name", {
         id: true,
         raw: /* prisma */ `
-            @database.VarChar(255)
-          `,
+          @database.VarChar(255)
+        `.trim(),
       })
       .enum("modifiers", schemixPostAndSubpageModifiersEnum, { list: true })
       .relation(

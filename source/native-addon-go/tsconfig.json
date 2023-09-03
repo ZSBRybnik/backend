@@ -17,7 +17,7 @@
     "sourceMap": true,
     "alwaysStrict": true,
     "module": "NodeNext",
-    "moduleResolution": "node",
+    "moduleResolution": "NodeNext",
     "resolveJsonModule": true,
     "strictNullChecks": true,
     "noImplicitAny": true,

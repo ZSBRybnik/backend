@@ -12,8 +12,8 @@ const schemixUserModel: PrismaModel = createModel(
     UserModel.int("id", {
       id: true,
       raw: /* prisma */ `
-          @default(autoincrement())
-      `,
+        @default(autoincrement())
+      `.trim(),
     })
       .boolean("isDisabled", { map: "is_disabled" })
       .enum("modifiers", schemixUserModifiers, { list: true })
@@ -34,32 +34,32 @@ const schemixUserModel: PrismaModel = createModel(
       .string("login", {
         unique: true,
         raw: /* prisma */ `
-            @database.VarChar(255)
-        `,
+          @database.VarChar(255)
+        `.trim(),
       })
       .string("password", {
         raw: /* prisma */ `
-            @database.VarChar(255)
-        `,
+          @database.VarChar(255)
+        `.trim(),
       })
       .string("email", {
         unique: true,
         raw: /* prisma */ `
-            @database.VarChar(255)
-        `,
+          @database.VarChar(255)
+        `.trim(),
       })
       .string("authenticatorCode", {
         optional: true,
         raw: /* prisma */ `
-            @database.VarChar(16)
-        `,
+          @database.VarChar(16)
+        `.trim(),
         map: "authenticator_code",
       })
       .string("phoneNumber", {
         optional: true,
         raw: /* prisma */ ` 
-            @database.VarChar(22)
-        `,
+          @database.VarChar(22)
+        `.trim(),
         map: "phone_number",
       })
       .int("lockerNumber", {
@@ -75,8 +75,8 @@ const schemixUserModel: PrismaModel = createModel(
         unique: true,
         map: "discord_id",
         raw: /* prisma */ `
-            @database.VarChar(18)
-        `,
+          @database.VarChar(18)
+        `.trim(),
       })
       .map("users");
   },

@@ -9,8 +9,8 @@ const schemixProductAllergensModel: PrismaModel = createModel(
       .int("id", {
         id: true,
         raw: /* prisma */ ` 
-            @default(autoincrement())
-          `,
+          @default(autoincrement())
+        `.trim(),
       })
       .relation("allergensOnProducts", schemixAllergensOnProductsModel, {
         list: true,

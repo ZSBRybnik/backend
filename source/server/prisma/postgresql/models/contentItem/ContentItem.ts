@@ -11,7 +11,7 @@ const schemixContentItemModel: PrismaModel = createModel(
         id: true,
         raw: /* prisma */ `
           @default(autoincrement())
-        `,
+        `.trim(),
       })
       .relation(
         "contentItemsOnPostsAndSubpages",
@@ -25,8 +25,8 @@ const schemixContentItemModel: PrismaModel = createModel(
       })
       .string("content", {
         raw: /* prisma */ `
-            @database.Text
-          `,
+          @database.Text
+        `.trim(),
       })
       .map("content_items");
   },

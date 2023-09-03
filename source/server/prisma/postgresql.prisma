@@ -298,6 +298,24 @@ enum UserModifiers {
   bannedReactingOnFeed
 }
 
+model ProductAllergensTranslations {
+  id                  Int              @id @default(autoincrement())
+  language            Languages
+  name                String
+  allergenId          Int              @map("allergen_id")
+  allergenTranslation ProductAllergens @relation(fields: [allergenId], references: [id])
+
+  @@map("product_allergens_translations")
+}
+
+model ProductAllergens {
+  id                          Int                            @id @default(autoincrement())
+  allergensOnProducts         AllergensOnProducts[]
+  productAllergenTranslations ProductAllergensTranslations[]
+
+  @@map("product_allergens")
+}
+
 model ContentItem {
   id                             Int                              @id @default(autoincrement())
   contentItemsOnPostsAndSubpages ContentItemsOnPostsAndSubpages[]
@@ -465,24 +483,6 @@ model Product {
   allergensOnProducts AllergensOnProducts[]
 
   @@map("products")
-}
-
-model ProductAllergensTranslations {
-  id                  Int              @id @default(autoincrement())
-  language            Languages
-  name                String
-  allergenId          Int              @map("allergen_id")
-  allergenTranslation ProductAllergens @relation(fields: [allergenId], references: [id])
-
-  @@map("product_allergens_translations")
-}
-
-model ProductAllergens {
-  id                          Int                            @id @default(autoincrement())
-  allergensOnProducts         AllergensOnProducts[]
-  productAllergenTranslations ProductAllergensTranslations[]
-
-  @@map("product_allergens")
 }
 
 model AllergensOnProducts {

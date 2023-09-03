@@ -9,8 +9,8 @@ const schemixSubjectModel: PrismaModel = createModel(
       .int("id", {
         id: true,
         raw: /* prisma */ ` 
-            @default(autoincrement())
-          `,
+          @default(autoincrement())
+        `.trim(),
       })
       .relation("subjectTranslations", schemixSubjectTranslationsModel, {
         list: true,

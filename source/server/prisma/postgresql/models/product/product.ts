@@ -7,8 +7,8 @@ const schemixProductModel: PrismaModel = createModel(
     ProductModel.int("id", {
       id: true,
       raw: /* prisma */ ` 
-          @default(autoincrement())
-        `,
+        @default(autoincrement())
+      `.trim(),
     })
       .relation("orders", schemixOrderModel, {
         fields: ["orderId"],
@@ -19,15 +19,15 @@ const schemixProductModel: PrismaModel = createModel(
       })
       .string("name", {
         raw: /* prisma */ ` 
-            @database.VarChar(255)
-          `,
+          @database.VarChar(255)
+        `.trim(),
       })
       .decimal("price")
       .int("quantity")
       .string("description", {
         raw: /* prisma */ ` 
-            @database.Text
-          `,
+          @database.Text
+        `.trim(),
       })
       .relation("allergensOnProducts", schemixAllergensOnProductsModel, {
         list: true,

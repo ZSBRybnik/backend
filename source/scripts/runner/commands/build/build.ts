@@ -38,6 +38,6 @@ type BuildFlagsOptions = {
     }build && cd .. && cd ..`;
     const rustBuildPromise = $`cd ./${source}/native-addon-rust && ${Programs.CrossEnvironment} ${invokeYarnOrBunCommand} run build && cd .. && cd ..`;
     await Promise.all([golangBuildPromise, rustBuildPromise]);
-    await $`${invokeYarnOrBunCommand} run ${scriptsKeys["remove-build"]} && ${Programs.CrossEnvironment} ${Programs.TypeScriptCompiler} --project tsconfig.noemit.json && ${Programs.CrossEnvironment} TS_NODE_PROJECT=tsconfig.json ${Programs.Webpack} --mode production --env target=${target}`;
+    await $`${invokeYarnOrBunCommand} run ${scriptsKeys["remove-build"]} && ${Programs.CrossEnvironment} ${Programs.TypeScriptCompiler} --project tsconfig.noemit.json && ${Programs.CrossEnvironment} TS_NODE_PROJECT=tsconfig.node.json ${Programs.Webpack} --mode production --env target=${target}`;
   }
 })();

@@ -1,6 +1,6 @@
 import { findReference, validateTransfer } from "@solana/pay";
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
-import { clusterApiUrl, Connection, PublicKey } from "@solana/web3.js";
+import { Connection, PublicKey, clusterApiUrl } from "@solana/web3.js";
 import { BigNumber } from "bignumber.js";
 import createHandler from "~backend/source/server/rest/utils/createHandler/createHandler";
 import { CreateHandlerOutput } from "~backend/source/server/rest/utils/createHandler/createHandler.types";

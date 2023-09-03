@@ -6,7 +6,7 @@ const subjectsOnClasses = createModel((SubjectsOnClassesModel) => {
   SubjectsOnClassesModel.string("mongo_id", {
     map: "_id",
     id: true,
-    raw: /* prisma */ `@default(auto()) @database.ObjectId`,
+    raw: /* prisma */ `@default(auto()) @database.ObjectId`.trim(),
   })
     .map("subjects_on_classes")
     .relation("subjects", SubjectModel, {

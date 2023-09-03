@@ -1,15 +1,15 @@
 import type { PrismaModel } from "schemix";
 import { createModel } from "schemix";
-import schemixProductModel from "~backend/source/server/prisma/postgresql/models/product/product";
 import schemixUserModel from "~backend/source/server/prisma/postgresql/models/user/User";
+import schemixProductModel from "~frontend/../backend/source/server/prisma/postgresql/models/product/Product";
 
 const schemixOrderModel: PrismaModel = createModel(
   (OrderModel: PrismaModel): void => {
     OrderModel.int("id", {
       id: true,
       raw: /* prisma */ ` 
-          @default(autoincrement())
-        `,
+        @default(autoincrement())
+      `.trim(),
     })
       .decimal("paymentAmount", {
         map: "payment_amount",

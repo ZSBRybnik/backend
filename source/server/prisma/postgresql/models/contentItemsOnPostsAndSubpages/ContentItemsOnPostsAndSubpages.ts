@@ -9,8 +9,8 @@ const schemixContentItemsOnPostsAndSubpagesModel: PrismaModel = createModel(
     ContentItemsOnPostsAndSubpagesModel.int("id", {
       id: true,
       raw: /* prisma */ `
-          @default(autoincrement())
-        `,
+        @default(autoincrement())
+      `.trim(),
     })
       .map("content_items_on_posts_and_subpages")
       .relation("posts", schemixPostModel, {

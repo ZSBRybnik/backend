@@ -2,7 +2,7 @@
 /* eslint-disable sonarjs/no-unused-collection */
 import { router } from "@trpc/server";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
-import { null as zodNull, number, object, string, union } from "zod";
+import { number, object, string, union, null as zodNull } from "zod";
 import mongoDBClient from "~backend/source/server/clients/mongoDBClient/mongoDBClient";
 import { gun } from "../..";
 import postgreSQLClient from "../../../clients/postgreSQLClient/postgreSQLClient";

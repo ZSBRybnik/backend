@@ -1,7 +1,7 @@
 import type { PrismaModel } from "schemix";
 import { createModel } from "schemix";
-import schemixProductModel from "~backend/source/server/prisma/postgresql/models/product/product";
 import schemixProductAllergensModel from "~backend/source/server/prisma/postgresql/models/productAllergens/ProductAllergens";
+import schemixProductModel from "~frontend/../backend/source/server/prisma/postgresql/models/product/Product";
 
 const schemixAllergensOnProductsModel: PrismaModel = createModel(
   (schemixAllergensOnProductsModel: PrismaModel): void => {
