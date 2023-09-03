@@ -1,6 +1,5 @@
 import { createModel, PrismaModel } from "schemix";
 import AuthenticationTypes from "~backend/source/server/constants/authenticationType/authenticationType";
-import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
 import schemixAuthenticationType from "../../enums/authenticationType/AuthenticationType";
 import rolesEnum from "../../enums/roles/Roles";
 import userModifiers from "../../enums/userModifiers/UserModifiers";
@@ -12,11 +11,7 @@ const model: PrismaModel = createModel((UserModal: PrismaModel): void => {
   UserModal.string("mongo_id", {
     map: "_id",
     id: true,
-    raw: generatePrismaString({
-      rawString: `#prisma 
-        @default(auto()) @database.ObjectId
-      `,
-    }),
+    raw: /* prisma */ `@default(auto()) @database.ObjectId`,
   })
     .int("id", {
       unique: true,

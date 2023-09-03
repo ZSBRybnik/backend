@@ -6,17 +6,14 @@ import schemixUserModifiers from "~backend/source/server/prisma/postgresql/enums
 import schemixOrderModel from "~backend/source/server/prisma/postgresql/models/order/Order";
 import schemixPostModel from "~backend/source/server/prisma/postgresql/models/post/Post";
 import schemixClassModel from "~backend/source/server/prisma/postgresql/models/schoolClass/SchoolClass";
-import generatePrismaString from "~backend/source/server/prisma/utils/generatePrismaString/generatePrismaString";
 
 const schemixUserModel: PrismaModel = createModel(
   (UserModel: PrismaModel): void => {
     UserModel.int("id", {
       id: true,
-      raw: generatePrismaString({
-        rawString: `#prisma 
+      raw: /* prisma */ `
           @default(autoincrement())
       `,
-      }),
     })
       .boolean("isDisabled", { map: "is_disabled" })
       .enum("modifiers", schemixUserModifiers, { list: true })
@@ -36,43 +33,33 @@ const schemixUserModel: PrismaModel = createModel(
       .relation("orders", schemixOrderModel, { list: true })
       .string("login", {
         unique: true,
-        raw: generatePrismaString({
-          rawString: `#prisma 
+        raw: /* prisma */ `
             @database.VarChar(255)
         `,
-        }),
       })
       .string("password", {
-        raw: generatePrismaString({
-          rawString: `#prisma 
+        raw: /* prisma */ `
             @database.VarChar(255)
         `,
-        }),
       })
       .string("email", {
         unique: true,
-        raw: generatePrismaString({
-          rawString: `#prisma 
+        raw: /* prisma */ `
             @database.VarChar(255)
         `,
-        }),
       })
       .string("authenticatorCode", {
         optional: true,
-        raw: generatePrismaString({
-          rawString: `#prisma 
+        raw: /* prisma */ `
             @database.VarChar(16)
         `,
-        }),
         map: "authenticator_code",
       })
       .string("phoneNumber", {
         optional: true,
-        raw: generatePrismaString({
-          rawString: `#prisma 
+        raw: /* prisma */ ` 
             @database.VarChar(22)
         `,
-        }),
         map: "phone_number",
       })
       .int("lockerNumber", {
@@ -87,11 +74,9 @@ const schemixUserModel: PrismaModel = createModel(
       .string("discordId", {
         unique: true,
         map: "discord_id",
-        raw: generatePrismaString({
-          rawString: `#prisma 
+        raw: /* prisma */ `
             @database.VarChar(18)
         `,
-        }),
       })
       .map("users");
   },

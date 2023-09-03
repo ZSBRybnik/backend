@@ -1,5 +1,4 @@
 import { createModel } from "schemix";
-import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
 import SchoolClassModel from "../schoolClass/SchoolClass";
 import SubjectModel from "../subject/Subject";
 
@@ -7,11 +6,7 @@ const subjectsOnClasses = createModel((SubjectsOnClassesModel) => {
   SubjectsOnClassesModel.string("mongo_id", {
     map: "_id",
     id: true,
-    raw: generatePrismaString({
-      rawString: `#prisma 
-        @default(auto()) @database.ObjectId
-      `,
-    }),
+    raw: /* prisma */ `@default(auto()) @database.ObjectId`,
   })
     .map("subjects_on_classes")
     .relation("subjects", SubjectModel, {

@@ -3,17 +3,14 @@ import { createModel } from "schemix";
 import schemixContentItemModel from "~backend/source/server/prisma/postgresql/models/contentItem/ContentItem";
 import schemixPostModel from "~backend/source/server/prisma/postgresql/models/post/Post";
 import schemixPageModel from "~backend/source/server/prisma/postgresql/models/subpage/Subpage";
-import generatePrismaString from "~backend/source/server/prisma/utils/generatePrismaString/generatePrismaString";
 
 const schemixContentItemsOnPostsAndSubpagesModel: PrismaModel = createModel(
   (ContentItemsOnPostsAndSubpagesModel: PrismaModel): void => {
     ContentItemsOnPostsAndSubpagesModel.int("id", {
       id: true,
-      raw: generatePrismaString({
-        rawString: `#prisma
+      raw: /* prisma */ `
           @default(autoincrement())
         `,
-      }),
     })
       .map("content_items_on_posts_and_subpages")
       .relation("posts", schemixPostModel, {

@@ -1,6 +1,5 @@
 import { createModel, PrismaModel } from "schemix";
 import RuntimeTypes from "~backend/source/server/constants/runtimeType/runtimeType";
-import generatePrismaString from "../../../utils/generatePrismaString/generatePrismaString";
 import runtimeType from "../../enums/runtimeType/RuntimeType";
 import contentItemsOnPostsAndSubpages from "../contentItemsOnPostsAndSubpages/ContentItemsOnPostsAndSubpages";
 
@@ -10,11 +9,7 @@ const contentItemModel: PrismaModel = createModel(
       .string("mongo_id", {
         map: "_id",
         id: true,
-        raw: generatePrismaString({
-          rawString: `#prisma 
-            @default(auto()) @database.ObjectId
-          `,
-        }),
+        raw: /* prisma */ `@default(auto()) @database.ObjectId`,
       })
       .int("id", { unique: true })
       .relation(

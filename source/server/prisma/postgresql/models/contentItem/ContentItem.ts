@@ -3,18 +3,15 @@ import { createModel } from "schemix";
 import RuntimeType from "~backend/source/server/constants/runtimeType/runtimeType";
 import schemixRuntimeTypeEnum from "~backend/source/server/prisma/postgresql/enums/runtimeType/RuntimeType";
 import schemixContentItemsOnPostsAndSubpagesModel from "~backend/source/server/prisma/postgresql/models/contentItemsOnPostsAndSubpages/ContentItemsOnPostsAndSubpages";
-import generatePrismaString from "~backend/source/server/prisma/utils/generatePrismaString/generatePrismaString";
 
 const schemixContentItemModel: PrismaModel = createModel(
   (contentItemModel: PrismaModel): void => {
     contentItemModel
       .int("id", {
         id: true,
-        raw: generatePrismaString({
-          rawString: `#prisma
-            @default(autoincrement())
-          `,
-        }),
+        raw: /* prisma */ `
+          @default(autoincrement())
+        `,
       })
       .relation(
         "contentItemsOnPostsAndSubpages",
@@ -27,11 +24,9 @@ const schemixContentItemModel: PrismaModel = createModel(
         default: RuntimeType.Classic,
       })
       .string("content", {
-        raw: generatePrismaString({
-          rawString: `#prisma
+        raw: /* prisma */ `
             @database.Text
           `,
-        }),
       })
       .map("content_items");
   },

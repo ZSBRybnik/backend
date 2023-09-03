@@ -2,18 +2,15 @@ import type { PrismaModel } from "schemix";
 import { createModel } from "schemix";
 import schemixPageModel from "~backend/source/server/prisma/postgresql/models/subpage/Subpage";
 import schemixSubpageCategoryTranslationsModel from "~backend/source/server/prisma/postgresql/models/subpageCategoryTranslations/SubpageCategoryTranslations";
-import generatePrismaString from "~backend/source/server/prisma/utils/generatePrismaString/generatePrismaString";
 
 const schemixSubpageCategoryModel: PrismaModel = createModel(
   (schemixSubpageCategoryModel: PrismaModel): void => {
     schemixSubpageCategoryModel
       .int("id", {
         id: true,
-        raw: generatePrismaString({
-          rawString: `#prisma 
+        raw: /* prisma */ `
           @default(autoincrement())
       `,
-        }),
       })
       .string("subpageName", {
         map: "subpage_name",

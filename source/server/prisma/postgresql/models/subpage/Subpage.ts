@@ -4,7 +4,6 @@ import schemixPostAndSubpageModifiersEnum from "~backend/source/server/prisma/po
 import schemixContentItemsOnPostsAndSubpagesModel from "~backend/source/server/prisma/postgresql/models/contentItemsOnPostsAndSubpages/ContentItemsOnPostsAndSubpages";
 import schemixPageCategoryModel from "~backend/source/server/prisma/postgresql/models/subpageCategory/SubpageCategory";
 import schemixSubpageTranslationsModel from "~backend/source/server/prisma/postgresql/models/subpageTranslations/SubpageTranslations";
-import generatePrismaString from "~backend/source/server/prisma/utils/generatePrismaString/generatePrismaString";
 
 const schemixSubpageModel: PrismaModel = createModel(
   (schemixSubpageModel: PrismaModel): void => {
@@ -12,11 +11,9 @@ const schemixSubpageModel: PrismaModel = createModel(
       .boolean("isDisabled", { map: "is_disabled" })
       .string("name", {
         id: true,
-        raw: generatePrismaString({
-          rawString: `#prisma 
+        raw: /* prisma */ `
             @database.VarChar(255)
           `,
-        }),
       })
       .enum("modifiers", schemixPostAndSubpageModifiersEnum, { list: true })
       .relation(
