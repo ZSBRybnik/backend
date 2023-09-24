@@ -4,7 +4,7 @@ EXPOSE 3000
 WORKDIR /home/frotend
 ENV PATH="/root/.cargo/bin:${PATH}"
 RUN apt-get -qq update &&\
-    apt-get install -y -q build-essential curl golang-go libpcap-dev &&\
+    apt-get install -y -q build-essential curl python3.11 golang-go libpcap-dev &&\
     curl https://sh.rustup.rs -sSf | sh -s -- -y
 COPY ./frontend .
 RUN yarn --ignore-engines
