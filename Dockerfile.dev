@@ -1,14 +1,17 @@
 FROM node:latest AS build
-ADD . /home/backend
-WORKDIR /home/backend
-RUN apt-get -qq update 
-RUN apt-get install -y -q build-essential curl golang-go 
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
-ENV PATH="/root/.cargo/bin:${PATH}"
-RUN yarn config set network-timeout 1000000000 -g
-RUN yarn --ignore-engines
-RUN yarn run generate-postgresql-types
-RUN yarn run generate-mongodb-types
-RUN yarn run build
-EXPOSE 3000
 CMD ["yarn", "run", "start"]
+EXPOSE 3000
+WORKDIR /home/frotend
+ENV PATH="/root/.cargo/bin:${PATH}"
+RUN apt-get -qq update &&\
+    apt-get install -y -q build-essential curl golang-go libpcap-dev &&\
+    curl https://sh.rustup.rs -sSf | sh -s -- -y
+COPY ./frontend .
+RUN yarn --ignore-engines
+WORKDIR /home/backend
+COPY ./backend .
+RUN yarn --ignore-engines &&\
+    yarn run generate-postgresql-types &&\
+    yarn run generate-mongodb-types &&\
+    yarn run build
+
